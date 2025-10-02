@@ -1,11 +1,11 @@
 :root {
-    --White:#FFFFFF;
+    --White: #FFFFFF;
     --Isabelline: #F9F2ED;
     --Alabaster: #F3E7E6;
     --Dark-beige: #E8DBD0;
     --Table-button: #F1DFDA;
-    --Textbox-border-color:#EAD1C3;
-    --Textbox-background-color:#F3E3DE;
+    --Textbox-border-color: #EAD1C3;
+    --Textbox-background-color: #F3E3DE;
     --Navy-blue: #002134;
     --Secondary-navy-blue: #001E2D;
     --Navy-blue-low-opacity: rgb(0 33 52 / 70%);
@@ -16,13 +16,10 @@
     --In-progress: rgb(186 159 100 / 25%);
     --Returned: rgb(245 145 116 / 20%);
     --Completed: rgb(208 252 216 / 70%);
-    --Alinma-plain:"AlinmaTheSans-Plain";
-    --Alinma-bold:"AlinmaTheSans-Bold";
+    --Alinma-plain: "AlinmaTheSans-Plain";
+    --Alinma-bold: "AlinmaTheSans-Bold";
 }
-html:not(.designer),:not(.designer) body{
-    font-size: 14px;
-    font-family: var(--Alinma-plain)!important;
-}
+
 @font-face {
     font-family: "AlinmaTheSans-Plain";
     src: url("../fonts/AlinmaTheSans-Plain.ttf");
@@ -35,81 +32,214 @@ html:not(.designer),:not(.designer) body{
     font-display: swap;
 }
 
-html:not(.designer) [name*="s_textbox"] {
-    border: 1px solid var(--Textbox-border-color) !important;
-    background-color: var(--Textbox-background-color) !important;
-    font-size: 1rem !important;
-    border-radius: .5rem !important;
-    padding: .4rem 1rem !important;
-    vertical-align: middle;
+html body {
+    font-size: 16px;
+    font-family: var(--Alinma-plain);
+    background-color: var(--Isabelline);
+    margin-left: 22rem;
+    width: calc(100% - 22rem);
+}
+
+html body ul {
+    list-style-type: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+html body ul.links li {
     display: flex;
     align-items: center;
-    font-family: var(--regularFont) !important;
+    padding: .4rem 1rem;
+}
+
+.container {
+    max-width: 100% !important;
+    margin: 0;
+    padding-left: 2rem;
+    padding-right: 2rem;
+}
+
+html body header {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
+
+html body header .dashboardIntro h3 {
+    font-family: var(--Alinma-bold);
+}
+
+html body header a.logo {
+    width: 11rem;
+    display: block;
+}
+
+html body header a.logo img {
+    height: 100%;
     width: 100%;
-    min-height: 3rem !important;
-    height: 3rem !important;
+    object-fit: contain;
 }
 
-html:not(.designer) .readonly[name*="s_textbox"],
-html:not(.designer) .empty[name*="s_textbox"],
-html:not(.designer) .disabled[name*="s_textbox"],
-.ui-lookupbox-disabled,
-.input-control.select-box.read-only .input-control-m-c,
-.read-only textarea {
-    background-color: #F9F0EB !important;
-    border: 1px solid rgb(57 94 117 / 60%) !important;
+html body aside.sidebar {
+    width: 22rem;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    border-right: 1.5px solid rgb(0 33 52 / 10%);
+    ;
 }
 
-html:not(.designer) [name*="s_dropdown"] {
-    
+html body .kpiCards {
+    gap: 1rem;
 }
 
-html:not(.designer) [name*="s_label"] {
-    font-size: 1rem;
-    color: var(--Light-black);
+html body .kpiCards .card {
+    width: 13rem;
+    height: 6.7rem;
+    border: 1px solid #E5E4DE;
+    border-radius: 1rem;
 }
 
-html:not(.designer) [name*="s_textarea"] {
-    border: 1px solid var(--Textbox-border-color) !important;
-    background-color: var(--Textbox-background-color) !important;
-    font-size: 1rem !important;
-    border-radius: .5rem !important;
-    padding: .4rem 1rem !important;
+html body .kpiCards .card .card-body {
+    padding: 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+html body .kpiCards .card .card-body .kpiIcon {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    height: 2rem;
+    width: 2rem;
+}
+
+html body .kpiCards .card .card-body .kpiIcon img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
+
+html body .kpiCards .card .card-body .kpiValue {
+    font-size: 1.8rem;
+    color: #092342;
+    font-family: var(--Alinma-bold);
+    margin-bottom: 0rem;
+}
+
+html body .kpiCards .card .card-body .kpiName {
+    margin-bottom: 0;
+    font-size: .9rem;
+    color: var(--Secondary-navy-blue);
+}
+
+html body .requestsTile {
+    padding-right: 1rem;
+}
+
+html body .requestsTile .card {
+    height: 100%;
+    border-radius: 1rem;
+    border: 1px solid #E5E4DE;
+
+}
+html body .requestsTile .card .card-header{
+    background-color:transparent;
+    border: 0;
+    padding: 0.9rem 2rem 0;
+}
+html body .requestsTile .card .card-body{
+    padding: 0rem 2rem 1rem;
+    border:none!important;
+}
+h2 {
+    font-size: 24px;
+    font-weight: bold;
+    color: #333;
+    margin-top: 0;
+    margin-bottom: 8px;
+}
+
+.requests-total {
+    font-size: 1.9rem;
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 0.7rem;
+    font-family: var(--Alinma-bold);
+    color: var(--Navy-blue);
+}
+
+/* --- Progress Bar Styling --- */
+.progress-bar-container {
+    display: flex;
+    height: 0.8rem;
+    /* Height of the bar */
+    border-radius: 1rem;
+    /* Rounded edges */
+    overflow: hidden;
+    /* Ensures the sections stay within the rounded container */
+    margin-bottom: 1rem;
+}
+
+.request-progress-zone {
+    height: 100%;
+    /* Width will be set by JavaScript */
+}
+
+/* Define colors for each segment */
+.marketing-request {
+    background-color: #9993c9;
+}
+
+.request-a-study {
+    background-color: #f09689;
+}
+
+.branch-visit-notes {
+    background-color: #2a313b;
+}
+
+.other {
+    background-color: #e5e3d7;
+}
+
+/* --- Legend Styling --- */
+.request-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two columns */
+    gap: 10px 20px;
+}
+
+.request-card {
     display: flex;
     align-items: center;
-    font-family: var(--regularFont) !important;
-    width: 100%;
-    min-height: 3rem !important;
+    justify-content: space-between;
+    padding: 5px 0;
 }
 
-html:not(.designer) [name*="s_button"]{
-    border-radius: .5rem !important;
-    padding: .4rem 2rem !important;
+.request-name {
+    display: flex;
+    align-items: center;
 }
 
-html:not(.designer) [name*="s_button s_primary_button"] {
-    background-color: var(--Navy-blue)!important;
-    color: var(--White)!important;
-}
-html:not(.designer) [name*="s_button s_secondary_button"] {
-    border:1px solid var(--Navy-blue)!important;
-    color: var(--Navy-blue)!important;
-}
-html:not(.designer) [name*="s_button s_save_button"] {
-    position: relative;
-}
-html:not(.designer) [name*="s_button s_save_button"]::before{
+.request-name::before {
     content:"";
     position: absolute;
     top: 50%;
-    transform:translateY(-50%);
-    height: 1.3rem;
-    width: 1.3rem;
-    background-image: url("../images/save-icon.svg");
-    background-repeat: no-repeat;
-    background-size: contain;
-    background-position: center;
+    left: 0;
+    transform: translateY(-50%);
+    border-radius: 100%;
+    margin-right: .5rem;
+    height: .8rem;
+    width: .8rem;
 }
-html:not(.designer) [name*="s_asterik"] {
-    color: var(--Navy-blue)!important;
+
+.percentage {
+    font-weight: bold;
+    color: #333;
 }

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Requests</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/style.css">
+</head>
+
+<body>
+    <header class="d-flex justify-content-between align-items-center container">
+        <div class="dashboardIntro">
+            <h3>My Requests</h3>
+            <p>Manage and Track your Requests</p>
+        </div>
+        <a href="/" class="logo">
+            <img src="../images/net/Logo.png" alt="Al Inmaa Bank" />
+        </a>
+
+    </header>
+    <aside class="sidebar">
+        <div class="userSettings d-flex align-items-center">
+            <div class="userProfile d-flex align-items-center">
+                <div class="userProfilePhoto">
+                    <img src="../images/net/UserProfile.png" alt="Ibrahim K." class="profilePhoto">
+                </div>
+                <div class="userInformations d-flex flex-column">
+                    <span class="username">Ibrahim K.</span>
+                    <span class="userPosition">Marketing Department</span>
+                </div>
+            </div>
+            <button class="notifications">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="12" fill="#F1DFDA" />
+                    <rect x="0.5" y="0.5" width="49" height="49" rx="11.5" stroke="#002134" stroke-opacity="0.05" />
+                    <mask id="path-3-outside-1_1753_6499" maskUnits="userSpaceOnUse" x="12" y="13.5078" width="23"
+                        height="23" fill="black">
+                        <rect fill="white" x="12" y="13.5078" width="23" height="23" />
+                        <path fill-rule="evenodd" clip-rule="evenodd"
+                            d="M23.6749 16.5076C19.6272 16.5076 16.3459 19.7889 16.3459 23.8366V30.6002C15.5868 30.697 15 31.3453 15 32.1307C15 32.9829 15.6908 33.6737 16.543 33.6737H30.815C31.6672 33.6737 32.358 32.9829 32.358 32.1307C32.358 31.3425 31.7669 30.6923 31.0038 30.5992V23.8366C31.0038 19.7889 27.7225 16.5076 23.6749 16.5076Z" />
+                    </mask>
+                    <path
+                        d="M16.3459 30.6002L16.662 33.0801L18.8459 32.8018V30.6002H16.3459ZM31.0038 30.5992H28.5038V32.8127L30.7011 33.0808L31.0038 30.5992ZM16.3459 23.8366H18.8459C18.8459 21.1696 21.0079 19.0076 23.6749 19.0076V16.5076V14.0076C18.2465 14.0076 13.8459 18.4082 13.8459 23.8366H16.3459ZM16.3459 30.6002H18.8459V23.8366H16.3459H13.8459V30.6002H16.3459ZM15 32.1307H17.5C17.5 32.6198 17.1354 33.0198 16.662 33.0801L16.3459 30.6002L16.0298 28.1203C14.0382 28.3741 12.5 30.0708 12.5 32.1307H15ZM16.543 33.6737V31.1737C17.0715 31.1737 17.5 31.6021 17.5 32.1307H15H12.5C12.5 34.3636 14.3101 36.1737 16.543 36.1737V33.6737ZM30.815 33.6737V31.1737H16.543V33.6737V36.1737H30.815V33.6737ZM32.358 32.1307H29.858C29.858 31.6021 30.2865 31.1737 30.815 31.1737V33.6737V36.1737C33.0479 36.1737 34.858 34.3636 34.858 32.1307H32.358ZM31.0038 30.5992L30.7011 33.0808C30.2252 33.0227 29.858 32.6215 29.858 32.1307H32.358H34.858C34.858 30.0634 33.3086 28.3618 31.3065 28.1176L31.0038 30.5992ZM31.0038 23.8366H28.5038V30.5992H31.0038H33.5038V23.8366H31.0038ZM23.6749 16.5076V19.0076C26.3418 19.0076 28.5038 21.1696 28.5038 23.8366H31.0038H33.5038C33.5038 18.4082 29.1032 14.0076 23.6749 14.0076V16.5076Z"
+                        fill="#002134" mask="url(#path-3-outside-1_1753_6499)" />
+                    <path d="M21.6437 38.2891C22.9146 39.5331 24.9346 39.5719 26.2524 38.3776L26.3501 38.2891"
+                        stroke="#002134" stroke-width="2.3" stroke-linecap="round" />
+                    <circle cx="32.499" cy="17.5" r="7.5" fill="#BB2C30" stroke="#F1DFDA" stroke-width="4.5" />
+                </svg>
+
+            </button>
+        </div>
+        <div class="sideBarLinksGroup">
+            <div class="sidebarCategory">
+                <h6 class="categoryName">Main Links</h6>
+                <ul class="links">
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/Dashboard.svg" alt="">
+                        </div>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/My Requests.svg" alt="">
+                        </div>
+                        <a href="/">My Requests</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/report-and-analytics.svg" alt="">
+                        </div>
+                        <a href="#">Reports & Analytics</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebarCategory">
+                <h6 class="categoryName">Departments</h6>
+                <ul class="links">
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/Retail Banking.svg" alt="Retail & Digital Banking">
+                        </div>
+                        <a href="">Retail & Digital Banking</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/Human Capital Excellence.svg" alt="">
+                        </div>
+                        <a href="">Marketing & Corporate</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/Shariah.svg" alt="">
+                        </div>
+                        <a href="">Shariah</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/information-technology.svg" alt="">
+                        </div>
+                        <a href="">Information Technology</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/Operations.svg" alt="">
+                        </div>
+                        <a href="">Operations</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/facilities-management.svg" alt="">
+                        </div>
+                        <a href="">Facilities Management</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/Business Acquistion.svg" alt="">
+                        </div>
+                        <a href="">Human Capital</a>
+                    </li>
+                    <li>
+                        <div class="icon">
+                            <img src="../images/net/risk-management.svg" alt="">
+                        </div>
+                        <a href="">Risk Management</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </aside>
+    <div class="container d-flex flex-wrap">
+        <div class="col-lg-7 col-md-12 requestsTile">
+            <div class="card">
+                <div class="card-header">
+                    <h2>Requests Type</h2>
+                </div>
+                <div class="card-body">
+                    <div class="requests-total" id="requests-total">156</div>
+
+                    <div class="progress-bar-container" id="progress-bar-container">
+                        <div class="request-progress-zone marketing-request" id="marketing-request"></div>
+                        <div class="request-progress-zone request-a-study" id="request-a-study"></div>
+                        <div class="request-progress-zone branch-visit-notes" id="branch-visit-notes"></div>
+                        <div class="request-progress-zone other" id="other"></div>
+                    </div>
+
+                    <div class="request-cards">
+                    <div class="request-card">
+                        <div class="request-name">
+                            <span>Marketing Request</span>
+                        </div>
+                        <span class="percentage" id="marketing-request-percentage"></span>
+                    </div>
+                    <div class="request-card">
+                        <div class="request-name">
+                            <span>Request a Study</span>
+                        </div>
+                        <span class="percentage" id="request-study-percentage"></span>
+                    </div>
+                    <div class="request-card">
+                        <div class="request-name">
+                            <span>Branch Visit Notes</span>
+                        </div>
+                        <span class="percentage" id="branch-viti-percentage"></span>
+                    </div>
+                    <div class="request-card">
+                        <div class="request-name">
+                            <span>Other</span>
+                        </div>
+                        <span class="percentage" id="other-percentage"></span>
+                    </div>
+                </div>
+                </div>
+
+                
+
+            </div>
+        </div>
+        <div class="col-lg-5 col-md-12 d-flex flex-wrap kpiCards">
+            <div class="card">
+                <div class="card-body">
+                    <div class="kpiIcon">
+                        <img src="../images/net/saved-drafts.svg" alt="Saved Drafts">
+                    </div>
+                    <h5 class="kpiValue">2</h5>
+                    <p class="kpiName">Saved Drafts</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="kpiIcon">
+                        <img src="../images/net/in-progress-request.svg" alt="In-Progress Requests">
+                    </div>
+                    <h5 class="kpiValue">5</h5>
+                    <p class="kpiName">In-Progress Requests</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="kpiIcon">
+                        <img src="../images/net/rejected-requests.svg" alt="Rejected Requests">
+                    </div>
+                    <h5 class="kpiValue">12</h5>
+                    <p class="kpiName">Rejected Requests</p>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <div class="kpiIcon">
+                        <img src="../images/net/completed-requests.svg" alt="Completed Requests">
+                    </div>
+                    <h5 class="kpiValue">156</h5>
+                    <p class="kpiName">Completed Requests</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="../js/script.js"></script>
+</body>
+
+</html>

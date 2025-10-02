@@ -1,0 +1,115 @@
+:root {
+    --White:#FFFFFF;
+    --Isabelline: #F9F2ED;
+    --Alabaster: #F3E7E6;
+    --Dark-beige: #E8DBD0;
+    --Table-button: #F1DFDA;
+    --Textbox-border-color:#EAD1C3;
+    --Textbox-background-color:#F3E3DE;
+    --Navy-blue: #002134;
+    --Secondary-navy-blue: #001E2D;
+    --Navy-blue-low-opacity: rgb(0 33 52 / 70%);
+    --Light-black: rgb(0 0 0 / 70%);
+    --Purple: #9795E0;
+    --Orange: #FF9581;
+    --Table-header: rgb(244 231 219 / 60%);
+    --In-progress: rgb(186 159 100 / 25%);
+    --Returned: rgb(245 145 116 / 20%);
+    --Completed: rgb(208 252 216 / 70%);
+    --Alinma-plain:"AlinmaTheSans-Plain";
+    --Alinma-bold:"AlinmaTheSans-Bold";
+}
+html:not(.designer),:not(.designer) body{
+    font-size: 14px;
+    font-family: var(--Alinma-plain)!important;
+}
+@font-face {
+    font-family: "AlinmaTheSans-Plain";
+    src: url("../fonts/AlinmaTheSans-Plain.ttf");
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "AlinmaTheSans-Bold";
+    src: url("../fonts/AlinmaTheSans-Bold.ttf");
+    font-display: swap;
+}
+
+html:not(.designer) [name*="s_textbox"] {
+    border: 1px solid var(--Textbox-border-color) !important;
+    background-color: var(--Textbox-background-color) !important;
+    font-size: 1rem !important;
+    border-radius: .5rem !important;
+    padding: .4rem 1rem !important;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    font-family: var(--regularFont) !important;
+    width: 100%;
+    min-height: 3rem !important;
+    height: 3rem !important;
+}
+
+html:not(.designer) .readonly[name*="s_textbox"],
+html:not(.designer) .empty[name*="s_textbox"],
+html:not(.designer) .disabled[name*="s_textbox"],
+.ui-lookupbox-disabled,
+.input-control.select-box.read-only .input-control-m-c,
+.read-only textarea {
+    background-color: #F9F0EB !important;
+    border: 1px solid rgb(57 94 117 / 60%) !important;
+}
+
+html:not(.designer) [name*="s_dropdown"] {
+    
+}
+
+html:not(.designer) [name*="s_label"] {
+    font-size: 1rem;
+    color: var(--Light-black);
+}
+
+html:not(.designer) [name*="s_textarea"] {
+    border: 1px solid var(--Textbox-border-color) !important;
+    background-color: var(--Textbox-background-color) !important;
+    font-size: 1rem !important;
+    border-radius: .5rem !important;
+    padding: .4rem 1rem !important;
+    display: flex;
+    align-items: center;
+    font-family: var(--regularFont) !important;
+    width: 100%;
+    min-height: 3rem !important;
+}
+
+html:not(.designer) [name*="s_button"]{
+    border-radius: .5rem !important;
+    padding: .4rem 2rem !important;
+}
+
+html:not(.designer) [name*="s_button s_primary_button"] {
+    background-color: var(--Navy-blue)!important;
+    color: var(--White)!important;
+}
+html:not(.designer) [name*="s_button s_secondary_button"] {
+    border:1px solid var(--Navy-blue)!important;
+    color: var(--Navy-blue)!important;
+}
+html:not(.designer) [name*="s_button s_save_button"] {
+    position: relative;
+}
+html:not(.designer) [name*="s_button s_save_button"]::before{
+    content:"";
+    position: absolute;
+    top: 50%;
+    transform:translateY(-50%);
+    height: 1.3rem;
+    width: 1.3rem;
+    background-image: url("../images/save-icon.svg");
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+}
+html:not(.designer) [name*="s_asterik"] {
+    color: var(--Navy-blue)!important;
+}
