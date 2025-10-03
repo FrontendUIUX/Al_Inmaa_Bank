@@ -11,6 +11,7 @@
 </head>
 
 <body>
+    <div class="overlayShadow"></div>
     <header class="d-flex justify-content-between align-items-center container">
         <div class="dashboardIntro">
             <h3>My Requests</h3>
@@ -73,79 +74,15 @@
                             <img src="../images/net/report-and-analytics.svg" alt="">
                         </div>
                         <a href="#">Reports & Analytics</a>
-                        <div class="hasChildren">
-                            <div class="subSectionTitle">Reports & Analytics</div>
-                            <ul class="subLinks">
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">Marketing Dashboard</a>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">Communication Dashboard</a>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">Information Technology Dashboard</a>
-                                </li>
-                        </div>
-                    </li>
-                </ul>
             </div>
             <div class="sidebarCategory">
                 <h6 class="categoryName">Departments</h6>
                 <ul class="links">
-                    <li class="isSubMenu">
+                    <li>
                         <div class="icon">
                             <img src="../images/net/Retail Banking.svg" alt="Retail & Digital Banking">
                         </div>
                         <a href="">Retail & Digital Banking</a>
-                        <div class="hasChildren">
-                            <div class="subSectionTitle">Retail & Digital Banking</div>
-                            <ul class="subLinks">
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">Marketing Request</a>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">High Risk Account Approvals</a>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">Exception Process Customer Segment</a>
-                                </li>
-                                 <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">Branch Visit Notes</a>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">Referral Automation</a>
-                                </li>
-                                <li>
-                                    <div class="icon">
-                                        <img src="../images/net/sada 1.svg" alt="">
-                                    </div>
-                                    <a href="#">T24 Stamp</a>
-                                </li>
-                        </div>
                     </li>
                     <li class="isSubMenu">
                         <div class="icon">
@@ -192,6 +129,61 @@
                 </ul>
             </div>
         </div>
+        <div class="light-dark-mode ">
+                <div class="toggle-label d-flex align-items-center justify-content-between">
+                    <img class="sun-img" src="../images/net/Sun.svg" alt="">
+                    <span id="mode-label">Light Mode</span>
+                    <div class="form-check form-switch m-0">
+                        <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
+                    </div>
+                </div>
+            </div>
+    </aside>
+    <aside class="subPanel">
+        <div class="closeSubpanel">
+            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path
+                    d="M24.2894 24.2894L13.1447 13.1447M13.1447 13.1447L2 2M13.1447 13.1447L24.2894 2M13.1447 13.1447L2 24.2894"
+                    stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+            </svg>
+
+        </div>
+        <div class="subPanelHeader">
+            <h5 class="subSectionTitle">Reports & Analytics</h5>
+        </div>
+        <div class="subPanelBody">
+            <ul>
+                <li>
+                    <div class="icon">
+                        <img src="../images/net/report-and-analytics.svg" alt="">
+                    </div>
+                    <a href="#">Reports & Analytics</a>
+                    <div class="hasChildren">
+                        <div class="subSectionTitle">Reports & Analytics</div>
+                        <ul class="subLinks">
+                            <li>
+                                <div class="icon">
+                                    <img src="../images/net/sada 1.svg" alt="">
+                                </div>
+                                <a href="#">Marketing Dashboard</a>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <img src="../images/net/sada 1.svg" alt="">
+                                </div>
+                                <a href="#">Communication Dashboard</a>
+                            </li>
+                            <li>
+                                <div class="icon">
+                                    <img src="../images/net/sada 1.svg" alt="">
+                                </div>
+                                <a href="#">Information Technology Dashboard</a>
+                            </li>
+                    </div>
+                </li>
+            </ul>
+        </div>
+
     </aside>
     <div class="container d-flex flex-wrap">
         <div class="col-lg-7 col-md-12 requestsTile">
@@ -210,34 +202,34 @@
                     </div>
 
                     <div class="request-cards">
-                    <div class="request-card">
-                        <div class="request-name">
-                            <span>Marketing Request</span>
+                        <div class="request-card">
+                            <div class="request-name marketing-request-text">
+                                <span>Marketing Request</span>
+                            </div>
+                            <span class="percentage" id="marketing-request-percentage"></span>
                         </div>
-                        <span class="percentage" id="marketing-request-percentage"></span>
-                    </div>
-                    <div class="request-card">
-                        <div class="request-name">
-                            <span>Request a Study</span>
+                        <div class="request-card">
+                            <div class="request-name request-a-study-text">
+                                <span>Request a Study</span>
+                            </div>
+                            <span class="percentage" id="request-study-percentage"></span>
                         </div>
-                        <span class="percentage" id="request-study-percentage"></span>
-                    </div>
-                    <div class="request-card">
-                        <div class="request-name">
-                            <span>Branch Visit Notes</span>
+                        <div class="request-card">
+                            <div class="request-name branch-visit-notes-text">
+                                <span>Branch Visit Notes</span>
+                            </div>
+                            <span class="percentage" id="branch-viti-percentage"></span>
                         </div>
-                        <span class="percentage" id="branch-viti-percentage"></span>
-                    </div>
-                    <div class="request-card">
-                        <div class="request-name">
-                            <span>Other</span>
+                        <div class="request-card">
+                            <div class="request-name other-text">
+                                <span>Other</span>
+                            </div>
+                            <span class="percentage" id="other-percentage"></span>
                         </div>
-                        <span class="percentage" id="other-percentage"></span>
                     </div>
-                </div>
                 </div>
 
-                
+
 
             </div>
         </div>
@@ -277,6 +269,121 @@
                     <h5 class="kpiValue">156</h5>
                     <p class="kpiName">Completed Requests</p>
                 </div>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="myRequestsTable">
+            <div class="d-flex align-items-center justify-content-between">
+                <h5 class="tableHeader">My Requests</h5>
+                <div class="search-box">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
+                        <g id="SVGRepo_iconCarrier">
+                            <path
+                                d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
+                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </g>
+                    </svg>
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search">
+                </div>
+            </div>
+            <div class="table-container table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th><span>Request Number</span></th>
+                            <th class="service sort"><span>Service
+                                    <svg width="21" height="17" viewBox="0 0 21 17" fill="none"
+                                        xmlns="http://www.w3.org/2000/svg">
+                                        <path opacity="0.5"
+                                            d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                                            stroke="#002134" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                        <path
+                                            d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                                            stroke="#002134" stroke-width="2" stroke-linecap="round"
+                                            stroke-linejoin="round" />
+                                    </svg>
+
+                                </span></th>
+                            <th><span>Submitted on</span></th>
+                            <th class="statusColumn"><span>Status</span></th>
+                            <th><span>Responsible</span></th>
+                            <th><span>Actions</span></th>
+                        </tr>
+                    </thead>
+                    <tbody id="requestsTable">
+                        <tr>
+                            <td data-title="Request Number">
+                                <a href="#" class="request-number">RM-V3RLOV</a>
+                            </td>
+                            <td data-title="Service">Retail Banking</td>
+                            <td data-title="Submitted On">08/05/2025 09:00 AM</td>
+                            <td class="status in-progress" data-title="Status in-progress"><span>In-Progress</span></td>
+                            <td data-title="Responsible">Financial Manager</td>
+                            <td data-title="Actions">
+                                <a href="#" class="btn-edit disabled">
+                                    <img src="../images/net/edit.svg" alt="edit">
+                                    <span>Edit</span>
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-title="Request Number">
+                                <a href="#" class="request-number">RM-732B01D</a>
+                            </td>
+                            <td data-title="Service">Request a Study</td>
+                            <td data-title="Submitted On">08/05/2025 09:00 AM</td>
+                            <td class="status returned" data-title="Status returned">
+                                <span>Returned</span>
+                            </td>
+                            <td>Ibrahim K. <span class="text-muted-custom">(You)</span></td>
+                            <td data-title="Acquistion">
+                                <a href="#" class="btn-edit">
+                                    <img src="../images/net/edit.svg" alt="edit">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-title="Request Number">
+                                <a href="#" class="request-number">RM-9052XZ1</a>
+                            </td>
+                            <td data-title="Service">Branch Visit Notes</td>
+                            <td data-title="Submitted On">08/05/2025 09:00 AM</td>
+                            <td class="status draft" data-title="Status draft">
+                                <span>Draft</span>
+                            </td>
+                            <td>Not Assigned</td>
+                            <td data-title="Actions">
+                                <a href="#" class="btn-edit">
+                                    <img src="../images/net/edit.svg" alt="edit">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td data-title="Request Number">
+                                <a href="#" class="request-number">RM-5822003
+                                </a>
+                            </td>
+                            <td data-title="Service">Retail Banking</td>
+                            <td data-title="Submitted On">08/05/2025 09:00 AM</td>
+                            <td class="status completed" data-title="Status completed">
+                                <span>Completed</span>
+                            </td>
+                            <td>Not Assigned</td>
+                            <td data-title="Actions">
+                                <a href="#" class="btn-edit disabled">
+                                    <img src="../images/net/edit.svg" alt="edit">
+                                    Edit
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>

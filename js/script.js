@@ -21,33 +21,95 @@ function renderProgressBar() {
         }
     });
 }
+renderProgressBar();
+document.addEventListener("DOMContentLoaded", () => {
+    const subMenus = document.querySelectorAll(".isSubMenu");
+    const subPanel = document.querySelector(".subPanel");
+    const subPanelList = subPanel.querySelector(".subPanelBody ul");
+    const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
+    const overlayShadow = document.querySelector(".overlayShadow");
+    const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
 
-document.addEventListener('DOMContentLoaded', function() {
-    const subMenus = document.querySelectorAll('.isSubMenu');
+    // Example submenu link data
+    const submenuLinks = {
+        "Reports & Analytics": [
+            { icon: "../images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
+            { icon: "../images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
+            { icon: "../images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
+        ],
+        "Retail & Digital Banking": [
+            { icon: "../images/net/sada 1.svg", text: "Branch Reports", url: "#" },
+            { icon: "../images/net/sada 1.svg", text: "Customer Insights", url: "#" }
+        ],
+        "Marketing & Corporate": [
+            { icon: "../images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
+        ],
+        "Shariah": [],
+        "Information Technology": [],
+        "Operations": [],
+        "Facilities Management": [],
+        "Human Capital": [],
+        "Risk Management": []
+    };
 
-    subMenus.forEach(subMenu => {
-        subMenu.addEventListener('click', function(event) {
-            // Prevent the default action (like navigating)
-            event.preventDefault();
+    function renderSubLinks(title) {
+        subPanelList.innerHTML = ""; // Clear old links
 
-            const clickedHasChildren = this.querySelector('.hasChildren');
-
-            // 1. First, remove 'active' from ALL 'hasChildren' elements
-            document.querySelectorAll('.hasChildren.active').forEach(activeChild => {
-                // IMPORTANT: Make sure we don't accidentally remove the class from the one we are about to activate
-                if (activeChild !== clickedHasChildren) {
-                    activeChild.classList.remove('active');
-                    // Optional: Remove active class from its parent 'isSubMenu' too
-                    activeChild.closest('.isSubMenu').classList.remove('active-menu-item');
-                }
+        if (submenuLinks[title] && submenuLinks[title].length > 0) {
+            submenuLinks[title].forEach(link => {
+                const li = document.createElement("li");
+                li.innerHTML = `
+                    <div class="icon">
+                        <img src="${link.icon}" alt="">
+                    </div>
+                    <a href="${link.url}">${link.text}</a>
+                `;
+                subPanelList.appendChild(li);
             });
+            return true; 
+        }
+        return false;
+    }
 
-            // 2. Toggle the 'active' class on the clicked 'hasChildren' element
-            if (clickedHasChildren) {
-                clickedHasChildren.classList.toggle('active');
-                
-                // 3. Toggle the optional parent class 'active-menu-item'
-                this.classList.toggle('active-menu-item');
+    subMenus.forEach(menu => {
+        menu.addEventListener("click", e => {
+            e.preventDefault();
+
+            const title = menu.querySelector("a").innerText.trim();
+
+            // If no links → close panel and stop
+            if (!submenuLinks[title] || submenuLinks[title].length === 0) {
+                subPanel.classList.remove("active");
+                return;
+            }
+
+            // Update panel title
+            subPanelTitle.textContent = title;
+
+            if (subPanel.classList.contains("active")) {
+                subPanel.classList.remove("active");
+                 if(overlayShadow){
+                    overlayShadow.style.display = "none";
+                }
+                setTimeout(() => {
+                    renderSubLinks(title);
+                    subPanel.classList.add("active");
+                }, 1000);
+            } else {
+                renderSubLinks(title);
+                subPanel.classList.add("active");
+                if(overlayShadow){
+                    overlayShadow.style.display = "block";
+                }
+            }
+            // Close Sub Panel
+            if(closeSubpanelBtn){
+                closeSubpanelBtn.addEventListener("click", function(){
+                    subPanel.classList.remove("active");
+                    if(overlayShadow){
+                        overlayShadow.style.display = "none";
+                    }
+                })
             }
         });
     });
