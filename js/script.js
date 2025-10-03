@@ -22,5 +22,56 @@ function renderProgressBar() {
     });
 }
 
-// Execute the function when the script runs (i.e., when the page loads)
-document.addEventListener('DOMContentLoaded', renderProgressBar);
+// Handle subLinks clicks
+document.querySelectorAll(".subLinks a").forEach(subLink => {
+  subLink.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Clear all active states
+    document.querySelectorAll(".subLinks a").forEach(a => a.classList.remove("active"));
+    document.querySelectorAll(".hasChildren").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".isSubMenu > a").forEach(mainLink => mainLink.classList.remove("active"));
+
+    // Activate clicked subLink
+    this.classList.add("active");
+
+    // Activate its parent .hasChildren
+    const parentHasChildren = this.closest(".hasChildren");
+    if (parentHasChildren) {
+      parentHasChildren.classList.add("active");
+    }
+
+    // Activate its main parent link
+    const mainParentLink = this.closest(".isSubMenu")?.querySelector("a");
+    if (mainParentLink) {
+      mainParentLink.classList.add("active");
+    }
+  });
+});
+
+// Handle parent isSubMenu link clicks
+document.querySelectorAll(".isSubMenu > a").forEach(mainLink => {
+  mainLink.addEventListener("click", function (e) {
+    e.preventDefault();
+
+    // Clear all active states
+    document.querySelectorAll(".subLinks a").forEach(a => a.classList.remove("active"));
+    document.querySelectorAll(".hasChildren").forEach(el => el.classList.remove("active"));
+    document.querySelectorAll(".isSubMenu > a").forEach(link => link.classList.remove("active"));
+
+    // Activate clicked main link
+    this.classList.add("active");
+
+    // Activate its .hasChildren
+    const hasChildren = this.closest(".isSubMenu")?.querySelector(".hasChildren");
+    if (hasChildren) {
+      hasChildren.classList.add("active");
+
+      // Also activate the first subLink
+      const firstSubLink = hasChildren.querySelector(".subLinks a");
+      if (firstSubLink) {
+        firstSubLink.classList.add("active");
+      }
+    }
+  });
+});
