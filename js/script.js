@@ -22,56 +22,33 @@ function renderProgressBar() {
     });
 }
 
-// Handle subLinks clicks
-document.querySelectorAll(".subLinks a").forEach(subLink => {
-  subLink.addEventListener("click", function (e) {
-    e.preventDefault();
+document.addEventListener('DOMContentLoaded', function() {
+    const subMenus = document.querySelectorAll('.isSubMenu');
 
-    // Clear all active states
-    document.querySelectorAll(".subLinks a").forEach(a => a.classList.remove("active"));
-    document.querySelectorAll(".hasChildren").forEach(el => el.classList.remove("active"));
-    document.querySelectorAll(".isSubMenu > a").forEach(mainLink => mainLink.classList.remove("active"));
+    subMenus.forEach(subMenu => {
+        subMenu.addEventListener('click', function(event) {
+            // Prevent the default action (like navigating)
+            event.preventDefault();
 
-    // Activate clicked subLink
-    this.classList.add("active");
+            const clickedHasChildren = this.querySelector('.hasChildren');
 
-    // Activate its parent .hasChildren
-    const parentHasChildren = this.closest(".hasChildren");
-    if (parentHasChildren) {
-      parentHasChildren.classList.add("active");
-    }
+            // 1. First, remove 'active' from ALL 'hasChildren' elements
+            document.querySelectorAll('.hasChildren.active').forEach(activeChild => {
+                // IMPORTANT: Make sure we don't accidentally remove the class from the one we are about to activate
+                if (activeChild !== clickedHasChildren) {
+                    activeChild.classList.remove('active');
+                    // Optional: Remove active class from its parent 'isSubMenu' too
+                    activeChild.closest('.isSubMenu').classList.remove('active-menu-item');
+                }
+            });
 
-    // Activate its main parent link
-    const mainParentLink = this.closest(".isSubMenu")?.querySelector("a");
-    if (mainParentLink) {
-      mainParentLink.classList.add("active");
-    }
-  });
-});
-
-// Handle parent isSubMenu link clicks
-document.querySelectorAll(".isSubMenu > a").forEach(mainLink => {
-  mainLink.addEventListener("click", function (e) {
-    e.preventDefault();
-
-    // Clear all active states
-    document.querySelectorAll(".subLinks a").forEach(a => a.classList.remove("active"));
-    document.querySelectorAll(".hasChildren").forEach(el => el.classList.remove("active"));
-    document.querySelectorAll(".isSubMenu > a").forEach(link => link.classList.remove("active"));
-
-    // Activate clicked main link
-    this.classList.add("active");
-
-    // Activate its .hasChildren
-    const hasChildren = this.closest(".isSubMenu")?.querySelector(".hasChildren");
-    if (hasChildren) {
-      hasChildren.classList.add("active");
-
-      // Also activate the first subLink
-      const firstSubLink = hasChildren.querySelector(".subLinks a");
-      if (firstSubLink) {
-        firstSubLink.classList.add("active");
-      }
-    }
-  });
+            // 2. Toggle the 'active' class on the clicked 'hasChildren' element
+            if (clickedHasChildren) {
+                clickedHasChildren.classList.toggle('active');
+                
+                // 3. Toggle the optional parent class 'active-menu-item'
+                this.classList.toggle('active-menu-item');
+            }
+        });
+    });
 });

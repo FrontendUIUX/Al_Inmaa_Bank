@@ -89,8 +89,8 @@ li.isSubMenu::after{
     top: 0;
     bottom: 0;
     transform: translateX(-200%);
-    z-index: 99;
-    transition:all .3s ease-in-out;
+    /* z-index: 99; */
+    transition: all 1s ease-in-out;
     padding:3rem 2rem;
     border-top-right-radius: 1.5rem;
 }
