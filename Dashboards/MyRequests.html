@@ -5,13 +5,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My Requests</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="../css/bootstrap.min.css">
+    <link rel="stylesheet" href="../css/odometer-theme-default.css">
     <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery.min.js"></script>
 </head>
 
 <body>
     <div class="overlayShadow"></div>
+    <!-- HEADER START -->
     <header class="d-flex justify-content-between align-items-center container">
         <div class="dashboardIntro">
             <h3>My Requests</h3>
@@ -22,9 +24,11 @@
         </a>
 
     </header>
+    <!-- HEADER END -->
+    <!-- SIDEBAR START -->
     <aside class="sidebar">
         <div class="userSettings d-flex align-items-center">
-            <div class="userProfile d-flex align-items-center">
+            <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
                 <div class="userProfilePhoto">
                     <img src="../images/net/UserProfile.png" alt="Ibrahim K." class="profilePhoto">
                 </div>
@@ -33,7 +37,7 @@
                     <span class="userPosition">Marketing Department</span>
                 </div>
             </div>
-            <button class="notifications">
+            <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
                 <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <rect width="50" height="50" rx="12" fill="#F1DFDA" />
                     <rect x="0.5" y="0.5" width="49" height="49" rx="11.5" stroke="#002134" stroke-opacity="0.05" />
@@ -63,7 +67,7 @@
                         </div>
                         <a href="#">Dashboard</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <div class="icon">
                             <img src="../images/net/My Requests.svg" alt="">
                         </div>
@@ -130,15 +134,104 @@
             </div>
         </div>
         <div class="light-dark-mode ">
-                <div class="toggle-label d-flex align-items-center justify-content-between">
-                    <img class="sun-img" src="../images/net/Sun.svg" alt="">
-                    <span id="mode-label">Light Mode</span>
-                    <div class="form-check form-switch m-0">
-                        <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
-                    </div>
+            <div class="toggle-label d-flex align-items-center justify-content-between">
+                <img class="sun-img" src="../images/net/Sun.svg" alt="">
+                <span id="mode-label">Light Mode</span>
+                <div class="form-check form-switch m-0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
                 </div>
             </div>
+        </div>
+
     </aside>
+    <!-- NOTIFICATION POPUP START -->
+    <div class="modal notification-modal" id="notificationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+
+                    <div class="notification-item">
+                        <div>
+                            <p>
+                                Your <span class="bold-text">High Risk Account Opening</span>
+                                Request <span class="bold-text">RM-9052XZ</span> is <span
+                                    class="notification-status rejected">Rejected</span>
+                            </p>
+                            <span>
+                                5 hours ago
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="notification-item">
+                        <div>
+                            <p>
+                                Your <span class="bold-text">High Risk Account Opening</span>
+                                Request <span class="bold-text">RM-9052XZ</span> is <span
+                                    class="notification-status completed">Completed</span></p>
+                            <span>11 hours ago</span>
+                        </div>
+
+                    </div>
+
+                    <div class="notification-item">
+                        <div>
+                            <p>
+                                Your <span class="bold-text">High Risk Account Opening</span>
+                                Request <span class="bold-text">RM-72GHSZ</span> is <span
+                                    class="notification-status completed">Completed</span></p>
+                            <span>2 days ago</span>
+                        </div>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- NOTIFICATION POPUP END -->
+    <!-- USER PROFILE POPUP START -->
+    <div class="modal user-modal" id="userModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="user-modal-header">
+                        <img src="../images/net/UserProfile.png" alt="">
+                        <div class="name-email">
+                            <p class="userNAME">Ibrahim</p>
+                            <p class="user-mail">ibrahim_ksa64@gmail.com</p>
+                        </div>
+
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="user-settings">
+                        <a href="#" class="viewProfile">
+                            <img src="../images/net/user.svg" alt="user">
+                            <p>View Profile</p>
+                        </a>
+                        <a href="#" class="account-settings">
+                            <img src="../images/net/settings.svg" alt="settings">
+                            Account Settings
+                        </a>
+                        <a href="#" class="sign-out">
+                            <img src="../images/net/Sign Out.svg" alt="sign-out">
+                            Sign Out
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- USER PROFILE POPUP END -->
+    <!-- SUB MENU PART OF SIDEBAR START -->
     <aside class="subPanel">
         <div class="closeSubpanel">
             <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -185,7 +278,12 @@
         </div>
 
     </aside>
+    <!-- SUB MENU PART OF SIDEBAR END -->
+    <!-- SIDEBAR END -->
+
+
     <div class="container d-flex flex-wrap">
+        <!-- REQUESTS TYPE START -->
         <div class="col-lg-7 col-md-12 requestsTile">
             <div class="card">
                 <div class="card-header">
@@ -195,10 +293,12 @@
                     <div class="requests-total" id="requests-total">156</div>
 
                     <div class="progress-bar-container" id="progress-bar-container">
-                        <div class="request-progress-zone marketing-request" id="marketing-request"></div>
-                        <div class="request-progress-zone request-a-study" id="request-a-study"></div>
-                        <div class="request-progress-zone branch-visit-notes" id="branch-visit-notes"></div>
-                        <div class="request-progress-zone other" id="other"></div>
+                        <div class="request-progress-zone marketing-request progress-segment" id="marketing-request">
+                        </div>
+                        <div class="request-progress-zone request-a-study progress-segment" id="request-a-study"></div>
+                        <div class="request-progress-zone branch-visit-notes progress-segment" id="branch-visit-notes">
+                        </div>
+                        <div class="request-progress-zone other progress-segment" id="other"></div>
                     </div>
 
                     <div class="request-cards">
@@ -233,13 +333,15 @@
 
             </div>
         </div>
+        <!-- REQUESTS TYPE END -->
+        <!-- KPIS START -->
         <div class="col-lg-5 col-md-12 d-flex flex-wrap kpiCards">
             <div class="card">
                 <div class="card-body">
                     <div class="kpiIcon">
                         <img src="../images/net/saved-drafts.svg" alt="Saved Drafts">
                     </div>
-                    <h5 class="kpiValue">2</h5>
+                    <h5 class="kpiValue" data-stat="2">2</h5>
                     <p class="kpiName">Saved Drafts</p>
                 </div>
             </div>
@@ -248,7 +350,7 @@
                     <div class="kpiIcon">
                         <img src="../images/net/in-progress-request.svg" alt="In-Progress Requests">
                     </div>
-                    <h5 class="kpiValue">5</h5>
+                    <h5 class="kpiValue" data-stat="5">5</h5>
                     <p class="kpiName">In-Progress Requests</p>
                 </div>
             </div>
@@ -257,7 +359,7 @@
                     <div class="kpiIcon">
                         <img src="../images/net/rejected-requests.svg" alt="Rejected Requests">
                     </div>
-                    <h5 class="kpiValue">12</h5>
+                    <h5 class="kpiValue" data-stat="12">12</h5>
                     <p class="kpiName">Rejected Requests</p>
                 </div>
             </div>
@@ -266,31 +368,26 @@
                     <div class="kpiIcon">
                         <img src="../images/net/completed-requests.svg" alt="Completed Requests">
                     </div>
-                    <h5 class="kpiValue">156</h5>
+                    <h5 class="kpiValue" data-stat="156">156</h5>
                     <p class="kpiName">Completed Requests</p>
                 </div>
             </div>
         </div>
+        <!-- KPIS END -->
     </div>
     <div class="container">
+        <!-- MY REQUESTS TABLE START -->
         <div class="myRequestsTable">
             <div class="d-flex align-items-center justify-content-between">
                 <h5 class="tableHeader">My Requests</h5>
                 <div class="search-box">
-                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-                        <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-                        <g id="SVGRepo_tracerCarrier" stroke-linecap="round" stroke-linejoin="round"></g>
-                        <g id="SVGRepo_iconCarrier">
-                            <path
-                                d="M15.7955 15.8111L21 21M18 10.5C18 14.6421 14.6421 18 10.5 18C6.35786 18 3 14.6421 3 10.5C3 6.35786 6.35786 3 10.5 3C14.6421 3 18 6.35786 18 10.5Z"
-                                stroke="#000000" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                        </g>
-                    </svg>
-                    <input type="text" class="form-control" id="searchInput" placeholder="Search">
+                    <!--  -->
+                    <input type="text" class="form-control" id="searchInput" placeholder="Search"
+                        onkeyup="myFunction()">
                 </div>
             </div>
             <div class="table-container table-responsive">
-                <table class="table">
+                <table class="table" id="myTable">
                     <thead>
                         <tr>
                             <th><span>Request Number</span></th>
@@ -386,7 +483,10 @@
                 </table>
             </div>
         </div>
+        <!-- MY REQUESTS TABLE END -->
     </div>
+    <script src="../js/bootstrap.bundle.min.js"></script>
+    <script src="../js/odometer.min.js"></script>
     <script src="../js/script.js"></script>
 </body>
 

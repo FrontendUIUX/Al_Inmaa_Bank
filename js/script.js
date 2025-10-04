@@ -4,24 +4,36 @@ const requestsData = [
     { type: 'branch', percentage: 17, elementId: 'branch-visit-notes', percentId: 'branch-viti-percentage' },
     { type: 'other', percentage: 7, elementId: 'other', percentId: 'other-percentage' },
 ];
-function renderProgressBar() {
+function showPercentages() {
     requestsData.forEach(item => {
-        // 1. Update the progress bar segment width
-        const segmentElement = document.getElementById(item.elementId);
-        if (segmentElement) {
-            // Set the width based on the percentage
-            segmentElement.style.width = `${item.percentage}%`;
-        }
-
-        // 2. Update the percentage text in the legend
         const percentElement = document.getElementById(item.percentId);
         if (percentElement) {
-            // Display the percentage with a '%' sign
             percentElement.textContent = `${item.percentage}%`;
         }
     });
 }
-renderProgressBar();
+function animateSequentially(index = 0) {
+    if (index >= requestsData.length) return;
+
+    const item = requestsData[index];
+    const segmentElement = document.getElementById(item.elementId);
+
+    if (segmentElement) {
+        segmentElement.style.width = '0';
+        setTimeout(() => {
+            segmentElement.style.width = `${item.percentage}%`;
+            setTimeout(() => {
+                animateSequentially(index + 1);
+            }, 1600);
+        }, 100);
+    }
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+    showPercentages();
+    animateSequentially();
+});
+// SIDE BAR SUBMENU 
 document.addEventListener("DOMContentLoaded", () => {
     const subMenus = document.querySelectorAll(".isSubMenu");
     const subPanel = document.querySelector(".subPanel");
@@ -30,7 +42,6 @@ document.addEventListener("DOMContentLoaded", () => {
     const overlayShadow = document.querySelector(".overlayShadow");
     const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
 
-    // Example submenu link data
     const submenuLinks = {
         "Reports & Analytics": [
             { icon: "../images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
@@ -71,15 +82,24 @@ document.addEventListener("DOMContentLoaded", () => {
         return false;
     }
 
+    // helper to sync overlay with active panels
+    function updateOverlay() {
+        const hasActivePanel = document.querySelector(".subPanel.active");
+        if (overlayShadow) {
+            overlayShadow.style.display = hasActivePanel ? "block" : "none";
+        }
+    }
+
     subMenus.forEach(menu => {
         menu.addEventListener("click", e => {
             e.preventDefault();
 
             const title = menu.querySelector("a").innerText.trim();
 
-            // If no links → close panel and stop
+            // If no links → close panel and update overlay
             if (!submenuLinks[title] || submenuLinks[title].length === 0) {
                 subPanel.classList.remove("active");
+                updateOverlay();
                 return;
             }
 
@@ -87,30 +107,131 @@ document.addEventListener("DOMContentLoaded", () => {
             subPanelTitle.textContent = title;
 
             if (subPanel.classList.contains("active")) {
+                // remove first
                 subPanel.classList.remove("active");
-                 if(overlayShadow){
-                    overlayShadow.style.display = "none";
-                }
+
+                // wait 1 second before adding back
                 setTimeout(() => {
                     renderSubLinks(title);
                     subPanel.classList.add("active");
-                }, 1000);
+                    updateOverlay();
+                }, 1000); // ← enforce 1 second delay
             } else {
                 renderSubLinks(title);
                 subPanel.classList.add("active");
-                if(overlayShadow){
-                    overlayShadow.style.display = "block";
-                }
-            }
-            // Close Sub Panel
-            if(closeSubpanelBtn){
-                closeSubpanelBtn.addEventListener("click", function(){
-                    subPanel.classList.remove("active");
-                    if(overlayShadow){
-                        overlayShadow.style.display = "none";
-                    }
-                })
+                updateOverlay();
             }
         });
     });
+
+    // Close Sub Panel
+    if (closeSubpanelBtn) {
+        closeSubpanelBtn.addEventListener("click", function(){
+            subPanel.classList.remove("active");
+            updateOverlay();
+        });
+    }
 });
+
+
+// Filter table by search input
+function myFunction() {
+  var input, filter, table, tr, td, i, txtValue;
+  input = document.getElementById("searchInput");
+  filter = input.value.toUpperCase();
+  table = document.getElementById("myTable");
+  tr = table.getElementsByTagName("tr");
+  for (i = 0; i < tr.length; i++) {
+    td = tr[i].getElementsByTagName("td")[0];
+    if (td) {
+      txtValue = td.textContent || td.innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        tr[i].style.display = "";
+      } else {
+        tr[i].style.display = "none";
+      }
+    }       
+  }
+}
+// Animate Counters
+function startOdometerWhenVisible(element) {
+  var observer = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var targetValue = parseFloat($(element).attr("data-stat")) || 0;
+
+          var odometer = new Odometer({
+            el: element,
+            value: 0, // Start from 0
+            duration: 4000,
+            format: '(,ddd).d', // Include decimal point in the format
+          });
+
+          // Update the odometer value
+          odometer.update(targetValue);
+
+          // Add the currency label after the animation finishes
+          odometer.on('stop', function() {
+            var formattedValue = targetValue.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
+            $(element).text(formattedValue + " USD M"); // Update text with currency and suffix
+          });
+
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.5, // Adjust threshold as needed
+    }
+  );
+  observer.observe(element);
+}
+function initializeCounters() {
+  $(".card .kpiValue").each(function () {
+    startOdometerWhenVisible(this);
+  });
+}
+initializeCounters();
+
+
+// Light mode toggle
+    $("#modeToggle").on("change", function () {
+        if ($(this).is(":checked")) {
+            $(".sun-img").hide();   
+        } else {
+            $(".sun-img").show();   
+        }
+    });
+
+
+// SORT TABLE 
+document.addEventListener("DOMContentLoaded", function () {
+        const tbody = document.getElementById("requestsTable");
+        const serviceHeader = document.querySelector("th.service span"); // span contains the SVG
+        const sortIcon = serviceHeader.querySelector("svg");
+
+        let sortDirection = 1; // 1 = ascending, -1 = descending
+
+        serviceHeader.addEventListener("click", function () {
+            let rows = Array.from(tbody.querySelectorAll("tr"));
+
+            rows.sort((a, b) => {
+                let serviceA = a.querySelector("td[data-title='Service']").innerText.toLowerCase();
+                let serviceB = b.querySelector("td[data-title='Service']").innerText.toLowerCase();
+
+                if (serviceA < serviceB) return -1 * sortDirection;
+                if (serviceA > serviceB) return 1 * sortDirection;
+                return 0;
+            });
+
+            // Toggle sort direction
+            sortDirection *= -1;
+
+            // Re-append rows in sorted order
+            rows.forEach(row => tbody.appendChild(row));
+
+            // Toggle active class on the SVG
+            sortIcon.classList.toggle("active", sortDirection === -1);
+        });
+    });

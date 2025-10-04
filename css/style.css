@@ -31,7 +31,36 @@
     src: url("../fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
-
+@keyframes fadeLeft{
+    0%{
+        opacity:0;
+        transform:translateX(-100%);
+    }
+    100%{
+        opacity:1;
+        transform:translateX(0%);
+    }
+}
+@keyframes fadeDown{
+    0%{
+        opacity:0;
+        transform:translateY(-100%);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0%);
+    }
+}
+@keyframes fadeUp{
+    0%{
+        opacity:0;
+        transform:translateY(100%);
+    }
+    100%{
+        opacity:1;
+        transform:translateY(0%);
+    }
+}
 html body {
     font-size: 16px;
     font-family: var(--Alinma-plain);
@@ -56,7 +85,7 @@ html body .overlayShadow{
     height:100vh;
     width:100vw;
     background-color:rgb(0 0 0 / 70%);
-    z-index:1;
+    z-index: 2;
     display:none;
     transition: all 1s ease-in-out;
 }
@@ -64,6 +93,18 @@ html body ul.links > li {
     display: flex;
     align-items: center;
     padding: .4rem 1rem;
+    cursor: pointer;
+    margin-bottom: .5rem;
+}
+.sidebar ul > li.active{
+    background-color: #f3e7e7;
+    border-radius: 0.5rem;
+    padding: 0.5rem 0.8rem;
+    color: var(--Navy-blue);
+    font-family: var(--Alinma-bold);
+}
+.sidebar ul > li:hover{
+    background-color: #f3e7e7;
 }
 html body ul.links li .icon{
     margin-right:1rem;
@@ -76,8 +117,8 @@ li.isSubMenu::after{
     position:absolute;
     top:50%;
     right:1rem;
-    transform:translateY(-50%);
-    background-image:url("../images/net/chevron-right.png");
+    transform:translateY(-50%) rotate(-90deg);
+    background-image:url("../images/net/Chevron\ Down.svg");
     height:.8rem;
     width:.8rem;
     background-repeat:no-repeat;
@@ -89,6 +130,11 @@ li.isSubMenu::after{
     margin: 0;
     padding-left: 2rem;
     padding-right: 2rem;
+}
+header{
+    opacity:0;
+    transform:translateY(-100%);
+    animation:1s fadeDown forwards;
 }
 .subPanel {
     z-index:2;
@@ -118,6 +164,7 @@ li.isSubMenu::after{
     display: flex;
     align-items: center;
     border-radius: 0.5rem;
+    cursor: pointer;
 }
 
 .subPanel ul li .icon{
@@ -153,6 +200,10 @@ html body aside.sidebar {
     border-right: 1.5px solid rgb(0 33 52 / 10%);
     z-index: 3;
     background-color: var(--Isabelline);
+    opacity: 0;
+    transition: all .3s ease-in-out;
+    transform: translateX(-100%);
+    animation:1s fadeLeft forwards;
 }
 html body aside.sidebar .userSettings{
     justify-content:space-between;
@@ -174,13 +225,27 @@ html body .sideBarLinksGroup .categoryName{
 html body .userSettings .userInformations .username{
     font-size:1.14rem;
     font-family:var(--Alinma-bold);
+    position:relative;
+}
+html body .userSettings .userInformations .username::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    transform:translateY(-50%);
+    right:0;
+    background-image:url("../images/net/chevron Down.svg");
+    background-size:contain;
+    height:.8rem;
+    width:.8rem;
+    background-repeat:no-repeat;
+    background-position:center;
 }
 html body .userSettings .userInformations .userPosition{
     font-size:.9rem;
     color:rgb(0 33 52 / 70%)
 }
 html body .kpiCards {
-    gap: 1rem;
+    gap: 1.4rem;
 }
 
 html body .kpiCards .card {
@@ -188,8 +253,22 @@ html body .kpiCards .card {
     height: 6.7rem;
     border: 1px solid #E5E4DE;
     border-radius: 1rem;
+    opacity: 0;
+    transform: translateY(100%);
+    animation: 1s fadeUp forwards;
 }
-
+html body .kpiCards .card:nth-child(1){
+    animation-delay:.3s;
+}
+html body .kpiCards .card:nth-child(2){
+    animation-delay:.6s;
+}
+html body .kpiCards .card:nth-child(3){
+    animation-delay:.9s;
+}
+html body .kpiCards .card:nth-child(4){
+    animation-delay:1.2s;
+}
 html body .kpiCards .card .card-body {
     padding: 1rem;
     display: flex;
@@ -226,6 +305,9 @@ html body .kpiCards .card .card-body .kpiName {
 
 html body .requestsTile {
     padding-right: 1rem;
+    opacity: 0;
+    transform: translateY(100%);
+    animation: 1s fadeUp forwards;
 }
 
 html body .requestsTile .card {
@@ -313,8 +395,15 @@ h2 {
     border: 1px solid rgb(0 0 0 / 10%);
     border-top: 0;
     padding: 0.7rem;
+    border-right: none;
 }
-
+.request-card:nth-child(2n+1){
+    border-left:none;
+}
+.request-card:nth-child(3),
+.request-card:nth-child(4){
+    border-bottom:none;
+}
 .request-name {
     display: flex;
     align-items: center;
@@ -373,9 +462,19 @@ h2 {
 .myRequestsTable{
     background-color: white;
     border-radius: 1rem;
-    border: 1px solid #E5E4DE ;
+    border: 1px solid #E5E4DE;
     padding: 2rem;
-    margin: 2rem 0;
+    margin: 1.4rem 0;
+    opacity: 0;
+    transform: translateY(100%);
+    animation: 1s fadeUp 1.5s forwards;
+}
+svg.active path:nth-child(1) {
+    stroke: var(--Navy-blue);
+    opacity:1;
+}
+svg.active path:nth-child(2) {
+    stroke: rgb(0 33 52 / 50%);
 }
  .tableHeader,html body .requestsTile .card .card-header h2 {
     color: #002035;
@@ -387,6 +486,7 @@ h2 {
     max-width: 20rem !important;
     cursor: pointer;
 }
+ .search-box::before{content:"";position:absolute;left: 0.8rem;top:50%;transform:translateY(-50%);background-image:url("../images/net/search.svg");background-size:contain;height: 1.3rem;width: 1.3rem;background-repeat:no-repeat;}
  .search-box input {
     padding-left: 2.5rem;
     border: 1px solid #ddd;
@@ -487,25 +587,16 @@ table td .editRow a::before{
     background-repeat: no-repeat;
     background-position: center;
 }
-
-table thead{
-    /* border-radius: 1rem; */
-    /* background-color: #f4e7db; */
-}
-
-
-
-
  .table thead th:first-child,
  .table tbody td:first-child {
     position: sticky;
     left: 0;
-    z-index: 10;
+    z-index: 1;
     background-color: #fff;
 }
  .table thead th:first-child {
-    z-index: 11;
-    background-color: #F8EFE8; 
+    z-index: 1;
+    background-color: #F8EFE8;
 }
 
  thead tr {
@@ -677,16 +768,16 @@ table.table{
     width: 90%;
     position: absolute;
     bottom: 1rem;
+    /* border: 1px solid #D4D3D1; */
 }
 .toggle-label {
-    display: flex
-;
+    display: flex;
     align-items: center;
     justify-content: space-between;
     background: #f8f5f2;
     padding: 0.5rem 1rem;
     border-radius: 0.8rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid #d4d3d1;
     position: relative;
 }
 .sun-img {
@@ -719,4 +810,106 @@ table.table{
     border-radius: 50%;
     transition: transform 0.3s;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+.notification-item:last-child {
+      border-bottom: none;
+    }
+    .notification-status.rejected {
+      color: #E97A7B;
+      font-weight: 600;
+    }
+    .notification-status.completed {
+      color: #4A8951;
+      font-weight: 600;
+    }
+     .notification-modal ,.user-modal{
+        width: 24%;
+        margin-left: 1rem;
+    }
+   .notification-modal.show ,.user-modal.show{
+       animation:1s fadeDown forwards;
+   }
+    .notification-modal .modal-body,
+    .user-modal .modal-body{
+        background-color: #F2F1F1;
+    }
+    .notification-modal .modal-dialog,
+    .user-modal .modal-dialog {
+  margin-bottom: 1rem; 
+}
+
+.notification-modal .modal-content,
+.user-modal .modal-content {
+  border-radius: 1.5rem;
+  overflow: hidden; 
+}
+.user-modal-header{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.user-modal-header .userNAME{
+    font-weight: 600;
+}
+.user-modal-header p{
+    margin-bottom: 0;
+}
+.user-modal-header .name-email{
+    display: flex;
+    flex-direction: column;
+}
+.user-modal .user-settings{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.user-modal .viewProfile,
+.user-modal .account-settings,
+.user-modal .sign-out{
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+.user-modal .viewProfile img,
+.user-modal .account-settings img,
+.user-modal .sign-out img{
+    height: 1.5rem;
+    width: 1.5rem;
+}
+.user-modal p{
+    margin-bottom: 0;
+}
+ .progress-segment {
+    height: 30px;
+    display: inline-block;
+    transition: width 1.5s ease-in-out;
+  }
+  .form-check-input {
+    cursor: pointer;
+    background-color: rgb(0, 33, 52);
+    position: relative;
+    appearance: none;
+    width: 4rem !important;
+    height: 2rem !important;
+    border: 1px solid var(--text-color);
+}
+.form-check-input:checked::before {
+    transform: translateX(30px);
+    background: rgb(0, 33, 52);
+}
+
+.form-check-input::before {
+    content: "";
+    position: absolute;
+    top: 0.25rem;
+    left: 0.3rem;
+    width: 1.5rem;
+    height: 1.5rem;
+    box-shadow: rgba(0, 0, 0, 0.2) 0px 2px 4px;
+    background: white;
+    border-radius: 50%;
+    transition: transform 0.3s;
+}
+.form-check-input:checked {
+    background-color: rgb(241, 241, 241);
 }
