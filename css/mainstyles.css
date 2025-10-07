@@ -154,32 +154,34 @@ html:not(.designer),:not(.designer) body{
 	margin-right:4rem!important;
 }
 /* MARGIN auto - top, bottom, left, right */
-[name*="mt-auto"]{
+[name*="mt-auto"],.mt-auto{
 	margin-top:auto!important;
 }
-[name*="mb-auto"]{
+[name*="mb-auto"],.mb-auto{
 	margin-bottom:auto!important;
 }
-[name*="ml-auto"]{
+[name*="ml-auto"],.ml-auto{
 	margin-left:auto!important;
 }
-[name*="mr-auto"]{
+[name*="mr-auto"],.mr-auto{
 	margin-right:auto!important;
 }
-[name*="m-auto"]{
+[name*="m-auto"],.m-auto{
 	margin:auto!important;
 }
 /* DISPLAYS */
-[name*="d-flex"]{
+[name*="d-flex"],.d-flex{
 	display:flex!important;
 }
-[name*="d-none"]{
+[name*="d-none"],.d-none{
 	display:none!important;
 }
-[name*="d-block"]{
+[name*="d-block"],.d-block{
 	display:block!important;
 }
-
+[name*="flex-column"],.flex-column{
+	flex-direction:column!important;
+}
 html:not(.designer) [name*="s_textbox"] {
     border: 1px solid var(--Textbox-border-color) !important;
     background-color: var(--Textbox-background-color) !important;
