@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", () => {
         <div class="userSettings d-flex align-items-center">
             <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
                 <div class="userProfilePhoto">
-                    <img src="../images/net/UserProfile.png" alt="Ibrahim K." class="profilePhoto">
+                    <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" alt="Ibrahim K." class="profilePhoto">
                 </div>
                 <div class="userInformations d-flex flex-column">
                     <span class="username">Ibrahim K.</span>
@@ -27,15 +27,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <h6 class="categoryName">Main Links</h6>
                 <ul class="links">
                     <li>
-                        <div class="icon"><img src="../images/net/Dashboard.svg" alt=""></div>
+                        <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg" alt=""></div>
                         <a href="#">Dashboard</a>
                     </li>
                     <li class="active">
-                        <div class="icon"><img src="../images/net/My Requests.svg" alt=""></div>
+                        <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg" alt=""></div>
                         <a href="/">My Requests</a>
                     </li>
                     <li class="isSubMenu">
-                        <div class="icon"><img src="../images/net/report-and-analytics.svg" alt=""></div>
+                        <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/report-and-analytics.svg" alt=""></div>
                         <a href="#">Reports & Analytics</a>
                     </li>
                 </ul>
@@ -43,20 +43,20 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="sidebarCategory">
                 <h6 class="categoryName">Departments</h6>
                 <ul class="links">
-                    <li><div class="icon"><img src="../images/net/Retail Banking.svg" alt="Retail & Digital Banking"></div><a href="">Retail & Digital Banking</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Human Capital Excellence.svg" alt=""></div><a href="">Marketing & Corporate</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Shariah.svg" alt=""></div><a href="">Shariah</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="../images/net/information-technology.svg" alt=""></div><a href="">Information Technology</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Operations.svg" alt=""></div><a href="">Operations</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="../images/net/facilities-management.svg" alt=""></div><a href="">Facilities Management</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Business Acquistion.svg" alt=""></div><a href="">Human Capital</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="../images/net/risk-management.svg" alt=""></div><a href="">Risk Management</a></li>
+                    <li><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg" alt="Retail & Digital Banking"></div><a href="">Retail & Digital Banking</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg" alt=""></div><a href="">Marketing & Corporate</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg" alt=""></div><a href="">Shariah</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg" alt=""></div><a href="">Information Technology</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Operations.svg" alt=""></div><a href="">Operations</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/facilities-management.svg" alt=""></div><a href="">Facilities Management</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Business Acquistion.svg" alt=""></div><a href="">Human Capital</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/risk-management.svg" alt=""></div><a href="">Risk Management</a></li>
                 </ul>
             </div>
         </div>
         <div class="light-dark-mode">
             <div class="toggle-label d-flex align-items-center justify-content-between">
-                <img class="sun-img" src="../images/net/Sun.svg" alt="">
+                <img class="sun-img" src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Sun.svg" alt="">
                 <span id="mode-label">Light Mode</span>
                 <div class="form-check form-switch m-0">
                     <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
@@ -88,7 +88,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="modal-content">
                 <div class="modal-header">
                     <div class="user-modal-header">
-                        <img src="../images/net/UserProfile.png" alt="">
+                        <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" alt="">
                         <div class="name-email">
                             <p class="userNAME">Ibrahim</p>
                             <p class="user-mail">ibrahim_ksa64@gmail.com</p>
@@ -98,9 +98,9 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="modal-body">
                     <div class="user-settings">
-                        <a href="#" class="viewProfile"><img src="../images/net/user.svg" alt="user"><p>View Profile</p></a>
-                        <a href="#" class="account-settings"><img src="../images/net/settings.svg" alt="settings">Account Settings</a>
-                        <a href="#" class="sign-out"><img src="../images/net/Sign Out.svg" alt="sign-out">Sign Out</a>
+                        <a href="#" class="viewProfile"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/user.svg" alt="user"><p>View Profile</p></a>
+                        <a href="#" class="account-settings"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/settings.svg" alt="settings">Account Settings</a>
+                        <a href="#" class="sign-out"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Sign Out.svg" alt="sign-out">Sign Out</a>
                     </div>
                 </div>
             </div>
@@ -133,16 +133,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const submenuLinks = {
         "Reports & Analytics": [
-            { icon: "../images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
-            { icon: "../images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
-            { icon: "../images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
         ],
         "Retail & Digital Banking": [
-            { icon: "../images/net/sada 1.svg", text: "Branch Reports", url: "#" },
-            { icon: "../images/net/sada 1.svg", text: "Customer Insights", url: "#" }
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
         ],
         "Marketing & Corporate": [
-            { icon: "../images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
         ],
         "Shariah": [],
         "Information Technology": [],
@@ -258,16 +258,16 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const submenuLinks = {
         "Reports & Analytics": [
-            { icon: "../images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
-            { icon: "../images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
-            { icon: "../images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
         ],
         "Retail & Digital Banking": [
-            { icon: "../images/net/sada 1.svg", text: "Branch Reports", url: "#" },
-            { icon: "../images/net/sada 1.svg", text: "Customer Insights", url: "#" }
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
         ],
         "Marketing & Corporate": [
-            { icon: "../images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
         ],
         "Shariah": [],
         "Information Technology": [],
