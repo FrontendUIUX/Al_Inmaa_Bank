@@ -13,13 +13,14 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
-                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <rect width="50" height="50" rx="12" fill="#F1DFDA" />
-                    <rect x="0.5" y="0.5" width="49" height="49" rx="11.5" stroke="#002134" stroke-opacity="0.05" />
-                    <path d="M16.3459 30.6002L16.662 33.0801L18.8459 32.8018V30.6002H16.3459ZM31.0038 30.5992H28.5038V32.8127L30.7011 33.0808L31.0038 30.5992Z" fill="#002134" />
-                    <path d="M21.6437 38.2891C22.9146 39.5331 24.9346 39.5719 26.2524 38.3776L26.3501 38.2891" stroke="#002134" stroke-width="2.3" stroke-linecap="round" />
-                    <circle cx="32.499" cy="17.5" r="7.5" fill="#BB2C30" stroke="#F1DFDA" stroke-width="4.5" />
-                </svg>
+                // <svg width='50' height='50' viewBox='0 0 50 50' fill="none" xmlns="http://www.w3.org/2000/svg">
+                //     <rect width="50" height="50" rx="12" fill="#F1DFDA" />
+                //     <rect x="0.5" y="0.5" width="49" height="49" rx="11.5" stroke="#002134" stroke-opacity="0.05" />
+                //     <path d="M16.3459 30.6002L16.662 33.0801L18.8459 32.8018V30.6002H16.3459ZM31.0038 30.5992H28.5038V32.8127L30.7011 33.0808L31.0038 30.5992Z" fill="#002134" />
+                //     <path d="M21.6437 38.2891C22.9146 39.5331 24.9346 39.5719 26.2524 38.3776L26.3501 38.2891" stroke="#002134" stroke-width="2.3" stroke-linecap="round" />
+                //     <circle cx="32.499" cy="17.5" r="7.5" fill="#BB2C30" stroke="#F1DFDA" stroke-width="4.5" />
+                // </svg>
+                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Notification.svg />
             </button>
         </div>
         <div class="sideBarLinksGroup">
