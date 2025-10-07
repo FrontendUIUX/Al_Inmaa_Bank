@@ -159,7 +159,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 const li = document.createElement("li");
                 li.innerHTML =`
                     <div class="icon"><img src="\${link.icon}" alt=""></div>
-                    <a href="\${link.url}">\${link.text}</a>
+                    <a href="\${link.url}">\${link.text}</a> 
                 `;
                 subPanelList.appendChild(li);
             });
