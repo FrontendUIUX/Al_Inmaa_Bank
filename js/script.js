@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
             </div>
             <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
-                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Notification.svg />
+                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Notification.svg"/>
             </button>
         </div>
         <div class="sideBarLinksGroup">
