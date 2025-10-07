@@ -1,3 +1,217 @@
+document.addEventListener("DOMContentLoaded", () => {
+    // Append the sidebar + modals + subPanel HTML into body
+    document.body.insertAdjacentHTML("beforeend", `
+    <aside class="sidebar">
+        <div class="userSettings d-flex align-items-center">
+            <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
+                <div class="userProfilePhoto">
+                    <img src="../images/net/UserProfile.png" alt="Ibrahim K." class="profilePhoto">
+                </div>
+                <div class="userInformations d-flex flex-column">
+                    <span class="username">Ibrahim K.</span>
+                    <span class="userPosition">Marketing Department</span>
+                </div>
+            </div>
+            <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
+                <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect width="50" height="50" rx="12" fill="#F1DFDA" />
+                    <rect x="0.5" y="0.5" width="49" height="49" rx="11.5" stroke="#002134" stroke-opacity="0.05" />
+                    <path d="M16.3459 30.6002L16.662 33.0801L18.8459 32.8018V30.6002H16.3459ZM31.0038 30.5992H28.5038V32.8127L30.7011 33.0808L31.0038 30.5992Z" fill="#002134" />
+                    <path d="M21.6437 38.2891C22.9146 39.5331 24.9346 39.5719 26.2524 38.3776L26.3501 38.2891" stroke="#002134" stroke-width="2.3" stroke-linecap="round" />
+                    <circle cx="32.499" cy="17.5" r="7.5" fill="#BB2C30" stroke="#F1DFDA" stroke-width="4.5" />
+                </svg>
+            </button>
+        </div>
+        <div class="sideBarLinksGroup">
+            <div class="sidebarCategory">
+                <h6 class="categoryName">Main Links</h6>
+                <ul class="links">
+                    <li>
+                        <div class="icon"><img src="../images/net/Dashboard.svg" alt=""></div>
+                        <a href="#">Dashboard</a>
+                    </li>
+                    <li class="active">
+                        <div class="icon"><img src="../images/net/My Requests.svg" alt=""></div>
+                        <a href="/">My Requests</a>
+                    </li>
+                    <li class="isSubMenu">
+                        <div class="icon"><img src="../images/net/report-and-analytics.svg" alt=""></div>
+                        <a href="#">Reports & Analytics</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="sidebarCategory">
+                <h6 class="categoryName">Departments</h6>
+                <ul class="links">
+                    <li><div class="icon"><img src="../images/net/Retail Banking.svg" alt="Retail & Digital Banking"></div><a href="">Retail & Digital Banking</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Human Capital Excellence.svg" alt=""></div><a href="">Marketing & Corporate</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Shariah.svg" alt=""></div><a href="">Shariah</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="../images/net/information-technology.svg" alt=""></div><a href="">Information Technology</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Operations.svg" alt=""></div><a href="">Operations</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="../images/net/facilities-management.svg" alt=""></div><a href="">Facilities Management</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="../images/net/Business Acquistion.svg" alt=""></div><a href="">Human Capital</a></li>
+                    <li class="isSubMenu"><div class="icon"><img src="../images/net/risk-management.svg" alt=""></div><a href="">Risk Management</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="light-dark-mode">
+            <div class="toggle-label d-flex align-items-center justify-content-between">
+                <img class="sun-img" src="../images/net/Sun.svg" alt="">
+                <span id="mode-label">Light Mode</span>
+                <div class="form-check form-switch m-0">
+                    <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
+                </div>
+            </div>
+        </div>
+    </aside>
+
+    <!-- NOTIFICATION POPUP -->
+    <div class="modal notification-modal" id="notificationModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Notifications</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="notification-item"><p>Your <span class="bold-text">High Risk Account Opening</span> Request <span class="bold-text">RM-9052XZ</span> is <span class="notification-status rejected">Rejected</span></p><span>5 hours ago</span></div>
+                    <div class="notification-item"><p>Your <span class="bold-text">High Risk Account Opening</span> Request <span class="bold-text">RM-9052XZ</span> is <span class="notification-status completed">Completed</span></p><span>11 hours ago</span></div>
+                    <div class="notification-item"><p>Your <span class="bold-text">High Risk Account Opening</span> Request <span class="bold-text">RM-72GHSZ</span> is <span class="notification-status completed">Completed</span></p><span>2 days ago</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- USER PROFILE POPUP -->
+    <div class="modal user-modal" id="userModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="user-modal-header">
+                        <img src="../images/net/UserProfile.png" alt="">
+                        <div class="name-email">
+                            <p class="userNAME">Ibrahim</p>
+                            <p class="user-mail">ibrahim_ksa64@gmail.com</p>
+                        </div>
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="user-settings">
+                        <a href="#" class="viewProfile"><img src="../images/net/user.svg" alt="user"><p>View Profile</p></a>
+                        <a href="#" class="account-settings"><img src="../images/net/settings.svg" alt="settings">Account Settings</a>
+                        <a href="#" class="sign-out"><img src="../images/net/Sign Out.svg" alt="sign-out">Sign Out</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- SUB MENU PANEL -->
+    <aside class="subPanel">
+        <div class="closeSubpanel">
+            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M24.2894 24.2894L13.1447 13.1447M13.1447 13.1447L2 2M13.1447 13.1447L24.2894 2M13.1447 13.1447L2 24.2894" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+        </div>
+        <div class="subPanelHeader">
+            <h5 class="subSectionTitle">Reports & Analytics</h5>
+        </div>
+        <div class="subPanelBody">
+            <ul></ul>
+        </div>
+    </aside>
+    `);
+
+    // ==== SIDEBAR INTERACTIVITY ====
+    const subMenus = document.querySelectorAll(".isSubMenu");
+    const subPanel = document.querySelector(".subPanel");
+    const subPanelList = subPanel.querySelector(".subPanelBody ul");
+    const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
+    const overlayShadow = document.querySelector(".overlayShadow");
+    const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
+
+    const submenuLinks = {
+        "Reports & Analytics": [
+            { icon: "../images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
+            { icon: "../images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
+            { icon: "../images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
+        ],
+        "Retail & Digital Banking": [
+            { icon: "../images/net/sada 1.svg", text: "Branch Reports", url: "#" },
+            { icon: "../images/net/sada 1.svg", text: "Customer Insights", url: "#" }
+        ],
+        "Marketing & Corporate": [
+            { icon: "../images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
+        ],
+        "Shariah": [],
+        "Information Technology": [],
+        "Operations": [],
+        "Facilities Management": [],
+        "Human Capital": [],
+        "Risk Management": []
+    };
+
+    function renderSubLinks(title) {
+        subPanelList.innerHTML = "";
+        if (submenuLinks[title] && submenuLinks[title].length > 0) {
+            submenuLinks[title].forEach(link => {
+                const li = document.createElement("li");
+                li.innerHTML =`
+                    <div class="icon"><img src="\${link.icon}" alt=""></div>
+                    <a href="\${link.url}">\${link.text}</a>
+                `;
+                subPanelList.appendChild(li);
+            });
+            return true; 
+        }
+        return false;
+    }
+
+    function updateOverlay() {
+        const hasActivePanel = document.querySelector(".subPanel.active");
+        if (overlayShadow) {
+            overlayShadow.style.display = hasActivePanel ? "block" : "none";
+        }
+    }
+
+    subMenus.forEach(menu => {
+        menu.addEventListener("click", e => {
+            e.preventDefault();
+            const title = menu.querySelector("a").innerText.trim();
+
+            if (!submenuLinks[title] || submenuLinks[title].length === 0) {
+                subPanel.classList.remove("active");
+                updateOverlay();
+                return;
+            }
+
+            subPanelTitle.textContent = title;
+
+            if (subPanel.classList.contains("active")) {
+                subPanel.classList.remove("active");
+                setTimeout(() => {
+                    renderSubLinks(title);
+                    subPanel.classList.add("active");
+                    updateOverlay();
+                }, 1000);
+            } else {
+                renderSubLinks(title);
+                subPanel.classList.add("active");
+                updateOverlay();
+            }
+        });
+    });
+
+    if (closeSubpanelBtn) {
+        closeSubpanelBtn.addEventListener("click", function(){
+            subPanel.classList.remove("active");
+            updateOverlay();
+        });
+    }
+});
+
+//////////////// end of k2 scripts
 const requestsData = [
     { type: 'marketing', percentage: 56, elementId: 'marketing-request', percentId: 'marketing-request-percentage' },
     { type: 'study', percentage: 20, elementId: 'request-a-study', percentId: 'request-study-percentage' },
