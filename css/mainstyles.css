@@ -271,18 +271,22 @@ html:not(.designer) [name*="s_asterik"] {
 }
 /* form */
 html:not(.designer) .form {
-   background-color: transparent!important;
+   /* background-color: transparent!important; */
    padding: 0!important;
    margin: 0!important;
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
-    position: absolute;
-    top: 0;
+   position: absolute;
     left: 0;
+    width: 23rem!important;
     border-right: 1px solid rgb(0 0 0 / 10%);
     border-radius: 0!important;
 }
+div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_6fb1c2f9-761d-94a4-edc6-7090c460123a_e4041454-dd20-40b7-bd47-95b799635f37 {
+    position: absolute;
+    left: 0;
+    width: 23rem!important;
 /* header */
 html:not(.designer) .theme-entry [name*="s_header"] {
     position:fixed;
