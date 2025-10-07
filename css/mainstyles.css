@@ -269,6 +269,12 @@ html:not(.designer) [name*="s_button s_save_button"]::before{
 html:not(.designer) [name*="s_asterik"] {
     color: var(--Navy-blue)!important;
 }
+/* form */
+html:not(.designer) .form {
+   background-color: transparent!important;
+   padding: 0!important;
+   margin: 0!important;
+}
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
     position: absolute;
