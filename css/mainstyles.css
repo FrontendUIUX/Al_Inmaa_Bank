@@ -222,7 +222,6 @@ html:not(.designer) [name*="s_dropdown"] {
 html:not(.designer) [name*="s_label"] {
     font-size: 1rem;
     color: var(--Light-black);
-    font-family: var(--Alinma-plain);
 }
 
 html:not(.designer) [name*="s_textarea"] {
@@ -289,11 +288,17 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     position:fixed;
     top:0;
     left:22rem;
-    width:calc(100% - 22rem);
+    width: calc(100% - 22rem);
     background-color: transparent;
     z-index:2;
-    padding: 1rem;
+    padding: 1rem 2rem;
     height: 8rem;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+	opacity:0;
+	transform:translateY(-50%);
+	animation:1s fadeDown forwards;
 }
 html:not(.designer) .panel{
     background-color:transparent!important;
@@ -301,5 +306,4 @@ html:not(.designer) .panel{
 html:not(.designer) body.theme-entry{
     padding-top:8rem;
     height:calc(100% - 8rem);
-    font-family: var(--Alinma-plain)!important;
 }
