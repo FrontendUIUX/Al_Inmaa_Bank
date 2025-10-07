@@ -913,34 +913,34 @@ table.table{
     background-color: rgb(241, 241, 241);
 }
 @media(min-width:992px){
-    html body {
+    html:not(.designer) body {
     font-size: 16px;
     font-family: var(--Alinma-plain);
     background-color: var(--Isabelline);
     margin-left: 22rem;
     width: calc(100% - 22rem);
 }
-    html body aside.sidebar {
+    html:not(.designer) body aside.sidebar {
     transition: all .3s ease-in-out;
     transform: translateX(-100%);
     animation:1s fadeLeft forwards;
 }
-    html body .kpiCards .card {
+    html:not(.designer) body .kpiCards .card {
     width: 15rem;
 }
 }
 @media(min-width:1200px){
-     html body .kpiCards .card {
+     html:not(.designer) body .kpiCards .card {
     width: 21rem;
 }
 }
 @media(min-width:1365px){
-     html body .kpiCards .card {
+     html:not(.designer) body .kpiCards .card {
     width: 11rem;
 }
 }
 @media(min-width:1400px){
-     html body .kpiCards .card {
+     html:not(.designer) body .kpiCards .card {
     width: 12rem;
 }
 }
