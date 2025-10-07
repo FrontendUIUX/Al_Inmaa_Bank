@@ -102,9 +102,11 @@ html body ul.links > li {
     color: var(--Navy-blue);
     font-family: var(--Alinma-bold);
 }
+
 .sidebar ul > li:hover{
     background-color: #f3e7e7;
 }
+
 html body ul.links li .icon{
     margin-right:1rem;
 }

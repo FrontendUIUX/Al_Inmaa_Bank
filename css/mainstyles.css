@@ -269,3 +269,11 @@ html:not(.designer) [name*="s_button s_save_button"]::before{
 html:not(.designer) [name*="s_asterik"] {
     color: var(--Navy-blue)!important;
 }
+/* sub sidebar start  */
+[name*="s_sub_sidebar"] {
+    position: absolute;
+    top: 0;
+    left: 0;
+    border-right: 1px solid rgb(0 0 0 / 10%);
+    border-radius: 0!important;
+}
