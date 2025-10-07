@@ -22,13 +22,13 @@
 
 @font-face {
     font-family: "AlinmaTheSans-Plain";
-    src: url("../fonts/AlinmaTheSans-Plain.ttf");
+    src: url("https://frontenduiux.github.io/Al_Inmaa_Bank/fonts/AlinmaTheSans-Plain.ttf");
     font-display: swap;
 }
 
 @font-face {
     font-family: "AlinmaTheSans-Bold";
-    src: url("../fonts/AlinmaTheSans-Bold.ttf");
+    src: url("https://frontenduiux.github.io/Al_Inmaa_Bank/fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
 @keyframes fadeLeft{
@@ -117,7 +117,7 @@ li.isSubMenu::after{
     top:50%;
     right:1rem;
     transform:translateY(-50%) rotate(-90deg);
-    background-image:url("../images/net/Chevron\ Down.svg");
+    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Chevron\ Down.svg");
     height:.8rem;
     width:.8rem;
     background-repeat:no-repeat;
@@ -231,7 +231,7 @@ html body .userSettings .userInformations .username::after{
     top:50%;
     transform:translateY(-50%);
     right:0;
-    background-image:url("../images/net/chevron Down.svg");
+    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/chevron Down.svg");
     background-size:contain;
     height:.8rem;
     width:.8rem;
@@ -485,7 +485,7 @@ svg.active path:nth-child(2) {
     max-width: 20rem !important;
     cursor: pointer;
 }
- .search-box::before{content:"";position:absolute;left: 0.8rem;top:50%;transform:translateY(-50%);background-image:url("../images/net/search.svg");background-size:contain;height: 1.3rem;width: 1.3rem;background-repeat:no-repeat;}
+ .search-box::before{content:"";position:absolute;left: 0.8rem;top:50%;transform:translateY(-50%);background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/search.svg");background-size:contain;height: 1.3rem;width: 1.3rem;background-repeat:no-repeat;}
  .search-box input {
     padding-left: 2.5rem;
     border: 1px solid #ddd;
@@ -563,7 +563,7 @@ table td .request-number::before{
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background-image: url("../images/net/External_Link.svg");
+    background-image: url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/External_Link.svg");
     background-size: contain;
     height: 1rem;
     width: 1rem;
@@ -579,7 +579,7 @@ table td .editRow a::before{
     top: 50%;
     left: 0;
     transform: translateY(-50%);
-    background-image: url("../images/net/edit.svg");
+    background-image: url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/edit.svg");
     background-size: contain;
     height: 1rem;
     width: 1rem;
