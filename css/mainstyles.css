@@ -222,6 +222,7 @@ html:not(.designer) [name*="s_dropdown"] {
 html:not(.designer) [name*="s_label"] {
     font-size: 1rem;
     color: var(--Light-black);
+    font-family: var(--Alinma-plain);
 }
 
 html:not(.designer) [name*="s_textarea"] {
@@ -300,4 +301,5 @@ html:not(.designer) .panel{
 html:not(.designer) body.theme-entry{
     padding-top:8rem;
     height:calc(100% - 8rem);
+    font-family: var(--Alinma-plain)!important;
 }
