@@ -283,3 +283,21 @@ html:not(.designer) .form {
     border-right: 1px solid rgb(0 0 0 / 10%);
     border-radius: 0!important;
 }
+/* header */
+html:not(.designer) .theme-entry [name*="s_header"] {
+    position:fixed;
+    top:0;
+    left:22rem;
+    width:calc(100% - 22rem);
+    background-color: transparent;
+    z-index:2;
+    padding: 1rem;
+    height: 8rem;
+}
+html:not(.designer) .panel{
+    background-color:transparent!important;
+}
+html:not(.designer) body.theme-entry{
+    padding-top:8rem;
+    height:calc(100% - 8rem);
+}
