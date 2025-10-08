@@ -274,6 +274,7 @@ html:not(.designer) .form {
    /* background-color: transparent!important; */
    padding: 0!important;
    margin: 0!important;
+   position: relative;
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
@@ -287,6 +288,7 @@ div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_6f
     position: absolute;
     left: 0;
     width: 23rem!important;
+}
 /* header */
 html:not(.designer) .theme-entry [name*="s_header"] {
     position:fixed;
