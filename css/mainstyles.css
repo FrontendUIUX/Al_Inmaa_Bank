@@ -202,8 +202,8 @@ html:not(.designer) [name*="s_dropdown"]{
     padding: 0 1rem!important;
     position: relative;
 }
-html:not(.designer) .on-focus[name*="s_dropdown"] .select-box{
-	top: 0.6rem!important;
+html:not(.designer) .on-focus[name*="s_dropdown"] .select-box .input-control-body{
+	padding-top:.8rem;
 }
 html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"]{
 	font-size:.8rem!important;
