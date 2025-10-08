@@ -372,3 +372,14 @@ html:not(.designer) [name*="view_move_right"]{
     margin-left:23rem!important;
     width:calc(100% - 23rem)!important;
 }
+html:not(.designer) .theme-entry span[name*="PageTitle"]{
+    font-size: 1.6rem!important;
+    font-family: var(--Alinma-bold)!important;
+    padding-bottom: unset!important;
+    color: #002134!important;
+}
+html:not(.designer) .theme-entry [name*="PageDesc"]{
+    font-size: 1rem;
+    font-family: var(--Alinma-plain)!important;
+    padding-top: 0!important;
+}
