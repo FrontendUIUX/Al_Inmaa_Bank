@@ -236,7 +236,7 @@ $(document).ready(function () {
 // dropdown
 document.addEventListener("DOMContentLoaded", function () {
   // Get all dropdown wrappers
-  const dropdownWrappers = document.querySelectorAll(".s_dropdown");
+  const dropdownWrappers = document.querySelectorAll('[name*="s_dropdown"]');
 
   dropdownWrappers.forEach(function (wrapper) {
     const select = wrapper.querySelector("select");
