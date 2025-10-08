@@ -202,6 +202,9 @@ html:not(.designer) [name*="s_dropdown"]{
     padding: 0 1rem!important;
     position: relative;
 }
+html:not(.designer) .on-focus[name*="s_dropdown"] .select-box{
+	top: 0.6rem!important;
+}
 html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"]{
 	font-size:.8rem!important;
 	color:var(--Navy-blue);
@@ -235,7 +238,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     height:100%!important;
     display:flex;
     align-items:center;
-    justify-content:center;
+    /* justify-content:center; */
 }
 .theme-entry .input-control.text-input .input-control-m-c{
 	border:none!important;
