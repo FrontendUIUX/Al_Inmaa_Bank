@@ -284,6 +284,33 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+// stepper 
+function updateStepStatus() {
+  // Select all step containers
+  document.querySelectorAll('[name*="s_step"]').forEach(step => {
+    // Find the stepNumber element inside this step
+    const stepNumberEl = step.querySelector('[name*="stepNumber"]');
+
+    if (stepNumberEl) {
+      const stepNumber = stepNumberEl.textContent.trim();
+
+      // Remove existing classes first
+      step.classList.remove("completedStep", "pendingStep");
+
+      if (stepNumber === "1") {
+        step.classList.add("completedStep");
+      } else if (stepNumber === "0") {
+        step.classList.add("pendingStep");
+      }
+    }
+  });
+}
+
+// Run on page load
+document.addEventListener("DOMContentLoaded", updateStepStatus);
+
+// Example: Run on button click
+document.getElementById("myButton").addEventListener("click", updateStepStatus);
 
 //////////////// end of k2 scripts
 const requestsData = [
