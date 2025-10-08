@@ -343,13 +343,11 @@ html:not(.designer) [name*="s_asterik"] {
 }
 /* form */
 html:not(.designer) .form {
-   /* background-color: transparent!important; */
    margin: 0!important;
    position: relative;
    padding: 2rem;
    border-radius: 1rem;
    overflow: hidden;
-   gap: 1rem!important;
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
@@ -416,9 +414,12 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
 .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0!important;
 }
-.row .view {
+.row:not([style*="display: none;"]) .view {
     padding: 0 1rem!important;
     margin: .7rem 0 0!important;
+}
+.row:not([style*="display: none;"]){
+	margin-bottom:1rem!important;
 }
 .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0!important;
