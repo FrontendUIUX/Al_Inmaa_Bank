@@ -242,10 +242,13 @@ document.addEventListener("DOMContentLoaded", function () {
     const select = wrapper.querySelector("select");
     const icon = wrapper.querySelector(".dropdown");
     const visibleControl = wrapper.querySelector("a.input-control");
+    const fontSpan = visibleControl ? visibleControl.querySelector(".styling-font") : null;
 
     // Add focus class
     const addFocus = () => wrapper.classList.add("on-focus");
-    const removeFocus = () => wrapper.classList.remove("on-focus");
+
+    // Check if user has selected a value (text inside .styling-font)
+    const hasValue = () => fontSpan && fontSpan.textContent.trim() !== "";
 
     // When clicking dropdown icon
     if (icon) {
@@ -257,19 +260,28 @@ document.addEventListener("DOMContentLoaded", function () {
       visibleControl.addEventListener("click", addFocus);
     }
 
-    // When hidden select changes (just in case)
+    // When hidden select changes (in case it updates .styling-font)
     if (select) {
-      select.addEventListener("change", addFocus);
-      select.addEventListener("blur", removeFocus);
+      select.addEventListener("change", () => {
+        addFocus();
+      });
     }
   });
 
-  // Optional: remove on-focus when clicking outside any wrapper
+  // Remove on-focus only if no value selected
   document.addEventListener("click", function (e) {
-    if (!e.target.closest('span[name*="s_dropdown"]')) {
-      document.querySelectorAll('span[name*="s_dropdown"].on-focus')
-        .forEach(el => el.classList.remove("on-focus"));
-    }
+    const clickedInside = e.target.closest('span[name*="s_dropdown"]');
+
+    document.querySelectorAll('span[name*="s_dropdown"].on-focus').forEach(wrapper => {
+      if (clickedInside && clickedInside === wrapper) return; // ignore clicks inside current wrapper
+
+      const fontSpan = wrapper.querySelector(".styling-font");
+      const hasValue = fontSpan && fontSpan.textContent.trim() !== "";
+
+      if (!hasValue) {
+        wrapper.classList.remove("on-focus");
+      }
+    });
   });
 });
 
