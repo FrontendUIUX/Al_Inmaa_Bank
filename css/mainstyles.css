@@ -239,6 +239,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
 }
 .theme-entry .input-control.text-input .input-control-m-c{
 	border:none!important;
+	background-color: transparent;
 }
 [name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
     position:absolute!important;
