@@ -175,7 +175,9 @@ header{
     transform: translateX(0%);
 }
 .subPanel .subSectionTitle{
-    margin-bottom:2rem;
+    margin-bottom:2.8rem;
+    font-family: var(--Alinma-bold);
+    font-size: 1.5rem;
 }
 .subPanel ul li{
     background-color:#f1dfda;
@@ -183,7 +185,7 @@ header{
     padding: 0.8rem 1rem;
     display: flex;
     align-items: center;
-    border-radius: 0.5rem;
+    border-radius: 0.6rem;
     cursor: pointer;
     transition: all .3s ease-in-out;
 }
@@ -192,6 +194,19 @@ header{
 }
 .subPanel ul li .icon{
     margin-right:1rem;
+    background-color: white;
+    padding: .5rem;
+    width: 2.5rem;
+    display: flex;
+    height: auto;
+    border-radius: .5rem;
+}
+.subPanel ul li .icon img{
+    height: auto;
+    width: 100%;
+}
+.subPanel ul li a{
+    font-size: 1.05rem;
 }
 html body header {
     padding-top: 1rem;
