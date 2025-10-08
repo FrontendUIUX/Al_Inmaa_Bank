@@ -414,17 +414,46 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
 .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0!important;
 }
-.row:not([style*="display: none;"]) .view {
+html:not(.designer) .row:not([style*="display: none;"]) .view {
     padding: 0 1rem!important;
     margin: .7rem 0 0!important;
 }
-.row:not([style*="display: none;"]){
+html:not(.designer) .row:not([style*="display: none;"]){
 	/* margin-bottom:1rem!important; */
 }
-.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
+html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0!important;
 }
-div#\38 e458c01-9131-958c-6a07-4ffe569768cf_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table,
-span#\30 c681cbb-b33a-fadc-6c71-3df1f2a23845 {
+html:not(.designer) div#\38 e458c01-9131-958c-6a07-4ffe569768cf_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table,
+html:not(.designer) span#\30 c681cbb-b33a-fadc-6c71-3df1f2a23845 {
     gap: 0.7rem 0rem;
+}
+/* stepper */
+html:not(.designer) .completedStep::before{
+    content:"";
+    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/Done.png");
+    background-size:contain;
+    height: 2.6rem;
+    width: 2.6rem;
+    background-repeat:no-repeat;
+    position:absolute;
+    left: 0rem;
+    top:50%;
+    transform:translateY(-50%);
+}
+html:not(.designer) .pendingStep::before{
+    content:"";
+    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/Pending.png");
+    background-size:contain;
+    height: 2.6rem;
+    width: 2.6rem;
+    background-repeat:no-repeat;
+    position:absolute;
+    left: 0rem;
+    top:50%;
+    transform:translateY(-50%);
+}
+html:not(.designer) [name*="s_step"]{
+    padding-left: 3.6rem;
+    position:relative;
 }
