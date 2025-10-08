@@ -212,11 +212,20 @@ html body .sidebar .notifications{
     border:none;
     background-color:transparent;
     min-width:unset;
+    width: 3.3rem;
+    padding-right: unset;
+    height: auto;
+}
+html body .sidebar .notifications img{
+    height: auto;
+    width: 100%;
 }
 html body .sidebar .userProfilePhoto{
     margin-right:1rem;
     border-radius:1rem;
     overflow:hidden;
+    width: 100%;
+    height: auto;
 }
 html body .sideBarLinksGroup .categoryName{
     margin:2rem 1rem 1rem;
