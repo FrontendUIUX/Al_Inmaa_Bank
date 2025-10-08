@@ -456,4 +456,17 @@ html:not(.designer) .pendingStep::before{
 html:not(.designer) [name*="s_step"]{
     padding-left: 3.6rem;
     position:relative;
+	margin-bottom:2rem;
+}
+html:not(.designer) [name*="stepTitle"]{
+	color:#002134!important;
+	font-size:1.2rem;
+	font-family:var(--Alinma-bold);
+	padding:0!important;
+}
+html:not(.designer) [name*="stepDescription"]{
+	font-size:1rem;
+	color:rgb(0 0 0 / 70%)!important;
+	font-family:var(--Alinma-plain);
+	padding:0!important;
 }
