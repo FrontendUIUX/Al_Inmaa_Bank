@@ -497,3 +497,7 @@ html:not(.designer) [name*="stepDescription"]{
 	font-family:var(--Alinma-plain);
 	padding:0!important;
 }
+/* remove the vertical line from the last step */
+div#\36 fb1c2f9-761d-94a4-edc6-7090c460123a_f25fbbe5-959e-25be-71e6-246c4c9fc7ba_Table::after {
+    display:none!important;
+}
