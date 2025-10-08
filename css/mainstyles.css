@@ -433,8 +433,8 @@ html:not(.designer) .completedStep::before{
     content:"";
     background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/Done.png");
     background-size:contain;
-    height: 2.6rem;
-    width: 2.6rem;
+    height: 2.9rem;
+    width: 2.9rem;
     background-repeat:no-repeat;
     position:absolute;
     left: 0rem;
@@ -445,8 +445,8 @@ html:not(.designer) .pendingStep::before{
     content:"";
     background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/Pending.png");
     background-size:contain;
-    height: 2.6rem;
-    width: 2.6rem;
+    height: 2.9rem;
+    width: 2.9rem;
     background-repeat:no-repeat;
     position:absolute;
     left: 0rem;
@@ -457,6 +457,27 @@ html:not(.designer) [name*="s_step"]{
     padding-left: 3.6rem;
     position:relative;
 	margin-bottom:2rem;
+	overflow:visible;
+}
+html:not(.designer) [name*="s_step"]::after{
+	content:"";
+	position:absolute;
+	z-index: 7;
+	left: 1.5rem;
+	top: 100%;
+	width:1px;
+	height: 2.5rem;
+	background-color: rgb(0 0 0 / 15%) !important;
+}
+html:not(.designer) .completedStep[name*="s_step"]::after{
+	content:"";
+	position:absolute;
+	z-index: 7;
+	left: 1.4rem;
+	top: 100%;
+	width:1.5px;
+	height: 2.3rem;
+	background-color: #6fc978!important;
 }
 html:not(.designer) [name*="stepTitle"]{
 	color:#002134!important;
