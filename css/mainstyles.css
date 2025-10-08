@@ -405,8 +405,8 @@ html:not(.designer) .theme-entry [name*="PageDesc"]{
 html:not(.designer) .closeSubPanel:hover{
     background-color: var(--Navy-blue-low-opacity);
 }
-.on-focus[name*="s_dropdown"] [name*="s_label"] {
-    transform:translateY(-.7rem)!important;
-    top: unset!important;
+html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
+    /* transform:translateY(-.7rem)!important; */
+    top: 25%!important;
     padding: 0;
 }
