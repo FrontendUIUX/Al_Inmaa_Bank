@@ -419,7 +419,7 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
     margin: .7rem 0 0!important;
 }
 .row:not([style*="display: none;"]){
-	margin-bottom:1rem!important;
+	/* margin-bottom:1rem!important; */
 }
 .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0!important;
