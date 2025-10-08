@@ -293,6 +293,7 @@ div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_6f
     position: absolute;
     left: 2rem;
     width: 22rem!important;
+    background-color: white;
 }
 /* header */
 html:not(.designer) .theme-entry [name*="s_header"] {
@@ -317,4 +318,8 @@ html:not(.designer) .panel{
 html:not(.designer) body.theme-entry{
     padding-top:8rem;
     height:calc(100% - 8rem);
+}
+html:not(.designer) [name*="view_move_right"]{
+    margin-left:23rem!important;
+    width:calc(100% - 23rem)!important;
 }
