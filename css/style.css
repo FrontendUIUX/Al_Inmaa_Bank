@@ -184,8 +184,11 @@ header{
     align-items: center;
     border-radius: 0.5rem;
     cursor: pointer;
+    transition: all .3s ease-in-out;
 }
-
+.subPanel ul li:hover{
+    background-color: #dac6c0;
+}
 .subPanel ul li .icon{
     margin-right:1rem;
 }

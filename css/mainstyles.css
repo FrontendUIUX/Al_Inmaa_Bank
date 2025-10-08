@@ -384,3 +384,6 @@ html:not(.designer) .theme-entry [name*="PageDesc"]{
     font-family: var(--Alinma-plain)!important;
     padding-top: 0!important;
 }
+html:not(.designer) .closeSubPanel:hover{
+    background-color: var(--Navy-blue-low-opacity);
+}
