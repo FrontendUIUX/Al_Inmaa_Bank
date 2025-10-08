@@ -102,7 +102,25 @@ html body ul.links > li {
     color: var(--Navy-blue);
     font-family: var(--Alinma-bold);
 }
-
+html body .sideBarLinksGroup .sidebarCategory:last-child .categoryName{
+    margin: 1.5rem 1rem 1rem;
+}
+.sideBarLinksGroup a{
+    font-size: 1.05rem;
+}
+.sideBarLinksGroup .links{
+    margin-bottom: unset;
+}
+.sideBarLinksGroup .icon{
+    width: 1.5rem;
+    height: auto;
+    display: flex;
+    justify-content: center;
+}
+.sideBarLinksGroup .icon img{
+ width: 100%;
+ height: auto;
+}
 .sidebar ul > li:hover{
     background-color: #f3e7e7;
 }
