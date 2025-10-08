@@ -204,7 +204,13 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-
+$('[name*=s_textbox] input').on('focus', function() {
+  if ($(this).val().trim() !== '') {
+    $(this).closest('[name*=s_textbox]').addClass('on-focus');
+  }
+}).on('blur', function() {
+  $(this).closest('[name*=s_textbox]').removeClass('on-focus');
+});
 //////////////// end of k2 scripts
 const requestsData = [
     { type: 'marketing', percentage: 56, elementId: 'marketing-request', percentId: 'marketing-request-percentage' },
