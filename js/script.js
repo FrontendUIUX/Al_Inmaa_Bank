@@ -204,13 +204,14 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
-$('[name*=s_textbox]').on('focusin', function() {
-  if ($(this).find('input').val().trim() !== '') {
-    $(this).addClass('on-focus');
+$('.SFC.SourceCode-Forms-Controls-Web-TextBox').on('focus', function() {
+  if ($(this).val().trim() !== '') {
+    $(this).closest('[name*=s_textbox]').addClass('on-focus');
   }
-}).on('focusout', function() {
-  $(this).removeClass('on-focus');
+}).on('blur', function() {
+  $(this).closest('[name*=s_textbox]').removeClass('on-focus');
 });
+
 
 //////////////// end of k2 scripts
 const requestsData = [
