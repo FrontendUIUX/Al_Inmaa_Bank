@@ -235,28 +235,40 @@ $(document).ready(function () {
 });
 // dropdown
 document.addEventListener("DOMContentLoaded", function () {
-  // Get all dropdown wrappers
-  const dropdownWrappers = document.querySelectorAll('[name*="s_dropdown"]');
+  // Find all dropdown wrappers
+  const wrappers = document.querySelectorAll('span[name*="s_dropdown"]');
 
-  dropdownWrappers.forEach(function (wrapper) {
+  wrappers.forEach(wrapper => {
     const select = wrapper.querySelector("select");
     const icon = wrapper.querySelector(".dropdown");
+    const visibleControl = wrapper.querySelector("a.input-control");
 
+    // Add focus class
+    const addFocus = () => wrapper.classList.add("on-focus");
+    const removeFocus = () => wrapper.classList.remove("on-focus");
+
+    // When clicking dropdown icon
     if (icon) {
-      icon.addEventListener("click", function () {
-        wrapper.classList.add("on-focus");
-      });
+      icon.addEventListener("click", addFocus);
     }
 
-    if (select) {
-      select.addEventListener("change", function () {
-        wrapper.classList.add("on-focus");
-      });
+    // When clicking visible control
+    if (visibleControl) {
+      visibleControl.addEventListener("click", addFocus);
+    }
 
-      // Optional: remove focus when dropdown loses focus
-      select.addEventListener("blur", function () {
-        wrapper.classList.remove("on-focus");
-      });
+    // When hidden select changes (just in case)
+    if (select) {
+      select.addEventListener("change", addFocus);
+      select.addEventListener("blur", removeFocus);
+    }
+  });
+
+  // Optional: remove on-focus when clicking outside any wrapper
+  document.addEventListener("click", function (e) {
+    if (!e.target.closest('span[name*="s_dropdown"]')) {
+      document.querySelectorAll('span[name*="s_dropdown"].on-focus')
+        .forEach(el => el.classList.remove("on-focus"));
     }
   });
 });
