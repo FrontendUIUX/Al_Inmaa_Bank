@@ -199,6 +199,11 @@ html:not(.designer) [name*="s_textbox"] {
     align-content: center;
     padding: 0 1rem!important;
 }
+html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"]{
+	font-size:.8rem!important;
+	color:var(--Navy-blue);
+	transform:translateY(-.5rem);
+}
 [name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
     position:absolute!important;
     z-index:0!important;
