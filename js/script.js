@@ -310,7 +310,7 @@ function updateStepStatus() {
 document.addEventListener("DOMContentLoaded", updateStepStatus);
 
 // Example: Run on button click
-document.getElementById("myButton").addEventListener("click", updateStepStatus);
+document.querySelector(".div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 [.SFC.SourceCode-Forms-Controls-Web-Button[name*='Continue']").addEventListener("click", updateStepStatus);
 
 //////////////// end of k2 scripts
 const requestsData = [
