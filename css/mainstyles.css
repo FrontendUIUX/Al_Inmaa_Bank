@@ -253,6 +253,17 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     padding: 0!important;
     top: 1.4rem;
 }
+[name*="s_textarea"] textarea{
+    position:absolute!important;
+    z-index:0!important;
+    /* height:100%!important; */
+    width: calc(100% - 2rem)!important;
+    border:0!important;
+    background-color:transparent!important;
+    min-height: 2rem!important;
+    padding: 0!important;
+    top: -0.5rem;
+}
 html:not(.designer) .readonly[name*="s_textbox"],
 html:not(.designer) .empty[name*="s_textbox"],
 html:not(.designer) .disabled[name*="s_textbox"],
@@ -351,16 +362,16 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     top:0;
     left:22rem;
     width: calc(100% - 22rem);
-    background-color: transparent;
+    background-color: #f9f2ed;
     z-index:2;
     padding: 1rem 2rem;
     height: 8rem;
     display: flex;
     align-items: center;
     justify-content: space-between;
-	opacity:0;
-	transform:translateY(-50%);
-	animation:1s fadeDown forwards;
+    opacity:0;
+    transform:translateY(-50%);
+    animation:1s fadeDown forwards;
 }
 html:not(.designer) .panel{
     background-color:transparent!important;
