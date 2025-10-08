@@ -316,6 +316,7 @@ html:not(.designer) [name*="s_button"]{
 html:not(.designer) [name*="s_button s_primary_button"] {
     background-color: var(--Navy-blue)!important;
     color: var(--White)!important;
+    border: 1px solid var(--Navy-blue)!important;
 }
 html:not(.designer) [name*="s_button s_secondary_button"] {
     border:1px solid var(--Navy-blue)!important;
@@ -348,6 +349,7 @@ html:not(.designer) .form {
    padding: 2rem;
    border-radius: 1rem;
    overflow: hidden;
+   gap: 1rem!important;
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
@@ -417,6 +419,9 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
 .row .view {
     padding: 0 1rem!important;
     margin: .7rem 0 0!important;
+}
+.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
+    padding: 0!important;
 }
 div#\38 e458c01-9131-958c-6a07-4ffe569768cf_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table {
     gap: 0.7rem 0rem;
