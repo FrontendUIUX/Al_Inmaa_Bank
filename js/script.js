@@ -233,7 +233,33 @@ $(document).ready(function () {
   });
 
 });
+// dropdown
+document.addEventListener("DOMContentLoaded", function () {
+  // Get all dropdown wrappers
+  const dropdownWrappers = document.querySelectorAll(".s_dropdown");
 
+  dropdownWrappers.forEach(function (wrapper) {
+    const select = wrapper.querySelector("select");
+    const icon = wrapper.querySelector(".dropdown");
+
+    if (icon) {
+      icon.addEventListener("click", function () {
+        wrapper.classList.add("on-focus");
+      });
+    }
+
+    if (select) {
+      select.addEventListener("change", function () {
+        wrapper.classList.add("on-focus");
+      });
+
+      // Optional: remove focus when dropdown loses focus
+      select.addEventListener("blur", function () {
+        wrapper.classList.remove("on-focus");
+      });
+    }
+  });
+});
 
 //////////////// end of k2 scripts
 const requestsData = [
