@@ -425,7 +425,7 @@ initializeCounters();
 document.addEventListener("DOMContentLoaded", function () {
         const tbody = document.getElementById("requestsTable");
         const serviceHeader = document.querySelector("th.service span"); // span contains the SVG
-        const sortIcon = serviceHeader.querySelector("svg");
+        //const sortIcon = serviceHeader.querySelector("svg");
 
         let sortDirection = 1; // 1 = ascending, -1 = descending
 
@@ -448,8 +448,8 @@ document.addEventListener("DOMContentLoaded", function () {
             rows.forEach(row => tbody.appendChild(row));
 
             // Toggle active class on the SVG
-            if(sortIcon){
-                sortIcon.classList.toggle("active", sortDirection === -1);
-            }
+            // if(sortIcon){
+            //     sortIcon.classList.toggle("active", sortDirection === -1);
+            // }
         });
     });
