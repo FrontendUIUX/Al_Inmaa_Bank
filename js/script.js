@@ -220,11 +220,11 @@ $(document).ready(function () {
   });
 
   //TextArea
-  $(document).on('focus', '[name*=s_textarea] input, [name*=s_textarea] > input', function () {
+  $(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
     $(this).closest('[name*=s_textarea]').addClass('on-focus');
   });
 
-  $(document).on('blur', '[name*=s_textarea] input, [name*=s_textarea] > input', function () {
+  $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
     const $parent = $(this).closest('[name*=s_textarea]');
     // If textbox is empty, remove class
     if ($(this).val().trim() === '') {
