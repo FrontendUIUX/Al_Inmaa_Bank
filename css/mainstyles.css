@@ -230,6 +230,7 @@ html:not(.designer) [name*="s_label"] {
     font-size: 1rem;
     color: var(--Light-black);
     font-family: 'AlinmaTheSans-Plain';
+    transition: all .3s ease-in-out;
 }
 
 html:not(.designer) [name*="s_textarea"] {
