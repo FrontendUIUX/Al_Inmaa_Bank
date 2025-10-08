@@ -348,6 +348,7 @@ html:not(.designer) .form {
    padding: 2rem;
    border-radius: 1rem;
    overflow: hidden;
+   border: 1.6px solid #e5e4de;
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
@@ -357,11 +358,13 @@ html:not(.designer) .form {
     border-right: 1px solid rgb(0 0 0 / 10%);
     border-radius: 0!important;
 }
-div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_6fb1c2f9-761d-94a4-edc6-7090c460123a_e4041454-dd20-40b7-bd47-95b799635f37 {
-    position: absolute;
+[name*="s_sub_sidebar"] {
+    position: absolute!important;
     left: 2rem;
-    width: 22rem!important;
+    width: 20rem!important;
     background-color: white;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
 }
 /* header */
 html:not(.designer) .theme-entry [name*="s_header"] {
@@ -388,8 +391,8 @@ html:not(.designer) body.theme-entry{
     height:calc(100% - 8rem);
 }
 html:not(.designer) [name*="view_move_right"]{
-    margin-left:23rem!important;
-    width:calc(100% - 23rem)!important;
+    margin-left: 22rem!important;
+    width: calc(100% - 22rem)!important;
 }
 html:not(.designer) .theme-entry span[name*="PageTitle"]{
     font-size: 1.6rem!important;
@@ -472,7 +475,7 @@ html:not(.designer) [name*="s_step"]::after{
 html:not(.designer) .completedStep[name*="s_step"]::after{
 	content:"";
 	position:absolute;
-	z-index: 7;
+	z-index: 0;
 	left: 1.4rem;
 	top: 100%;
 	width:1.5px;
