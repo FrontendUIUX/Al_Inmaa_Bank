@@ -208,7 +208,7 @@ html:not(.designer) .on-focus[name*="s_dropdown"] .select-box .input-control-bod
 html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"]{
 	font-size:.8rem!important;
 	color:var(--Navy-blue);
-	transform:translateY(-.5rem);
+	transform:translateY(-.7rem);
 	padding: 0!important;
 }
 html:not(.designer) .input-control.select-box.dropdown-box .input-control-m-c,
@@ -406,7 +406,8 @@ html:not(.designer) .closeSubPanel:hover{
     background-color: var(--Navy-blue-low-opacity);
 }
 html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
-    /* transform:translateY(-.7rem)!important; */
     top: 25%!important;
     padding: 0;
+	font-size: .8rem !important;
+    color: var(--Navy-blue);
 }
