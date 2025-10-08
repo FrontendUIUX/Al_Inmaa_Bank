@@ -187,8 +187,6 @@ html:not(.designer) [name*="s_textbox"] {
     background-color: var(--Textbox-background-color) !important;
     font-size: 1rem !important;
     border-radius: .5rem !important;
-    padding: .4rem 1rem !important;
-    padding: 0 !important;
     vertical-align: middle;
     display: flex;
     align-items: center;
@@ -197,12 +195,12 @@ html:not(.designer) [name*="s_textbox"] {
     min-height: 3rem !important;
     height: 3rem !important;
     align-content: center;
-    padding: 0 1rem!important;
+    padding: 0.4 1rem!important;
 }
 html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"]{
 	font-size:.8rem!important;
-	color:var(--Navy-blue);
-	transform:translateY(-.5rem);
+	color:rgb(0 33 52 / 70%)!important;
+	transform:translateY(-.7rem);
 }
 [name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
     position:absolute!important;
