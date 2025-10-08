@@ -446,6 +446,8 @@ document.addEventListener("DOMContentLoaded", function () {
             rows.forEach(row => tbody.appendChild(row));
 
             // Toggle active class on the SVG
-            sortIcon.classList.toggle("active", sortDirection === -1);
+            if(sortIcon){
+                sortIcon.classList.toggle("active", sortDirection === -1);
+            }
         });
     });
