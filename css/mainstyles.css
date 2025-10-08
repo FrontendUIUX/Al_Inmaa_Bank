@@ -313,3 +313,7 @@ html:not(.designer) body.theme-entry{
     padding-top:8rem;
     height:calc(100% - 8rem);
 }
+html:not(.designer) [name*="view_move_right"]{
+    margin-left:23rem!important;
+    width:calc(100% - 23rem)!important;
+}
