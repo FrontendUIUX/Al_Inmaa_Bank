@@ -91,9 +91,10 @@ html body .overlayShadow{
 html body ul.links > li {
     display: flex;
     align-items: center;
-    padding: .4rem 1rem;
+    padding: .5rem 1rem;
     cursor: pointer;
     margin-bottom: .5rem;
+    border-radius: .5rem;
 }
 .sidebar ul > li.active{
     background-color: #f3e7e7;
@@ -800,6 +801,9 @@ table.table{
     position: absolute;
     bottom: 1rem;
     /* border: 1px solid #D4D3D1; */
+}
+#mode-label{
+    font-size: 1.05rem;
 }
 .toggle-label {
     display: flex;
