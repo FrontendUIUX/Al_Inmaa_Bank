@@ -630,9 +630,26 @@ html:not(.designer) div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-
     font-size: .8rem;
 }
 /* radio button */
+html:not(.designer) .theme-entry .input-control.radio.style-aware svg .svg-radio-btn-circle,
+html:not(.designer) .theme-entry .input-control.radio.style-aware circle.svg-radio-btn-checked {
+	fill:var(--Isabelline)!important;
+	stroke:none;
+}
 html:not(.designer) .input-control.style-aware.radio.checked circle.svg-radio-btn-checked {
     fill: var(--Purple)!important;
     r:8;
+}
+html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text{
+	max-width:unset!important;
+	min-height:unset!important;
+	line-height:unset!important;
+	height:unset!important;
+	font-size:1.05rem!important;
+	font-family:var(--Alinma-plain)!important;
+}
+html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-list-item label.input-control{
+	display:flex;
+	align-items:center;
 }
 html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
     display: flex;
