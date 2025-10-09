@@ -348,6 +348,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     min-height: 2rem!important;
     padding: 0!important;
     top: -0.5rem;
+    font-family: var(--Alinma-plain)!important;
 }
 html:not(.designer) .readonly[name*="s_textbox"],
 html:not(.designer) .empty[name*="s_textbox"],
@@ -393,7 +394,9 @@ html:not(.designer) [name*="s_textarea"] {
 html:not(.designer) [name*="s_button"],
 html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button{
     border-radius: .5rem !important;
-    padding: 0.8rem 2rem !important;
+    padding: 0.6rem 2.4rem !important;
+    font-size: 1.05rem;
+    font-family: var(--Alinma-plain);
 }
 
 html:not(.designer) [name*="s_button s_primary_button"],
@@ -411,6 +414,8 @@ html:not(.designer) [name*="s_button s_save_button"] {
     position: relative;
     background-color: transparent!important;
     border:none;
+    font-size: 1.05rem;
+    font-family: var(--Alinma-plain);
 }
 /* control  buttons*/
 div#d0300780-c69e-30af-366b-fb216c06c0a2_18a1ca65-4c9d-7340-a6d9-d6da3cb0f632_Table {
