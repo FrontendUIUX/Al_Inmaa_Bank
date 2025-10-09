@@ -286,55 +286,96 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // stepper 
 function updateStepStatus() {
-  // Map step numbers to CSS classes
   const statusMap = {
-    "0": "pendingStep",
-    "1": "inProgressStep",
-    "2": "completedStep"
+    0: "pendingStep",
+    1: "inProgressStep",
+    2: "completedStep"
   };
 
-  // Select all step containers
   document.querySelectorAll('[name*="s_step"]').forEach(step => {
     const stepNumberEl = step.querySelector('[name*="stepNumber"]');
+    if (!stepNumberEl) return;
 
-    if (stepNumberEl) {
-      const stepNumber = stepNumberEl.textContent.trim();
+    // Force number comparison
+    const stepNumber = parseInt(stepNumberEl.textContent.trim(), 10);
 
-      // Remove all known status classes
-      step.classList.remove(...Object.values(statusMap));
+    // Remove all status classes before applying new one
+    step.classList.remove(...Object.values(statusMap));
 
-      // Add the class if it matches a known step number
-      if (statusMap[stepNumber]) {
-        step.classList.add(statusMap[stepNumber]);
-      }
+    if (statusMap.hasOwnProperty(stepNumber)) {
+      step.classList.add(statusMap[stepNumber]);
     }
   });
 }
 
+function moveToNextStep() {
+  const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
+
+  // Find the step currently in progress
+  const currentStep = steps.find(step =>
+    step.classList.contains("inProgressStep")
+  );
+
+  if (currentStep) {
+    const stepNumberEl = currentStep.querySelector('[name*="stepNumber"]');
+
+    // Mark current step as completed (2)
+    if (stepNumberEl) {
+      stepNumberEl.textContent = "2";
+    }
+
+    // Move to next step and mark as in progress (1)
+    const nextStep = steps[steps.indexOf(currentStep) + 1];
+    if (nextStep) {
+      const nextStepNumberEl = nextStep.querySelector('[name*="stepNumber"]');
+      if (nextStepNumberEl) {
+        nextStepNumberEl.textContent = "1";
+      }
+    }
+  }
+
+  // Refresh classes
+  updateStepStatus();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
-  // Run on page load
   updateStepStatus();
 
-  // Example: attach to a button if it exists
-  const button = document.querySelector("button#updateStepBtn"); // change selector as needed
-  if (button) {
-    button.addEventListener("click", () => {
-      const firstStep = document.querySelector('[name*="s_step"] [name*="stepNumber"]');
-      if (firstStep) {
-        firstStep.textContent = "1"; // Update dynamically
-        updateStepStatus();
-      }
+  const continueBtn = document.querySelector(
+    "#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec"
+  );
+  if (continueBtn) {
+    continueBtn.addEventListener("click", event => {
+      event.preventDefault();
+      moveToNextStep();
     });
   }
-
-  // Attach to your specific link if it exists
-  const link = document.querySelector(
-    "div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec"
-  );
-  if (link) {
-    link.addEventListener("click", updateStepStatus);
-  }
 });
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   // Run on page load
+//   updateStepStatus();
+
+//   // Example: attach to a button if it exists
+//   const button = document.querySelector("button#updateStepBtn"); // change selector as needed
+//   if (button) {
+//     button.addEventListener("click", () => {
+//       const firstStep = document.querySelector('[name*="s_step"] [name*="stepNumber"]');
+//       if (firstStep) {
+//         firstStep.textContent = "1"; // Update dynamically
+//         updateStepStatus();
+//       }
+//     });
+//   }
+
+//   // Attach to your specific link if it exists
+//   const link = document.querySelector(
+//     "div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec"
+//   );
+//   if (link) {
+//     link.addEventListener("click", updateStepStatus);
+//   }
+// });
 
 
 // Create the overlay div
