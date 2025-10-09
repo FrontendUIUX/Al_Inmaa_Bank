@@ -632,3 +632,8 @@ html:not(.designer) div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-
     transform: translateY(-0.6rem);
     font-size: .8rem;
 }
+/* radio button */
+html:not(.designer) .input-control.style-aware.radio.checked circle.svg-radio-btn-checked {
+    fill: var(--Purple)!important;
+    r:8;
+}
