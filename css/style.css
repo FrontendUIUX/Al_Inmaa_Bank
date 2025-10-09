@@ -108,6 +108,7 @@ html body .sideBarLinksGroup .sidebarCategory:last-child .categoryName{
 }
 .sideBarLinksGroup a{
     font-size: 1.05rem;
+    color: var(--Navy-blue);
 }
 .sideBarLinksGroup .links{
     margin-bottom: unset;
