@@ -429,6 +429,36 @@ overlay.classList.add("overlayShadow");
 // Append it to the body
 document.body.appendChild(overlay);
 
+function updateDropdownState(select) {
+  const dropdownWrapper = select.closest(".s_dropdown");
+  if (!dropdownWrapper) return;
+
+  if (select.classList.contains("disabled") || select.disabled) {
+    dropdownWrapper.classList.add("disabled");
+  } else {
+    dropdownWrapper.classList.remove("disabled");
+  }
+}
+
+// Initial run (page load)
+document.querySelectorAll("select").forEach(updateDropdownState);
+
+// Watch for changes to class/attributes
+const observer = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    if (mutation.target.tagName === "SELECT") {
+      updateDropdownState(mutation.target);
+    }
+  });
+});
+
+// Observe all selects
+document.querySelectorAll("select").forEach(select => {
+  observer.observe(select, {
+    attributes: true,
+    attributeFilter: ["class", "disabled"] // only watch relevant changes
+  });
+});
 
 
 //////////////// end of k2 scripts
