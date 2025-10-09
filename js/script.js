@@ -222,18 +222,21 @@ $(document).on('blur', '[name*=s_textbox] input, [name*=s_textbox] > input', fun
 });
 
 
-  //TextArea
-  $(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
+  // TextArea
+$(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
+  if (!$(this).is('[readonly]')) {
     $(this).closest('[name*=s_textarea]').addClass('on-focus');
-  });
+  }
+});
 
-  $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
-    const $parent = $(this).closest('[name*=s_textarea]');
-    // If textbox is empty, remove class
-    if ($(this).val().trim() === '') {
-      $parent.removeClass('on-focus');
-    }
-  });
+$(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
+  const $parent = $(this).closest('[name*=s_textarea]');
+  // If textarea is empty, remove class
+  if ($(this).val().trim() === '') {
+    $parent.removeClass('on-focus');
+  }
+});
+
 
 });
 // dropdown
