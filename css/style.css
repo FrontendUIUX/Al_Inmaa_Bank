@@ -161,14 +161,14 @@ header{
     position: fixed;
     background-color: white;
     height: 100vh;
-    width: 26rem;
+    width: 29rem;
     left: 22rem;
     top: 0;
     bottom: 0;
     transform: translateX(-200%);
     /* z-index: 99; */
     transition: all 1s ease-in-out;
-    padding:3rem 2rem;
+    padding: 2.5rem 2rem;
     border-top-right-radius: 1.5rem;
 }
 .subPanel.active{
@@ -238,7 +238,7 @@ html body aside.sidebar {
     top: 0;
     left: 0;
     padding: 2rem 1.5rem;
-    border-right: 1.5px solid rgb(0 33 52 / 10%);
+    border-right: 1px solid rgb(0 0 0 / 5%);
     z-index: 3;
     background-color: var(--Isabelline);
     opacity: 0;
@@ -490,7 +490,7 @@ h2 {
 }
 .subPanel .closeSubpanel{
     background-color: var(--Navy-blue);
-    height: 3rem;
+    height: auto;
     width: 3.5rem;
     transition: all .3s ease-in-out;
     padding: 1rem;
