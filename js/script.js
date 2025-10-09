@@ -314,11 +314,8 @@ button.addEventListener("click", () => {
 });
 // Run on page load
 document.addEventListener("DOMContentLoaded", updateStepStatus);
-document.addEventListener("DOMContentLoaded", function(){
-document.querySelector("div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec").addEventListener("click", updateStepStatus);
-
-})
 // Example: Run on button click
+document.querySelector("div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec").addEventListener("click", updateStepStatus);
 // Create the overlay div
 const overlay = document.createElement("div");
 
