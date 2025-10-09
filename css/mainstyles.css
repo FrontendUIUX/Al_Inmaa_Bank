@@ -529,7 +529,8 @@ html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .
     padding: 0!important;
 }
 html:not(.designer) div#\38 e458c01-9131-958c-6a07-4ffe569768cf_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table,
-html:not(.designer) span#\30 c681cbb-b33a-fadc-6c71-3df1f2a23845 {
+html:not(.designer) span#\30 c681cbb-b33a-fadc-6c71-3df1f2a23845
+html:not(.designer) [name*="tableGap"] {
     gap: 0.7rem 0rem;
 }
 /* stepper */
