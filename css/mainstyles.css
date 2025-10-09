@@ -452,6 +452,9 @@ html:not(.designer) .form {
    /* min-height: 40rem;
    height: min-content; */
    border: 1.6px solid #e5e4de;
+   opacity: 0;
+   transform: translateY(100%);
+   animation: 1s fadeUp 2s forwards;
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
@@ -476,7 +479,7 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     left:22rem;
     width: calc(100% - 22rem);
     background-color: #f9f2ed;
-    z-index:2;
+    z-index: 1;
     padding: 1rem 3rem;
     height: 8rem;
     display: flex;
@@ -583,7 +586,7 @@ html:not(.designer) [name*="s_step"]{
 html:not(.designer) [name*="s_step"]::after{
 	content:"";
 	position:absolute;
-	z-index: 1;
+	z-index: 0;
 	left: 1.5rem;
 	top: 100%;
 	width:1px;
