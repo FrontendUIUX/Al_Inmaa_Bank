@@ -704,3 +704,8 @@ html:not(.designer) [name*="attachmentSection"]{
 html:not(.designer) .theme-entry .grid.without-footer.without-summary .grid-body-content-wrapper{
     background-color: transparent!important;
 }
+html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-column-header-text {
+    color: #001e2d!important;
+    text-transform: capitalize;
+    font-family: var(--Alinma-plain);
+}
