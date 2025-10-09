@@ -161,14 +161,14 @@ header{
     position: fixed;
     background-color: white;
     height: 100vh;
-    width: 29rem;
+    width: 26rem;
     left: 22rem;
     top: 0;
     bottom: 0;
     transform: translateX(-200%);
     /* z-index: 99; */
     transition: all 1s ease-in-out;
-    padding: 2.5rem 2rem;
+    padding:3rem 2rem;
     border-top-right-radius: 1.5rem;
 }
 .subPanel.active{
@@ -238,7 +238,7 @@ html body aside.sidebar {
     top: 0;
     left: 0;
     padding: 2rem 1.5rem;
-    border-right: 1px solid rgb(0 0 0 / 5%);
+    border-right: 1.5px solid rgb(0 33 52 / 10%);
     z-index: 3;
     background-color: var(--Isabelline);
     opacity: 0;
@@ -262,10 +262,9 @@ html body .sidebar .notifications img{
 }
 html body .sidebar .userProfilePhoto{
     margin-right:1rem;
-    border-radius:1rem;
+    border-radius: 0.8rem;
     overflow:hidden;
-    width: 100%;
-    height: auto;
+    width: 3rem;
 }
 html body .sideBarLinksGroup .categoryName{
     margin:2rem 1rem 1rem;
@@ -490,7 +489,7 @@ h2 {
 }
 .subPanel .closeSubpanel{
     background-color: var(--Navy-blue);
-    height: auto;
+    height: 3rem;
     width: 3.5rem;
     transition: all .3s ease-in-out;
     padding: 1rem;
@@ -503,6 +502,16 @@ h2 {
     border-top-right-radius: .5rem;
     border-bottom-right-radius: .5rem;
     cursor: pointer;
+}
+[name="headerLogo"]{
+    height: 4.4rem!important;
+}
+[name="headerLogo"] img{
+    height:100%;
+    width:100%;
+}
+.subPanel .closeSubpanel:hover{
+    background-color:var(--Navy-blue-low-opacity);
 }
 .subPanel .closeSubpanel svg{
     height:100%;
@@ -819,6 +828,7 @@ table.table{
     position: absolute;
     bottom: 1rem;
     /* border: 1px solid #D4D3D1; */
+    display: none;
 }
 #mode-label{
     font-size: 1.05rem;
@@ -830,7 +840,7 @@ table.table{
     background: #f8f5f2;
     padding: 0.5rem 1rem;
     border-radius: 0.8rem;
-    border: 1px solid #d4d3d1;
+    border: 1px solid hsl(0deg 0% 0% / 10%);
     position: relative;
 }
 .sun-img {
