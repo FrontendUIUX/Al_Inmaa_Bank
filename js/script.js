@@ -311,7 +311,14 @@ document.addEventListener("DOMContentLoaded", updateStepStatus);
 
 // Example: Run on button click
 document.querySelector("div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec").addEventListener("click", updateStepStatus);
+// Create the overlay div
+const overlay = document.createElement("div");
 
+// Add your CSS class (assuming you already defined `.overlay-shadow` in your stylesheet)
+overlay.classList.add("overlayShadow");
+
+// Append it to the body
+document.body.appendChild(overlay);
 //////////////// end of k2 scripts
 const requestsData = [
     { type: 'marketing', percentage: 56, elementId: 'marketing-request', percentId: 'marketing-request-percentage' },
