@@ -240,7 +240,7 @@ html body aside.sidebar {
     left: 0;
     padding: 2rem 1.5rem;
     border-right: 1.5px solid rgb(0 33 52 / 10%);
-    z-index: 2;
+    z-index: 0;
     background-color: var(--Isabelline);
     opacity: 0;
     transition: all .3s ease-in-out;
