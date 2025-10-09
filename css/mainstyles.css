@@ -713,3 +713,6 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
     text-transform: capitalize;
     font-family: var(--Alinma-plain);
 }
+.theme-entry .input-control.select-box .input-control-buttons a:hover{
+	background-color:transparent!important
+}
