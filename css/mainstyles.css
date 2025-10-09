@@ -637,17 +637,17 @@ html:not(.designer) .input-control.style-aware.radio.checked circle.svg-radio-bt
     fill: var(--Purple)!important;
     r:8;
 }
-html:not(.designer) [name*="attachementSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
+html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
     display: flex;
     justify-content: flex-end;
     height: 5rem;
 }
-html:not(.designer) [name*="attachementSection"] .grid-column-headers{
+html:not(.designer) [name*="attachmentSection"] .grid-column-headers{
     margin:0 2rem!important;
     border-radius:.5rem;
     background-color:#f8efe8!important;
 }
-html:not(.designer) [name*="attachementSection"]{
+html:not(.designer) [name*="attachmentSection"]{
     border: 1px solid rgb(0 0 0 / 10%)!important;
     border-radius: .8rem!important;
 }
