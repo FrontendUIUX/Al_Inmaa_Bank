@@ -207,17 +207,20 @@ document.addEventListener("DOMContentLoaded", () => {
 $(document).ready(function () {
   
   // Attach to ALL textboxes that are inside spans whose name contains "s_textbox"
-  $(document).on('focus', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
+ $(document).on('focus', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
+  if (!$(this).is('[readonly]')) {
     $(this).closest('[name*=s_textbox]').addClass('on-focus');
-  });
+  }
+});
 
-  $(document).on('blur', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
-    const $parent = $(this).closest('[name*=s_textbox]');
-    // If textbox is empty, remove class
-    if ($(this).val().trim() === '') {
-      $parent.removeClass('on-focus');
-    }
-  });
+$(document).on('blur', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
+  const $parent = $(this).closest('[name*=s_textbox]');
+  // If textbox is empty, remove class
+  if ($(this).val().trim() === '') {
+    $parent.removeClass('on-focus');
+  }
+});
+
 
   //TextArea
   $(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
