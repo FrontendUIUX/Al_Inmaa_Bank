@@ -460,7 +460,6 @@ html:not(.designer) .form {
     width: 23rem!important;
     border-right: 1px solid rgb(0 0 0 / 10%);
     border-radius: 0!important;
-	height:100%;
 }
 [name*="s_sub_sidebar"] {
     position: absolute!important;
@@ -584,7 +583,7 @@ html:not(.designer) [name*="s_step"]{
 html:not(.designer) [name*="s_step"]::after{
 	content:"";
 	position:absolute;
-	z-index: 2;
+	z-index: 1;
 	left: 1.5rem;
 	top: 100%;
 	width:1px;
