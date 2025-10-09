@@ -34,6 +34,26 @@ html:not(.designer),:not(.designer) body{
     src: url("https://frontenduiux.github.io/Al_Inmaa_Bank/fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
+/*  POPUPS ICONS */
+html:not(.designer) .theme-entry .message-box-content.confirmation:before,
+html:not(.designer) .theme-entry .message-box-content.info:before,
+html:not(.designer) .theme-entry .message-box-content.message:before,
+.theme-entry .message-box-content.message:before{
+	background-image: url("https://frontenduiux.github.io/OBB_Services/Images/general.png");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	top: 50%;
+	transform: translateY(-50%);
+}
+html:not(.designer) .theme-entry .message-box-content.warning:before{
+	background-image: url("https://frontenduiux.github.io/OBB_Services/Images/Warning.svg");
+	background-size: contain;
+	background-repeat: no-repeat;
+	background-position: center;
+	top: 50%;
+	transform: translateY(-50%);
+}
 /* PADDINGS */
 /* PADDING 1rem - top, bottom, left, right */
 [name*="pt-1"]{
@@ -313,7 +333,8 @@ html:not(.designer) [name*="s_button"]{
     padding: 0.8rem 2rem !important;
 }
 
-html:not(.designer) [name*="s_button s_primary_button"] {
+html:not(.designer) [name*="s_button s_primary_button"],
+html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button {
     background-color: var(--Navy-blue)!important;
     color: var(--White)!important;
     border: 1px solid var(--Navy-blue)!important;
