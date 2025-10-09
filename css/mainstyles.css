@@ -354,7 +354,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     top: -0.5rem;
     font-family: var(--Alinma-plain)!important;
 }
-html:not(.designer) .readonly[name*="s_textbox"],
+/* html:not(.designer) .readonly[name*="s_textbox"],
 html:not(.designer) .empty[name*="s_textbox"],
 html:not(.designer) .disabled[name*="s_textbox"],
 .ui-lookupbox-disabled,
@@ -362,7 +362,7 @@ html:not(.designer) .disabled[name*="s_textbox"],
 .read-only textarea {
     background-color: #F9F0EB !important;
     border: 1px solid rgb(57 94 117 / 60%) !important;
-}
+} */
 
 html:not(.designer) [name*="s_dropdown"] {
     cursor: pointer;
@@ -467,6 +467,7 @@ html:not(.designer) .form {
     width: 23rem!important;
     border-right: 1px solid rgb(0 0 0 / 10%);
     border-radius: 0!important;
+    height: 100%!important;
 }
 [name*="s_sub_sidebar"] {
     position: absolute!important;
