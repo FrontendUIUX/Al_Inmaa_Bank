@@ -460,6 +460,7 @@ html:not(.designer) .form {
     width: 23rem!important;
     border-right: 1px solid rgb(0 0 0 / 10%);
     border-radius: 0!important;
+	height:100%;
 }
 [name*="s_sub_sidebar"] {
     position: absolute!important;
