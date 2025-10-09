@@ -295,11 +295,14 @@ function updateStepStatus() {
       const stepNumber = stepNumberEl.textContent.trim();
 
       // Remove existing classes first
-      step.classList.remove("completedStep", "pendingStep");
+      step.classList.remove("completedStep","inProgressStep", "pendingStep");
 
-      if (stepNumber === "1") {
+      if (stepNumber === "2") {
         step.classList.add("completedStep");
-      } else if (stepNumber === "0") {
+      } else if (stepNumber === "1") {
+        step.classList.add("inProgressStep");
+      }
+      else if (stepNumber === "0") {
         step.classList.add("pendingStep");
       }
     }

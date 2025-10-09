@@ -550,6 +550,18 @@ html:not(.designer) .completedStep::before{
     top:50%;
     transform:translateY(-50%);
 }
+html:not(.designer) .inProgressStep::before{
+    content:"";
+    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/InProgress.png");
+    background-size:contain;
+    height: 2.9rem;
+    width: 2.9rem;
+    background-repeat:no-repeat;
+    position:absolute;
+    left: 0rem;
+    top:50%;
+    transform:translateY(-50%);
+}
 html:not(.designer) .pendingStep::before{
     content:"";
     background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/Pending.png");
