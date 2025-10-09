@@ -452,9 +452,9 @@ html:not(.designer) .form {
    /* min-height: 40rem;
    height: min-content; */
    border: 1.6px solid #e5e4de;
-   opacity: 0;
+   /* opacity: 0;
    transform: translateY(100%);
-   animation: 1s fadeUp 2s forwards;
+   animation: 1s fadeUp 2s forwards; */
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
