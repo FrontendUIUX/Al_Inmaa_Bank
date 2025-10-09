@@ -34,6 +34,14 @@ html:not(.designer),:not(.designer) body{
     src: url("https://frontenduiux.github.io/Al_Inmaa_Bank/fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
+/* VIEW TITLE START */
+[name*="viewTitle"]{
+	font-family:var(--Alinma-bold);
+	color:var(--Navy-blue);
+	padding-bottom:unset;
+	font-size:1.4rem;
+}
+/* VIEW TITLE END */
 /*  POPUPS ICONS */
 html:not(.designer) .theme-entry .message-box-content.confirmation:before,
 html:not(.designer) .theme-entry .message-box-content.info:before,
@@ -329,6 +337,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     min-height: 2rem!important;
     padding: 0!important;
     top: 1.4rem;
+    font-size: .8rem;
 }
 [name*="s_textarea"] textarea{
     position:absolute!important;
