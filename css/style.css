@@ -158,7 +158,7 @@ header{
     animation:1s fadeDown forwards;
 }
 .subPanel {
-    z-index:2;
+    z-index: 0;
     position: fixed;
     background-color: white;
     height: 100vh;
@@ -242,7 +242,7 @@ html body aside.sidebar {
     left: 0;
     padding: 2rem 1.5rem;
     border-right: 1.5px solid rgb(0 33 52 / 10%);
-    z-index: 0;
+    z-index: 1;
     background-color: var(--Isabelline);
     opacity: 0;
     transition: all .3s ease-in-out;
