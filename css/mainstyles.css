@@ -19,6 +19,9 @@
     --Alinma-plain:"AlinmaTheSans-Plain";
     --Alinma-bold:"AlinmaTheSans-Bold";
 }
+.theme-entry .ajaxLoader{
+    z-index:99;
+}
 html:not(.designer),:not(.designer) body{
     font-size: 14px;
     font-family: var(--Alinma-plain)!important;
