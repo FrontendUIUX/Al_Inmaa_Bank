@@ -84,7 +84,7 @@ html body .overlayShadow{
     height:100vh;
     width:100vw;
     background-color:rgb(0 0 0 / 70%);
-    z-index: 2;
+    z-index: 0;
     display:none;
     transition: all 1s ease-in-out;
 }
@@ -179,6 +179,7 @@ header{
     margin-bottom:2.8rem;
     font-family: var(--Alinma-bold);
     font-size: 1.5rem;
+    color: var(--Navy-blue);
 }
 .subPanel ul li{
     background-color:#f1dfda;
@@ -208,6 +209,7 @@ header{
 }
 .subPanel ul li a{
     font-size: 1.05rem;
+    color: var(--Navy-blue);
 }
 html body header {
     padding-top: 1rem;
