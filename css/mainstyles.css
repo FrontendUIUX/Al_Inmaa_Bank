@@ -729,6 +729,10 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
     width: 24.8rem!important;
     margin-left: -3rem!important;
 }
+.theme-entry .drop-menu ul.drop-menu{
+     width: 100%!important;
+    margin-left: 0rem!important;
+}
 .theme-entry .input-control.checkbox.style-aware .input-control-text {
     font-family: var(--Alinma-plain)!important;
 }
