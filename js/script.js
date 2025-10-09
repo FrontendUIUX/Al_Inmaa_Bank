@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // When clicking dropdown icon
     if (icon) {
-      icon.addEventListener("click", addFocus);
+      //icon.addEventListener("click", addFocus);
     }
 
     // When clicking visible control
@@ -319,7 +319,14 @@ overlay.classList.add("overlayShadow");
 
 // Append it to the body
 document.body.appendChild(overlay);
+
+
+
 //////////////// end of k2 scripts
+
+
+
+
 const requestsData = [
     { type: 'marketing', percentage: 56, elementId: 'marketing-request', percentId: 'marketing-request-percentage' },
     { type: 'study', percentage: 20, elementId: 'request-a-study', percentId: 'request-study-percentage' },

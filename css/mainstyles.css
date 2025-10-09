@@ -352,7 +352,7 @@ html:not(.designer) .disabled[name*="s_textbox"],
 }
 
 html:not(.designer) [name*="s_dropdown"] {
-    
+    cursor: pointer;
 }
 html:not(.designer) [name*="s_dropdown"] [name*="s_label"] {
 	position:absolute;
