@@ -286,36 +286,57 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // stepper 
 function updateStepStatus() {
+  // Map step numbers to CSS classes
+  const statusMap = {
+    "0": "pendingStep",
+    "1": "inProgressStep",
+    "2": "completedStep"
+  };
+
   // Select all step containers
   document.querySelectorAll('[name*="s_step"]').forEach(step => {
-    // Find the stepNumber element inside this step
     const stepNumberEl = step.querySelector('[name*="stepNumber"]');
 
     if (stepNumberEl) {
       const stepNumber = stepNumberEl.textContent.trim();
 
-      // Remove existing classes first
-      step.classList.remove("completedStep","inProgressStep", "pendingStep");
+      // Remove all known status classes
+      step.classList.remove(...Object.values(statusMap));
 
-      if (stepNumber === "2") {
-        step.classList.add("completedStep");
-      } else if (stepNumber === "1") {
-        step.classList.add("inProgressStep");
-      }
-      else if (stepNumber === "0") {
-        step.classList.add("pendingStep");
+      // Add the class if it matches a known step number
+      if (statusMap[stepNumber]) {
+        step.classList.add(statusMap[stepNumber]);
       }
     }
   });
 }
-button.addEventListener("click", () => {
-  step.querySelector('[name*="stepNumber"]').textContent = "1";
+
+document.addEventListener("DOMContentLoaded", () => {
+  // Run on page load
   updateStepStatus();
+
+  // Example: attach to a button if it exists
+  const button = document.querySelector("button#updateStepBtn"); // change selector as needed
+  if (button) {
+    button.addEventListener("click", () => {
+      const firstStep = document.querySelector('[name*="s_step"] [name*="stepNumber"]');
+      if (firstStep) {
+        firstStep.textContent = "1"; // Update dynamically
+        updateStepStatus();
+      }
+    });
+  }
+
+  // Attach to your specific link if it exists
+  const link = document.querySelector(
+    "div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec"
+  );
+  if (link) {
+    link.addEventListener("click", updateStepStatus);
+  }
 });
-// Run on page load
-document.addEventListener("DOMContentLoaded", updateStepStatus);
-// Example: Run on button click
-document.querySelector("div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec").addEventListener("click", updateStepStatus);
+
+
 // Create the overlay div
 const overlay = document.createElement("div");
 
