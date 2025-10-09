@@ -507,3 +507,10 @@ div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_d0
     bottom: 2rem;
     right: 2.5rem;
 }
+.runtime-content {
+    margin: 0 3rem!important;
+}
+
+.on-focus[name*="s_textarea"] [name*="s_label"] {
+    transform: translateY(-0.6rem);
+}
