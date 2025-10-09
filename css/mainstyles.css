@@ -722,5 +722,5 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
     background-color: transparent!important;
 }
 .theme-entry .base2.base1.modalizer{
-    z-index: 99!important;
+    z-index: 2!important;
 }
