@@ -563,7 +563,7 @@ html:not(.designer) .pendingStep::before{
     transform:translateY(-50%);
 }
 html:not(.designer) [name*="s_step"]{
-    padding-left: 3.6rem;
+    padding-left: 4rem;
     position:relative;
 	margin-bottom:2rem;
 	overflow:visible;
@@ -590,7 +590,7 @@ html:not(.designer) .completedStep[name*="s_step"]::after{
 }
 html:not(.designer) [name*="stepTitle"]{
 	color:#002134!important;
-	font-size:1.2rem;
+	font-size:1.1rem;
 	font-family:var(--Alinma-bold);
 	padding:0!important;
 }
