@@ -446,7 +446,7 @@ html:not(.designer) [name*="s_asterik"] {
 html:not(.designer) .form {
    margin: 0!important;
    position: relative;
-   padding: 2rem;
+   padding: 0 2rem;
    border-radius: 1rem;
    overflow: hidden;
    min-height: 40rem;
