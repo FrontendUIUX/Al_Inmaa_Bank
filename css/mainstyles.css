@@ -354,15 +354,15 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     top: -0.5rem;
     font-family: var(--Alinma-plain)!important;
 }
-/* html:not(.designer) .readonly[name*="s_textbox"],
+html:not(.designer) .readonly[name*="s_textbox"],
 html:not(.designer) .empty[name*="s_textbox"],
 html:not(.designer) .disabled[name*="s_textbox"],
 .ui-lookupbox-disabled,
 .input-control.select-box.read-only .input-control-m-c,
-.read-only textarea {
+.read-only textarea .input-control-m-c{
     background-color: #F9F0EB !important;
     border: 1px solid rgb(57 94 117 / 60%) !important;
-} */
+}
 
 html:not(.designer) [name*="s_dropdown"] {
     cursor: pointer;
