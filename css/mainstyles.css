@@ -665,7 +665,7 @@ html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>
     height: 5rem;
 }
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers{
-    margin:0 2rem!important;
+    margin:0 1rem!important;
     border-radius:.5rem;
     background-color:#f8efe8!important;
 }
@@ -723,4 +723,8 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
 }
 .theme-entry .base2.base1.modalizer{
     z-index: 2!important;
+}
+.drop-mwnu{
+    width: 26.5rem!important;
+    margin-left: -2rem;
 }
