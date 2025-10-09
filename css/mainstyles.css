@@ -681,3 +681,6 @@ html:not(.designer) [name*="attachmentSection"]{
 .toolbar-button.delete::before{
     background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/delete.svg");
 }
+html:not(.designer) .theme-entry .grid.without-footer.without-summary .grid-body-content-wrapper{
+    background-color: transparent!important;
+}
