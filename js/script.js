@@ -338,19 +338,61 @@ function moveToNextStep() {
   updateStepStatus();
 }
 
+function moveToPreviousStep() {
+  const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
+
+  // Find the step currently in progress
+  const currentStep = steps.find(step =>
+    step.classList.contains("inProgressStep")
+  );
+
+  if (currentStep) {
+    const stepNumberEl = currentStep.querySelector('[name*="stepNumber"]');
+
+    // Mark current step as pending (0)
+    if (stepNumberEl) {
+      stepNumberEl.textContent = "0";
+    }
+
+    // Move to previous step and mark as in progress (1)
+    const prevStep = steps[steps.indexOf(currentStep) - 1];
+    if (prevStep) {
+      const prevStepNumberEl = prevStep.querySelector('[name*="stepNumber"]');
+      if (prevStepNumberEl) {
+        prevStepNumberEl.textContent = "1";
+      }
+    }
+  }
+
+  // Refresh classes
+  updateStepStatus();
+}
+
 document.addEventListener("DOMContentLoaded", () => {
   updateStepStatus();
 
   const continueBtn = document.querySelector(
     "#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec"
   );
+  const backBtn = document.querySelector(
+    "a#d0300780-c69e-30af-366b-fb216c06c0a2_80e627c7-7f8e-62f7-4f44-88a84122ffeb"
+  );
+
   if (continueBtn) {
     continueBtn.addEventListener("click", event => {
       event.preventDefault();
       moveToNextStep();
     });
   }
+
+  if (backBtn) {
+    backBtn.addEventListener("click", event => {
+      event.preventDefault();
+      moveToPreviousStep();
+    });
+  }
 });
+
 
 // document.addEventListener("DOMContentLoaded", () => {
 //   // Run on page load
