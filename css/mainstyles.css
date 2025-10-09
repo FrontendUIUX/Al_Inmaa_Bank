@@ -724,7 +724,7 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
 .theme-entry .base2.base1.modalizer{
     z-index: 2!important;
 }
-.drop-mwnu{
+.drop-menu{
     width: 26.5rem!important;
     margin-left: -2rem;
 }
