@@ -21,6 +21,7 @@
 }
 .theme-entry .ajaxLoader{
     z-index:99;
+    position: fixed;
 }
 html:not(.designer),:not(.designer) body{
     font-size: 14px;
