@@ -423,7 +423,8 @@ html:not(.designer) .form {
    padding: 2rem;
    border-radius: 1rem;
    overflow: hidden;
-   min-height: 32rem;
+   min-height: 40rem;
+   height: min-content;
    border: 1.6px solid #e5e4de;
 }
 /* sub sidebar start  */
@@ -464,7 +465,7 @@ html:not(.designer) .panel{
 }
 html:not(.designer) body.theme-entry{
     padding-top:8rem;
-    height:calc(100% - 8rem);
+    /* height: 100%; */
 }
 html:not(.designer) [name*="view_move_right"]{
     margin-left: 22rem!important;
