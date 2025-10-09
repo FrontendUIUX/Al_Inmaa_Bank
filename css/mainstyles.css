@@ -382,7 +382,8 @@ html:not(.designer) [name*="s_textarea"] {
     min-height: 3rem !important;
 }
 
-html:not(.designer) [name*="s_button"]{
+html:not(.designer) [name*="s_button"],
+html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button{
     border-radius: .5rem !important;
     padding: 0.8rem 2rem !important;
 }
