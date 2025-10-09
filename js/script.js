@@ -240,24 +240,35 @@ document.addEventListener("DOMContentLoaded", function () {
 
   wrappers.forEach(wrapper => {
     const select = wrapper.querySelector("select");
-    const fontSpan = wrapper.querySelector(".styling-font");
+    const icon = wrapper.querySelector(".dropdown");
+    const visibleControl = wrapper.querySelector("a.input-control");
+    const fontSpan = visibleControl ? visibleControl.querySelector(".styling-font") : null;
+
+    // Add focus class
+    const addFocus = () => wrapper.classList.add("on-focus");
 
     // Check if user has selected a value (text inside .styling-font)
     const hasValue = () => fontSpan && fontSpan.textContent.trim() !== "";
 
-    // When hidden select changes (user chooses a value)
+    // When clicking dropdown icon
+    if (icon) {
+      icon.addEventListener("click", addFocus);
+    }
+
+    // When clicking visible control
+    if (visibleControl) {
+      visibleControl.addEventListener("click", addFocus);
+    }
+
+    // When hidden select changes (in case it updates .styling-font)
     if (select) {
       select.addEventListener("change", () => {
-        if (hasValue()) {
-          wrapper.classList.add("on-focus");
-        } else {
-          wrapper.classList.remove("on-focus");
-        }
+        addFocus();
       });
     }
   });
 
-  // Remove on-focus if user clicks outside and no value is selected
+  // Remove on-focus only if no value selected
   document.addEventListener("click", function (e) {
     const clickedInside = e.target.closest('span[name*="s_dropdown"]');
 
@@ -273,7 +284,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
 // stepper 
 function updateStepStatus() {
   // Select all step containers
