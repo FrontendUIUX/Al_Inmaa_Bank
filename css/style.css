@@ -275,6 +275,7 @@ html body .userSettings .userInformations .username{
     font-size:1.14rem;
     font-family:var(--Alinma-bold);
     position:relative;
+    color: var(--Navy-blue);
 }
 html body .userSettings .userInformations .username::after{
     content:"";
