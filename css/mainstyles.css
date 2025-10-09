@@ -735,3 +735,8 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
 .drop-menu li.selected:first-child {
     background-color: white!important;
 }
+.theme-entry .input-control.select-box.disabled .input-control-buttons a, 
+.theme-entry .input-control.select-box.disabled .input-control-buttons a:hover, 
+.theme-entry .input-control.select-box.disabled .input-control-buttons a:focus{
+    background-color: transparent!important;
+}
