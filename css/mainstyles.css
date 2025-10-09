@@ -717,3 +717,7 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
 .theme-entry .input-control.select-box .input-control-buttons a:hover{
 	background-color:transparent!important
 }
+.theme-entry .input-control.text-input.readonly .input-control-m-c, 
+.theme-entry .input-control.text-input.read-only .input-control-m-c{
+    background-color: transparent!important;
+}
