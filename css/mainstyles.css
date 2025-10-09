@@ -449,8 +449,8 @@ html:not(.designer) .form {
    padding: 0 2rem;
    border-radius: 1rem;
    overflow: hidden;
-   min-height: 40rem;
-   height: min-content;
+   /* min-height: 40rem;
+   height: min-content; */
    border: 1.6px solid #e5e4de;
 }
 /* sub sidebar start  */
