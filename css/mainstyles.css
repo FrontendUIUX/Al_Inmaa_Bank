@@ -366,6 +366,7 @@ html:not(.designer) .disabled[name*="s_textbox"],
 
 html:not(.designer) [name*="s_dropdown"] {
     cursor: pointer;
+    width: 24.8rem;
 }
 html:not(.designer) [name*="s_dropdown"] [name*="s_label"] {
 	position:absolute;
@@ -725,8 +726,8 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
     z-index: 2!important;
 }
 .drop-menu{
-    width: 26.5rem!important;
-    margin-left: -2rem;
+    width: 24.8rem!important;
+    margin-left: -3rem!important;
 }
 .theme-entry .input-control.checkbox.style-aware .input-control-text {
     font-family: var(--Alinma-plain)!important;
