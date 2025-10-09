@@ -252,7 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // When clicking dropdown icon
     if (icon) {
-      //icon.addEventListener("click", addFocus);
+      icon.addEventListener("click", addFocus);
     }
 
     // When clicking visible control

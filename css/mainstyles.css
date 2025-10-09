@@ -544,7 +544,7 @@ html:not(.designer) [name*="s_step"]{
 html:not(.designer) [name*="s_step"]::after{
 	content:"";
 	position:absolute;
-	z-index: 7;
+	z-index: 2;
 	left: 1.5rem;
 	top: 100%;
 	width:1px;
