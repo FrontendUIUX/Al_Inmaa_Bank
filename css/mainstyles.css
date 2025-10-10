@@ -364,9 +364,10 @@ html:not(.designer) .disabled[name*="s_textbox"],
     border: 1px solid rgb(57 94 117 / 60%) !important;
 }
 /*  TEXTBOX READONLY START */
-span[name*="s_textbox"]:has(input[readonly]) {
+span[name*="s_textbox"]:has(input[readonly]),
+.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"]:has(input[readonly]){
   background-color: #F9F0EB!important;
-  border-color:rgb(57 94 117 / 60%)!important;
+  border: 1px solid rgb(57 94 117 / 60%)!important;
   pointer-events: none;
 }
 span[name*="s_textbox"]:has(input[readonly]) [name*="s_label"]{
