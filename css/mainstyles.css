@@ -537,8 +537,9 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
 	font-size: .8rem !important;
     color: var(--Navy-blue);
 }
-.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
-    padding: 0!important;
+html:not(.designer) .theme-entry .root-table.Grid-Layout > .editor-cell.lastrow:not([name*="s_textbox"]),
+html:not(.designer) .theme-entry .root-table.editor-grid > .editor-cell.lastrow:not([name*="s_textbox"]) {
+  padding: 0 !important;
 }
 html:not(.designer) .row:not([style*="display: none;"]) .view {
     padding: 0 1rem!important;
