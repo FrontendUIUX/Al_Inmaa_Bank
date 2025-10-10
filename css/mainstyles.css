@@ -422,6 +422,10 @@ html:not(.designer) [name*="s_button s_save_button"] {
     border:none;
     font-size: 1.05rem;
     font-family: var(--Alinma-plain);
+    padding: 0.6rem 0rem !important;
+}
+span#c655df8d-4567-342e-b826-2fb81eaaa47c {
+    padding: 0!important;
 }
 html:not(.designer) [name*="s_button s_save_button"]:hover{
     background-color: rgb(0 33 52 / 12%);
