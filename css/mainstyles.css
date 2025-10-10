@@ -433,6 +433,7 @@ html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Control
     padding: 0.6rem 2.4rem !important;
     font-size: 1.05rem;
     font-family: var(--Alinma-plain);
+    margin-bottom: 1rem!important;
 }
 
 html:not(.designer) [name*="s_button s_primary_button"],
