@@ -785,3 +785,9 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
     border-radius: 0.5rem;
     color: var(--Navy-blue)!important;
 }
+a#d0300780-c69e-30af-366b-fb216c06c0a2_ee685e75-a8a7-e2b2-183a-e1f5a769bb1a,
+a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588{
+    position:relative;
+    left: -11%;
+    transform:translateX(-50%);
+}
