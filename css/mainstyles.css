@@ -773,3 +773,18 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
    border:none!important; 
    background-color:transparent!important;
 }
+/* SUCCESS MESSAGE START */
+[name*="successMessageTitle"] {
+    font-size: 1.6rem!important;
+    font-family: var(--Alinma-bold)!important;
+    margin: 1rem 0 0rem!important;
+    color: var(--Navy-blue)!important;
+}
+[name*="Reference No Data Label"]{
+    background-color:#FFBFB2;
+    padding: 0.4rem 1rem!important;
+    font-size: 1.05rem;
+    font-family: var(--Alinma-bold);
+    border-radius: 0.5rem;
+    color: var(--Navy-blue)!important;
+}
