@@ -363,7 +363,19 @@ html:not(.designer) .disabled[name*="s_textbox"],
     background-color: #F9F0EB !important;
     border: 1px solid rgb(57 94 117 / 60%) !important;
 }
-
+/*  TEXTBOX READONLY START */
+span[name*="s_textbox"]:has(input[readonly]) {
+  background-color: #F9F0EB!important;
+  border-color:rgb(57 94 117 / 60%)!important;
+  pointer-events: none;
+}
+span[name*="s_textbox"]:has(input[readonly]) [name*="s_label"]{
+  color:rgb(57 94 117 / 70%)!important;
+}
+span[name*="s_textbox"]:has(input[readonly]) input{
+  color:rgb(57 94 117 / 85%)!important;
+}
+/*  TEXTBOX READONLY END */
 html:not(.designer) [name*="s_dropdown"] {
     cursor: pointer;
     width: 24.8rem;
