@@ -752,3 +752,24 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
 .theme-entry .input-control.select-box.disabled .input-control-buttons a:focus{
     background-color: transparent!important;
 }
+.file-tn-cell {
+    display: none;
+}
+.theme-entry .grid-content-table tbody tr td.file-info-cell.file-ellipsis{
+    border:none!important;
+    outline:none!important;
+}
+td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
+    display: -webkit-box!important;
+    -webkit-box-orient:vertical;
+    -webkit-line-clamp:1;
+    overflow:hidden;
+    white-space:nowrap;
+    color: var(--Navy-blue);
+    font-family: var(--Alinma-bold);
+}
+[name*="attachmentSection"] table.grid-content-table>tbody>tr>td, 
+[name*="attachmentSection"] table.grid-content-table>tr>td{
+   border:none!important; 
+   background-color:transparent!important;
+}
