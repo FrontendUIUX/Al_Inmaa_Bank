@@ -471,6 +471,43 @@ document.querySelectorAll("select").forEach(select => {
 });
 
 
+
+
+
+
+//add readonly class to textbox
+
+function updateTextboxState(input) {
+  const textboxWrapper = input.closest(".s_textbox");
+  if (!textboxWrapper) return;
+
+  if (input.hasAttribute("readonly") || input.classList.contains("readonly")) {
+    textboxWrapper.classList.add("readonly");
+  } else {
+    textboxWrapper.classList.remove("readonly");
+  }
+}
+
+// Initial sync on page load
+document.querySelectorAll('.s_textbox input[type="text"]').forEach(updateTextboxState);
+
+// Watch for attribute/class changes dynamically
+const observer1 = new MutationObserver(mutations => {
+  mutations.forEach(mutation => {
+    if (mutation.target.tagName === "INPUT") {
+      updateTextboxState(mutation.target);
+    }
+  });
+});
+
+// Observe all text inputs inside .s_textbox
+document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
+  observer.observe(input, {
+    attributes: true,
+    attributeFilter: ["readonly", "class"], // only watch relevant attributes
+  });
+});
+
 //////////////// end of k2 scripts
 
 
