@@ -791,3 +791,7 @@ a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588{
     left: -11%;
     transform:translateX(-50%);
 }
+[name*="successIcon"]{
+	height:6rem!important;
+	width:6rem!important;
+}
