@@ -841,6 +841,7 @@ html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] .gri
 }
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] [name*="viewTitle"]{
 	color:rgb(57 94 117 / 85%)!important;
+	padding: 1rem;
 }
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] a.fileImage.static {
     color:rgb(57 94 117 / 85%)!important;
