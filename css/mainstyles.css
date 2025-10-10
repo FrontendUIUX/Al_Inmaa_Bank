@@ -545,9 +545,6 @@ html:not(.designer) .row:not([style*="display: none;"]) .view {
     padding: 0 1rem!important;
     margin: .7rem 0 0!important;
 }
-html:not(.designer) .row:not([style*="display: none;"]){
-	/* margin-bottom:1rem!important; */
-}
 html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0!important;
 }
