@@ -414,7 +414,12 @@ html:not(.designer) [name*="s_button s_secondary_button"] {
     border:1px solid var(--Navy-blue)!important;
     color: var(--Navy-blue)!important;
     background-color: transparent;
-    transition: all .3s ease-in-out;
+    transition: all .3s ease-in-out!important;
+}
+html:not(.designer) [name*="s_button s_secondary_button"]:hover {
+    border:1px solid var(--Navy-blue-low-opacity)!important;
+    color: var(--Navy-blue)!important;
+    background-color:rgb(0 33 52 / 10%);;
 }
 html:not(.designer) [name*="s_button s_save_button"] {
     position: relative;
