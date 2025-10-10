@@ -366,7 +366,8 @@ html:not(.designer) .disabled[name*="s_textbox"],
 }
 /*  TEXTBOX READONLY START */
 span[name*="s_textbox"]:has(input[readonly]),
-.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"]:has(input[readonly]){
+.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"]:has(input[readonly]),
+span[name*="s_textarea"]:has(textarea[readonly]){
   background-color: #F9F0EB!important;
   border: 1px solid rgb(57 94 117 / 60%)!important;
   pointer-events: none;
