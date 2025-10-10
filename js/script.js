@@ -241,6 +241,7 @@ $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textar
 });
 // dropdown
 document.addEventListener("DOMContentLoaded", function () {
+  // Find all dropdown wrappers
   const wrappers = document.querySelectorAll('span[name*="s_dropdown"]');
 
   wrappers.forEach(wrapper => {
@@ -249,39 +250,30 @@ document.addEventListener("DOMContentLoaded", function () {
     const visibleControl = wrapper.querySelector("a.input-control");
     const fontSpan = visibleControl ? visibleControl.querySelector(".styling-font") : null;
 
+    // Add focus class only if NOT readonly or disabled
     const addFocus = () => {
       if (select && (select.hasAttribute("readonly") || select.disabled)) return;
       wrapper.classList.add("on-focus");
     };
 
+    // Check if user has selected a value (text inside .styling-font)
     const hasValue = () => fontSpan && fontSpan.textContent.trim() !== "";
 
     // When clicking dropdown icon
-    if (icon) icon.addEventListener("click", addFocus);
+    if (icon) {
+      icon.addEventListener("click", addFocus);
+    }
 
     // When clicking visible control
-    if (visibleControl) visibleControl.addEventListener("click", addFocus);
+    if (visibleControl) {
+      visibleControl.addEventListener("click", addFocus);
+    }
 
-    // When hidden select changes
+    // When hidden select changes (in case it updates .styling-font)
     if (select) {
       select.addEventListener("change", () => {
         addFocus();
       });
-    }
-
-    // 🔍 Watch for "disabled" attribute or class changes dynamically
-    const observer = new MutationObserver(() => {
-      const nowDisabled = select.disabled || select.hasAttribute("disabled") || wrapper.classList.contains("disabled");
-
-      // If dropdown just became enabled and has a value, add focus
-      if (!nowDisabled && hasValue()) {
-        wrapper.classList.add("on-focus");
-      }
-    });
-
-    observer.observe(wrapper, { attributes: true, attributeFilter: ["class"] });
-    if (select) {
-      observer.observe(select, { attributes: true, attributeFilter: ["disabled"] });
     }
   });
 
@@ -290,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const clickedInside = e.target.closest('span[name*="s_dropdown"]');
 
     document.querySelectorAll('span[name*="s_dropdown"].on-focus').forEach(wrapper => {
-      if (clickedInside && clickedInside === wrapper) return;
+      if (clickedInside && clickedInside === wrapper) return; // ignore clicks inside current wrapper
 
       const fontSpan = wrapper.querySelector(".styling-font");
       const hasValue = fontSpan && fontSpan.textContent.trim() !== "";
@@ -301,7 +293,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
 
 // stepper 
 function updateStepStatus() {
