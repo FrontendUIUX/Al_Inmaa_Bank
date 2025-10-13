@@ -538,6 +538,7 @@ h2 {
     opacity: 0;
     transform: translateY(100%);
     animation: 1s fadeUp 1.5s forwards;
+    margin-bottom: 2rem;
 }
 svg.active path:nth-child(1) {
     stroke: var(--Navy-blue);
