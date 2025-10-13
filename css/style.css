@@ -732,7 +732,8 @@ table td .editRow a::before{
         rgba(255, 255, 255, 0.692) 15px
     );
 }
- .badge-completed {
+  .status.submit span,
+.status.completed span{
     background-color: #DEFCE2;
     color: #2B7635;
 }
