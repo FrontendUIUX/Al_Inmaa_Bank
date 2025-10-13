@@ -435,7 +435,7 @@ h2 {
 /* --- Legend Styling --- */
 .request-cards {
     display: flex;
-    
+    font-family: var(--Alinma-plain)!important;
     /* Two columns */
     border-radius: 1rem;
     overflow: hidden;
@@ -451,7 +451,7 @@ h2 {
     padding: 5px 0;
     border: 1px solid rgb(0 0 0 / 10%);
     border-top: 0;
-    padding: 0.7rem;
+    padding: .8rem 1.2rem;
     border-right: none;
 }
 .request-card:nth-child(2n+1){
@@ -994,7 +994,7 @@ html:not(.designer) body.theme-entry a.toolbar-button{
 }
 @media(min-width:992px){
     html body .requestsTile .card .card-header{
-    padding: 0.9rem 2rem 0;
+    padding: 1.5rem 2rem 1rem;
 }
     html body .requestsTile .card .card-body{
     padding: 0rem 2rem 1.7rem;
