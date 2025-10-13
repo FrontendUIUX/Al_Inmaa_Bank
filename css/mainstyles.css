@@ -381,6 +381,10 @@ span[name*="s_dropdown"]:has(.select-box.disabled){
   border: 1px solid rgba(57, 94, 117, 0.6) !important;
   pointer-events: none;
 }
+span#d7d128d7-22d7-fc25-3df1-72a0d4daebfe[name*="s_dropdown"]:has(.select-box.disabled){
+	border: 1px solid var(--Textbox-border-color) !important;
+    background-color: var(--Textbox-background-color) !important;
+}
 span[name*="s_textarea"] .input-control.text-input.read-only{
 	margin-top:.5rem!important;
 }
