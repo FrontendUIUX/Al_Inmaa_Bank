@@ -268,6 +268,29 @@ html:not(.designer) .theme-entry .message-box-content.error:before{
 [name*="flex-column"],.flex-column{
 	flex-direction:column!important;
 }
+.filterTxt .input-control-m-c,
+.filterTxt input{
+    border:1px solid rgb(0 0 0 / 20%)!important;
+    font-size:1rem!important;
+    border-radius: .5rem!important;
+    padding: .4rem 1rem!important;
+    vertical-align: middle;
+    display: flex;
+    align-items: center;
+    font-family: var(--regularFont)!important;
+    width: 100%;
+    min-height: 3rem!important;
+    height: 3rem!important;
+}
+
+html:not(.designer) .searchDdl .input-control.select-box.dropdown-box {
+    height: 3rem;
+    min-height: erem !important;
+    width: 100% !important;
+	border:1px solid rgb(0 0 0 / 20%)!important;
+	border-radius:.5rem;
+	padding:0 1rem
+}
 html:not(.designer) [name*="s_textbox"],
 html:not(.designer) [name*="s_dropdown"]{
     border: 1px solid var(--Textbox-border-color) !important;
@@ -588,7 +611,44 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
 }
 html:not(.designer) .theme-entry .root-table.Grid-Layout > .editor-cell.lastrow:not([name*="s_textbox"]),
 html:not(.designer) .theme-entry .root-table.editor-grid > .editor-cell.lastrow:not([name*="s_textbox"]) {
-  padding: 0 !important;
+  /* padding: 0 !important; */
+}
+.theme-entry .grid .grid-column-header-cell.asc .grid-column-header-cell-wrapper:before{
+	display:none;
+}
+.filterChosen.filter{
+	display: none!important;
+}
+.quickSearch.filter .filterLabel{
+	position:relative;
+	display:none;
+}
+.quickSearch.filter::before{
+	content:"Search by:";
+	position:relative;
+	left:0;
+	width:fit-content;
+	color:#131313;
+	font-size:1rem;
+	font-family:var(--regularFont)!important;
+}
+.filterTxt{
+	width: 21rem!important;
+}
+.filterTxt .input-control-wrapper{
+	width:100%!important;
+}
+.quickSearch.filter .toolbar-button.toolbar-button-inline.style-aware.refresh{
+	position:absolute;
+	right:1.5rem;
+	top: -0.5rem;
+	height: 3rem;
+	display: flex;
+	align-items:center;
+	justify-content:center;
+}
+.quickSearch.filter{
+	position:relative;
 }
 html:not(.designer) .row:not([style*="display: none;"]) .view {
     padding: 0 1rem!important;
