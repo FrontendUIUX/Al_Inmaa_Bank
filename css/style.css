@@ -298,7 +298,7 @@ html body .userSettings .userInformations .userPosition{
     color:rgb(0 33 52 / 70%)
 }
 html body .kpiCards {
-    gap: 1.4rem;
+    gap: 0rem 0.8rem;
 }
 
 html body .kpiCards .card {
@@ -535,7 +535,6 @@ h2 {
     border-radius: 1rem;
     border: 1px solid #E5E4DE;
     padding: 2rem;
-    margin: 1.4rem 0;
     opacity: 0;
     transform: translateY(100%);
     animation: 1s fadeUp 1.5s forwards;
@@ -993,7 +992,7 @@ table.table{
     padding: 0.9rem 2rem 0;
 }
     html body .requestsTile .card .card-body{
-    padding: 0rem 2rem 1rem;
+    padding: 0rem 2rem 1.7rem;
 }
      thead th {
    
