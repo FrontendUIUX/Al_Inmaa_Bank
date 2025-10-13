@@ -276,7 +276,6 @@ html:not(.designer) [name*="s_dropdown"]{
     border-radius: .5rem !important;
     padding: .4rem 1rem !important;
     padding: 0 !important;
-    /* vertical-align: middle; */
     display: flex;
     align-items: center;
     justify-content: flex-start;
@@ -302,8 +301,6 @@ html:not(.designer) .input-control.select-box.dropdown-box .input-control-m-c,
 html:not(.designer) .input-control-buttons.styling-right.styling-inner-wrapper{
     background-color:transparent!important;
     border:none!important;
-    /* position: absolute!important; */
-    /* top: -0.6rem; */
     height: 100%!important;
     min-height: 2rem!important;
     display: flex;
@@ -325,7 +322,6 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     height:100%!important;
     display:flex;
     align-items:center;
-    /* justify-content:center; */
 }
 .theme-entry .input-control.text-input .input-control-m-c{
 	border:none!important;
@@ -334,7 +330,6 @@ html:not(.designer) .theme-entry .input-control a.input-control{
 [name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
     position:absolute!important;
     z-index:0!important;
-    /* height:100%!important; */
     width: calc(100% - 2rem)!important;
     border:0!important;
     background-color:transparent!important;
@@ -358,7 +353,6 @@ html:not(.designer) .theme-entry .input-control a.input-control{
 [name*="s_textarea"] textarea{
     position:absolute!important;
     z-index:0!important;
-    /* height:100%!important; */
     width: calc(100% - 2rem)!important;
     border:0!important;
     background-color:transparent!important;
@@ -518,12 +512,7 @@ html:not(.designer) .form {
    padding: 0 2rem;
    border-radius: 1rem;
    overflow: hidden;
-   /* min-height: 40rem;
-   height: min-content; */
    border: 1.6px solid #e5e4de;
-   /* opacity: 0;
-   transform: translateY(100%);
-   animation: 1s fadeUp 2s forwards; */
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
@@ -553,9 +542,6 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     padding: 1rem;
     height: 11rem;
     display: flex;
-    /* flex-direction: column-reverse; */
-    /* align-items: center; */
-    /* justify-content: space-between; */
     opacity:0;
     transform:translateY(-50%);
     animation:1s fadeDown forwards;
@@ -565,7 +551,6 @@ html:not(.designer) .panel{
 }
 html:not(.designer) body.theme-entry{
     padding-top:8rem;
-    /* height: 100%; */
 }
 .mobile .theme-entry{
 padding-left:1rem;
