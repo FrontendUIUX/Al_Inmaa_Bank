@@ -353,7 +353,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     height: 2rem!important;
     min-height: 2rem!important;
     padding: 0!important;
-    top: -1rem;
+    top: -0.5rem;
 }
 [name*="s_textarea"] textarea{
     position:absolute!important;
@@ -482,7 +482,7 @@ html:not(.designer) [name*="s_button s_save_button"] {
     border:none;
     font-size: 1.05rem;
     font-family: var(--Alinma-plain);
-    padding: 0.6rem 0rem !important;
+    padding: 0.6rem 0rem .6rem 2rem!important;
 }
 span#c655df8d-4567-342e-b826-2fb81eaaa47c {
     padding: 0!important;
@@ -885,8 +885,8 @@ html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] a.fi
 html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td{
 	padding:0!important;
 }
-span#\38 a0fcee9-63fa-480f-8333-2765f91c6fc2_f42733da-4884-3716-5bcc-c50411187f74 {}
-span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"], 
+
+span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]
 {
         color: rgb(57 94 117 / 70%) !important;
         font-size: .8rem !important;
