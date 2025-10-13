@@ -397,7 +397,7 @@ span[name*="s_textarea"]:has(textarea[readonly]) textarea{
 /*  TEXTBOX READONLY END */
 html:not(.designer) [name*="s_dropdown"] {
     cursor: pointer;
-    width: 24.8rem;
+    /* width: 24.8rem; */
 }
 html:not(.designer) [name*="s_dropdown"] [name*="s_label"] {
 	position:absolute;
