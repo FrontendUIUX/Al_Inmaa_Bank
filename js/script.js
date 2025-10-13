@@ -250,14 +250,10 @@ document.addEventListener("DOMContentLoaded", function () {
     const visibleControl = wrapper.querySelector("a.input-control");
     const fontSpan = visibleControl ? visibleControl.querySelector(".styling-font") : null;
 
-    // Add focus class only if NOT readonly or disabled
+    // Add focus class
     const addFocus = () => {
-      if (select && (select.hasAttribute("readonly") || select.disabled)) return;
       wrapper.classList.add("on-focus");
     };
-
-    // Check if user has selected a value (text inside .styling-font)
-    const hasValue = () => fontSpan && fontSpan.textContent.trim() !== "";
 
     // When clicking dropdown icon
     if (icon) {
@@ -271,9 +267,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // When hidden select changes (in case it updates .styling-font)
     if (select) {
-      select.addEventListener("change", () => {
-        addFocus();
-      });
+      select.addEventListener("change", addFocus);
     }
   });
 
@@ -293,6 +287,7 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
+
 
 // stepper 
 function updateStepStatus() {
