@@ -250,25 +250,31 @@ document.addEventListener("DOMContentLoaded", function () {
     const visibleControl = wrapper.querySelector("a.input-control");
     const fontSpan = visibleControl ? visibleControl.querySelector(".styling-font") : null;
 
-    // Add focus class
-    const addFocus = () => {
-      wrapper.classList.add("on-focus");
-    };
+    // Add focus class only if NOT readonly or disabled
+    // const addFocus = () => {
+    //   if (select && (select.hasAttribute("readonly") || select.disabled)) return;
+    //   wrapper.classList.add("on-focus");
+    // };
+
+    // Check if user has selected a value (text inside .styling-font)
+    const hasValue = () => fontSpan && fontSpan.textContent.trim() !== "";
 
     // When clicking dropdown icon
-    if (icon) {
-      icon.addEventListener("click", addFocus);
-    }
+    // if (icon) {
+    //   icon.addEventListener("click", addFocus);
+    // }
 
     // When clicking visible control
-    if (visibleControl) {
-      visibleControl.addEventListener("click", addFocus);
-    }
+    // if (visibleControl) {
+    //   visibleControl.addEventListener("click", addFocus);
+    // }
 
     // When hidden select changes (in case it updates .styling-font)
-    if (select) {
-      select.addEventListener("change", addFocus);
-    }
+    // if (select) {
+    //   select.addEventListener("change", () => {
+    //     addFocus();
+    //   });
+    // }
   });
 
   // Remove on-focus only if no value selected
@@ -287,7 +293,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
 
 // stepper 
 function updateStepStatus() {
