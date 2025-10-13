@@ -11,3 +11,6 @@ html:not(.designer) .form {
 html:not(.designer) .form .view .innerpanel > .panel{
    background-color:transparent!important;
 }
+.RequestsDashboardControl-RequestsDashboardControl{
+   width:100%;
+}
