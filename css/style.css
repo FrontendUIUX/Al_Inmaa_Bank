@@ -62,7 +62,7 @@
     }
 }
 html body {
-    background-color: var(--Isabelline);
+    background-color: var(--Isabelline)!important;
     width: 100%;
     margin: 0;
     padding: 0;
