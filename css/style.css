@@ -362,6 +362,7 @@ html body .requestsTile {
     opacity: 0;
     transform: translateY(100%);
     animation: 1s fadeUp forwards;
+    width: 100%;
 }
 
 html body .requestsTile .card {
@@ -432,13 +433,14 @@ h2 {
 
 /* --- Legend Styling --- */
 .request-cards {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
+    display: flex;
+    
     /* Two columns */
-    gap: 0;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid rgb(0 0 0 /10%);
+    flex-direction: column;
+    width: 100%;
 }
 
 .request-card {
@@ -989,6 +991,15 @@ table.table{
     background-color: var(--Isabelline);
     margin-left: 22rem;
     width: calc(100% - 22rem);
+}
+    .request-cards {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    /* Two columns */
+    gap: 0;
+    border-radius: 1rem;
+    overflow: hidden;
+    border: 1px solid rgb(0 0 0 /10%);
 }
     html:not(.designer) body aside.sidebar {
     transition: all .3s ease-in-out;
