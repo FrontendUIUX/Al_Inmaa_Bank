@@ -968,6 +968,17 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
 	height:.8rem;
 	width:.8rem;
 }
+.grid-column-header-table  td{
+        background-color: var(--Table-header) !important;
+}
+.grid-column-header-table td .grid-column-header-text{
+   border: none;
+    padding: 0.8rem 0rem !important;
+    background-color: rgb(244 231 219) !important;
+    color: #002134 !important;
+        font-family:var(--Alinma-plain);
+        font-size:1.05rem;
+}
 @media(min-width:992px){
 	    html body .requestsTile {
         flex: 0 0 auto;
