@@ -149,8 +149,9 @@ li.isSubMenu::after{
 .container {
     max-width: 100% !important;
     margin: 0;
-    padding-left: 2rem;
-    padding-right: 2rem;
+    /* padding-left: 2rem; */
+    /* padding-right: 2rem; */
+    padding: 0;
 }
 header{
     opacity:0;
@@ -475,16 +476,16 @@ h2 {
     height: .8rem;
     width: .8rem;
 }
-.request-name.marketing-request-text::before{
+.request-card:nth-child(1) .request-name::before{
     background-color: var(--Purple);
 }
-.request-name.branch-visit-notes-text::before{
+.request-card:nth-child(2) .request-name::before{
     background-color: var(--Navy-blue);
 }
-.request-name.request-a-study-text::before{
+.request-card:nth-child(3) .request-name::before{
     background-color: var(--Orange);
 }
-.request-name.other-text::before{
+.request-card:nth-child(4) .request-name::before{
     background-color: #e8dbd0;
 }
 .percentage {
