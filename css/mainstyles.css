@@ -530,9 +530,9 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     padding: 1rem;
     height: 8rem;
     display: flex;
-    flex-direction: column-reverse;
-    align-items: center;
-    justify-content: space-between;
+    /* flex-direction: column-reverse; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
     opacity:0;
     transform:translateY(-50%);
     animation:1s fadeDown forwards;
@@ -864,5 +864,6 @@ html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td{
 	html:not(.designer) .theme-entry [name*="s_header"] {
     left:22rem;
     width: calc(100% - 22rem);
+    flex-direction: row;
 }
 }
