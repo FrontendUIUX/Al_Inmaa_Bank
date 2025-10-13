@@ -901,6 +901,12 @@ span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]
 span[name*="s_dropdown"]:has(.select-box.disabled) input {
         color: rgb(57 94 117 / 85%) !important;
 }
+.theme-entry .input-control.checkbox.style-aware.read-only .svg-checkbox-box{
+    stroke:var(--Navy-blue-low-opacity);
+    fill:#F9F0EB;
+    rx:3;
+    ry:3;
+}
 @media(min-width:992px){
 	    html body .requestsTile {
         flex: 0 0 auto;
