@@ -602,6 +602,7 @@ html:not(.designer) span#\30 c681cbb-b33a-fadc-6c71-3df1f2a23845,
 div#\38 1f2822e-9863-4253-9c88-ab211b945765_f9e31820-4dcd-c52d-0995-057692a749e0_Table,
 div#ac0025fa-bd99-4903-be68-2cd7ba015341_f9e31820-4dcd-c52d-0995-057692a749e0_Table,
 div#\38 7195263-2bb1-454d-9290-0b1b14c5345b_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table,
+div#d2199b04-d889-47e9-b227-f74437dabaaa_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table,
 html:not(.designer) [name*="tableGap"] {
     gap: 0.7rem 0rem;
 }
@@ -871,6 +872,17 @@ html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] a.fi
 }
 html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td{
 	padding:0!important;
+}
+span#\38 a0fcee9-63fa-480f-8333-2765f91c6fc2_f42733da-4884-3716-5bcc-c50411187f74 {}
+span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"], 
+span[name*="s_dropdown"]:has(.select-box.disabled) [name*="s_label"]{
+        color: rgb(57 94 117 / 70%) !important;
+        font-size: .8rem !important;
+        transform: translateY(-1.6rem);
+        padding: 0 !important;
+}
+span[name*="s_dropdown"]:has(.select-box.disabled) input {
+        color: rgb(57 94 117 / 85%) !important;
 }
 @media(min-width:992px){
 	    html body .requestsTile {
