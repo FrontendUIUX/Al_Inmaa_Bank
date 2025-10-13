@@ -516,10 +516,10 @@ document.addEventListener("DOMContentLoaded", function () {
     // Check if the sticky header already exists
     let commentsSection = document.getElementById('commentsSection');
  
-    if (!stickyHeader) {
+    if (!commentsSection) {
         // Create the sticky header container
-        stickyHeader = document.createElement('div');
-        stickyHeader.id = 'commentsSection';
+        commentsSection = document.createElement('div');
+        commentsSection.id = 'commentsSection';
         document.body.prepend(commentsSection);
     }
  
@@ -527,8 +527,8 @@ document.addEventListener("DOMContentLoaded", function () {
     let commentsView = document.querySelector('[name*="commentsSection"]');
  
     // Move elements inside the sticky header in order
-    if (commentsView) {
-        stickyHeader.appendChild(commentsSection);
+    if (commentsSection) {
+        commentsSection.appendChild(commentsView);
     }
 });
 //////////////// end of k2 scripts
