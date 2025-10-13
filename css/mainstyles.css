@@ -353,7 +353,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     height: 2rem!important;
     min-height: 2rem!important;
     padding: 0!important;
-    top: -0.5rem;
+    top: -1rem;
 }
 [name*="s_textarea"] textarea{
     position:absolute!important;
@@ -885,8 +885,8 @@ html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] a.fi
 html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td{
 	padding:0!important;
 }
-
-span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]
+span#\38 a0fcee9-63fa-480f-8333-2765f91c6fc2_f42733da-4884-3716-5bcc-c50411187f74 {}
+span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"], 
 {
         color: rgb(57 94 117 / 70%) !important;
         font-size: .8rem !important;
