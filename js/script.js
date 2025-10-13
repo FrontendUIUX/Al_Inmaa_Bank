@@ -550,7 +550,7 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
 // });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Create and append the progress bar container with 4 segments
+    // 1. Create and append the progress bar container
     const progressBarContainer = document.createElement('div');
     progressBarContainer.className = 'progress-bar-container';
     progressBarContainer.id = 'progress-bar-container';
@@ -562,13 +562,13 @@ document.addEventListener('DOMContentLoaded', () => {
         <div class="request-progress-zone other progress-segment" id="other"></div>
     `;
 
-    // Append it after the request cards container
-    const requestCardsContainer = document.querySelector('.request-cards');
-    if (requestCardsContainer && requestCardsContainer.parentNode) {
-        requestCardsContainer.parentNode.appendChild(progressBarContainer);
+    // 2. Insert it right after the #requests-total element
+    const requestsTotalElement = document.getElementById('requests-total');
+    if (requestsTotalElement && requestsTotalElement.parentNode) {
+        requestsTotalElement.insertAdjacentElement('afterend', progressBarContainer);
     }
 
-    // 2. Map request segments to their corresponding card labels
+    // 3. Map request types to progress segment IDs
     const segmentMap = {
         'Marketing Request': 'marketing-request',
         'HR': 'request-a-study',
@@ -576,7 +576,7 @@ document.addEventListener('DOMContentLoaded', () => {
         'Other': 'other'
     };
 
-    // 3. Collect percentage values from the request cards
+    // 4. Extract percentages from request cards
     const percentages = {};
     const requestCards = document.querySelectorAll('.request-card');
 
@@ -591,7 +591,7 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
-    // 4. Animate each progress segment sequentially
+    // 5. Animate each segment sequentially
     const segmentIdsInOrder = ['marketing-request', 'request-a-study', 'branch-visit-notes', 'other'];
 
     function animateSegment(index = 0) {
@@ -602,23 +602,20 @@ document.addEventListener('DOMContentLoaded', () => {
         const percentValue = percentages[segmentId] || 0;
 
         if (segmentElement) {
-            segmentElement.style.width = '0'; // Reset width before animating
+            segmentElement.style.width = '0'; // Reset
             setTimeout(() => {
                 segmentElement.style.transition = 'width 1.5s ease';
                 segmentElement.style.width = `${percentValue}%`;
-
-                // Move to next after delay
                 setTimeout(() => {
                     animateSegment(index + 1);
-                }, 1600);
+                }, 1600); // Delay before next
             }, 100);
         } else {
-            // Skip if element doesn't exist
             animateSegment(index + 1);
         }
     }
 
-    // Start animation
+    // Start the animation
     animateSegment();
 });
 
