@@ -513,41 +513,65 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
 
 
 
-const requestsData = [
-    { type: 'marketing', percentage: 56, elementId: 'marketing-request', percentId: 'marketing-request-percentage' },
-    { type: 'study', percentage: 20, elementId: 'request-a-study', percentId: 'request-study-percentage' },
-    { type: 'branch', percentage: 17, elementId: 'branch-visit-notes', percentId: 'branch-viti-percentage' },
-    { type: 'other', percentage: 7, elementId: 'other', percentId: 'other-percentage' },
-];
-function showPercentages() {
-    requestsData.forEach(item => {
-        const percentElement = document.getElementById(item.percentId);
-        if (percentElement) {
-            percentElement.textContent = `${item.percentage}%`;
+// const requestsData = [
+//     { type: 'marketing', percentage: 56, elementId: 'marketing-request', percentId: 'marketing-request-percentage' },
+//     { type: 'study', percentage: 20, elementId: 'request-a-study', percentId: 'request-study-percentage' },
+//     { type: 'branch', percentage: 17, elementId: 'branch-visit-notes', percentId: 'branch-viti-percentage' },
+//     { type: 'other', percentage: 7, elementId: 'other', percentId: 'other-percentage' },
+// ];
+// function showPercentages() {
+//     requestsData.forEach(item => {
+//         const percentElement = document.getElementById(item.percentId);
+//         if (percentElement) {
+//             percentElement.textContent = `${item.percentage}%`;
+//         }
+//     });
+// }
+// function animateSequentially(index = 0) {
+//     if (index >= requestsData.length) return;
+
+//     const item = requestsData[index];
+//     const segmentElement = document.getElementById(item.elementId);
+
+//     if (segmentElement) {
+//         segmentElement.style.width = '0';
+//         setTimeout(() => {
+//             segmentElement.style.width = `${item.percentage}%`;
+//             setTimeout(() => {
+//                 animateSequentially(index + 1);
+//             }, 1600);
+//         }, 100);
+//     }
+// }
+
+// document.addEventListener("DOMContentLoaded", () => {
+//     showPercentages();
+//     animateSequentially();
+// });
+
+document.addEventListener('DOMContentLoaded', () => {
+    const cards = document.querySelectorAll('.request-card');
+
+    cards.forEach((card, index) => {
+        const percentageText = card.querySelector('.percentage')?.textContent.trim();
+        const percentage = parseInt(percentageText?.replace('%', ''), 10) || 0;
+
+        // Check if a progress bar already exists; if not, create one
+        let progressBar = card.querySelector('.progress-bar');
+        if (!progressBar) {
+            progressBar = document.createElement('div');
+            progressBar.classList.add('progress-bar');
+            progressBar.style.width = '0'; // Start from 0 width
+            card.appendChild(progressBar);
         }
-    });
-}
-function animateSequentially(index = 0) {
-    if (index >= requestsData.length) return;
 
-    const item = requestsData[index];
-    const segmentElement = document.getElementById(item.elementId);
-
-    if (segmentElement) {
-        segmentElement.style.width = '0';
+        // Animate sequentially with a delay
         setTimeout(() => {
-            segmentElement.style.width = `${item.percentage}%`;
-            setTimeout(() => {
-                animateSequentially(index + 1);
-            }, 1600);
-        }, 100);
-    }
-}
-
-document.addEventListener("DOMContentLoaded", () => {
-    showPercentages();
-    animateSequentially();
+            progressBar.style.width = `${percentage}%`;
+        }, index * 1600); // 1.6s delay between each
+    });
 });
+
 // SIDE BAR SUBMENU 
 document.addEventListener("DOMContentLoaded", () => {
     const subMenus = document.querySelectorAll(".isSubMenu");
