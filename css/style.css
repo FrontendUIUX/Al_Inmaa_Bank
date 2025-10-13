@@ -375,10 +375,10 @@ html body .requestsTile .card {
 html body .requestsTile .card .card-header{
     background-color:transparent;
     border: 0;
-    padding: 0.9rem 2rem 0;
+    padding: 0.9rem 1rem 0;
 }
 html body .requestsTile .card .card-body{
-    padding: 0rem 2rem 1rem;
+    padding: 0rem 1rem 1rem;
     border:none!important;
 }
 h2 {
@@ -989,6 +989,12 @@ table.table{
     background-color: rgb(241, 241, 241);
 }
 @media(min-width:992px){
+    html body .requestsTile .card .card-header{
+    padding: 0.9rem 2rem 0;
+}
+    html body .requestsTile .card .card-body{
+    padding: 0rem 2rem 1rem;
+}
      thead th {
    
     background-color: var(--Table-header) !important;
