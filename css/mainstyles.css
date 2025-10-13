@@ -544,6 +544,10 @@ html:not(.designer) body.theme-entry{
     padding-top:8rem;
     /* height: 100%; */
 }
+.mobile .theme-entry{
+padding-left:1rem;
+padding-right:1rem;
+}
 html.mobile:not(.designer){
 	padding-top: 8rem;
 }
