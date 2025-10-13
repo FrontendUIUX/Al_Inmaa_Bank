@@ -375,7 +375,8 @@ span[name*="s_textarea"]:has(textarea[readonly]).editor-cell.lastrow,
   border: 1px solid rgb(57 94 117 / 60%)!important;
   pointer-events: none;
 }
-span[name*="s_dropdown"]:has(.select-box.read-only) {
+span[name*="s_dropdown"]:has(.select-box.read-only),
+span[name*="s_dropdown"]:has(.select-box.disabled){
   background-color: #F9F0EB !important;
   border: 1px solid rgba(57, 94, 117, 0.6) !important;
   pointer-events: none;
