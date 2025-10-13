@@ -22,7 +22,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <ul class="links">
                     <li>
                         <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg" alt=""></div>
-                        <a href="#">Dashboard</a>
+                        <a href="/Runtime/Form/UserDashboard/">Dashboard</a>
                     </li>
                     <li class="active">
                         <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg" alt=""></div>
