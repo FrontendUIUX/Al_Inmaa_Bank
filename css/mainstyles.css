@@ -343,6 +343,18 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     padding: 0!important;
     top: 1.4rem;
 }
+
+[name*="s_dropdown"]  a.styling-font {
+    position:absolute!important;
+    z-index:0!important;
+    width: calc(100% - 2rem)!important;
+    border:0!important;
+    background-color:transparent!important;
+    height: 2rem!important;
+    min-height: 2rem!important;
+    padding: 0!important;
+    top: -0.5rem;
+}
 [name*="s_textarea"] textarea{
     position:absolute!important;
     z-index:0!important;
@@ -878,7 +890,7 @@ span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"],
 span[name*="s_dropdown"]:has(.select-box.disabled) [name*="s_label"]{
         color: rgb(57 94 117 / 70%) !important;
         font-size: .8rem !important;
-        transform: translateY(-1.6rem);
+        transform: translateY(-1.4rem);
         padding: 0 !important;
 }
 span[name*="s_dropdown"]:has(.select-box.disabled) input {
