@@ -437,6 +437,7 @@ h2 {
     display: flex;
     font-family: var(--Alinma-plain)!important;
     /* Two columns */
+    font-size: 1rem;
     border-radius: 1rem;
     overflow: hidden;
     border: 1px solid rgb(0 0 0 /10%);
