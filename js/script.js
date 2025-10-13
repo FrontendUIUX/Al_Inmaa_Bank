@@ -550,26 +550,76 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
 // });
 
 document.addEventListener('DOMContentLoaded', () => {
-    const cards = document.querySelectorAll('.request-card');
+    // 1. Create and append the progress bar container with 4 segments
+    const progressBarContainer = document.createElement('div');
+    progressBarContainer.className = 'progress-bar-container';
+    progressBarContainer.id = 'progress-bar-container';
 
-    cards.forEach((card, index) => {
-        const percentageText = card.querySelector('.percentage')?.textContent.trim();
-        const percentage = parseInt(percentageText?.replace('%', ''), 10) || 0;
+    progressBarContainer.innerHTML = `
+        <div class="request-progress-zone marketing-request progress-segment" id="marketing-request"></div>
+        <div class="request-progress-zone request-a-study progress-segment" id="request-a-study"></div>
+        <div class="request-progress-zone branch-visit-notes progress-segment" id="branch-visit-notes"></div>
+        <div class="request-progress-zone other progress-segment" id="other"></div>
+    `;
 
-        // Check if a progress bar already exists; if not, create one
-        let progressBar = card.querySelector('.progress-bar');
-        if (!progressBar) {
-            progressBar = document.createElement('div');
-            progressBar.classList.add('progress-bar');
-            progressBar.style.width = '0'; // Start from 0 width
-            card.appendChild(progressBar);
+    // Append it after the request cards container
+    const requestCardsContainer = document.querySelector('.request-cards');
+    if (requestCardsContainer && requestCardsContainer.parentNode) {
+        requestCardsContainer.parentNode.appendChild(progressBarContainer);
+    }
+
+    // 2. Map request segments to their corresponding card labels
+    const segmentMap = {
+        'Marketing Request': 'marketing-request',
+        'HR': 'request-a-study',
+        'Accounting': 'branch-visit-notes',
+        'Other': 'other'
+    };
+
+    // 3. Collect percentage values from the request cards
+    const percentages = {};
+    const requestCards = document.querySelectorAll('.request-card');
+
+    requestCards.forEach(card => {
+        const label = card.querySelector('.request-name span')?.textContent.trim();
+        const percentText = card.querySelector('.percentage')?.textContent.trim();
+        const percentValue = parseInt(percentText?.replace('%', ''), 10) || 0;
+
+        const segmentId = segmentMap[label];
+        if (segmentId) {
+            percentages[segmentId] = percentValue;
         }
-
-        // Animate sequentially with a delay
-        setTimeout(() => {
-            progressBar.style.width = `${percentage}%`;
-        }, index * 1600); // 1.6s delay between each
     });
+
+    // 4. Animate each progress segment sequentially
+    const segmentIdsInOrder = ['marketing-request', 'request-a-study', 'branch-visit-notes', 'other'];
+
+    function animateSegment(index = 0) {
+        if (index >= segmentIdsInOrder.length) return;
+
+        const segmentId = segmentIdsInOrder[index];
+        const segmentElement = document.getElementById(segmentId);
+        const percentValue = percentages[segmentId] || 0;
+
+        if (segmentElement) {
+            segmentElement.style.width = '0'; // Reset width before animating
+            setTimeout(() => {
+                segmentElement.style.transition = 'width 1.5s ease';
+                segmentElement.style.width = `${percentValue}%`;
+
+                // Move to next after delay
+                setTimeout(() => {
+                    animateSegment(index + 1);
+                }, 1600);
+            }, 100);
+        } else {
+            // Skip if element doesn't exist
+            animateSegment(index + 1);
+        }
+    }
+
+    // Start animation
+    animateSegment();
 });
 
 // SIDE BAR SUBMENU 
