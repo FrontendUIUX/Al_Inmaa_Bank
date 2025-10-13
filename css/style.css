@@ -358,11 +358,12 @@ html body .kpiCards .card .card-body .kpiName {
 }
 
 html body .requestsTile {
-    padding-right: 1rem;
+    /* padding-right: 1rem; */
     opacity: 0;
     transform: translateY(100%);
     animation: 1s fadeUp forwards;
     width: 100%;
+    margin-bottom:1rem;
 }
 
 html body .requestsTile .card {
@@ -676,8 +677,7 @@ table td .editRow a::before{
  thead th {
     border: none;
     padding: 0.8rem 0rem !important;
-   
-    background-color: var(--Table-header)!important;
+    background-color: rgb(244 231 219) !important;
     color: #002134!important;
 }
  thead th span{
@@ -989,6 +989,11 @@ table.table{
     background-color: rgb(241, 241, 241);
 }
 @media(min-width:992px){
+     thead th {
+   
+    background-color: var(--Table-header) !important;
+    
+}
     html:not(.designer) body {
     font-size: 16px;
     font-family: var(--Alinma-plain);
