@@ -528,7 +528,7 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     background-color: #f9f2ed;
     z-index: 1;
     padding: 1rem;
-    height: 8rem;
+    height: 11rem;
     display: flex;
     /* flex-direction: column-reverse; */
     /* align-items: center; */
@@ -562,6 +562,7 @@ html:not(.designer) .theme-entry span[name*="PageTitle"]{
     font-family: var(--Alinma-bold)!important;
     padding-bottom: unset!important;
     color: #002134!important;
+    margin-top: 2rem;
 }
 html:not(.designer) .theme-entry [name*="PageDesc"]{
     font-size: 1rem;
@@ -861,9 +862,16 @@ html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td{
 	padding:0!important;
 }
 @media(min-width:992px){
+	html:not(.designer) body.theme-entry {
+    padding-top: 0rem;
+}
+	html:not(.designer) .theme-entry span[name*="PageTitle"]{
+		margin:0;
+	}
 	html:not(.designer) .theme-entry [name*="s_header"] {
     left:22rem;
     width: calc(100% - 22rem);
     flex-direction: row;
+    height: 8rem;
 }
 }
