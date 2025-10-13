@@ -511,7 +511,11 @@ h2 {
     cursor: pointer;
 }
 [name="headerLogo"]{
-    height: 4.4rem!important;
+   width: 11rem;
+   height: 4rem!important;
+   position: absolute;
+   right: 1rem;
+   top: 1rem;
 }
 [name="headerLogo"] img{
     height:100%;

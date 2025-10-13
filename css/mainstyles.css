@@ -527,9 +527,10 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     width: 100%;
     background-color: #f9f2ed;
     z-index: 1;
-    padding: 1rem 3rem;
+    padding: 1rem;
     height: 8rem;
     display: flex;
+    flex-direction: column-reverse;
     align-items: center;
     justify-content: space-between;
     opacity:0;
