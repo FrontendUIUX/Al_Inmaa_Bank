@@ -512,25 +512,25 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
 
 
 //// comments section 
-document.addEventListener("DOMContentLoaded", function () {
-    // Check if the sticky header already exists
-    let commentsSection = document.getElementById('commentsSection');
+// document.addEventListener("DOMContentLoaded", function () {
+//     // Check if the sticky header already exists
+//     let commentsSection = document.getElementById('commentsSection');
  
-    if (!commentsSection) {
-        // Create the sticky header container
-        commentsSection = document.createElement('div');
-        commentsSection.id = 'commentsSection';
-        document.body.prepend(commentsSection);
-    }
+//     if (!commentsSection) {
+//         // Create the sticky header container
+//         commentsSection = document.createElement('div');
+//         commentsSection.id = 'commentsSection';
+//         document.body.prepend(commentsSection);
+//     }
  
-    // Select elements to move
-    let commentsView = document.querySelector('[name*="commentsSection"]');
+//     // Select elements to move
+//     let commentsView = document.querySelector('[name*="commentsSection"]');
  
-    // Move elements inside the sticky header in order
-    if (commentsSection) {
-        commentsSection.appendChild(commentsView);
-    }
-});
+//     // Move elements inside the sticky header in order
+//     if (commentsSection) {
+//         commentsSection.appendChild(commentsView);
+//     }
+// });
 //////////////// end of k2 scripts
 
 
