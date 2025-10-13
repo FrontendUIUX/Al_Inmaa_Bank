@@ -886,11 +886,27 @@ span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]
 span[name*="s_dropdown"]:has(.select-box.disabled) input {
         color: rgb(57 94 117 / 85%) !important;
 }
+.theme-entry .input-control.checkbox .svg-checkbox-box{
+	rx:3;
+	ry:3;
+	stroke: #EAD1C2!important;
+	fill: #F6E2D5!important;
+}
 .theme-entry .input-control.checkbox.style-aware.read-only .svg-checkbox-box{
     stroke:var(--Navy-blue-low-opacity);
     fill:#F9F0EB;
     rx:3;
     ry:3;
+}
+.theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked{
+	fill:#37C759!important;
+	height:.8rem;
+	width:.8rem;
+}
+.theme-entry .input-control.checkbox.style-aware.read-only .svg-checkbox-checked{
+	fill:var(--Navy-blue-low-opacity)!important;
+	height:.8rem;
+	width:.8rem;
 }
 @media(min-width:992px){
 	    html body .requestsTile {
