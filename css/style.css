@@ -1223,6 +1223,21 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
     transform: rotate(180deg);
     
 }
+.theme-entry .SourceCodeFormsControlsWorklist .headerTxt{
+    color:var(--Navy-blue)!important;
+    font-size:1.5rem!important;
+    font-family:var(--Alinma-bold);
+}
+.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist{
+    border-radius:1rem;
+    border: 2px solid rgb(215 214 213) !important;
+    overflow:hidden!important;
+}
+.theme-entry .SourceCodeFormsControlsWorklist .nav{
+    padding:.5rem 0;
+    background-color:transparent!important;
+}
+.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist .SourceCodeFormsControlsWorklist{background:transparent;border: none;}
 /**/
 
 .innerpanel div[name="MarketingAttachments Area Item"]{

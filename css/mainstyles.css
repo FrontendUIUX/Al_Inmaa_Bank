@@ -1031,7 +1031,7 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
         padding-right: 1rem;
     }
 	html:not(.designer) body.theme-entry {
-    padding-top: 6rem;
+    padding-top: 8rem;
 }
 	html:not(.designer) .theme-entry span[name*="PageTitle"]{
 		margin:0;
@@ -1041,7 +1041,7 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
     width: calc(100% - 22rem);
     flex-direction: row;
     justify-content: space-between!important;
-    height: 8rem;
+    height: 8rem!important;
     padding: 1rem 3rem;
 }
 }
