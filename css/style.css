@@ -1292,6 +1292,11 @@ html:not(.designer) .commentsAttachments {
     overflow: hidden;
     border: 1.6px solid #e5e4de;
 }
+[name="NR_MarketingRequest_Form_Stage Area Item  view_move_left"]{
+     width:calc(100% - 28rem)!important;
+    margin-top:1rem;
+
+}
 .pageOf span{
     color: var(--Navy-blue);
     font-size: .9rem;
