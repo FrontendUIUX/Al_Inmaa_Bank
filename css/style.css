@@ -717,9 +717,9 @@ table td .editRow a::before{
        thead tr th:last-child span{
       border-right: unset;
 }
- thead th {
+ .table thead th {
     border: none;
-    padding: 1rem 0rem !important;
+    padding: 1rem 1rem!important;
     background-color: rgb(244 231 219) !important;
     color: #002134!important;
 }
