@@ -12,10 +12,7 @@ document.addEventListener("DOMContentLoaded", function() {
         // Append it after the .form div
         formDiv.insertAdjacentElement("afterend", divToMove);
     }
-});
-document.addEventListener("DOMContentLoaded", function () {
-    // Wait for the comments section to exist
-    const interval = setInterval(function () {
+     const interval = setInterval(function () {
         const commentsSection = document.querySelector("#commentsSection"); // replace with the actual comments section ID or selector
         if (commentsSection) {
             clearInterval(interval);
@@ -32,8 +29,9 @@ document.addEventListener("DOMContentLoaded", function () {
             // Insert after comments
             commentsSection.insertAdjacentHTML("afterend", attachmentHTML);
         }
-    }, 100); // check every 100ms until comments section exists
+    }, 1000); // check every 100ms until comments section exists
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
