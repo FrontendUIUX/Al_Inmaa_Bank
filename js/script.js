@@ -1,20 +1,22 @@
 document.addEventListener("DOMContentLoaded", () => {
-   setTimeout(function () {
+    setTimeout(function () {
         try {
-            // Get user info (example: from K2 SourceCode object)
-            const fqn = SourceCode.Forms.Settings.User.FQN; 
+            // ===== Get user info from K2 SourceCode object =====
+            const fqn = SourceCode.Forms.Settings.User.FQN;
             const userName = fqn.split("\\").pop();
 
-             // Get department text from the form label
+            // ===== Get department text from form label =====
             const departmentEl = document.querySelector("[name='User_Department_DataLabel']");
             const department = departmentEl ? departmentEl.textContent.trim() : "Unknown Department";
-    // Append the sidebar + modals + subPanel HTML into body
-    document.body.insertAdjacentHTML("beforeend", `
+
+            // ===== Append sidebar, modals & overlay to body =====
+            document.body.insertAdjacentHTML("beforeend", `
     <aside class="sidebar">
         <div class="userSettings d-flex align-items-center">
             <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
                 <div class="userProfilePhoto">
-                    <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" alt="${userName}" class="profilePhoto">
+                    <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" 
+                         alt="${userName}" class="profilePhoto">
                 </div>
                 <div class="userInformations d-flex flex-column">
                     <span class="username">${userName}</span>
@@ -46,7 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="sidebarCategory">
                 <h6 class="categoryName">Departments</h6>
                 <ul class="links">
-                    <li><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg" alt="Retail & Digital Banking"></div><a href="">Retail & Digital Banking</a></li>
+                    <li><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg" alt=""></div><a href="">Retail & Digital Banking</a></li>
                     <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg" alt=""></div><a href="">Marketing & Corporate</a></li>
                     <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg" alt=""></div><a href="">Shariah</a></li>
                     <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg" alt=""></div><a href="">Information Technology</a></li>
@@ -67,6 +69,9 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         </div>
     </aside>
+
+    <!-- Overlay shadow -->
+    <div class="overlayShadow" style="display:none;"></div>
 
     <!-- NOTIFICATION POPUP -->
     <div class="modal notification-modal" id="notificationModal" tabindex="-1" aria-hidden="true">
@@ -93,8 +98,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     <div class="user-modal-header">
                         <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" alt="">
                         <div class="name-email">
-                            <p class="userNAME">Ibrahim</p>
-                            <p class="user-mail">ibrahim_ksa64@gmail.com</p>
+                            <p class="userNAME">${userName}</p>
+                            <p class="user-mail">${userName.toLowerCase()}@example.com</p>
                         </div>
                     </div>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
@@ -125,101 +130,104 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </aside>
     `);
+
             console.log("Logged-in User FQN:", fqn);
             console.log("Extracted Username:", userName);
             console.log("Extracted Department:", department);
+
+            // ====== SIDEBAR INTERACTIVITY ======
+            const subMenus = document.querySelectorAll(".isSubMenu");
+            const subPanel = document.querySelector(".subPanel");
+            const subPanelList = subPanel.querySelector(".subPanelBody ul");
+            const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
+            const overlayShadow = document.querySelector(".overlayShadow");
+            const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
+
+            const submenuLinks = {
+                "Reports & Analytics": [
+                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
+                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
+                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
+                ],
+                "Retail & Digital Banking": [
+                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
+                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
+                ],
+                "Marketing & Corporate": [
+                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
+                ],
+                "Shariah": [],
+                "Information Technology": [],
+                "Operations": [],
+                "Facilities Management": [],
+                "Human Capital": [],
+                "Risk Management": []
+            };
+
+            function renderSubLinks(title) {
+                subPanelList.innerHTML = "";
+                if (submenuLinks[title] && submenuLinks[title].length > 0) {
+                    submenuLinks[title].forEach(link => {
+                        const li = document.createElement("li");
+                        li.innerHTML = `
+                            <div class="icon"><img src="${link.icon}" alt=""></div>
+                            <a href="${link.url}">${link.text}</a> 
+                        `;
+                        subPanelList.appendChild(li);
+                    });
+                    return true;
+                }
+                return false;
+            }
+
+            function updateOverlay() {
+                const hasActivePanel = document.querySelector(".subPanel.active");
+                if (overlayShadow) {
+                    overlayShadow.style.display = hasActivePanel ? "block" : "none";
+                }
+            }
+
+            subMenus.forEach(menu => {
+                menu.addEventListener("click", e => {
+                    e.preventDefault();
+                    const title = menu.querySelector("a").innerText.trim();
+
+                    if (!submenuLinks[title] || submenuLinks[title].length === 0) {
+                        subPanel.classList.remove("active");
+                        updateOverlay();
+                        return;
+                    }
+
+                    subPanelTitle.textContent = title;
+
+                    if (subPanel.classList.contains("active")) {
+                        subPanel.classList.remove("active");
+                        setTimeout(() => {
+                            renderSubLinks(title);
+                            subPanel.classList.add("active");
+                            updateOverlay();
+                        }, 300);
+                    } else {
+                        renderSubLinks(title);
+                        subPanel.classList.add("active");
+                        updateOverlay();
+                    }
+                });
+            });
+
+            if (closeSubpanelBtn) {
+                closeSubpanelBtn.addEventListener("click", function () {
+                    subPanel.classList.remove("active");
+                    updateOverlay();
+                });
+            }
 
         } catch (e) {
             console.error("Error retrieving FQN:", e);
         }
     }, 1000);
-    // ==== SIDEBAR INTERACTIVITY ====
-    const subMenus = document.querySelectorAll(".isSubMenu");
-    const subPanel = document.querySelector(".subPanel");
-    const subPanelList = subPanel.querySelector(".subPanelBody ul");
-    const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
-    const overlayShadow = document.querySelector(".overlayShadow");
-    const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
-
-    const submenuLinks = {
-        "Reports & Analytics": [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
-        ],
-        "Retail & Digital Banking": [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
-        ],
-        "Marketing & Corporate": [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
-        ],
-        "Shariah": [],
-        "Information Technology": [],
-        "Operations": [],
-        "Facilities Management": [],
-        "Human Capital": [],
-        "Risk Management": []
-    };
-
-    function renderSubLinks(title) {
-        subPanelList.innerHTML = "";
-        if (submenuLinks[title] && submenuLinks[title].length > 0) {
-            submenuLinks[title].forEach(link => {
-                const li = document.createElement("li");
-                li.innerHTML =`
-                    <div class="icon"><img src="\${link.icon}" alt=""></div>
-                    <a href="\${link.url}">\${link.text}</a> 
-                `;
-                subPanelList.appendChild(li);
-            });
-            return true; 
-        }
-        return false;
-    }
-
-    function updateOverlay() {
-        const hasActivePanel = document.querySelector(".subPanel.active");
-        if (overlayShadow) {
-            overlayShadow.style.display = hasActivePanel ? "block" : "none";
-        }
-    }
-
-    subMenus.forEach(menu => {
-        menu.addEventListener("click", e => {
-            e.preventDefault();
-            const title = menu.querySelector("a").innerText.trim();
-
-            if (!submenuLinks[title] || submenuLinks[title].length === 0) {
-                subPanel.classList.remove("active");
-                updateOverlay();
-                return;
-            }
-
-            subPanelTitle.textContent = title;
-
-            if (subPanel.classList.contains("active")) {
-                subPanel.classList.remove("active");
-                setTimeout(() => {
-                    renderSubLinks(title);
-                    subPanel.classList.add("active");
-                    updateOverlay();
-                }, 1000);
-            } else {
-                renderSubLinks(title);
-                subPanel.classList.add("active");
-                updateOverlay();
-            }
-        });
-    });
-
-    if (closeSubpanelBtn) {
-        closeSubpanelBtn.addEventListener("click", function(){
-            subPanel.classList.remove("active");
-            updateOverlay();
-        });
-    }
 });
+
 document.querySelectorAll(".sidebar .links li a").forEach(link => {
     const href = link.getAttribute("href");
     if (!href || href.trim() === "" || href === "#") {
