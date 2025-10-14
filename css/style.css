@@ -110,6 +110,13 @@ html body .sideBarLinksGroup .sidebarCategory:last-child .categoryName{
     font-size: 1.05rem;
     color: var(--Navy-blue);
 }
+.sideBarLinksGroup a.disabled{
+    color:var(--Navy-blue-low-opacity)!important;
+    pointer-events:none!important;
+}
+li.isSubMenu:has(a.disabled)::after{
+    display:none
+}
 .sideBarLinksGroup .links{
     margin-bottom: unset;
 }
