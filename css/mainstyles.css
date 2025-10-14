@@ -1019,7 +1019,7 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
         padding-right: 1rem;
     }
 	html:not(.designer) body.theme-entry {
-    padding-top: 8rem;
+    padding-top: 6rem;
 }
 	html:not(.designer) .theme-entry span[name*="PageTitle"]{
 		margin:0;
