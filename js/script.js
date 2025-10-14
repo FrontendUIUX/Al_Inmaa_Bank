@@ -531,6 +531,24 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
 //         commentsSection.appendChild(commentsView);
 //     }
 // });
+ var fqn = null;
+    // Menu items
+
+   
+
+    $(document).ready(function () {
+        setTimeout(function () {
+            try {
+                fqn = SourceCode.Forms.Settings.User.FQN;
+                console.log("Logged-in User FQN:" + fqn);
+               
+
+            } catch (e) {
+                console.error("Error retrieving FQN:", e);
+            }
+        }, 1000);
+    });
+
 //////////////// end of k2 scripts
 
 
