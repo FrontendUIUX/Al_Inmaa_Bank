@@ -589,6 +589,7 @@ html:not(.designer) [name*="view_move_right"]{
     width: calc(100% - 22rem)!important;
     height: unset;
     min-height: unset;
+    margin-bottom: 1rem;
 }
 html:not(.designer) .theme-entry span[name*="PageTitle"]{
     font-size: 1.6rem!important;
