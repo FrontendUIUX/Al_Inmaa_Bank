@@ -1038,6 +1038,7 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     top: 8rem;
     background-color: var(--Isabelline);
     height: 100%;
+    width: 25rem;
 }
 
 .status-title {
@@ -1092,9 +1093,10 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     margin-bottom: 0.3rem;
 }
 .status-name {
-    font-size: 1.25rem;
-    color: #1a3a52;
-    margin: 0;
+    font-size: 1.25rem!important;
+    color: #1a3a52!important;
+    margin: 0!important;
+    font-family: var(--Alinma-bold);
 }
 .status-date {
     font-size: 1rem;
@@ -1102,22 +1104,25 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     display: flex;
     align-items: center;
     gap: 0.625rem;
+    font-family: var(--Alinma-plain);
 }
 .status-state {
     color: #666;
     font-size: 1rem;
+    font-family: var(--Alinma-plain);
 }
 .status-message {
     background-color: #FDFAF8;
     border: 1px solid #e5e5e5;
     border-radius: 0.75rem;
     padding: 0.75rem;
-    margin-top: 1rem;
+    margin-top: 1rem!important;
     color: #666;
     font-size: 1rem;
     line-height: 1.6;
     transition: .3s all ease;
     overflow: hidden;
+    font-family: var(--Alinma-plain);
 }
 
 @keyframes fadeDown {
