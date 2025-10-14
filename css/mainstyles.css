@@ -788,9 +788,11 @@ html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>
     height: 5rem;
 }
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers{
-    /* margin:0 1rem!important; */
-    border-radius:.5rem;
+    border-radius: .5rem!important;
     background-color:#f8efe8!important;
+    overflow: hidden;
+    border: none!important;
+    padding: 0 1rem;
 }
 html:not(.designer) [name*="attachmentSection"]{
     border: 1px solid rgb(0 0 0 / 10%)!important;
