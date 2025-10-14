@@ -997,7 +997,7 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
     left:22rem;
     width: calc(100% - 22rem);
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-between!important;
     height: 8rem;
     padding: 1rem 3rem;
 }
