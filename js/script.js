@@ -11,8 +11,8 @@ document.addEventListener("DOMContentLoaded", function() {
             const wrapper = document.createElement("div");
             wrapper.classList.add("commentsAttachements");
 
-            // Insert wrapper after comments section
-            commentsDiv.insertAdjacentElement("afterend", wrapper);
+            // Insert wrapper before comments section
+            commentsDiv.parentNode.insertBefore(wrapper, commentsDiv);
 
             // Move both comments and attachment inside wrapper
             wrapper.appendChild(commentsDiv);
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, 200);
 });
+
 
 
 
