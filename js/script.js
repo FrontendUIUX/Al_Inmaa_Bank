@@ -13,7 +13,7 @@ document.addEventListener("DOMContentLoaded", function() {
         formDiv.insertAdjacentElement("afterend", divToMove);
     }
      const interval = setInterval(function () {
-        const commentsSection = document.querySelector("#commentsSection"); // replace with the actual comments section ID or selector
+        const commentsSection = document.querySelector("[name*='commentsView']"); // replace with the actual comments section ID or selector
         if (commentsSection) {
             clearInterval(interval);
 
