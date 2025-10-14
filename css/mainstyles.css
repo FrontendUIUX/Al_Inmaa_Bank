@@ -45,6 +45,9 @@ html:not(.designer),:not(.designer) body{
 	padding-bottom: unset!important;
 	font-size:1.4rem;
 }
+[name*="attachmentSection"] [name*="viewTitle"]{
+	margin: 0.4rem 0 0;
+}
 /* VIEW TITLE END */
 /*  POPUPS ICONS */
 html:not(.designer) .theme-entry .message-box-content.confirmation:before,
