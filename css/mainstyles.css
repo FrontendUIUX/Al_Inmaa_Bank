@@ -783,6 +783,14 @@ html:not(.designer) .input-control.style-aware.radio.checked circle.svg-radio-bt
     fill: var(--Purple)!important;
     r:8;
 }
+html:not(.designer) .input-control.style-aware.radio.checked.read-only circle.svg-radio-btn-checked {
+    fill: rgba(57, 94, 117, 0.6)!important;
+    r:4;
+}
+html:not(.designer) .theme-entry .input-control.radio.style-aware.read-only svg .svg-radio-btn-circle {
+	fill:var(--Isabelline)!important;
+	stroke: rgba(57, 94, 117, 0.6)!important;;
+}
 html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text{
 	max-width:unset!important;
 	min-height:unset!important;
