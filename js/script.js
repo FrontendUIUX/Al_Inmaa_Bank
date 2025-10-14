@@ -31,10 +31,18 @@ document.addEventListener("DOMContentLoaded", function() {
                         btn.classList.add("disabled");
                     }
                 });
+
+                // --- Append the extra section below wrapper ---
+                const extraSectionId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73";
+                const extraSection = document.getElementById(extraSectionId);
+                if (extraSection) {
+                    wrapper.insertAdjacentElement("afterend", extraSection);
+                }
             }
         }, 200); // Check every 200ms until attachment exists
     }
 });
+
 
 
 
