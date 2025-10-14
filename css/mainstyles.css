@@ -987,6 +987,10 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
         font-family:var(--Alinma-plain);
         font-size:1.05rem;
 }
+.file-delete {
+    margin-right: 1rem;
+    margin-top: 1rem;
+}
 @media(min-width:992px){
 	    html body .requestsTile {
         flex: 0 0 auto;
