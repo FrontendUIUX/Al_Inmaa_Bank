@@ -68,11 +68,11 @@ document.addEventListener("DOMContentLoaded", () => {
               icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/report-and-analytics.svg",
               name: "Reports & Analytics",
               url: "#",
-              children: [
-                { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Marketing Dashboard", url: "#" },
-                { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Communication Dashboard", url: "#" },
-                { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Information Technology Dashboard", url: "#" }
-              ]
+              // children: [
+              //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Marketing Dashboard", url: "#" },
+              //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Communication Dashboard", url: "#" },
+              //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Information Technology Dashboard", url: "#" }
+              // ]
             }
           ]
         },
@@ -80,7 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
           category: "Departments",
           links: [
             { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg", name: "Retail & Digital Banking", url: "#", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/", children: [] },
             { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg", name: "Shariah", url: "#", children: [] },
             { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg", name: "Information Technology", url: "#", children: [] },
             { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Operations.svg", name: "Operations", url: "#", children: [] },
