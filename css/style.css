@@ -114,7 +114,7 @@ html body .sideBarLinksGroup .sidebarCategory:last-child .categoryName{
     color:var(--Navy-blue-low-opacity)!important;
     pointer-events:none!important;
 }
-li.isSubMenu:has(a.disabled)::after{
+li.noSubChildren::after{
     display:none
 }
 .sideBarLinksGroup .links{
