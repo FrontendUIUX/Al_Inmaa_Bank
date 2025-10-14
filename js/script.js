@@ -7,11 +7,11 @@ document.addEventListener("DOMContentLoaded", function() {
         if (attachmentDiv && commentsDiv) {
             clearInterval(interval);
 
-            // Create a wrapper div
+            // Create a wrapper div outside .form
             const wrapper = document.createElement("div");
             wrapper.classList.add("commentsAttachements");
 
-            // Insert wrapper before comments section
+            // Insert wrapper before comments section in the DOM
             commentsDiv.parentNode.insertBefore(wrapper, commentsDiv);
 
             // Move both comments and attachment inside wrapper
@@ -31,6 +31,7 @@ document.addEventListener("DOMContentLoaded", function() {
         }
     }, 200);
 });
+
 
 
 
