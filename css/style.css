@@ -747,7 +747,7 @@ table td .editRow a::before{
     text-decoration: underline;
 }
 .status span{
-    padding: 0.4rem 1rem!important;
+    padding: 0.4rem .1rem!important;
     border-radius: 0.5rem;
     font-weight: 500;
     width: 6rem;
