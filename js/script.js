@@ -1,34 +1,41 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // --- Move the div after the .form div ---
+    // --- Get the comments div and form div ---
     const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
     const formDiv = document.querySelector(".form");
 
     if (divToMove && formDiv) {
-        formDiv.insertAdjacentElement("afterend", divToMove);
-    }
+        // Create a wrapper for comments + attachments
+        const wrapper = document.createElement("div");
+        wrapper.className = "commentsAttachments";
 
-    // --- Wait until the attachment div exists, then move it ---
-    const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
-    const interval = setInterval(function () {
-        const attachmentDiv = document.getElementById(attachmentId);
-        if (attachmentDiv) {
-            clearInterval(interval);
+        // Insert wrapper after form
+        formDiv.insertAdjacentElement("afterend", wrapper);
 
-            // Move it after the comments/divToMove
-            if (divToMove) {
-                divToMove.insertAdjacentElement("afterend", attachmentDiv);
+        // Move the comments div inside the wrapper
+        wrapper.appendChild(divToMove);
+
+        // --- Wait for the attachment div ---
+        const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
+        const interval = setInterval(function () {
+            const attachmentDiv = document.getElementById(attachmentId);
+            if (attachmentDiv) {
+                clearInterval(interval);
+
+                // Move attachment inside the same wrapper
+                wrapper.appendChild(attachmentDiv);
+
+                // Disable toolbar buttons if href is empty or '#'
+                const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
+                toolbarButtons.forEach(btn => {
+                    if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
+                        btn.classList.add("disabled");
+                    }
+                });
             }
-
-            // Disable toolbar buttons if href is empty or '#'
-            const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
-            toolbarButtons.forEach(btn => {
-                if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
-                    btn.classList.add("disabled");
-                }
-            });
-        }
-    }, 200); // Check every 200ms until attachment exists
+        }, 200); // Check every 200ms until attachment exists
+    }
 });
+
 
 
 document.addEventListener("DOMContentLoaded", () => {
