@@ -893,6 +893,7 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
 }
 .theme-entry .file-wrapper.uploaded{
     border: none!important;
+    padding: 0 1rem;
 }
 [name*="attachmentSection"] table.grid-content-table>tbody>tr>td, 
 [name*="attachmentSection"] table.grid-content-table>tr>td{
