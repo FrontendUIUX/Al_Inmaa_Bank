@@ -113,6 +113,7 @@ html body .sideBarLinksGroup .sidebarCategory:last-child .categoryName{
 .sideBarLinksGroup li:has(a.disabled){
     color:var(--Navy-blue-low-opacity)!important;
     pointer-events:none!important;
+    opacity: .7;
 }
 li.noSubChildren::after{
     display:none
