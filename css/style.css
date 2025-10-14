@@ -1044,8 +1044,10 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     display: flex!important;
     align-items: center!important;
     height: 3rem;
-    opacity:.7
+    opacity:.7;
     transition:all .3s ease-in-out;
+    border:none!important;
+    background-color:transparent!important;
 }
 html:not(.designer) body.theme-entry a.toolbar-button:hover{
     opacity:1;
