@@ -303,7 +303,7 @@ html body .kpiCards {
 
 html body .kpiCards .card {
     width: 13rem;
-    height: 8.3rem;
+    height: 8.5rem;
     border: 1px solid #E5E4DE;
     border-radius: 1rem;
     opacity: 0;
@@ -540,6 +540,7 @@ h2 {
     font-family: var(--Alinma-plain);
     animation: 1s fadeUp 1.5s forwards;
     margin-bottom: 2rem;
+    margin-top: .6rem;
 }
 .myRequestsTable th{
     font-weight: 400 !important;
@@ -586,7 +587,10 @@ svg.active path:nth-child(2) {
  .search-box input {
     padding-left: 2.5rem;
     border: 1px solid #ddd;
-    border-radius: 0.5rem;
+    border-radius: 0.6rem;
+    background-color: rgb(217 217 217 / 5%);
+    padding-top: .5rem;
+    padding-bottom: .5rem;
 }
  .search-box svg {
     position: absolute;
@@ -650,6 +654,7 @@ svg.active path:nth-child(2) {
     gap:.5rem;
     position: relative;
     padding-left: 2rem;
+    padding-left: 1.6rem;
 }
 th, td, thead, tbody{
 border:none;
@@ -731,16 +736,24 @@ table td .editRow a::before{
     gap: 0.3rem;
     margin-left: 0.5rem;
 }
+.myRequestsTable tbody td:last-child{
+    display: flex;
+    justify-content: center;
+}
+.myRequestsTable div:first-child{
+    margin-bottom: .5rem;
+}
  .request-number:hover {
     text-decoration: underline;
 }
 .status span{
-    padding: 0.3rem 1rem!important;
+    padding: 0.4rem 1rem!important;
     border-radius: 0.5rem;
     font-weight: 500;
     width: 6rem;
-    border: 1px solid var(--border-color);
+    border: 1px solid hwb(0deg 0% 100% / 6%);
     width: 100%;
+    font-family: var(--Alinma-bold);
     display: block;
     text-align: center;
 }
@@ -849,7 +862,7 @@ table td .editRow a::before{
     margin-bottom: 0;
     color: var(--text-color);
 }
-.statusColumn{
+.statusColumn, .myRequestsTable th:last-child{
     text-align: center;
 }
 th.service.sort span {
