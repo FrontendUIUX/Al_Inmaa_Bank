@@ -991,6 +991,12 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
     margin-right: 1rem;
     margin-top: 1rem;
 }
+.file-thumbnail, 
+.image-thumbnail,
+.file-tn-cell{
+    display:none!important;
+    padding:0!important;
+}
 @media(min-width:992px){
 	    html body .requestsTile {
         flex: 0 0 auto;
