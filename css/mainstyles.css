@@ -561,7 +561,7 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     left: 0;
     width: 100%;
     margin-top: 0!important;
-    background-color: hsl(25deg 50% 95.29% / 671.06%);
+    background-color: hsl(25deg 50% 95.29% / 67.06%);
     backdrop-filter: blur(30px);
     z-index: 1;
     padding: 1rem;
