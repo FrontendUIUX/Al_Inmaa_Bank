@@ -1,14 +1,19 @@
 document.addEventListener("DOMContentLoaded", () => {
+   setTimeout(function () {
+        try {
+            // Get user info (example: from K2 SourceCode object)
+            const fqn = SourceCode.Forms.Settings.User.FQN; 
+            const userName = fqn.split("\\").pop(); // Extract username part if FQN = DOMAIN\username
     // Append the sidebar + modals + subPanel HTML into body
     document.body.insertAdjacentHTML("beforeend", `
     <aside class="sidebar">
         <div class="userSettings d-flex align-items-center">
             <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
                 <div class="userProfilePhoto">
-                    <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" alt="Ibrahim K." class="profilePhoto">
+                    <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" alt="${userName}" class="profilePhoto">
                 </div>
                 <div class="userInformations d-flex flex-column">
-                    <span class="username">Ibrahim K.</span>
+                    <span class="username">${userName}</span>
                     <span class="userPosition">Marketing Department</span>
                 </div>
             </div>
@@ -116,7 +121,13 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </aside>
     `);
+ console.log("Logged-in User FQN:", fqn);
+            console.log("Extracted Username:", userName);
 
+        } catch (e) {
+            console.error("Error retrieving FQN:", e);
+        }
+    }, 1000);
     // ==== SIDEBAR INTERACTIVITY ====
     const subMenus = document.querySelectorAll(".isSubMenu");
     const subPanel = document.querySelector(".subPanel");
