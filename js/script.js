@@ -220,6 +220,12 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 });
+document.querySelectorAll(".sidebar .links li a").forEach(link => {
+    const href = link.getAttribute("href");
+    if (!href || href.trim() === "" || href === "#") {
+        link.closest("li").classList.add("disabled");
+    }
+});
 $(document).ready(function () {
   
   // Attach to ALL textboxes that are inside spans whose name contains "s_textbox"
