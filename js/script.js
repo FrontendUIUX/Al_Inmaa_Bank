@@ -1,40 +1,18 @@
-document.addEventListener("DOMContentLoaded", function() {
-    const commentsDiv = document.querySelector(".form"); // your comments section
-    const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
+document.addEventListener("DOMContentLoaded", function () {
+    // The div we want to move
+    const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
 
-    const interval = setInterval(function () {
-        const attachmentDiv = document.getElementById(attachmentId);
-        if (attachmentDiv && commentsDiv) {
-            clearInterval(interval);
+    // The comments section below which we want to place the div
+    const commentsSection = document.querySelector("#commentsSection"); // <-- replace with your actual comments section selector
 
-            // Create a wrapper div outside .form
-            const wrapper = document.createElement("div");
-            wrapper.classList.add("commentsAttachements");
+    if (divToMove && commentsSection) {
+        // Remove the div from current location
+        divToMove.remove();
 
-            // Insert wrapper before comments section in the DOM
-            commentsDiv.parentNode.insertBefore(wrapper, commentsDiv);
-
-            // Move both comments and attachment inside wrapper
-            wrapper.appendChild(commentsDiv);
-            wrapper.appendChild(attachmentDiv);
-
-            // Add class to attachment section
-            attachmentDiv.classList.add("moveatsection");
-
-            // Disable toolbar buttons if href is empty or '#'
-            const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
-            toolbarButtons.forEach(btn => {
-                if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
-                    btn.classList.add("disabled");
-                }
-            });
-        }
-    }, 200);
+        // Insert it right after the comments section
+        commentsSection.insertAdjacentElement("afterend", divToMove);
+    }
 });
-
-
-
-
 
 
 document.addEventListener("DOMContentLoaded", () => {
