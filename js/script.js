@@ -6,7 +6,7 @@ document.addEventListener("DOMContentLoaded", () => {
             const userName = fqn.split("\\").pop();
 
              // Get department text from the form label
-            const departmentEl = document.querySelector("#User_Department_DataLabel");
+            const departmentEl = document.querySelector("[name='User_Department_DataLabel']");
             const department = departmentEl ? departmentEl.textContent.trim() : "Unknown Department";
     // Append the sidebar + modals + subPanel HTML into body
     document.body.insertAdjacentHTML("beforeend", `
