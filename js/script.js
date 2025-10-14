@@ -13,6 +13,27 @@ document.addEventListener("DOMContentLoaded", function() {
         formDiv.insertAdjacentElement("afterend", divToMove);
     }
 });
+document.addEventListener("DOMContentLoaded", function () {
+    // Wait for the comments section to exist
+    const interval = setInterval(function () {
+        const commentsSection = document.querySelector("#commentsSection"); // replace with the actual comments section ID or selector
+        if (commentsSection) {
+            clearInterval(interval);
+
+            // Create a container for your attachments HTML
+            const attachmentHTML = `
+                <div id="c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1d_48ccda29-94f2-448b-bdee-389afebb2c9b" 
+                     class="visible grid bw enter-commits-behaviour without-header with-toolbar without-rownumbering without-summary without-aggregation without-footer" 
+                     style="width:100%;">
+                     <!-- toolbar and content here -->
+                </div>
+            `;
+
+            // Insert after comments
+            commentsSection.insertAdjacentHTML("afterend", attachmentHTML);
+        }
+    }, 100); // check every 100ms until comments section exists
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
