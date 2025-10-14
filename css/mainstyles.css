@@ -924,6 +924,9 @@ a.fileImage.static {
     font-size: 1.05rem;
     font-family: var(--Alinma-bold)!important;
     color: var(--Navy-blue)!important;
+    padding: 1rem 1.2rem!important;
+    width: 100%;
+    border-bottom: 1px solid rgb(0 0 0  / 15%);
 }
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"]{
 	background-color: #F9F0EB !important;
