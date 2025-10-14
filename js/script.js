@@ -3,7 +3,11 @@ document.addEventListener("DOMContentLoaded", () => {
         try {
             // Get user info (example: from K2 SourceCode object)
             const fqn = SourceCode.Forms.Settings.User.FQN; 
-            const userName = fqn.split("\\").pop(); // Extract username part if FQN = DOMAIN\username
+            const userName = fqn.split("\\").pop();
+
+             // Get department text from the form label
+            const departmentEl = document.querySelector("#User_Department_DataLabel");
+            const department = departmentEl ? departmentEl.textContent.trim() : "Unknown Department";
     // Append the sidebar + modals + subPanel HTML into body
     document.body.insertAdjacentHTML("beforeend", `
     <aside class="sidebar">
@@ -14,7 +18,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 </div>
                 <div class="userInformations d-flex flex-column">
                     <span class="username">${userName}</span>
-                    <span class="userPosition">Marketing Department</span>
+                    <span class="userPosition">${department}</span>
                 </div>
             </div>
             <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
@@ -121,8 +125,9 @@ document.addEventListener("DOMContentLoaded", () => {
         </div>
     </aside>
     `);
- console.log("Logged-in User FQN:", fqn);
+            console.log("Logged-in User FQN:", fqn);
             console.log("Extracted Username:", userName);
+            console.log("Extracted Department:", department);
 
         } catch (e) {
             console.error("Error retrieving FQN:", e);
