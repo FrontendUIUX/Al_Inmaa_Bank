@@ -536,18 +536,17 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
 
    
 
-    $(document).ready(function () {
-        setTimeout(function () {
-            try {
-                fqn = SourceCode.Forms.Settings.User.FQN;
-                console.log("Logged-in User FQN:" + fqn);
-               
+document.addEventListener("DOMContentLoaded", function () {
+    setTimeout(function () {
+        try {
+            const fqn = SourceCode.Forms.Settings.User.FQN;
+            console.log("Logged-in User FQN: " + fqn);
+        } catch (e) {
+            console.error("Error retrieving FQN:", e);
+        }
+    }, 1000);
+});
 
-            } catch (e) {
-                console.error("Error retrieving FQN:", e);
-            }
-        }, 1000);
-    });
 
 //////////////// end of k2 scripts
 

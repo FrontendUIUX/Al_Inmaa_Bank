@@ -1032,13 +1032,19 @@ html:not(.designer) body.theme-entry a.toolbar-button{
 }
 /* status right panel */
 .status-container {
-    padding: 3rem 32rem;
-     position: relative;
+    padding: 0;
+    position: fixed;
+    right: 3rem;
+    top: 8rem;
+    background-color: var(--Isabelline);
+    height: 100%;
 }
 
 .status-title {
-    color: #002134;
-    margin-bottom: 2.5rem;
+    color: #002134!important;
+    margin-bottom: 2.5rem!important;
+    font-size: 2.5rem!important;
+    font-family: var(--Alinma-bold)!important;
 }
 
 .status-item {
