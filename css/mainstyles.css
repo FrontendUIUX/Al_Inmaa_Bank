@@ -613,11 +613,13 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
 }
 html:not(.designer) .theme-entry .root-table.Grid-Layout > .editor-cell.lastrow:not([name*="s_textbox"]),
 html:not(.designer) .theme-entry .root-table.editor-grid > .editor-cell.lastrow:not([name*="s_textbox"]),
+html:not(.designer) .theme-entry .root-table.Grid-Layout > .editor-cell.lastrow:not([name*="s_dropdown"]),
 html:not(.designer) .theme-entry .root-table.Grid-Layout > .editor-cell.lastrow:not([name*="s_textarea"]),
 html:not(.designer) .theme-entry .root-table.editor-grid > .editor-cell.lastrow:not([name*="s_textarea"]),
 html:not(.designer) .theme-entry .root-table.Grid-Layout > .editor-cell.lastrow:not([name*="s_dropdown"]),
 html:not(.designer) .theme-entry .root-table.editor-grid > .editor-cell.lastrow:not([name*="s_dropdown"]) {
-  padding: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0!Important;
 }
 .theme-entry .grid .grid-column-header-cell.asc .grid-column-header-cell-wrapper:before{
 	display:none;
