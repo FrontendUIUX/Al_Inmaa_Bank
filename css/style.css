@@ -1030,6 +1030,163 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     display: flex!important;
     align-items: center!important;
 }
+/* status right panel */
+.status-container {
+    padding: 3rem 32rem;
+     position: relative;
+}
+
+.status-title {
+    color: #002134;
+    margin-bottom: 2.5rem;
+}
+
+.status-item {
+    position: relative;
+    padding-left: 3.75rem;
+    margin-bottom: 1.875rem;
+}
+
+.status-item::before {
+ content: '';
+    position: absolute;
+    left: 1.5rem;
+    top: 3.125rem;
+    bottom: -1.875rem;
+    width: 2px;
+    background-color: #d0d0d0;
+
+}
+
+.status-item:nth-last-of-type(1)::before {
+    content: none;
+}
+.status-icon {
+    position: absolute;
+    left: 0.2rem;
+    top: 0.2rem;
+    width: 2.8rem;
+    height: 2.8rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.status-icon.completed  img{
+  height: 2rem;
+  width: 2rem;
+}
+.status-icon.in-progress img{
+  height: 2rem;
+  width: 2rem;
+}
+.status-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0.3rem;
+}
+.status-name {
+    font-size: 1.25rem;
+    color: #1a3a52;
+    margin: 0;
+}
+.status-date {
+    font-size: 1rem;
+    color: #666;
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+}
+.status-state {
+    color: #666;
+    font-size: 1rem;
+}
+.status-message {
+    background-color: #FDFAF8;
+    border: 1px solid #e5e5e5;
+    border-radius: 0.75rem;
+    padding: 0.75rem;
+    margin-top: 1rem;
+    color: #666;
+    font-size: 1rem;
+    line-height: 1.6;
+    transition: .3s all ease;
+    overflow: hidden;
+}
+
+@keyframes fadeDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-10px);
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        height: auto;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        margin-top: 1rem;
+    }
+}
+
+@keyframes fadeUp {
+    0% {
+        opacity: 1;
+        transform: translateY(0);
+        height: auto;
+        padding-top: 0.75rem;
+        padding-bottom: 0.75rem;
+        margin-top: 1rem;
+    }
+    100% {
+        opacity: 0;
+        transform: translateY(-10px);
+        height: 0;
+        padding-top: 0;
+        padding-bottom: 0;
+        margin-top: 0;
+    }
+}
+
+.status-message.show {
+    animation: fadeDown 0.4s forwards;
+}
+
+.status-message.hide {
+    animation: fadeUp 0.4s forwards;
+}
+
+
+.status-message.collapsed {
+    display: none;
+}
+
+.view-attachments-btn {
+    background-color: transparent;
+    border: 1px solid #d0d0d0;
+    border-radius: 0.75rem;
+    padding: 1.25rem;
+    width: 100%;
+    color: #002134;
+    font-size: 1.1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.collapse-icon {
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: .3s all ease;
+}
+
+.collapse-icon.rotated {
+    transform: rotate(180deg);
+    
+}
+
 @media(min-width:992px){
     html body .requestsTile .card .card-header{
     padding: 1.5rem 2rem 1rem;
