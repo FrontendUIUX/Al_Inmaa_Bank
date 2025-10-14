@@ -1151,7 +1151,7 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
     font-family: var(--Alinma-plain);
 }
 
-@keyframes fadeDown {
+@keyframes fadeDownStat {
     0% {
         opacity: 0;
         transform: translateY(-10px);
@@ -1170,7 +1170,7 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
     }
 }
 
-/* @keyframes fadeUp {
+ @keyframes fadeUpStat {
     0% {
         opacity: 1;
         transform: translateY(0);
@@ -1187,14 +1187,14 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
         padding-bottom: 0;
         margin-top: 0;
     }
-} */
+} 
 
 .status-message.show {
-    animation: fadeDown 0.4s forwards;
+    animation: fadeDownStat 0.4s forwards;
 }
 
 .status-message.hide {
-    animation: fadeUp 0.4s forwards;
+    animation: fadeUpStat 0.4s forwards;
 }
 
 
@@ -1292,11 +1292,6 @@ html:not(.designer) .commentsAttachments {
     overflow: hidden;
     border: 1.6px solid #e5e4de;
 }
-[name="NR_MarketingRequest_Form_Stage Area Item  view_move_left"]{
-     width:calc(100% - 28rem)!important;
-    margin-top:1rem;
-
-}
 .pageOf span{
     color: var(--Navy-blue);
     font-size: .9rem;
@@ -1314,6 +1309,11 @@ html:not(.designer) .commentsAttachments {
 .showingItems .totalOf,
 .showingItems .currentPage{
     font-family:var(--Alinma-bold)!important
+}
+[name="NR_MarketingRequest_Form_Stage Area Item  view_move_left"]{
+     width:calc(100% - 28rem)!important;
+    margin-top:1rem;
+
 }
 /**/
 @media(min-width:992px){
