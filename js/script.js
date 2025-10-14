@@ -1,297 +1,193 @@
 document.addEventListener("DOMContentLoaded", () => {
-    setTimeout(function () {
-        try {
-            // ===== Get user info from K2 SourceCode object =====
-            const fqn = SourceCode.Forms.Settings.User.FQN;
-            const userName = fqn.split("\\").pop();
+  setTimeout(function () {
+    try {
+      // ===== Get user info from K2 SourceCode object =====
+      const fqn = SourceCode.Forms.Settings.User.FQN;
+      const userName = fqn.split("\\").pop();
 
-            // ===== Get department text from form label =====
-            const departmentEl = document.querySelector("[name='User_Department_DataLabel']");
-            const department = departmentEl ? departmentEl.textContent.trim() : "Unknown Department";
+      // ===== Get department text from form label =====
+      const departmentEl = document.querySelector("[name='User_Department_DataLabel']");
+      const department = departmentEl ? departmentEl.textContent.trim() : "Unknown Department";
 
-            // ===== Append sidebar, modals & overlay to body =====
-            document.body.insertAdjacentHTML("beforeend", `
-    <aside class="sidebar">
-        <div class="userSettings d-flex align-items-center">
+      // ===== Sidebar configuration (dynamic links) =====
+      const sidebarConfig = [
+        {
+          category: "Main Links",
+          links: [
+            {
+              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg",
+              name: "Dashboard",
+              url: "/Runtime/Form/UserDashboard/"
+            },
+            {
+              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg",
+              name: "My Requests",
+              url: "/"
+            },
+            {
+              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/report-and-analytics.svg",
+              name: "Reports & Analytics",
+              url: "#",
+              children: [
+                { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Marketing Dashboard", url: "#" },
+                { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Communication Dashboard", url: "#" },
+                { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Information Technology Dashboard", url: "#" }
+              ]
+            }
+          ]
+        },
+        {
+          category: "Departments",
+          links: [
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg", name: "Retail & Digital Banking", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg", name: "Shariah", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg", name: "Information Technology", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Operations.svg", name: "Operations", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/facilities-management.svg", name: "Facilities Management", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Business Acquistion.svg", name: "Human Capital", url: "#", children: [] },
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/risk-management.svg", name: "Risk Management", url: "#", children: [] }
+          ]
+        }
+      ];
+
+      // ===== Sidebar HTML skeleton =====
+      document.body.insertAdjacentHTML("beforeend", `
+        <aside class="sidebar">
+          <div class="userSettings d-flex align-items-center">
             <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
-                <div class="userProfilePhoto">
-                    <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" 
-                         alt="${userName}" class="profilePhoto">
-                </div>
-                <div class="userInformations d-flex flex-column">
-                    <span class="username">${userName}</span>
-                    <span class="userPosition">${department}</span>
-                </div>
+              <div class="userProfilePhoto">
+                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" 
+                     alt="${userName}" class="profilePhoto">
+              </div>
+              <div class="userInformations d-flex flex-column">
+                <span class="username">${userName}</span>
+                <span class="userPosition">${department}</span>
+              </div>
             </div>
             <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
-                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Notification.svg"/>
+              <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Notification.svg"/>
             </button>
-        </div>
-        <div class="sideBarLinksGroup">
-            <div class="sidebarCategory">
-                <h6 class="categoryName">Main Links</h6>
-                <ul class="links">
-                    <li>
-                        <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg" alt=""></div>
-                        <a href="/Runtime/Form/UserDashboard/">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg" alt=""></div>
-                        <a href="/">My Requests</a>
-                    </li>
-                    <li class="isSubMenu">
-                        <div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/report-and-analytics.svg" alt=""></div>
-                        <a href="#">Reports & Analytics</a>
-                    </li>
-                </ul>
-            </div>
-            <div class="sidebarCategory">
-                <h6 class="categoryName">Departments</h6>
-                <ul class="links">
-                    <li><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg" alt=""></div><a href="">Retail & Digital Banking</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg" alt=""></div><a href="">Marketing & Corporate</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg" alt=""></div><a href="">Shariah</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg" alt=""></div><a href="">Information Technology</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Operations.svg" alt=""></div><a href="">Operations</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/facilities-management.svg" alt=""></div><a href="">Facilities Management</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Business Acquistion.svg" alt=""></div><a href="">Human Capital</a></li>
-                    <li class="isSubMenu"><div class="icon"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/risk-management.svg" alt=""></div><a href="">Risk Management</a></li>
-                </ul>
-            </div>
-        </div>
-        <div class="light-dark-mode">
+          </div>
+          <div class="sideBarLinksGroup"></div>
+          <div class="light-dark-mode">
             <div class="toggle-label d-flex align-items-center justify-content-between">
-                <img class="sun-img" src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Sun.svg" alt="">
-                <span id="mode-label">Light Mode</span>
-                <div class="form-check form-switch m-0">
-                    <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
-                </div>
+              <img class="sun-img" src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Sun.svg" alt="">
+              <span id="mode-label">Light Mode</span>
+              <div class="form-check form-switch m-0">
+                <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
+              </div>
             </div>
-        </div>
-    </aside>
+          </div>
+        </aside>
+        <div class="overlayShadow" style="display:none;"></div>
+        <aside class="subPanel">
+          <div class="closeSubpanel">X</div>
+          <div class="subPanelHeader"><h5 class="subSectionTitle"></h5></div>
+          <div class="subPanelBody"><ul></ul></div>
+        </aside>
+      `);
 
-    <!-- Overlay shadow -->
-    <div class="overlayShadow" style="display:none;"></div>
+      // ===== Render Sidebar Links =====
+      const sidebarContainer = document.querySelector(".sideBarLinksGroup");
+      const currentPath = window.location.pathname;
 
-    <!-- NOTIFICATION POPUP -->
-    <div class="modal notification-modal" id="notificationModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">Notifications</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="notification-item"><p>Your <span class="bold-text">High Risk Account Opening</span> Request <span class="bold-text">RM-9052XZ</span> is <span class="notification-status rejected">Rejected</span></p><span>5 hours ago</span></div>
-                    <div class="notification-item"><p>Your <span class="bold-text">High Risk Account Opening</span> Request <span class="bold-text">RM-9052XZ</span> is <span class="notification-status completed">Completed</span></p><span>11 hours ago</span></div>
-                    <div class="notification-item"><p>Your <span class="bold-text">High Risk Account Opening</span> Request <span class="bold-text">RM-72GHSZ</span> is <span class="notification-status completed">Completed</span></p><span>2 days ago</span></div>
-                </div>
-            </div>
-        </div>
-    </div>
+      sidebarConfig.forEach(section => {
+        const category = document.createElement("div");
+        category.classList.add("sidebarCategory");
 
-    <!-- USER PROFILE POPUP -->
-    <div class="modal user-modal" id="userModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="user-modal-header">
-                        <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" alt="">
-                        <div class="name-email">
-                            <p class="userNAME">${userName}</p>
-                            <p class="user-mail">${userName.toLowerCase()}@example.com</p>
-                        </div>
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="user-settings">
-                        <a href="#" class="viewProfile"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/user.svg" alt="user"><p>View Profile</p></a>
-                        <a href="#" class="account-settings"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/settings.svg" alt="settings">Account Settings</a>
-                        <a href="#" class="sign-out"><img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Sign Out.svg" alt="sign-out">Sign Out</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+        const title = document.createElement("h6");
+        title.classList.add("categoryName");
+        title.textContent = section.category;
+        category.appendChild(title);
 
-    <!-- SUB MENU PANEL -->
-    <aside class="subPanel">
-        <div class="closeSubpanel">
-            <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M24.2894 24.2894L13.1447 13.1447M13.1447 13.1447L2 2M13.1447 13.1447L24.2894 2M13.1447 13.1447L2 24.2894" stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-        </div>
-        <div class="subPanelHeader">
-            <h5 class="subSectionTitle">Reports & Analytics</h5>
-        </div>
-        <div class="subPanelBody">
-            <ul></ul>
-        </div>
-    </aside>
-    `);
+        const ul = document.createElement("ul");
+        ul.classList.add("links");
 
-            console.log("Logged-in User FQN:", fqn);
-            console.log("Extracted Username:", userName);
-            console.log("Extracted Department:", department);
-
-            // ====== SIDEBAR INTERACTIVITY ======
-            const subMenus = document.querySelectorAll(".isSubMenu");
-            const subPanel = document.querySelector(".subPanel");
-            const subPanelList = subPanel.querySelector(".subPanelBody ul");
-            const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
-            const overlayShadow = document.querySelector(".overlayShadow");
-            const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
-
-            const submenuLinks = {
-                "Reports & Analytics": [
-                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
-                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
-                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
-                ],
-                "Retail & Digital Banking": [
-                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
-                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
-                ],
-                "Marketing & Corporate": [
-                    { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
-                ],
-                "Shariah": [],
-                "Information Technology": [],
-                "Operations": [],
-                "Facilities Management": [],
-                "Human Capital": [],
-                "Risk Management": []
-            };
-
-            function renderSubLinks(title) {
-                subPanelList.innerHTML = "";
-                if (submenuLinks[title] && submenuLinks[title].length > 0) {
-                    submenuLinks[title].forEach(link => {
-                        const li = document.createElement("li");
-                        li.innerHTML = `
-                            <div class="icon"><img src="${link.icon}" alt=""></div>
-                            <a href="${link.url}">${link.text}</a> 
-                        `;
-                        subPanelList.appendChild(li);
-                    });
-                    return true;
-                }
-                return false;
-            }
-
-            function updateOverlay() {
-                const hasActivePanel = document.querySelector(".subPanel.active");
-                if (overlayShadow) {
-                    overlayShadow.style.display = hasActivePanel ? "block" : "none";
-                }
-            }
-
-            subMenus.forEach(menu => {
-                menu.addEventListener("click", e => {
-                    e.preventDefault();
-                    const title = menu.querySelector("a").innerText.trim();
-
-                    if (!submenuLinks[title] || submenuLinks[title].length === 0) {
-                        subPanel.classList.remove("active");
-                        updateOverlay();
-                        return;
-                    }
-
-                    subPanelTitle.textContent = title;
-
-                    if (subPanel.classList.contains("active")) {
-                        subPanel.classList.remove("active");
-                        setTimeout(() => {
-                            renderSubLinks(title);
-                            subPanel.classList.add("active");
-                            updateOverlay();
-                        }, 300);
-                    } else {
-                        renderSubLinks(title);
-                        subPanel.classList.add("active");
-                        updateOverlay();
-                    }
-                });
-            });
-
-            if (closeSubpanelBtn) {
-                closeSubpanelBtn.addEventListener("click", function () {
-                    subPanel.classList.remove("active");
-                    updateOverlay();
-                });
-            }
-
-        } catch (e) {
-            console.error("Error retrieving FQN:", e);
-        }
-    }, 1000);
-});
-
-document.addEventListener("DOMContentLoaded", () => {
-  // Add disabled class to anchors with empty href / "#"
-  function applyDisabledToLinks(root = document) {
-    const links = (root.querySelectorAll)
-      ? root.querySelectorAll('.sidebar .links li a')
-      : [];
-    links.forEach(link => {
-      const href = link.getAttribute('href');
-      if (!href || href.trim() === "" || href.trim() === "#") {
-        if (!link.classList.contains('disabled')) {
-          link.classList.add('disabled');
-          link.setAttribute('aria-disabled', 'true');
-          link.setAttribute('tabindex', '-1'); // remove from tab order
-        }
-      } else {
-        // if href becomes valid later, remove disabled attributes
-        if (link.classList.contains('disabled')) {
-          link.classList.remove('disabled');
-          link.removeAttribute('aria-disabled');
-          link.removeAttribute('tabindex');
-        }
-      }
-    });
-  }
-
-  // Prevent clicks on disabled links (delegation)
-  document.addEventListener('click', function (e) {
-    const a = e.target.closest && e.target.closest('.sidebar .links li a');
-    if (a && a.classList.contains('disabled')) {
-      e.preventDefault();
-      e.stopPropagation();
-      // Optionally give user feedback here (tooltip, toast, etc.)
-    }
-  });
-
-  // Observe body for sidebar insertion
-  const bodyObserver = new MutationObserver((mutations) => {
-    for (const m of mutations) {
-      for (const node of m.addedNodes) {
-        if (node.nodeType !== 1) continue; // not an element
-        // If sidebar node itself added
-        if (node.classList && node.classList.contains('sidebar')) {
-          applyDisabledToLinks(node);
-          // observe future subtree changes inside this sidebar
-          const sidebarObserver = new MutationObserver(() => applyDisabledToLinks(node));
-          sidebarObserver.observe(node, { childList: true, subtree: true });
-        } else {
-          // Or sidebar may be nested inside the added node
-          const sidebar = node.querySelector && node.querySelector('.sidebar');
-          if (sidebar) {
-            applyDisabledToLinks(sidebar);
-            const sidebarObserver = new MutationObserver(() => applyDisabledToLinks(sidebar));
-            sidebarObserver.observe(sidebar, { childList: true, subtree: true });
+        section.links.forEach(link => {
+          const li = document.createElement("li");
+          if (link.children && link.children.length > 0) {
+            li.classList.add("isSubMenu");
+          } else {
+            li.classList.add("noSubChildren");
           }
-        }
+
+          // mark active link based on current page
+          if (link.url && currentPath === new URL(link.url, window.location.origin).pathname) {
+            li.classList.add("active");
+          }
+
+          li.innerHTML = `
+            <div class="icon"><img src="${link.icon}" alt=""></div>
+            <a href="${link.url || '#'}">${link.name}</a>
+          `;
+          ul.appendChild(li);
+        });
+
+        category.appendChild(ul);
+        sidebarContainer.appendChild(category);
+      });
+
+      // ===== Submenu rendering logic =====
+      const subPanel = document.querySelector(".subPanel");
+      const subPanelList = subPanel.querySelector(".subPanelBody ul");
+      const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
+      const overlayShadow = document.querySelector(".overlayShadow");
+      const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
+
+      function updateOverlay() {
+        overlayShadow.style.display = subPanel.classList.contains("active") ? "block" : "none";
       }
+
+      document.querySelectorAll(".isSubMenu").forEach(menu => {
+        menu.addEventListener("click", e => {
+          e.preventDefault();
+          const title = menu.querySelector("a").innerText.trim();
+
+          // find config
+          let found = null;
+          sidebarConfig.forEach(sec => {
+            sec.links.forEach(l => {
+              if (l.name === title) found = l;
+            });
+          });
+
+          if (!found || !found.children || found.children.length === 0) {
+            subPanel.classList.remove("active");
+            updateOverlay();
+            return;
+          }
+
+          subPanelTitle.textContent = title;
+          subPanelList.innerHTML = "";
+
+          found.children.forEach(child => {
+            const li = document.createElement("li");
+            li.innerHTML = `
+              <div class="icon"><img src="${child.icon}" alt=""></div>
+              <a href="${child.url}">${child.name}</a>
+            `;
+            subPanelList.appendChild(li);
+          });
+
+          subPanel.classList.add("active");
+          updateOverlay();
+        });
+      });
+
+      if (closeSubpanelBtn) {
+        closeSubpanelBtn.addEventListener("click", () => {
+          subPanel.classList.remove("active");
+          updateOverlay();
+        });
+      }
+
+    } catch (e) {
+      console.error("Error rendering sidebar:", e);
     }
-  });
-
-  bodyObserver.observe(document.body, { childList: true, subtree: true });
-
-  // Try once immediately in case sidebar is already present
-  applyDisabledToLinks(document);
+  }, 1000);
 });
+
 
 
 $(document).ready(function () {
