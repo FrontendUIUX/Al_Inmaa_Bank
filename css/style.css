@@ -1281,6 +1281,7 @@ html:not(.designer) .panel[name*="commentsView"] {
 @media(min-width:992px){
     [name="headerLogo"]{
    position: unset;
+   margin-top: 0.5rem!important;
 }
     html body .requestsTile .card .card-header{
     padding: 1.5rem 2rem 1rem;
