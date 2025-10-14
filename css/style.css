@@ -1268,9 +1268,20 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     opacity: 1;
 }
 
-
+html:not(.designer) .panel[name*="commentsView"] {
+    width:calc(100% - 28rem)!important;
+    background-color:white!important;
+    padding:2rem;
+    margin-top:2rem;
+        border-radius: 1rem;
+    overflow: hidden;
+    border: 1.6px solid #e5e4de;
+}
 /**/
 @media(min-width:992px){
+    [name="headerLogo"]{
+   position: unset;
+}
     html body .requestsTile .card .card-header{
     padding: 1.5rem 2rem 1rem;
 }
