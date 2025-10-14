@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
               icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg",
               name: "Dashboard",
-              url: ""
+              url: "/Runtime/Runtime/Form/MainDashboard"
             },
             {
               icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg",
