@@ -928,6 +928,12 @@ a.fileImage.static {
     width: 100%;
     border-bottom: 1px solid rgb(0 0 0  / 15%);
 }
+.theme-entry [name*="attachmentSection"] table.grid-content-table.zebra-stripes tr{
+	background-color:transparent!important;
+}
+.file-wrapper.showinfo.uploaded{
+    border:none!important;
+}
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"]{
 	background-color: #F9F0EB !important;
     border: 1px solid rgb(57 94 117 / 60%) !important;
