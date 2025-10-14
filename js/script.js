@@ -228,12 +228,71 @@ document.addEventListener("DOMContentLoaded", () => {
     }, 1000);
 });
 
-document.querySelectorAll(".sidebar .links li a").forEach(link => {
-    const href = link.getAttribute("href");
-    if (!href || href.trim() === "" || href.trim() === "#") {
-        link.classList.add("disabled");
+document.addEventListener("DOMContentLoaded", () => {
+  // Add disabled class to anchors with empty href / "#"
+  function applyDisabledToLinks(root = document) {
+    const links = (root.querySelectorAll)
+      ? root.querySelectorAll('.sidebar .links li a')
+      : [];
+    links.forEach(link => {
+      const href = link.getAttribute('href');
+      if (!href || href.trim() === "" || href.trim() === "#") {
+        if (!link.classList.contains('disabled')) {
+          link.classList.add('disabled');
+          link.setAttribute('aria-disabled', 'true');
+          link.setAttribute('tabindex', '-1'); // remove from tab order
+        }
+      } else {
+        // if href becomes valid later, remove disabled attributes
+        if (link.classList.contains('disabled')) {
+          link.classList.remove('disabled');
+          link.removeAttribute('aria-disabled');
+          link.removeAttribute('tabindex');
+        }
+      }
+    });
+  }
+
+  // Prevent clicks on disabled links (delegation)
+  document.addEventListener('click', function (e) {
+    const a = e.target.closest && e.target.closest('.sidebar .links li a');
+    if (a && a.classList.contains('disabled')) {
+      e.preventDefault();
+      e.stopPropagation();
+      // Optionally give user feedback here (tooltip, toast, etc.)
     }
+  });
+
+  // Observe body for sidebar insertion
+  const bodyObserver = new MutationObserver((mutations) => {
+    for (const m of mutations) {
+      for (const node of m.addedNodes) {
+        if (node.nodeType !== 1) continue; // not an element
+        // If sidebar node itself added
+        if (node.classList && node.classList.contains('sidebar')) {
+          applyDisabledToLinks(node);
+          // observe future subtree changes inside this sidebar
+          const sidebarObserver = new MutationObserver(() => applyDisabledToLinks(node));
+          sidebarObserver.observe(node, { childList: true, subtree: true });
+        } else {
+          // Or sidebar may be nested inside the added node
+          const sidebar = node.querySelector && node.querySelector('.sidebar');
+          if (sidebar) {
+            applyDisabledToLinks(sidebar);
+            const sidebarObserver = new MutationObserver(() => applyDisabledToLinks(sidebar));
+            sidebarObserver.observe(sidebar, { childList: true, subtree: true });
+          }
+        }
+      }
+    }
+  });
+
+  bodyObserver.observe(document.body, { childList: true, subtree: true });
+
+  // Try once immediately in case sidebar is already present
+  applyDisabledToLinks(document);
 });
+
 
 $(document).ready(function () {
   
