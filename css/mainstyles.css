@@ -889,6 +889,7 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
     white-space:nowrap;
     color: var(--Navy-blue);
     font-family: var(--Alinma-bold);
+    font-size: 1rem!important;
 }
 [name*="attachmentSection"] table.grid-content-table>tbody>tr>td, 
 [name*="attachmentSection"] table.grid-content-table>tr>td{
