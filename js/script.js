@@ -57,7 +57,7 @@ document.addEventListener("DOMContentLoaded", () => {
             {
               icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg",
               name: "Dashboard",
-              url: "/Runtime/Form/UserDashboard/"
+              url: "https://win-0q5t2palbof/Runtime/Form/UserDashboard/"
             },
             {
               icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg",
@@ -745,7 +745,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
         ],
         "Marketing & Corporate": [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "#" }
+            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "https://win-0q5t2palbof/Runtime/Runtime/Form/NR__MarketingRequest__Form/" }
         ],
         "Shariah": [],
         "Information Technology": [],
