@@ -259,6 +259,7 @@ html body .sidebar .notifications{
     width: 3.3rem;
     padding-right: unset;
     height: auto;
+    display: none;
 }
 html body .sidebar .notifications img{
     height: auto;
