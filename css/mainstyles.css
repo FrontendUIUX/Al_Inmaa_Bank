@@ -785,7 +785,7 @@ html:not(.designer) .input-control.style-aware.radio.checked circle.svg-radio-bt
 }
 html:not(.designer) .input-control.style-aware.radio.checked.read-only circle.svg-radio-btn-checked {
     fill: rgba(57, 94, 117, 0.6)!important;
-    r:4;
+   
 }
 html:not(.designer) .theme-entry .input-control.radio.style-aware.read-only svg .svg-radio-btn-circle {
 	fill:var(--Isabelline)!important;
