@@ -121,6 +121,22 @@ document.addEventListener("DOMContentLoaded", () => {
             <div class="icon"><img src="${link.icon}" alt=""></div>
             <a href="${link.url || '#'}">${link.name}</a>
           `;
+          // ====== Add disabled class if href is empty or '#' ======
+const anchor = li.querySelector("a");
+if (!anchor.getAttribute("href") || anchor.getAttribute("href").trim() === "#" || anchor.getAttribute("href").trim() === "") {
+  anchor.classList.add("disabled");
+  anchor.setAttribute("aria-disabled", "true");
+  anchor.setAttribute("tabindex", "-1"); // remove from tab order
+}
+
+// Prevent clicks on disabled links
+anchor.addEventListener("click", (e) => {
+  if (anchor.classList.contains("disabled")) {
+    e.preventDefault();
+    e.stopPropagation();
+    // optional: show tooltip or message
+  }
+});
           ul.appendChild(li);
         });
 
