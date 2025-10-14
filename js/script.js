@@ -43,6 +43,34 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+// colapse
+document.addEventListener('DOMContentLoaded', () => {
+    const statusContainer = document.querySelector('.status-container');
+
+    if (statusContainer) {
+        statusContainer.addEventListener('click', (event) => {
+            const collapseIcon = event.target.closest('.collapse-icon');
+
+            if (collapseIcon) {
+                const statusItem = collapseIcon.closest('.status-item');
+                if (statusItem) {
+                    const statusMessage = statusItem.querySelector('.status-message');
+
+                    if (statusMessage) {
+                        if (statusMessage.classList.contains('show')) {
+                            statusMessage.classList.remove('show');
+                            statusMessage.classList.add('hide');
+                        } else {
+                            statusMessage.classList.remove('hide');
+                            statusMessage.classList.add('show');
+                        }
+                        collapseIcon.classList.toggle('rotated');
+                    }
+                }
+            }
+        });
+    }
+});
 
 
 
