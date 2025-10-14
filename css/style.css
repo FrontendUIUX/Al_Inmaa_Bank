@@ -110,7 +110,7 @@ html body .sideBarLinksGroup .sidebarCategory:last-child .categoryName{
     font-size: 1.05rem;
     color: var(--Navy-blue);
 }
-.sideBarLinksGroup a.disabled{
+.sideBarLinksGroup li:has(a.disabled){
     color:var(--Navy-blue-low-opacity)!important;
     pointer-events:none!important;
 }
@@ -1004,9 +1004,10 @@ table.table{
     margin-bottom: 0;
 }
  .progress-segment {
-    height: 30px;
+    height: 2rem;
     display: inline-block;
     transition: width 1.5s ease-in-out;
+    margin-right: .2rem;
   }
   .form-check-input {
     cursor: pointer;
