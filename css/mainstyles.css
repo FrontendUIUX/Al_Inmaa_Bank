@@ -615,8 +615,20 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
 	font-size: .8rem !important;
     color: var(--Navy-blue);
 }
-html:not(.designer) .theme-entry span:not(.RequestsDashboardControl-RequestsDashboardControl) span:not([name*="s_textbox"]):not([name*="s_dropdown"]):not([name*="s_textarea"]) {
-  padding: 0 !important;
+.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, 
+.theme-entry .root-table.editor-grid>.editor-cell.lastrow{
+padding:0!important;
+}
+html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"],
+html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_dropdown"],
+html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textarea"],
+.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_textbox"],
+.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_dropdown"],
+.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_textarea"],
+html:not(.designer) .theme-entry [name*="s_textbox"],
+html:not(.designer) .theme-entry [name*="s_dropdown"],
+html:not(.designer) .theme-entry [name*="s_textarea"]{
+  padding: 0 1rem!important;
 }
 
 .theme-entry .grid .grid-column-header-cell.asc .grid-column-header-cell-wrapper:before{
