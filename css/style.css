@@ -491,10 +491,10 @@ h2 {
 .request-card:nth-child(1) .request-name::before{
     background-color: var(--Purple);
 }
-.request-card:nth-child(2) .request-name::before{
+.request-card:nth-child(3) .request-name::before{
     background-color: var(--Navy-blue);
 }
-.request-card:nth-child(3) .request-name::before{
+.request-card:nth-child(2) .request-name::before{
     background-color: var(--Orange);
 }
 .request-card:nth-child(4) .request-name::before{
