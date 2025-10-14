@@ -732,12 +732,12 @@ table td .editRow a::before{
     border-radius: 0 0.8rem 0.8rem 0;
     border-right: none;
 }
- tbody td {
+.table tbody td {
     padding: 1rem !important;
     vertical-align: middle;
     color: var(--text-color);
 }
- tbody tr:last-child {border-color: transparent !important;}
+.table tbody tr:last-child {border-color: transparent !important;}
  .request-number {
     color: var(--text-color);
     text-decoration: none;
