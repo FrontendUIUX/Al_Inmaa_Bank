@@ -1,3 +1,20 @@
+document.addEventListener("DOMContentLoaded", function() {
+    // Select the div to move
+    const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
+    
+    // Select the .form div
+    const formDiv = document.querySelector(".form");
+    
+    if (divToMove && formDiv) {
+        // Remove the div from its current location
+        divToMove.parentNode.removeChild(divToMove);
+        
+        // Append it after the .form div
+        formDiv.insertAdjacentElement("afterend", divToMove);
+    }
+});
+
+
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(function () {
     try {
@@ -534,21 +551,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 });
 
-document.addEventListener("DOMContentLoaded", function() {
-    // Select the div to move
-    const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
-    
-    // Select the .form div
-    const formDiv = document.querySelector(".form");
-    
-    if (divToMove && formDiv) {
-        // Remove the div from its current location
-        divToMove.parentNode.removeChild(divToMove);
-        
-        // Append it after the .form div
-        formDiv.insertAdjacentElement("afterend", divToMove);
-    }
-});
+
 
 
 //// comments section 
