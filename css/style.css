@@ -1268,7 +1268,7 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     opacity: 1;
 }
 
-html:not(.designer) .commentsAttachements {
+html:not(.designer) .commentsAttachments {
     width:calc(100% - 28rem)!important;
     background-color:white!important;
     padding:2rem;
