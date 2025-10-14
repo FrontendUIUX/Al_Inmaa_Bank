@@ -891,6 +891,9 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
     font-family: var(--Alinma-bold);
     font-size: 1rem!important;
 }
+.theme-entry .file-wrapper.uploaded{
+    border: none!important;
+}
 [name*="attachmentSection"] table.grid-content-table>tbody>tr>td, 
 [name*="attachmentSection"] table.grid-content-table>tr>td{
    border:none!important; 
