@@ -704,9 +704,12 @@ table td .editRow a::before{
      background-color: var(--Table-header);
      padding:.4rem 0!important;
        }
+       thead tr th:last-child span{
+      border-right: unset;
+}
  thead th {
     border: none;
-    padding: 0.8rem 0rem !important;
+    padding: 1rem 0rem !important;
     background-color: rgb(244 231 219) !important;
     color: #002134!important;
 }
@@ -1197,7 +1200,68 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     transform: rotate(180deg);
     
 }
+/**/
 
+.innerpanel div[name="MarketingAttachments Area Item"]{
+
+    padding: 2rem 0;
+
+}
+ 
+.innerpanel div[name="MarketingAttachments Area Item"] .grid-column-header-table td{
+
+    background-color: #F8EFE8 !important;
+
+    padding-top : .5rem !important;
+
+    padding-bottom : .5rem  !important;
+
+    border-right: unset;
+
+}
+ 
+.innerpanel div[name="MarketingAttachments Area Item"] .grid-column-headers, .innerpanel div[name="MarketingAttachments Area Item"] .grid-column-headers td{
+
+    border-radius: 1rem;
+
+}
+ 
+.innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr:first-child td .grid-content-cell{
+
+    margin-top: .5rem;
+
+}
+ 
+.innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr:not(:last-child) td{
+
+    border-bottom: 1px solid rgba(0,0,0,.1);
+
+}
+ 
+ 
+.innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr, .innerpanel div[name="MarketingAttachments Area Item"] .grid-column-header-table .grid-column-header-text{
+
+    background-color: unset !important;
+
+}
+ 
+.innerpanel div[name="MarketingAttachments Area Item"] .grid-footer{
+
+    display: none !important;
+
+}
+ 
+.innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr.selected td, .innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr:hover td{
+
+    background-color: unset !important;
+
+}
+ .innerpanel div[name="MarketingAttachments Area Item"] .grid-column-headers .grid-column-header-text{
+    opacity: 1;
+}
+
+
+/**/
 @media(min-width:992px){
     html body .requestsTile .card .card-header{
     padding: 1.5rem 2rem 1rem;
