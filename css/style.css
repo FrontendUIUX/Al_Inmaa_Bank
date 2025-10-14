@@ -1292,6 +1292,24 @@ html:not(.designer) .commentsAttachments {
     overflow: hidden;
     border: 1.6px solid #e5e4de;
 }
+.pageOf span{
+    color: var(--Navy-blue);
+    font-size: .9rem;
+    font-family: var(--Alinma-plain);
+    margin: 0 0.15rem;
+}
+.pageOf span.totalOf,
+.showingItems p{
+    color:#686868;
+}
+.totalPagesNumber,
+.showingItems span:nth-child(2),
+.showingItems span:last-child,
+.showingItems .pageTo,
+.showingItems .totalOf,
+.showingItems .currentPage{
+    font-family:var(--Alinma-bold)!important
+}
 /**/
 @media(min-width:992px){
     [name="headerLogo"]{
