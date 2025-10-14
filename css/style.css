@@ -534,10 +534,36 @@ h2 {
     border-radius: 1rem;
     border: 1px solid #E5E4DE;
     padding: 2rem;
+    font-size: 1rem;
     opacity: 0;
     transform: translateY(100%);
+    font-family: var(--Alinma-plain);
     animation: 1s fadeUp 1.5s forwards;
     margin-bottom: 2rem;
+}
+.myRequestsTable th{
+    font-weight: 400 !important;
+}
+ 
+.myRequestsTable tbody tr:first-child td{
+    padding-top: 2rem !important;
+}
+ 
+.myRequestsTable tbody tr td:first-child{
+    font-family: var(--Alinma-bold);
+}
+ 
+.myRequestsTable tbody tr{
+    border-bottom: 1px solid rgba(0,0,0,.1);
+}
+ 
+.myRequestsTable tbody td{
+    padding: 1.2rem 1rem !important;
+}
+ 
+.myRequestsTable .service.sort svg{
+    width: 1.3rem;
+    height: auto;
 }
 svg.active path:nth-child(1) {
     stroke: var(--Navy-blue);
