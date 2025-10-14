@@ -550,29 +550,29 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
   });
 });
 
-document.addEventListener("DOMContentLoaded", () => {
-    const tableId = "ad572738-5d7f-182a-7ba6-e963826b1f74_2f633f38-daee-42d3-8b64-352ddb922960_Table";
-    const tableEl = document.getElementById(tableId);
+// document.addEventListener("DOMContentLoaded", () => {
+//     const tableId = "ad572738-5d7f-182a-7ba6-e963826b1f74_2f633f38-daee-42d3-8b64-352ddb922960_Table";
+//     const tableEl = document.getElementById(tableId);
 
-    if (tableEl) {
-        // Create a header element
-        const headerEl = document.createElement("header");
+//     if (tableEl) {
+//         // Create a header element
+//         const headerEl = document.createElement("header");
 
-        // Move all child nodes of the table into the header
-        while (tableEl.firstChild) {
-            headerEl.appendChild(tableEl.firstChild);
-        }
+//         // Move all child nodes of the table into the header
+//         while (tableEl.firstChild) {
+//             headerEl.appendChild(tableEl.firstChild);
+//         }
 
-        // Optionally, insert the header before or after the table
-        // For example, insert before the table
-        tableEl.parentNode.insertBefore(headerEl, tableEl);
+//         // Optionally, insert the header before or after the table
+//         // For example, insert before the table
+//         tableEl.parentNode.insertBefore(headerEl, tableEl);
 
-        // Remove the empty table if you don't need it anymore
-        tableEl.remove();
-    } else {
-        console.warn(`Element with id ${tableId} not found.`);
-    }
-});
+//         // Remove the empty table if you don't need it anymore
+//         tableEl.remove();
+//     } else {
+//         console.warn(`Element with id ${tableId} not found.`);
+//     }
+// });
 
 
 
