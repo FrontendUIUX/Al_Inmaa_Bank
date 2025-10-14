@@ -1044,10 +1044,11 @@ html:not(.designer) body.theme-entry a.toolbar-button{
     display: flex!important;
     align-items: center!important;
     height: 3rem;
-    opacity:.7;
+    
     transition:all .3s ease-in-out;
     border:none!important;
     background-color:transparent!important;
+    padding-right: .7rem;
 }
 html:not(.designer) body.theme-entry a.toolbar-button:hover{
     opacity:1;
@@ -1055,6 +1056,7 @@ html:not(.designer) body.theme-entry a.toolbar-button:hover{
 html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text{
     color:var(--Navy-blue)!important;
     font-family:var(--Alinma-plain);
+    font-size: .95rem;
 }
 /* status right panel */
 .status-container {
