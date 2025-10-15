@@ -1348,11 +1348,12 @@ html:not(.designer) .theme-entry .input-control.radio.style-aware svg {
    
 }
 html:not(.designer) .theme-entry .commentsAttachments [name*="commentsView"]{
-    margin-bottom:1.5rem;
+    margin-bottom: 0;
 }
 html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"]{
     border:none!important;
     background:transparent!important;
+    padding: 0!important;
 }
 
 /**/
