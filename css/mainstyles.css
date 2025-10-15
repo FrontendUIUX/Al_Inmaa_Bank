@@ -386,6 +386,10 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     padding: 0!important;
     top: -0.5rem;
 }
+.theme-entry .input-control.select-box .input-control-buttons a.dropdown>span span,.theme-entry .input-control.select-box .input-control-buttons a.dropdown:active>span span,
+.theme-entry .input-control.select-box.active .input-control-buttons a.dropdown>span span,.theme-entry .input-control.select-box.active .input-control-buttons a.dropdown:focus>span span,.theme-entry .input-control.select-box.active .input-control-buttons a.dropdown:hover>span span,.theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:hover>span span,.theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
+        background-position: 0 0!important;
+    }
 [name*="s_textarea"] textarea{
     position:absolute!important;
     z-index: 1!important;
