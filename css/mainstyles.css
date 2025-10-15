@@ -50,6 +50,11 @@ html:not(.designer),:not(.designer) body{
 	margin: 0.4rem 0 0;
 }
 /* VIEW TITLE END */
+.theme-entry .SourceCodeFormsControlsWorklist span {
+    color: inherit;
+    font-size: 1rem;
+    font-family: var(--Alinma-plain);
+}
 /*  POPUPS ICONS */
 html:not(.designer) .theme-entry .message-box-content.confirmation:before,
 html:not(.designer) .theme-entry .message-box-content.info:before,
