@@ -936,7 +936,7 @@ $("#modeToggle").on("change", function () {
 // TABLE SORTING FEATURE START
 document.addEventListener("DOMContentLoaded", function () {
   const tbody = document.getElementById("requestsTable");
-  const headers = document.querySelectorAll("th.service span"); // All clickable spans in header
+  const headers = document.querySelectorAll("th:has(svg) span"); // clickable spans with sort icons
   let sortDirection = {}; // Keep track of sort direction per column
 
   headers.forEach(header => {
@@ -962,14 +962,27 @@ document.addEventListener("DOMContentLoaded", function () {
       // Re-append sorted rows
       rows.forEach(row => tbody.appendChild(row));
 
-      // Reset all icons, remove active
-      document.querySelectorAll("th.service span svg").forEach(svg => {
-        svg.classList.remove("active");
+      // Reset all icons → inactive
+      document.querySelectorAll("th svg").forEach(svg => {
+        svg.classList.remove("ascending", "descending");
+        svg.classList.add("inactive");
       });
 
-      // Activate only current column's icon
+      // Apply class to current icon
       const svg = header.querySelector("svg");
-      if (svg) svg.classList.add("active");
+      if (svg) {
+        svg.classList.remove("inactive");
+        if (sortDirection[columnName] === 1) {
+          svg.classList.add("descending"); // last click flipped to descending
+        } else {
+          svg.classList.add("ascending");
+        }
+      }
     });
+  });
+
+  // Initialize all icons as inactive
+  document.querySelectorAll("th svg").forEach(svg => {
+    svg.classList.add("inactive");
   });
 });
