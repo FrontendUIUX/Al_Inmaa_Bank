@@ -1357,7 +1357,7 @@ html:not(.designer) .theme-entry .commentsAttachments [name*="commentsView"]{
 html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"]{
     /* border:none!important; */
     background:transparent!important;
-    padding: 0!important;
+   
 }
 .theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist tbody{
 width: 100%;
