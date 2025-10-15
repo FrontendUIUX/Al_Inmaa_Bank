@@ -1074,11 +1074,12 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
 }
 .grid-column-header-table td .grid-column-header-text{
    border: none;
-    padding: 0.8rem 0rem !important;
-    background-color: rgb(244 231 219) !important;
-    color: #002134 !important;
-        font-family:var(--Alinma-plain);
-        font-size:1.05rem;
+   padding: 0.8rem 0rem !important;
+   background-color: rgb(244 231 219) !important;
+   background-color: transparent!important;
+   color: #002134 !important;
+   font-family:var(--Alinma-plain);
+   font-size:1.05rem;
 }
 .file-delete {
     margin-right: 1rem;
