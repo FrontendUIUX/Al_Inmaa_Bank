@@ -400,6 +400,10 @@ html:not(.designer) [name*="s_dropdown"] a.styling-font {
     padding: 0!important;
     top: -0.5rem;
 }
+html:not(.designer) body.theme-entry [name*="s_dropdown"] .read-only a.styling-font{
+	top: -1.2rem!important;
+	color: var(--Navy-blue-low-opacity)!important;
+}
 .theme-entry .input-control.select-box .input-control-buttons a.dropdown>span span,.theme-entry .input-control.select-box .input-control-buttons a.dropdown:active>span span,
 .theme-entry .input-control.select-box.active .input-control-buttons a.dropdown>span span,.theme-entry .input-control.select-box.active .input-control-buttons a.dropdown:focus>span span,.theme-entry .input-control.select-box.active .input-control-buttons a.dropdown:hover>span span,.theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:hover>span span,.theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
         background-position: 0 0!important;
@@ -470,6 +474,7 @@ span[name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
 span[name*="s_textbox"]:has(input[readonly]) input,
 span[name*="s_textarea"]:has(textarea[readonly]) textarea{
   color:rgb(57 94 117 / 85%)!important;
+  top: .5rem;
 }
 /*  TEXTBOX READONLY END */
 html:not(.designer) [name*="s_dropdown"] {
