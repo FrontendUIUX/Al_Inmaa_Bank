@@ -317,6 +317,7 @@ html body .userSettings .userInformations .username::after{
     width:.8rem;
     background-repeat:no-repeat;
     background-position:center;
+    display: none;
 }
 html body .userSettings .userInformations .userPosition{
     font-size:.9rem;
