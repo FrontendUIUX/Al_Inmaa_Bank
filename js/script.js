@@ -11,6 +11,12 @@ document.addEventListener("DOMContentLoaded", function () {
     // Insert wrapper after form
     formDiv.insertAdjacentElement("afterend", wrapper);
 
+    // --- Add title before comments ---
+    const viewTitle = document.createElement("div");
+    viewTitle.setAttribute("name", "viewTitle");
+    viewTitle.textContent = "Comments & Attachments";
+    wrapper.appendChild(viewTitle);
+
     // Move the comments div inside the wrapper
     wrapper.appendChild(divToMove);
 
@@ -42,6 +48,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200); // Check every 200ms until attachment exists
   }
 });
+
 
 // colapse
 document.addEventListener('DOMContentLoaded', () => {
