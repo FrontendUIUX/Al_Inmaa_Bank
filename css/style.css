@@ -1347,6 +1347,12 @@ html:not(.designer) .theme-entry .input-control.radio.style-aware svg {
     height: 1.4rem!important;
    
 }
+html:not(.designer) .theme-entry .commentsAttachments [name*="commentsView"]{
+    margin-bottom:1.5rem;
+}
+html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"]{
+    border:none!important;
+}
 /**/
 @media(min-width:992px){
     [name="headerLogo"]{
