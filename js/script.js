@@ -169,6 +169,43 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="subPanelHeader"><h5 class="subSectionTitle"></h5></div>
           <div class="subPanelBody"><ul></ul></div>
         </aside>
+        <!-- USER PROFILE POPUP START -->
+    <div class="modal user-modal" id="userModal" tabindex="-1" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-end">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <div class="user-modal-header">
+                        <img src="../images/net/UserProfile.png" alt="">
+                        <div class="name-email">
+                            <p class="userNAME">${userName}</p>
+                            <p class="user-mail"></p>
+                        </div>
+
+                    </div>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="user-settings">
+                        <a href="#" class="viewProfile">
+                            <img src="../images/net/user.svg" alt="user">
+                            <p>View Profile</p>
+                        </a>
+                        <a href="#" class="account-settings">
+                            <img src="../images/net/settings.svg" alt="settings">
+                            Account Settings
+                        </a>
+                        <a href="#" class="sign-out">
+                            <img src="../images/net/Sign Out.svg" alt="sign-out">
+                            Sign Out
+                        </a>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+    <!-- USER PROFILE POPUP END -->
       `);
 
       // ===== Render Sidebar Links =====
