@@ -617,7 +617,9 @@ h2 {
 .sort svg.descending path:nth-child(2){
     stroke: rgb(0 33 52 / 100%)!important;
 }
- .tableHeader,html body .requestsTile .card .card-header h2 {
+.tableHeader,
+html body .requestsTile .card .card-header h2,
+html body .col-lg-3 .card .card-header h2{
     color: #002035;
     font-family: var(--Alinma-bold);
     font-size: 1.3rem;
@@ -890,7 +892,8 @@ table td .editRow a::before{
     margin-top: 1rem;
     width: 100%;
 }
-.averageTime-card .card-header{
+.averageTime-card .card-header,
+html body .col-lg-3 .card .card-header{
     border-bottom: none;
     display: flex;
     align-items: center;
