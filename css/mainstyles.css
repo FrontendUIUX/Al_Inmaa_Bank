@@ -384,6 +384,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     min-height: 3.3rem!important;
     padding: 0!important;
     top: -1.8rem;
+    cursor: pointer!important;
 }
 .on-focus[name*="s_dropdown"] a.styling-font {
     position:absolute!important;
