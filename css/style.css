@@ -1352,7 +1352,9 @@ html:not(.designer) .theme-entry .commentsAttachments [name*="commentsView"]{
 }
 html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"]{
     border:none!important;
+    background:transparent!important;
 }
+
 /**/
 @media(min-width:992px){
     [name="headerLogo"]{
