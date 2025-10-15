@@ -375,8 +375,9 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     padding: 0!important;
     top: 1.4rem;
     z-index: 1!important;
+    color: var(--Navy-blue);
 }
-[name*="s_dropdown"]  a.styling-font {
+html:not(.designer) [name*="s_dropdown"] a.styling-font {
     position:absolute!important;
     z-index: 1!important;
     border:0!important;
@@ -386,6 +387,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     padding: 0!important;
     top: -1.8rem;
     cursor: pointer!important;
+    color: var(--Navy-blue)!important;
 }
 .on-focus[name*="s_dropdown"] a.styling-font {
     position:absolute!important;
@@ -413,6 +415,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     padding: 0!important;
     top: -2.3rem;
     font-family: var(--Alinma-plain)!important;
+    color: var(--Navy-blue)!important;
 }
 .on-focus[name*="s_textarea"] textarea{
     min-height: 2rem!important;
