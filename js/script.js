@@ -78,7 +78,16 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
+document.addEventListener("DOMContentLoaded", function () {
+  const userProfiledp = document.querySelector(".userProfile");
+  const userModal = document.querySelector(".user-modal");
 
+  if (userProfiledp && userModal) {
+    userProfiledp.addEventListener("click", function () {
+      userModal.classList.toggle("show");
+    });
+  }
+});
 
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -323,16 +332,7 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 1000);
 });
-document.addEventListener("DOMContentLoaded", function () {
-  const userProfiledp = document.querySelector(".userProfile");
-  const userModal = document.querySelector(".user-modal");
 
-  if (userProfiledp && userModal) {
-    userProfiledp.addEventListener("click", function () {
-      userModal.classList.toggle("show");
-    });
-  }
-});
 
 $(document).ready(function () {
 
