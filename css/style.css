@@ -1149,6 +1149,7 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
     color: #1a3a52!important;
     margin: 0!important;
     font-family: var(--Alinma-bold);
+    text-align: left;
 }
 .status-date {
     font-size: 1rem;
