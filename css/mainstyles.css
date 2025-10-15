@@ -355,7 +355,6 @@ html:not(.designer) .theme-entry .input-control a.input-control{
 }
 [name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
     position:absolute!important;
-    z-index:0!important;
     width: calc(100% - 2rem)!important;
     border:0!important;
     background-color:transparent!important;
@@ -363,6 +362,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     min-height: 2rem!important;
     padding: 0!important;
     top: 1.4rem;
+    z-index: 1!important;
 }
 
 [name*="s_dropdown"]  a.styling-font {
@@ -456,7 +456,10 @@ html:not(.designer) [name*="s_label"] {
     min-height: unset!important;
     line-height: unset!important;
 }
-
+html:not(.designer) [name*="s_text"] [name*="s_label"]{
+	position:relative;
+	z-index:0;
+}
 html:not(.designer) [name*="s_textarea"] {
     border: 1px solid var(--Textbox-border-color) !important;
     background-color: var(--Textbox-background-color) !important;
