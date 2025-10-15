@@ -1112,6 +1112,23 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
 	font-size:.9rem;
 	padding:1rem!important;
 }
+
+html:not(.designer) .searchBar > table tr {
+    border: 1px solid #bebebe;
+    border-radius: .5rem;
+    height: 3rem!important;
+}
+
+html:not(.designer) .theme-entry .ControlPack-Worklist .SourceCodeFormsControlsWorklist .SearchClearTD .worklist-search-clear-outer-wrapper,
+html:not(.designer) .theme-entry .SourceCodeFormsControlsWorklist .WorklistThemeIconContainer.worklist-execute-search-icon{
+    border:none!important;
+}
+html:not(.designer) .theme-entry .SourceCodeFormsControlsWorklist .searchBar tr>td:first-child{
+    font-size:1rem!important;
+    margin-left:1rem!important;
+    font-family: var(--Alinma-plain)!important;
+    padding-left: 1rem;
+}
 @media(min-width:992px){
 	    html body .requestsTile {
         flex: 0 0 auto;
