@@ -358,13 +358,23 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     width: calc(100% - 2rem)!important;
     border:0!important;
     background-color:transparent!important;
+    height: 100%!important;
+    min-height: 100%!important;
+    padding: 0!important;
+    top: 0;
+    z-index: 1!important;
+}
+.on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
+    position:absolute!important;
+    width: calc(100% - 2rem)!important;
+    border:0!important;
+    background-color:transparent!important;
     height: 2rem!important;
     min-height: 2rem!important;
     padding: 0!important;
     top: 1.4rem;
     z-index: 1!important;
 }
-
 [name*="s_dropdown"]  a.styling-font {
     position:absolute!important;
     z-index:0!important;
