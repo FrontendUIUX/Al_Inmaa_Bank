@@ -592,18 +592,18 @@ h2 {
     stroke: var(--Navy-blue);
     opacity:1;
 } */
-svg path{
+.sort svg path{
     opacity:1!important;
      stroke: rgb(0 33 52 / 50%)!important;
 }
-svg.inactive path{
+.sort svg.inactive path{
     stroke: rgb(0 33 52 / 50%)!important;
     opacity:1!important;
 }
-svg.ascending path:nth-child(1){
+.sort svg.ascending path:nth-child(1){
     stroke: rgb(0 33 52 / 100%)!important;
 }
-svg.descending path:nth-child(2){
+.sort svg.descending path:nth-child(2){
     stroke: rgb(0 33 52 / 100%)!important;
 }
  .tableHeader,html body .requestsTile .card .card-header h2 {
