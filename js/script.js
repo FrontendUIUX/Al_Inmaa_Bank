@@ -913,8 +913,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-
-// Filter table by search input
 // Filter table by search input
 function myFunction() {
   var input, filter, table, tr, td, i, j, txtValue;
