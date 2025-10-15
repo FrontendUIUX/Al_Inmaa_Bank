@@ -50,11 +50,6 @@ html:not(.designer),:not(.designer) body{
 	margin: 0.4rem 0 0;
 }
 /* VIEW TITLE END */
-.theme-entry .SourceCodeFormsControlsWorklist span {
-    color: inherit;
-    font-size: 1rem;
-    font-family: var(--Alinma-plain);
-}
 /*  POPUPS ICONS */
 html:not(.designer) .theme-entry .message-box-content.confirmation:before,
 html:not(.designer) .theme-entry .message-box-content.info:before,
@@ -461,7 +456,8 @@ span#d7d128d7-22d7-fc25-3df1-72a0d4daebfe[name*="s_dropdown"]:has(.select-box.di
     background-color: var(--Textbox-background-color) !important;
 }
 span[name*="s_textarea"] .input-control.text-input.read-only{
-	margin-top:.5rem!important;
+	/* margin-top:.5rem!important; */
+	top: 0;
 }
 span[name*="s_textbox"]:has(input[readonly]) [name*="s_label"]
 {
@@ -473,13 +469,16 @@ span[name*="s_textbox"]:has(input[readonly]) [name*="s_label"]
 span[name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
 	color:rgb(57 94 117 / 70%)!important;
 	font-size:.8rem!important;
-	transform: translateY(-0.1rem);
+	transform: translateY(0.3rem);
 	padding: 0!important;
 }
-span[name*="s_textbox"]:has(input[readonly]) input,
+span[name*="s_textbox"]:has(input[readonly]) input{
+  color:rgb(57 94 117 / 85%)!important;
+  top: 0.5rem;
+}
 span[name*="s_textarea"]:has(textarea[readonly]) textarea{
   color:rgb(57 94 117 / 85%)!important;
-  top: .5rem;
+  top: 0.2rem;
 }
 /*  TEXTBOX READONLY END */
 html:not(.designer) [name*="s_dropdown"] {
