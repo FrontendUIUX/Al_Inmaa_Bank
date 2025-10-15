@@ -1108,6 +1108,10 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
 	background-size:contain;
 	background-position:center;
 }
+.theme-entry.runtime-form .grid .grid-content-cell-wrapper{
+	font-size:.9rem;
+	padding:1rem!important;
+}
 @media(min-width:992px){
 	    html body .requestsTile {
         flex: 0 0 auto;
