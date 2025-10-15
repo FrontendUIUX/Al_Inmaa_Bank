@@ -1088,13 +1088,15 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
 }
 /* status right panel */
 .status-container {
-    padding: 0;
+    padding: 0 0.5rem;
     position: fixed;
     right: 3rem;
     top: 8rem;
     background-color: var(--Isabelline);
     height: 100%;
-    width: 25rem;
+    width: 26rem;
+    overflow-y: auto;
+    height: calc(100% - 9rem);
 }
 
 .status-title {
