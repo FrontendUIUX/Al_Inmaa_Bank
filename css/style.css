@@ -551,6 +551,7 @@ h2 {
     animation: 1s fadeUp 1.5s forwards;
     margin-bottom: 2rem;
     margin-top: .6rem;
+    min-height: 30rem;
 }
 .myRequestsTable th{
     font-weight: 400 !important;
