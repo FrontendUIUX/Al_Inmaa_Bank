@@ -67,7 +67,19 @@ html body {
     margin: 0;
     padding: 0;
 }
+.resquestText {
+    display: flex;
+    align-items: baseline;
+}
 
+div#requests-label {
+    margin-left: .4rem;
+    font-size: 1.2rem;
+    color: grey;
+    font-family: var(--Alinma-plain);
+    margin-bottom: unset;
+    font-weight: 400;
+}
 html body ul {
     list-style-type: none;
     padding: 0;
