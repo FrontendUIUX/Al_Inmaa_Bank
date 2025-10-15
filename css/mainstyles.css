@@ -1090,6 +1090,23 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
     display:none!important;
     padding:0!important;
 }
+[name*="Review Details Button mr-1 s_button s_secondary_button"]{
+	position:relative;
+	padding-left:.5rem!important;
+}
+html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_button"]::before{
+	content:"";
+	position:absolute;
+	top:50%;
+	left:.8rem;
+	transform:translateY(-50%);
+	height:1.2rem;
+	width:1.2rem;
+	background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/review details.png");
+	background-repeat:no-repeat;
+	background-size:contain;
+	background-position:center;
+}
 @media(min-width:992px){
 	    html body .requestsTile {
         flex: 0 0 auto;
