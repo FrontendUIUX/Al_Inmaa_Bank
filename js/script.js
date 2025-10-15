@@ -89,7 +89,7 @@ document.addEventListener("DOMContentLoaded", () => {
       const userName = fqn.split("\\").pop();
 
       // ===== Get department text from form label =====
-      const departmentEl = document.querySelector("[name='User_Department_DataLabel']");
+      const departmentEl = document.querySelector("[name*='User_Department_DataLabel']");
       const department = departmentEl ? departmentEl.textContent.trim() : "Unknown Department";
 
       // ===== Sidebar configuration (dynamic links) =====
