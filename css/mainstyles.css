@@ -524,9 +524,9 @@ html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Control
 }
 html:not(.designer) [name*="s_button s_primary_button"]:hover,
 html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button:hover {
-    background-color: var(--Navy-blue-low-opacity)!important;
+    background-color: #001E2D!important;
     color: var(--White)!important;
-    border: 1px solid var(--Navy-blue-low-opacity)!important;
+    border: 1px solid #001E2D!important;
 }
 html:not(.designer) [name*="s_button s_secondary_button"] {
     border:1px solid var(--Navy-blue)!important;
