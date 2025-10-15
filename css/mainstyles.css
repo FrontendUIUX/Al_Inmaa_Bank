@@ -39,7 +39,8 @@ html:not(.designer),:not(.designer) body{
     font-display: swap;
 }
 /* VIEW TITLE START */
-[name*="viewTitle"]{
+[name*="viewTitle"],
+.theme-entry .grid-header-wrapper .grid-header-text>span{
 	font-family:var(--Alinma-bold);
 	color: var(--Navy-blue)!important;
 	padding-bottom: unset!important;
@@ -849,6 +850,9 @@ html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>
     display: flex;
     justify-content: flex-end;
     height: 5rem;
+}
+html:not(.designer) .commentsAttachments [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
+	height:unset!important;
 }
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers{
     border-radius: .5rem!important;

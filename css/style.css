@@ -1318,11 +1318,14 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
 html:not(.designer) .commentsAttachments {
     width:calc(100% - 28rem)!important;
     background-color:white!important;
-    padding:2rem;
+    padding: 2rem 2rem;
     margin-top:2rem;
         border-radius: 1rem;
     overflow: hidden;
     border: 1.6px solid #e5e4de;
+}
+html:not(.designer) .commentsAttachments [name*="viewTitle"]{
+    margin-bottom:1.5rem;
 }
 .pageOf span{
     color: var(--Navy-blue);
