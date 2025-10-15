@@ -71,7 +71,10 @@ html body {
     display: flex;
     align-items: baseline;
 }
-
+.userProfile,
+.userProfile .userInformations{
+    width:100%;
+}
 div#requests-label {
     margin-left: .4rem;
     font-size: 0.9rem;
@@ -300,6 +303,7 @@ html body .userSettings .userInformations .username{
     font-family:var(--Alinma-bold);
     position:relative;
     color: var(--Navy-blue);
+    width: 100%;
 }
 html body .userSettings .userInformations .username::after{
     content:"";
@@ -307,7 +311,7 @@ html body .userSettings .userInformations .username::after{
     top:50%;
     transform:translateY(-50%);
     right:0;
-    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/chevron Down.svg");
+    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Chevron%20Down.svg");
     background-size:contain;
     height:.8rem;
     width:.8rem;
@@ -1419,7 +1423,7 @@ border-right: unset!important;
     border-left: unset;
  }
 .theme-entry .SourceCodeFormsControlsWorklist .WorkListItemTable tr:hover td:last-child .SelectArrowImageDiv{background-size: auto 22px !important;width: 22px !important;height: 22px !important; background-position: -22px 0 !important;}
-.read-only  .input-control-buttons{
+ .read-only  .input-control-buttons{
 display:none!important;
 }
 /**/
