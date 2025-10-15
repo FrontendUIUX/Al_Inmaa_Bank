@@ -1,75 +1,75 @@
-document.addEventListener("DOMContentLoaded", function() {
-    // --- Get the comments div and form div ---
-    const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
-    const formDiv = document.querySelector(".form");
+document.addEventListener("DOMContentLoaded", function () {
+  // --- Get the comments div and form div ---
+  const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
+  const formDiv = document.querySelector(".form");
 
-    if (divToMove && formDiv) {
-        // Create a wrapper for comments + attachments
-        const wrapper = document.createElement("div");
-        wrapper.className = "commentsAttachments";
+  if (divToMove && formDiv) {
+    // Create a wrapper for comments + attachments
+    const wrapper = document.createElement("div");
+    wrapper.className = "commentsAttachments";
 
-        // Insert wrapper after form
-        formDiv.insertAdjacentElement("afterend", wrapper);
+    // Insert wrapper after form
+    formDiv.insertAdjacentElement("afterend", wrapper);
 
-        // Move the comments div inside the wrapper
-        wrapper.appendChild(divToMove);
+    // Move the comments div inside the wrapper
+    wrapper.appendChild(divToMove);
 
-        // --- Wait for the attachment div ---
-        const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
-        const interval = setInterval(function () {
-            const attachmentDiv = document.getElementById(attachmentId);
-            if (attachmentDiv) {
-                clearInterval(interval);
+    // --- Wait for the attachment div ---
+    const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
+    const interval = setInterval(function () {
+      const attachmentDiv = document.getElementById(attachmentId);
+      if (attachmentDiv) {
+        clearInterval(interval);
 
-                // Move attachment inside the same wrapper
-                wrapper.appendChild(attachmentDiv);
+        // Move attachment inside the same wrapper
+        wrapper.appendChild(attachmentDiv);
 
-                // Disable toolbar buttons if href is empty or '#'
-                const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
-                toolbarButtons.forEach(btn => {
-                    if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
-                        btn.classList.add("disabled");
-                    }
-                });
+        // Disable toolbar buttons if href is empty or '#'
+        const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
+        toolbarButtons.forEach(btn => {
+          if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
+            btn.classList.add("disabled");
+          }
+        });
 
-                // --- Append the extra section below wrapper ---
-                const extraSectionId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73";
-                const extraSection = document.getElementById(extraSectionId);
-                if (extraSection) {
-                    wrapper.insertAdjacentElement("afterend", extraSection);
-                }
-            }
-        }, 200); // Check every 200ms until attachment exists
-    }
+        // --- Append the extra section below wrapper ---
+        const extraSectionId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73";
+        const extraSection = document.getElementById(extraSectionId);
+        if (extraSection) {
+          wrapper.insertAdjacentElement("afterend", extraSection);
+        }
+      }
+    }, 200); // Check every 200ms until attachment exists
+  }
 });
 
 // colapse
 document.addEventListener('DOMContentLoaded', () => {
-    const statusContainer = document.querySelector('.status-container');
+  const statusContainer = document.querySelector('.status-container');
 
-    if (statusContainer) {
-        statusContainer.addEventListener('click', (event) => {
-            const collapseIcon = event.target.closest('.collapse-icon');
+  if (statusContainer) {
+    statusContainer.addEventListener('click', (event) => {
+      const collapseIcon = event.target.closest('.collapse-icon');
 
-            if (collapseIcon) {
-                const statusItem = collapseIcon.closest('.status-item');
-                if (statusItem) {
-                    const statusMessage = statusItem.querySelector('.status-message');
+      if (collapseIcon) {
+        const statusItem = collapseIcon.closest('.status-item');
+        if (statusItem) {
+          const statusMessage = statusItem.querySelector('.status-message');
 
-                    if (statusMessage) {
-                        if (statusMessage.classList.contains('show')) {
-                            statusMessage.classList.remove('show');
-                            statusMessage.classList.add('hide');
-                        } else {
-                            statusMessage.classList.remove('hide');
-                            statusMessage.classList.add('show');
-                        }
-                        collapseIcon.classList.toggle('rotated');
-                    }
-                }
+          if (statusMessage) {
+            if (statusMessage.classList.contains('show')) {
+              statusMessage.classList.remove('show');
+              statusMessage.classList.add('hide');
+            } else {
+              statusMessage.classList.remove('hide');
+              statusMessage.classList.add('show');
             }
-        });
-    }
+            collapseIcon.classList.toggle('rotated');
+          }
+        }
+      }
+    });
+  }
 });
 
 
@@ -198,21 +198,21 @@ document.addEventListener("DOMContentLoaded", () => {
             <a href="${link.url || '#'}">${link.name}</a>
           `;
           // ====== Add disabled class if href is empty or '#' ======
-const anchor = li.querySelector("a");
-if (!anchor.getAttribute("href") || anchor.getAttribute("href").trim() === "#" || anchor.getAttribute("href").trim() === "") {
-  anchor.classList.add("disabled");
-  anchor.setAttribute("aria-disabled", "true");
-  anchor.setAttribute("tabindex", "-1"); // remove from tab order
-}
+          const anchor = li.querySelector("a");
+          if (!anchor.getAttribute("href") || anchor.getAttribute("href").trim() === "#" || anchor.getAttribute("href").trim() === "") {
+            anchor.classList.add("disabled");
+            anchor.setAttribute("aria-disabled", "true");
+            anchor.setAttribute("tabindex", "-1"); // remove from tab order
+          }
 
-// Prevent clicks on disabled links
-anchor.addEventListener("click", (e) => {
-  if (anchor.classList.contains("disabled")) {
-    e.preventDefault();
-    e.stopPropagation();
-    // optional: show tooltip or message
-  }
-});
+          // Prevent clicks on disabled links
+          anchor.addEventListener("click", (e) => {
+            if (anchor.classList.contains("disabled")) {
+              e.preventDefault();
+              e.stopPropagation();
+              // optional: show tooltip or message
+            }
+          });
           ul.appendChild(li);
         });
 
@@ -283,37 +283,37 @@ anchor.addEventListener("click", (e) => {
 
 
 $(document).ready(function () {
-  
-  // Attach to ALL textboxes that are inside spans whose name contains "s_textbox"
- $(document).on('focus', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
-  if (!$(this).is('[readonly]')) {
-    $(this).closest('[name*=s_textbox]').addClass('on-focus');
-  }
-});
 
-$(document).on('blur', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
-  const $parent = $(this).closest('[name*=s_textbox]');
-  // If textbox is empty, remove class
-  if ($(this).val().trim() === '') {
-    $parent.removeClass('on-focus');
-  }
-});
+  // Attach to ALL textboxes that are inside spans whose name contains "s_textbox"
+  $(document).on('focus', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
+    if (!$(this).is('[readonly]')) {
+      $(this).closest('[name*=s_textbox]').addClass('on-focus');
+    }
+  });
+
+  $(document).on('blur', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
+    const $parent = $(this).closest('[name*=s_textbox]');
+    // If textbox is empty, remove class
+    if ($(this).val().trim() === '') {
+      $parent.removeClass('on-focus');
+    }
+  });
 
 
   // TextArea
-$(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
-  if (!$(this).is('[readonly]')) {
-    $(this).closest('[name*=s_textarea]').addClass('on-focus');
-  }
-});
+  $(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
+    if (!$(this).is('[readonly]')) {
+      $(this).closest('[name*=s_textarea]').addClass('on-focus');
+    }
+  });
 
-$(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
-  const $parent = $(this).closest('[name*=s_textarea]');
-  // If textarea is empty, remove class
-  if ($(this).val().trim() === '') {
-    $parent.removeClass('on-focus');
-  }
-});
+  $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
+    const $parent = $(this).closest('[name*=s_textarea]');
+    // If textarea is empty, remove class
+    if ($(this).val().trim() === '') {
+      $parent.removeClass('on-focus');
+    }
+  });
 
 
 });
@@ -617,36 +617,36 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
 // document.addEventListener("DOMContentLoaded", function () {
 //     // Check if the sticky header already exists
 //     let commentsSection = document.getElementById('commentsSection');
- 
+
 //     if (!commentsSection) {
 //         // Create the sticky header container
 //         commentsSection = document.createElement('div');
 //         commentsSection.id = 'commentsSection';
 //         document.body.prepend(commentsSection);
 //     }
- 
+
 //     // Select elements to move
 //     let commentsView = document.querySelector('[name*="commentsSection"]');
- 
+
 //     // Move elements inside the sticky header in order
 //     if (commentsSection) {
 //         commentsSection.appendChild(commentsView);
 //     }
 // });
- var fqn = null;
-    // Menu items
+var fqn = null;
+// Menu items
 
-   
+
 
 document.addEventListener("DOMContentLoaded", function () {
-    setTimeout(function () {
-        try {
-            const fqn = SourceCode.Forms.Settings.User.FQN;
-            console.log("Logged-in User FQN: " + fqn);
-        } catch (e) {
-            console.error("Error retrieving FQN:", e);
-        }
-    }, 1000);
+  setTimeout(function () {
+    try {
+      const fqn = SourceCode.Forms.Settings.User.FQN;
+      console.log("Logged-in User FQN: " + fqn);
+    } catch (e) {
+      console.error("Error retrieving FQN:", e);
+    }
+  }, 1000);
 });
 
 
@@ -692,173 +692,173 @@ document.addEventListener("DOMContentLoaded", function () {
 // });
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Create and append the progress bar container
-    const progressBarContainer = document.createElement('div');
-    progressBarContainer.className = 'progress-bar-container';
-    progressBarContainer.id = 'progress-bar-container';
+  // 1. Create and append the progress bar container
+  const progressBarContainer = document.createElement('div');
+  progressBarContainer.className = 'progress-bar-container';
+  progressBarContainer.id = 'progress-bar-container';
 
-    progressBarContainer.innerHTML = `
+  progressBarContainer.innerHTML = `
         <div class="request-progress-zone marketing-request progress-segment" id="marketing-request"></div>
         <div class="request-progress-zone request-a-study progress-segment" id="request-a-study"></div>
         <div class="request-progress-zone branch-visit-notes progress-segment" id="branch-visit-notes"></div>
         <div class="request-progress-zone other progress-segment" id="other"></div>
     `;
 
-    // 2. Insert it right after the #requests-total element
-    const requestsTotalElement = document.getElementById('requests-total');
-    if (requestsTotalElement && requestsTotalElement.parentNode) {
-        requestsTotalElement.insertAdjacentElement('afterend', progressBarContainer);
+  // 2. Insert it right after the #requests-total element
+  const requestsTotalElement = document.getElementById('requests-total');
+  if (requestsTotalElement && requestsTotalElement.parentNode) {
+    requestsTotalElement.insertAdjacentElement('afterend', progressBarContainer);
+  }
+
+  // 3. Map request types to progress segment IDs
+  const segmentMap = {
+    'Marketing Request': 'marketing-request',
+    'HR': 'request-a-study',
+    'Accounting': 'branch-visit-notes',
+    'Other': 'other'
+  };
+
+  // 4. Extract percentages from request cards
+  const percentages = {};
+  const requestCards = document.querySelectorAll('.request-card');
+
+  requestCards.forEach(card => {
+    const label = card.querySelector('.request-name span')?.textContent.trim();
+    const percentText = card.querySelector('.percentage')?.textContent.trim();
+    const percentValue = parseInt(percentText?.replace('%', ''), 10) || 0;
+
+    const segmentId = segmentMap[label];
+    if (segmentId) {
+      percentages[segmentId] = percentValue;
     }
+  });
 
-    // 3. Map request types to progress segment IDs
-    const segmentMap = {
-        'Marketing Request': 'marketing-request',
-        'HR': 'request-a-study',
-        'Accounting': 'branch-visit-notes',
-        'Other': 'other'
-    };
+  // 5. Animate each segment sequentially
+  const segmentIdsInOrder = ['marketing-request', 'request-a-study', 'branch-visit-notes', 'other'];
 
-    // 4. Extract percentages from request cards
-    const percentages = {};
-    const requestCards = document.querySelectorAll('.request-card');
+  function animateSegment(index = 0) {
+    if (index >= segmentIdsInOrder.length) return;
 
-    requestCards.forEach(card => {
-        const label = card.querySelector('.request-name span')?.textContent.trim();
-        const percentText = card.querySelector('.percentage')?.textContent.trim();
-        const percentValue = parseInt(percentText?.replace('%', ''), 10) || 0;
+    const segmentId = segmentIdsInOrder[index];
+    const segmentElement = document.getElementById(segmentId);
+    const percentValue = percentages[segmentId] || 0;
 
-        const segmentId = segmentMap[label];
-        if (segmentId) {
-            percentages[segmentId] = percentValue;
-        }
-    });
-
-    // 5. Animate each segment sequentially
-    const segmentIdsInOrder = ['marketing-request', 'request-a-study', 'branch-visit-notes', 'other'];
-
-    function animateSegment(index = 0) {
-        if (index >= segmentIdsInOrder.length) return;
-
-        const segmentId = segmentIdsInOrder[index];
-        const segmentElement = document.getElementById(segmentId);
-        const percentValue = percentages[segmentId] || 0;
-
-        if (segmentElement) {
-            segmentElement.style.width = '0'; // Reset
-            setTimeout(() => {
-                segmentElement.style.transition = 'width 1.5s ease';
-                segmentElement.style.width = `${percentValue}%`;
-                setTimeout(() => {
-                    animateSegment(index + 1);
-                }, 1600); // Delay before next
-            }, 100);
-        } else {
-            animateSegment(index + 1);
-        }
+    if (segmentElement) {
+      segmentElement.style.width = '0'; // Reset
+      setTimeout(() => {
+        segmentElement.style.transition = 'width 1.5s ease';
+        segmentElement.style.width = `${percentValue}%`;
+        setTimeout(() => {
+          animateSegment(index + 1);
+        }, 1600); // Delay before next
+      }, 100);
+    } else {
+      animateSegment(index + 1);
     }
+  }
 
-    // Start the animation
-    animateSegment();
+  // Start the animation
+  animateSegment();
 });
 
 // SIDE BAR SUBMENU 
 document.addEventListener("DOMContentLoaded", () => {
-    const subMenus = document.querySelectorAll(".isSubMenu");
-    const subPanel = document.querySelector(".subPanel");
-    const subPanelList = subPanel.querySelector(".subPanelBody ul");
-    const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
-    const overlayShadow = document.querySelector(".overlayShadow");
-    const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
+  const subMenus = document.querySelectorAll(".isSubMenu");
+  const subPanel = document.querySelector(".subPanel");
+  const subPanelList = subPanel.querySelector(".subPanelBody ul");
+  const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
+  const overlayShadow = document.querySelector(".overlayShadow");
+  const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
 
-    const submenuLinks = {
-        "Reports & Analytics": [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
-        ],
-        "Retail & Digital Banking": [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
-        ],
-        "Marketing & Corporate": [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "https://win-0q5t2palbof/Runtime/Runtime/Form/NR__MarketingRequest__Form/" }
-        ],
-        "Shariah": [],
-        "Information Technology": [],
-        "Operations": [],
-        "Facilities Management": [],
-        "Human Capital": [],
-        "Risk Management": []
-    };
+  const submenuLinks = {
+    "Reports & Analytics": [
+      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
+      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
+      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
+    ],
+    "Retail & Digital Banking": [
+      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
+      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
+    ],
+    "Marketing & Corporate": [
+      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Campaign Performance", url: "https://win-0q5t2palbof/Runtime/Runtime/Form/NR__MarketingRequest__Form/" }
+    ],
+    "Shariah": [],
+    "Information Technology": [],
+    "Operations": [],
+    "Facilities Management": [],
+    "Human Capital": [],
+    "Risk Management": []
+  };
 
-    function renderSubLinks(title) {
-        subPanelList.innerHTML = ""; // Clear old links
+  function renderSubLinks(title) {
+    subPanelList.innerHTML = ""; // Clear old links
 
-        if (submenuLinks[title] && submenuLinks[title].length > 0) {
-            submenuLinks[title].forEach(link => {
-                const li = document.createElement("li");
-                li.innerHTML = `
+    if (submenuLinks[title] && submenuLinks[title].length > 0) {
+      submenuLinks[title].forEach(link => {
+        const li = document.createElement("li");
+        li.innerHTML = `
                     <div class="icon">
                         <img src="${link.icon}" alt="">
                     </div>
                     <a href="${link.url}">${link.text}</a>
                 `;
-                subPanelList.appendChild(li);
-            });
-            return true; 
-        }
-        return false;
+        subPanelList.appendChild(li);
+      });
+      return true;
     }
+    return false;
+  }
 
-    // helper to sync overlay with active panels
-    function updateOverlay() {
-        const hasActivePanel = document.querySelector(".subPanel.active");
-        if (overlayShadow) {
-            overlayShadow.style.display = hasActivePanel ? "block" : "none";
-        }
+  // helper to sync overlay with active panels
+  function updateOverlay() {
+    const hasActivePanel = document.querySelector(".subPanel.active");
+    if (overlayShadow) {
+      overlayShadow.style.display = hasActivePanel ? "block" : "none";
     }
+  }
 
-    subMenus.forEach(menu => {
-        menu.addEventListener("click", e => {
-            e.preventDefault();
+  subMenus.forEach(menu => {
+    menu.addEventListener("click", e => {
+      e.preventDefault();
 
-            const title = menu.querySelector("a").innerText.trim();
+      const title = menu.querySelector("a").innerText.trim();
 
-            // If no links → close panel and update overlay
-            if (!submenuLinks[title] || submenuLinks[title].length === 0) {
-                subPanel.classList.remove("active");
-                updateOverlay();
-                return;
-            }
+      // If no links → close panel and update overlay
+      if (!submenuLinks[title] || submenuLinks[title].length === 0) {
+        subPanel.classList.remove("active");
+        updateOverlay();
+        return;
+      }
 
-            // Update panel title
-            subPanelTitle.textContent = title;
+      // Update panel title
+      subPanelTitle.textContent = title;
 
-            if (subPanel.classList.contains("active")) {
-                // remove first
-                subPanel.classList.remove("active");
+      if (subPanel.classList.contains("active")) {
+        // remove first
+        subPanel.classList.remove("active");
 
-                // wait 1 second before adding back
-                setTimeout(() => {
-                    renderSubLinks(title);
-                    subPanel.classList.add("active");
-                    updateOverlay();
-                }, 1000); // ← enforce 1 second delay
-            } else {
-                renderSubLinks(title);
-                subPanel.classList.add("active");
-                updateOverlay();
-            }
-        });
+        // wait 1 second before adding back
+        setTimeout(() => {
+          renderSubLinks(title);
+          subPanel.classList.add("active");
+          updateOverlay();
+        }, 1000); // ← enforce 1 second delay
+      } else {
+        renderSubLinks(title);
+        subPanel.classList.add("active");
+        updateOverlay();
+      }
     });
+  });
 
-    // Close Sub Panel
-    if (closeSubpanelBtn) {
-        closeSubpanelBtn.addEventListener("click", function(){
-            subPanel.classList.remove("active");
-            updateOverlay();
-        });
-    }
+  // Close Sub Panel
+  if (closeSubpanelBtn) {
+    closeSubpanelBtn.addEventListener("click", function () {
+      subPanel.classList.remove("active");
+      updateOverlay();
+    });
+  }
 });
 
 
@@ -878,7 +878,7 @@ function myFunction() {
       } else {
         tr[i].style.display = "none";
       }
-    }       
+    }
   }
 }
 // Animate Counters
@@ -900,7 +900,7 @@ function startOdometerWhenVisible(element) {
           odometer.update(targetValue);
 
           // Add the currency label after the animation finishes
-          odometer.on('stop', function() {
+          odometer.on('stop', function () {
             var formattedValue = targetValue.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
             $(element).text(formattedValue + " USD M"); // Update text with currency and suffix
           });
@@ -924,44 +924,52 @@ initializeCounters();
 
 
 // Light mode toggle
-    $("#modeToggle").on("change", function () {
-        if ($(this).is(":checked")) {
-            $(".sun-img").hide();   
-        } else {
-            $(".sun-img").show();   
-        }
-    });
+$("#modeToggle").on("change", function () {
+  if ($(this).is(":checked")) {
+    $(".sun-img").hide();
+  } else {
+    $(".sun-img").show();
+  }
+});
 
 
-// SORT TABLE 
+// TABLE SORTING FEATURE START
 document.addEventListener("DOMContentLoaded", function () {
-        const tbody = document.getElementById("requestsTable");
-        const serviceHeader = document.querySelector("th.service span"); // span contains the SVG
-        //const sortIcon = serviceHeader.querySelector("svg");
+  const tbody = document.getElementById("requestsTable");
+  const headers = document.querySelectorAll("th.service span"); // All clickable spans in header
+  let sortDirection = {}; // Keep track of sort direction per column
 
-        let sortDirection = 1; // 1 = ascending, -1 = descending
+  headers.forEach(header => {
+    header.addEventListener("click", function () {
+      const columnName = header.textContent.trim();
+      let rows = Array.from(tbody.querySelectorAll("tr"));
 
-        serviceHeader.addEventListener("click", function () {
-            let rows = Array.from(tbody.querySelectorAll("tr"));
+      // Detect which column to sort by
+      let columnIndex = Array.from(header.closest("tr").children).indexOf(header.closest("th"));
 
-            rows.sort((a, b) => {
-                let serviceA = a.querySelector("td[data-title='Service']").innerText.toLowerCase();
-                let serviceB = b.querySelector("td[data-title='Service']").innerText.toLowerCase();
+      rows.sort((a, b) => {
+        let cellA = a.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
+        let cellB = b.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
 
-                if (serviceA < serviceB) return -1 * sortDirection;
-                if (serviceA > serviceB) return 1 * sortDirection;
-                return 0;
-            });
+        if (cellA < cellB) return -1 * (sortDirection[columnName] || 1);
+        if (cellA > cellB) return 1 * (sortDirection[columnName] || 1);
+        return 0;
+      });
 
-            // Toggle sort direction
-            sortDirection *= -1;
+      // Toggle direction for this column
+      sortDirection[columnName] = (sortDirection[columnName] || 1) * -1;
 
-            // Re-append rows in sorted order
-            rows.forEach(row => tbody.appendChild(row));
+      // Re-append sorted rows
+      rows.forEach(row => tbody.appendChild(row));
 
-            // Toggle active class on the SVG
-            // if(sortIcon){
-            //     sortIcon.classList.toggle("active", sortDirection === -1);
-            // }
-        });
+      // Reset all icons, remove active
+      document.querySelectorAll("th.service span svg").forEach(svg => {
+        svg.classList.remove("active");
+      });
+
+      // Activate only current column's icon
+      const svg = header.querySelector("svg");
+      if (svg) svg.classList.add("active");
     });
+  });
+});
