@@ -1343,6 +1343,10 @@ html:not(.designer) .commentsAttachments {
     margin-top:1rem;
 
 }
+html:not(.designer) .theme-entry .input-control.radio.style-aware svg {
+    height: 1.4rem!important;
+   
+}
 /**/
 @media(min-width:992px){
     [name="headerLogo"]{
