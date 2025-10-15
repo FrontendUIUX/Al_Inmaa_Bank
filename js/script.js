@@ -712,7 +712,7 @@ document.addEventListener('DOMContentLoaded', () => {
     `;
 
   // 2. Insert it right after the #requests-total element
-  const requestsTotalElement = document.getElementById('requests-total');
+  const requestsTotalElement = document.querySelector('.resquestText');
   if (requestsTotalElement && requestsTotalElement.parentNode) {
     requestsTotalElement.insertAdjacentElement('afterend', progressBarContainer);
   }
