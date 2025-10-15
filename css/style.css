@@ -1348,16 +1348,14 @@ html:not(.designer) .theme-entry .input-control.radio.style-aware svg {
    
 }
 html:not(.designer) .theme-entry .commentsAttachments [name*="commentsView"]{
-    margin-bottom: 0;
+    margin-bottom: 1rem;
 }
 html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"]{
     border:none!important;
     background:transparent!important;
     padding: 0!important;
 }
-html:not(.designer) .theme-entry .file-wrapper .file-watermark{
-    color: var(--Navy-blue);
-}
+
 /**/
 @media(min-width:992px){
     [name="headerLogo"]{

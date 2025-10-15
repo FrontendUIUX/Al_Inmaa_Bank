@@ -825,6 +825,9 @@ html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>
     justify-content: flex-end;
     height: 5rem;
 }
+html:not(.designer) .commentsAttachments [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
+	height:unset!important;
+}
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers{
     border-radius: .5rem!important;
     background-color:#f8efe8!important;
