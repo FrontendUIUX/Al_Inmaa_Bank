@@ -1069,10 +1069,9 @@ table.table{
     background-color: rgb(241, 241, 241);
 }
 html:not(.designer) body.theme-entry a.toolbar-button{
-    display: flex!important;
+    display: flex;
     align-items: center!important;
     height: 3rem;
-    
     transition:all .3s ease-in-out;
     border:none!important;
     background-color:transparent!important;
