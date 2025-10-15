@@ -1243,14 +1243,18 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
 }
 .theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist{
     border-radius:1rem;
-    border: 2px solid rgb(215 214 213) !important;
+    /* border: 2px solid rgb(215 214 213) !important; */
     overflow:hidden!important;
+    background-color: white;
 }
 .theme-entry .SourceCodeFormsControlsWorklist .nav{
-    padding:.5rem 0;
+    padding:1rem;
     background-color:transparent!important;
 }
-.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist .SourceCodeFormsControlsWorklist{background:transparent;border: none;}
+.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist .SourceCodeFormsControlsWorklist{
+    background:transparent;
+    border: none;
+}
 /**/
 
 .innerpanel div[name="MarketingAttachments Area Item"]{
@@ -1355,7 +1359,50 @@ html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"
     background:transparent!important;
     padding: 0!important;
 }
-
+.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist tbody{
+width: 100%;
+}
+ 
+ 
+.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist .WorkListGridTableBody{
+border-top: unset !important;
+}
+ 
+ 
+.theme-entry .SourceCodeFormsControlsWorklist .worklist-grid-even {
+    background-color: unset;
+}
+ 
+.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist .WorkListItemTable{
+    margin-top: .5rem;
+}
+ 
+.theme-entry .SourceCode-Forms-Controls-Web-ControlPack-Worklist .WorkListGridHeader tr th:nth-child(2) span{
+border-right: unset!important;
+}
+ 
+.theme-entry .SourceCodeFormsControlsWorklist span.worklist-grid-column-header-cell-text{
+    padding: 0 !important;
+    font-size: 1rem;
+    text-transform: unset !important;
+    color: black;
+}
+ 
+.theme-entry .SourceCodeFormsControlsWorklist .WorkListItemTableHeader th{
+    border-radius: unset;
+}
+ 
+.theme-entry .SourceCodeFormsControlsWorklist .WorkListItemTable .WorklistItemGridRow td:last-child{
+    padding-right: 1rem;
+}
+ .theme-entry .SourceCodeFormsControlsWorklist .WorkListItemTable .WorklistItemGridRow > td{
+    height: 4rem;
+    border-bottom: 1px solid rgba(0 0 0 / 20%);
+    border-right: unset;
+    border-left: unset;
+ }
+.theme-entry .SourceCodeFormsControlsWorklist .WorkListItemTable tr:hover td:last-child .SelectArrowImageDiv{background-size: auto 22px !important;width: 22px !important;height: 22px !important; background-position: -22px 0 !important;}
+ 
 /**/
 @media(min-width:992px){
     [name="headerLogo"]{
