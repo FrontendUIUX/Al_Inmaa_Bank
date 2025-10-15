@@ -551,7 +551,6 @@ h2 {
     animation: 1s fadeUp 1.5s forwards;
     margin-bottom: 2rem;
     margin-top: .6rem;
-    min-height: 30rem;
 }
 .myRequestsTable th{
     font-weight: 400 !important;
@@ -581,8 +580,8 @@ svg.active path:nth-child(1) {
     stroke: var(--Navy-blue);
     opacity:1;
 }
-svg.active path:nth-child(2) {
-    stroke: rgb(0 33 52 / 50%);
+svg path{
+    stroke: rgb(0 33 52 / 50%)!important;
 }
  .tableHeader,html body .requestsTile .card .card-header h2 {
     color: #002035;
