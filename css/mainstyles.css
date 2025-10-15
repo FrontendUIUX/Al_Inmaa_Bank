@@ -378,7 +378,6 @@ html:not(.designer) .theme-entry .input-control a.input-control{
 [name*="s_dropdown"]  a.styling-font {
     position:absolute!important;
     z-index: 1!important;
-    /* width: calc(100% - 2rem)!important; */
     border:0!important;
     background-color:transparent!important;
     height: 100%!important;
@@ -386,7 +385,7 @@ html:not(.designer) .theme-entry .input-control a.input-control{
     padding: 0!important;
     top: -1.8rem;
 }
-.on-focus[name*="s_dropdown"]  a.styling-font {
+.on-focus[name*="s_dropdown"] a.styling-font {
     position:absolute!important;
     z-index:0!important;
     width: calc(100% - 2rem)!important;
@@ -474,8 +473,9 @@ html:not(.designer) [name*="s_dropdown"] {
 }
 html:not(.designer) [name*="s_dropdown"] [name*="s_label"] {
 	position:absolute;
-	top:50%;
+	top: 50%;
 	transform:translateY(-50%);
+	padding: 0!important;
 }
 html:not(.designer) [name*="s_label"] {
     font-size: 1rem;
@@ -487,8 +487,7 @@ html:not(.designer) [name*="s_label"] {
     line-height: unset!important;
 }
 html:not(.designer) [name*="s_text"] [name*="s_label"],
-html:not(.designer) [name*="s_textarea"] [name*="s_label"],
-html:not(.designer) [name*="s_dropdown"] [name*="s_label"]{
+html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
 	position:relative;
 	z-index: 0!important;
 }
@@ -648,7 +647,7 @@ html:not(.designer) .closeSubPanel:hover{
 html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"] {
     top: 25%!important;
     padding: 0;
-	font-size: .8rem !important;
+    font-size: .8rem !important;
     color: var(--Navy-blue);
 }
 .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow, 
