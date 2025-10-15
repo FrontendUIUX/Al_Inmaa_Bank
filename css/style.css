@@ -1351,7 +1351,7 @@ html:not(.designer) .theme-entry .commentsAttachments [name*="commentsView"]{
     margin-bottom: 1rem;
 }
 html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"]{
-    border:none!important;
+    /* border:none!important; */
     background:transparent!important;
     padding: 0!important;
 }
