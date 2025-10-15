@@ -1419,7 +1419,9 @@ border-right: unset!important;
     border-left: unset;
  }
 .theme-entry .SourceCodeFormsControlsWorklist .WorkListItemTable tr:hover td:last-child .SelectArrowImageDiv{background-size: auto 22px !important;width: 22px !important;height: 22px !important; background-position: -22px 0 !important;}
- 
+.read-only  .input-control-buttons{
+display:none!important;
+}
 /**/
 @media(min-width:992px){
     [name="headerLogo"]{
