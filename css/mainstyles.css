@@ -39,15 +39,13 @@ html:not(.designer),:not(.designer) body{
     font-display: swap;
 }
 /* VIEW TITLE START */
-[name*="viewTitle"],
-.theme-entry .grid-header-wrapper .grid-header-text>span{
+[name*="viewTitle"]{
 	font-family:var(--Alinma-bold);
 	color: var(--Navy-blue)!important;
 	padding-bottom: unset!important;
 	font-size:1.4rem;
 }
-[name*="attachmentSection"] [name*="viewTitle"],
-.theme-entry .commentsAttachments .grid-header-wrapper .grid-header-text>span{
+[name*="attachmentSection"] [name*="viewTitle"]{
 	margin: 0.4rem 0 0;
 }
 /* VIEW TITLE END */
@@ -390,14 +388,19 @@ html:not(.designer) .theme-entry .input-control a.input-control{
 }
 [name*="s_textarea"] textarea{
     position:absolute!important;
-    z-index:0!important;
+    z-index: 1!important;
     width: calc(100% - 2rem)!important;
     border:0!important;
-    background-color:transparent!important;
-    min-height: 2rem!important;
+    background-color: transparent !important;
+    min-height: 3.5rem!important;
+    height: auto;
     padding: 0!important;
-    top: -0.5rem;
+    top: -2.3rem;
     font-family: var(--Alinma-plain)!important;
+}
+.on-focus[name*="s_textarea"] textarea{
+    min-height: 2rem!important;
+    top: -0.5rem;
 }
 html:not(.designer) .readonly[name*="s_textbox"],
 html:not(.designer) .empty[name*="s_textbox"],
@@ -468,9 +471,10 @@ html:not(.designer) [name*="s_label"] {
     min-height: unset!important;
     line-height: unset!important;
 }
-html:not(.designer) [name*="s_text"] [name*="s_label"]{
+html:not(.designer) [name*="s_text"] [name*="s_label"],
+html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
 	position:relative;
-	z-index:0;
+	z-index: 0!important;
 }
 html:not(.designer) [name*="s_textarea"] {
     border: 1px solid var(--Textbox-border-color) !important;
@@ -483,6 +487,7 @@ html:not(.designer) [name*="s_textarea"] {
     font-family: var(--regularFont) !important;
     width: 100%;
     min-height: 3rem !important;
+    position: relative;
 }
 
 html:not(.designer) [name*="s_button"],
@@ -588,9 +593,6 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     opacity:0;
     transform:translateY(-50%);
     animation:1s fadeDown forwards;
-}
-.theme-entry .grid .grid-column-header-cell{
-padding:0!important;
 }
 html:not(.designer) .panel{
     background-color:transparent!important;
@@ -825,9 +827,6 @@ html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>
     justify-content: flex-end;
     height: 5rem;
 }
-html:not(.designer) .commentsAttachments [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
-	height:unset!important;
-}
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers{
     border-radius: .5rem!important;
     background-color:#f8efe8!important;
@@ -986,7 +985,7 @@ html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"]{
     pointer-events: none;
 }
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] .grid-column-headers{
-	background-color: var(--Table-header)!important;
+	background-color:rgb(255 255 255 / 70%)!important;
 }
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] [name*="viewTitle"]{
 	color:rgb(57 94 117 / 85%)!important;
@@ -1031,22 +1030,16 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
 	height:.8rem;
 	width:.8rem;
 }
-.grid-column-header-table{
+.grid-column-header-table  td{
         background-color: var(--Table-header) !important;
-}
-.commentsAttachments .grid-column-header-table{
-	background-color:transparent!important;
-}
-.commentsAttachments .grid-column-header-table tr td{
-	border:none!important;
 }
 .grid-column-header-table td .grid-column-header-text{
    border: none;
-   padding: 0.8rem 0rem !important;
-   /* background-color: rgb(244 231 219) !important; */
-   color: #002134 !important;
-   font-family:var(--Alinma-plain);
-   font-size:1.05rem;
+    padding: 0.8rem 0rem !important;
+    background-color: rgb(244 231 219) !important;
+    color: #002134 !important;
+        font-family:var(--Alinma-plain);
+        font-size:1.05rem;
 }
 .file-delete {
     margin-right: 1rem;
