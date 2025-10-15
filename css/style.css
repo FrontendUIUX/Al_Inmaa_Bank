@@ -584,7 +584,7 @@ h2 {
     padding: 1.2rem 1rem !important;
 }
  
-.myRequestsTable .service.sort svg{
+.myRequestsTable .sort svg{
     width: 1.3rem;
     height: auto;
 }
@@ -745,6 +745,7 @@ table td .editRow a::before{
     padding: 1rem 1rem!important;
     background-color: rgb(244 231 219) !important;
     color: #002134!important;
+    position: relative;
 }
  thead th span{
       border-right: 1px solid rgb(0 0 0 / 10%);
@@ -901,7 +902,7 @@ table td .editRow a::before{
 .statusColumn, .myRequestsTable th:last-child{
     text-align: center;
 }
-th.service.sort span {
+th.sort span {
     display: flex;
     align-items: center;
     justify-content: space-between;
