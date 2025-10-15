@@ -914,8 +914,7 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-// Filter table by search input
-// Filter table by search input (all columns in tbody)
+//FILTER MY REQUESTS TABLE - MY REQUESTS DASHBOARD
 function myFunction() {
   const input = document.getElementById("searchInput");
   const filter = input.value.toUpperCase();
@@ -937,6 +936,29 @@ function myFunction() {
     tr[i].style.display = rowMatch ? "" : "none";
   }
 }
+//FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD
+function pendingRequestsTable(){
+   const input = document.getElementById("marketingsearchInput");
+  const filter = input.value.toUpperCase();
+  const tbody = document.getElementById("pendingRequestsTable");
+  const tr = tbody.getElementsByTagName("tr");
+
+  for (let i = 0; i < tr.length; i++) {
+    const td = tr[i].getElementsByTagName("td");
+    let rowMatch = false;
+
+    for (let j = 0; j < td.length; j++) {
+      let txtValue = td[j].textContent || td[j].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        rowMatch = true;
+        break; // stop checking once one column matches
+      }
+    }
+
+    tr[i].style.display = rowMatch ? "" : "none";
+  }
+}
+
 
 // Animate Counters
 function startOdometerWhenVisible(element) {
@@ -978,8 +1000,6 @@ function initializeCounters() {
   });
 }
 initializeCounters();
-
-
 // Light mode toggle
 $("#modeToggle").on("change", function () {
   if ($(this).is(":checked")) {
@@ -988,11 +1008,62 @@ $("#modeToggle").on("change", function () {
     $(".sun-img").show();
   }
 });
-
-
-// TABLE SORTING FEATURE START
+// TABLE SORTING FEATURE START - MY REQUESTS
 document.addEventListener("DOMContentLoaded", function () {
   const tbody = document.getElementById("requestsTable");
+  const headers = document.querySelectorAll("th:has(svg) span"); // clickable spans with sort icons
+  let sortDirection = {}; // Keep track of sort direction per column
+
+  headers.forEach(header => {
+    header.addEventListener("click", function () {
+      const columnName = header.textContent.trim();
+      let rows = Array.from(tbody.querySelectorAll("tr"));
+
+      // Detect which column to sort by
+      let columnIndex = Array.from(header.closest("tr").children).indexOf(header.closest("th"));
+
+      rows.sort((a, b) => {
+        let cellA = a.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
+        let cellB = b.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
+
+        if (cellA < cellB) return -1 * (sortDirection[columnName] || 1);
+        if (cellA > cellB) return 1 * (sortDirection[columnName] || 1);
+        return 0;
+      });
+
+      // Toggle direction for this column
+      sortDirection[columnName] = (sortDirection[columnName] || 1) * -1;
+
+      // Re-append sorted rows
+      rows.forEach(row => tbody.appendChild(row));
+
+      // Reset all icons → inactive
+      document.querySelectorAll("th svg").forEach(svg => {
+        svg.classList.remove("ascending", "descending");
+        svg.classList.add("inactive");
+      });
+
+      // Apply class to current icon
+      const svg = header.querySelector("svg");
+      if (svg) {
+        svg.classList.remove("inactive");
+        if (sortDirection[columnName] === 1) {
+          svg.classList.add("descending"); // last click flipped to descending
+        } else {
+          svg.classList.add("ascending");
+        }
+      }
+    });
+  });
+
+  // Initialize all icons as inactive
+  document.querySelectorAll("th svg").forEach(svg => {
+    svg.classList.add("inactive");
+  });
+});
+// TABLE SORTING FEATURE START - Marketing Dashboard
+document.addEventListener("DOMContentLoaded", function () {
+  const tbody = document.getElementById("pendingRequestsTable");
   const headers = document.querySelectorAll("th:has(svg) span"); // clickable spans with sort icons
   let sortDirection = {}; // Keep track of sort direction per column
 

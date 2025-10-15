@@ -614,7 +614,8 @@ html:not(.designer) .form {
     padding-bottom: 2rem;
 }
 /* header */
-html:not(.designer) .theme-entry [name*="s_header"] {
+html:not(.designer) .theme-entry [name*="s_header"],
+html:not(.designer) header {
     position:fixed;
     top:0;
     left: 0;
@@ -1135,13 +1136,14 @@ html:not(.designer) .theme-entry .SourceCodeFormsControlsWorklist .searchBar tr>
         width: 58.33333333%;
         padding-right: 1rem;
     }
-	html:not(.designer) body.theme-entry {
+	html:not(.designer) body.theme-entry{
     padding-top: 8rem;
 }
 	html:not(.designer) .theme-entry span[name*="PageTitle"]{
 		margin:0;
 	}
-	html:not(.designer) .theme-entry [name*="s_header"] {
+	html:not(.designer) .theme-entry [name*="s_header"],
+    html:not(.designer) header {
     left:22rem;
     width: calc(100% - 22rem);
     flex-direction: row;

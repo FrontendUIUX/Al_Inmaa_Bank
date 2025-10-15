@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="../css/bootstrap.min.css">
+  <link rel="stylesheet" href="../css/style.css">
+  <link rel="stylesheet" href="../css/mainstyles.css">
+  <link rel="stylesheet" href="../css/marketing dashboard/style.css">
+</head>
+
+<body class="theme-entry">
+  <div class="overlayShadow"></div>
+  <!-- HEADER START -->
+  <header class="d-flex justify-content-between align-items-center container">
+    <div class="dashboardIntro">
+      <h3>Welcome Back, Ibrahim</h3>
+      <p>Requests Awaiting Action</p>
+    </div>
+    <a href="/" class="logo">
+      <img src="../images/net/Logo.png" alt="Al Inmaa Bank" />
+    </a>
+
+  </header>
+  <!-- HEADER END -->
+  <!-- SIDEBAR START -->
+  <aside class="sidebar">
+    <div class="userSettings d-flex align-items-center">
+      <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
+        <div class="userProfilePhoto">
+          <img src="../images/net/UserProfile.png" alt="Ibrahim K." class="profilePhoto">
+        </div>
+        <div class="userInformations d-flex flex-column">
+          <span class="username">Ibrahim K.</span>
+          <span class="userPosition">Marketing Department</span>
+        </div>
+      </div>
+      <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
+        <svg width="50" height="50" viewBox="0 0 50 50" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <rect width="50" height="50" rx="12" fill="#F1DFDA" />
+          <rect x="0.5" y="0.5" width="49" height="49" rx="11.5" stroke="#002134" stroke-opacity="0.05" />
+          <mask id="path-3-outside-1_1753_6499" maskUnits="userSpaceOnUse" x="12" y="13.5078" width="23" height="23"
+            fill="black">
+            <rect fill="white" x="12" y="13.5078" width="23" height="23" />
+            <path fill-rule="evenodd" clip-rule="evenodd"
+              d="M23.6749 16.5076C19.6272 16.5076 16.3459 19.7889 16.3459 23.8366V30.6002C15.5868 30.697 15 31.3453 15 32.1307C15 32.9829 15.6908 33.6737 16.543 33.6737H30.815C31.6672 33.6737 32.358 32.9829 32.358 32.1307C32.358 31.3425 31.7669 30.6923 31.0038 30.5992V23.8366C31.0038 19.7889 27.7225 16.5076 23.6749 16.5076Z" />
+          </mask>
+          <path
+            d="M16.3459 30.6002L16.662 33.0801L18.8459 32.8018V30.6002H16.3459ZM31.0038 30.5992H28.5038V32.8127L30.7011 33.0808L31.0038 30.5992ZM16.3459 23.8366H18.8459C18.8459 21.1696 21.0079 19.0076 23.6749 19.0076V16.5076V14.0076C18.2465 14.0076 13.8459 18.4082 13.8459 23.8366H16.3459ZM16.3459 30.6002H18.8459V23.8366H16.3459H13.8459V30.6002H16.3459ZM15 32.1307H17.5C17.5 32.6198 17.1354 33.0198 16.662 33.0801L16.3459 30.6002L16.0298 28.1203C14.0382 28.3741 12.5 30.0708 12.5 32.1307H15ZM16.543 33.6737V31.1737C17.0715 31.1737 17.5 31.6021 17.5 32.1307H15H12.5C12.5 34.3636 14.3101 36.1737 16.543 36.1737V33.6737ZM30.815 33.6737V31.1737H16.543V33.6737V36.1737H30.815V33.6737ZM32.358 32.1307H29.858C29.858 31.6021 30.2865 31.1737 30.815 31.1737V33.6737V36.1737C33.0479 36.1737 34.858 34.3636 34.858 32.1307H32.358ZM31.0038 30.5992L30.7011 33.0808C30.2252 33.0227 29.858 32.6215 29.858 32.1307H32.358H34.858C34.858 30.0634 33.3086 28.3618 31.3065 28.1176L31.0038 30.5992ZM31.0038 23.8366H28.5038V30.5992H31.0038H33.5038V23.8366H31.0038ZM23.6749 16.5076V19.0076C26.3418 19.0076 28.5038 21.1696 28.5038 23.8366H31.0038H33.5038C33.5038 18.4082 29.1032 14.0076 23.6749 14.0076V16.5076Z"
+            fill="#002134" mask="url(#path-3-outside-1_1753_6499)" />
+          <path d="M21.6437 38.2891C22.9146 39.5331 24.9346 39.5719 26.2524 38.3776L26.3501 38.2891" stroke="#002134"
+            stroke-width="2.3" stroke-linecap="round" />
+          <circle cx="32.499" cy="17.5" r="7.5" fill="#BB2C30" stroke="#F1DFDA" stroke-width="4.5" />
+        </svg>
+
+      </button>
+    </div>
+    <div class="sideBarLinksGroup">
+      <div class="sidebarCategory">
+        <h6 class="categoryName">Main Links</h6>
+        <ul class="links">
+          <li>
+            <div class="icon">
+              <img src="../images/net/Dashboard.svg" alt="">
+            </div>
+            <a href="#">Dashboard</a>
+          </li>
+          <li class="active">
+            <div class="icon">
+              <img src="../images/net/My Requests.svg" alt="">
+            </div>
+            <a href="/">My Requests</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/report-and-analytics.svg" alt="">
+            </div>
+            <a href="#">Reports & Analytics</a>
+      </div>
+      <div class="sidebarCategory">
+        <h6 class="categoryName">Departments</h6>
+        <ul class="links">
+          <li>
+            <div class="icon">
+              <img src="../images/net/Retail Banking.svg" alt="Retail & Digital Banking">
+            </div>
+            <a href="">Retail & Digital Banking</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/Human Capital Excellence.svg" alt="">
+            </div>
+            <a href="">Marketing & Corporate</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/Shariah.svg" alt="">
+            </div>
+            <a href="">Shariah</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/information-technology.svg" alt="">
+            </div>
+            <a href="">Information Technology</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/Operations.svg" alt="">
+            </div>
+            <a href="">Operations</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/facilities-management.svg" alt="">
+            </div>
+            <a href="">Facilities Management</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/Business Acquistion.svg" alt="">
+            </div>
+            <a href="">Human Capital</a>
+          </li>
+          <li class="isSubMenu">
+            <div class="icon">
+              <img src="../images/net/risk-management.svg" alt="">
+            </div>
+            <a href="">Risk Management</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+    <div class="light-dark-mode ">
+      <div class="toggle-label d-flex align-items-center justify-content-between">
+        <img class="sun-img" src="../images/net/Sun.svg" alt="">
+        <span id="mode-label">Light Mode</span>
+        <div class="form-check form-switch m-0">
+          <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
+        </div>
+      </div>
+    </div>
+
+  </aside>
+  <!-- NOTIFICATION POPUP START -->
+  <div class="modal notification-modal" id="notificationModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Notifications</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+
+          <div class="notification-item">
+            <div>
+              <p>
+                Your <span class="bold-text">High Risk Account Opening</span>
+                Request <span class="bold-text">RM-9052XZ</span> is <span
+                  class="notification-status rejected">Rejected</span>
+              </p>
+              <span>
+                5 hours ago
+              </span>
+            </div>
+          </div>
+
+          <div class="notification-item">
+            <div>
+              <p>
+                Your <span class="bold-text">High Risk Account Opening</span>
+                Request <span class="bold-text">RM-9052XZ</span> is <span
+                  class="notification-status completed">Completed</span></p>
+              <span>11 hours ago</span>
+            </div>
+
+          </div>
+
+          <div class="notification-item">
+            <div>
+              <p>
+                Your <span class="bold-text">High Risk Account Opening</span>
+                Request <span class="bold-text">RM-72GHSZ</span> is <span
+                  class="notification-status completed">Completed</span></p>
+              <span>2 days ago</span>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- NOTIFICATION POPUP END -->
+  <!-- USER PROFILE POPUP START -->
+  <div class="modal user-modal" id="userModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-end">
+      <div class="modal-content">
+        <div class="modal-header">
+          <div class="user-modal-header">
+            <img src="../images/net/UserProfile.png" alt="">
+            <div class="name-email">
+              <p class="userNAME">Ibrahim</p>
+              <p class="user-mail">ibrahim_ksa64@gmail.com</p>
+            </div>
+
+          </div>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <div class="user-settings">
+            <a href="#" class="viewProfile">
+              <img src="../images/net/user.svg" alt="user">
+              <p>View Profile</p>
+            </a>
+            <a href="#" class="account-settings">
+              <img src="../images/net/settings.svg" alt="settings">
+              Account Settings
+            </a>
+            <a href="#" class="sign-out">
+              <img src="../images/net/Sign Out.svg" alt="sign-out">
+              Sign Out
+            </a>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </div>
+  <!-- USER PROFILE POPUP END -->
+  <!-- SUB MENU PART OF SIDEBAR START -->
+  <aside class="subPanel">
+    <div class="closeSubpanel">
+      <svg width="27" height="27" viewBox="0 0 27 27" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path
+          d="M24.2894 24.2894L13.1447 13.1447M13.1447 13.1447L2 2M13.1447 13.1447L24.2894 2M13.1447 13.1447L2 24.2894"
+          stroke="white" stroke-width="4" stroke-linecap="round" stroke-linejoin="round" />
+      </svg>
+
+    </div>
+    <div class="subPanelHeader">
+      <h5 class="subSectionTitle">Reports & Analytics</h5>
+    </div>
+    <div class="subPanelBody">
+      <ul>
+        <li>
+          <div class="icon">
+            <img src="../images/net/report-and-analytics.svg" alt="">
+          </div>
+          <a href="#">Reports & Analytics</a>
+          <div class="hasChildren">
+            <div class="subSectionTitle">Reports & Analytics</div>
+            <ul class="subLinks">
+              <li>
+                <div class="icon">
+                  <img src="../images/net/sada 1.svg" alt="">
+                </div>
+                <a href="#">Marketing Dashboard</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <img src="../images/net/sada 1.svg" alt="">
+                </div>
+                <a href="#">Communication Dashboard</a>
+              </li>
+              <li>
+                <div class="icon">
+                  <img src="../images/net/sada 1.svg" alt="">
+                </div>
+                <a href="#">Information Technology Dashboard</a>
+              </li>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+  </aside>
+  <!-- SUB MENU PART OF SIDEBAR END -->
+  <!-- SIDEBAR END -->
+  <div class="form border-0">
+    <div class="dashboard-row marketingDashboard container d-flex flex-wrap">
+    <div class="col-lg-9">
+      <div class="d-flex marketingKPIs">
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <img class="kpiIcon" src="../images/net/pendingMyActions.png" alt="Pending My Actions">
+              <div class="kpiValue ">30</div>
+              <div class="kpiName">Pending My Actions</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <img class="kpiIcon" src="../images/net/in-progress-request.svg" alt="In-Progress Requests">
+              <div class="kpiValue">30</div>
+              <div class="kpiName">In-Progress Requests</div>
+            </div>
+          </div>
+        </div>
+        <div class="col-lg-4">
+          <div class="card">
+            <div class="card-body">
+              <img class="kpiIcon" src="../images/net/completed-requests.svg" alt="Logo">
+              <div class="kpiValue">49</div>
+              <div class="kpiName">Approved Requests</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="">
+        <div class="">
+          <div class="pendingRequestsTable">
+            <div class="d-flex align-items-center justify-content-between">
+              <h5 class="tableHeader">Pending Requests</h5>
+              <div class="search-box">
+                <input type="text" class="form-control" id="marketingsearchInput" placeholder="Search"
+                  onkeyup="pendingRequestsTable()">
+              </div>
+            </div>
+            <div class="table-container table-responsive">
+              <table class="table" id="pendingrestable">
+                <thead>
+                  <tr>
+                    <th class="requestNumber sort">
+                      <span>Request Number
+                        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                          class="inactive">
+                          <path opacity="0.5"
+                            d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path
+                            d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </span>
+                    </th>
+                    <th class="service sort">
+                      <span>Service
+                        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                          class="inactive">
+                          <path opacity="0.5"
+                            d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path
+                            d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </span>
+                    </th>
+                    <th class="submittedOnColumn sort">
+                      <span>Submitted On
+                        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                          class="inactive">
+                          <path opacity="0.5"
+                            d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path
+                            d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </span>
+                    </th>
+                    <th class="responsible-column sort">
+                      <span>Requester
+                        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                          class="inactive">
+                          <path opacity="0.5"
+                            d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path
+                            d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </span>
+                    </th>
+                    <th class="statusColumn sort">
+                      <span>Time Elapsed
+                        <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                          class="inactive">
+                          <path opacity="0.5"
+                            d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                          <path
+                            d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                            stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        </svg>
+                      </span>
+                    </th>
+                    <th><span>Actions</span></th>
+                  </tr>
+                </thead>
+                <tbody id="pendingRequestsTable">
+                  <tr>
+                    <td data-title="Request Number">
+                      <a href="" class="request-number">RM-9052XZ1</a>
+                    </td>
+                    <td data-title="Service">Retail Banking</td>
+                    <td data-title="Submitted On">08/05/2025 09:00 AM</td>
+                    <td data-title="Responsible">Ibrahim K</td>
+                    <td class="status submit" data-title="Status">
+                      <span>3 days</span>
+                    </td>
+                    <td data-title="Actions">
+                      <div class="dropdown-custom">
+                        <button type="button" class="btn Select-btn">
+                          Select Action
+                          <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
+                        </button>
+
+                        <div class="dropdown-menu-custom">
+                          <div class="dropdown-item-custom">
+                            <img src="images/Approve.png" alt="Approve" class="option-icon">
+                            Approve
+                          </div>
+                          <div class="dropdown-item-custom">
+                            <img src="images/Reject.png" alt="Reject" class="option-icon">
+                            Reject
+                          </div>
+                          <div class="dropdown-item-custom">
+                            <img src="images/Return.png" alt="Return" class="option-icon">
+                            Return
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-title="Request Number">
+                      <a href="" class="request-number">RM-2065183</a>
+                    </td>
+                    <td data-title="Service">Retail Banking</td>
+                    <td data-title="Submitted On">06/05/2025 09:24 AM</td>
+                    <td data-title="Responsible">Fatima S.</td>
+                    <td class="status saved as draft" data-title="Status">
+                      <span>5 days</span>
+                    </td>
+                    <td data-title="Actions">
+                     <div class="dropdown-custom">
+                        <button type="button" class="btn Select-btn">
+                          Select Action
+                          <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
+                        </button>
+
+                        <div class="dropdown-menu-custom">
+                          <div class="dropdown-item-custom">
+                            <img src="images/Approve.png" alt="Approve" class="option-icon">
+                            Approve
+                          </div>
+                          <div class="dropdown-item-custom">
+                            <img src="images/Reject.png" alt="Reject" class="option-icon">
+                            Reject
+                          </div>
+                          <div class="dropdown-item-custom">
+                            <img src="images/Return.png" alt="Return" class="option-icon">
+                            Return
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td data-title="Request Number">
+                      <a href="" class="request-number">RM-905Z32F</a>
+                    </td>
+                    <td data-title="Service">Request a Study</td>
+                    <td data-title="Submitted On">08/05/2025 01:00 PM</td>
+                    <td data-title="Responsible">Kholoud S.</td>
+                    <td class="status submit" data-title="Status">
+                      <span>5 days</span>
+                    </td>
+                    <td data-title="Actions">
+                      <div class="dropdown-custom">
+                        <button type="button" class="btn Select-btn">
+                          Select Action
+                          <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
+                        </button>
+
+                        <div class="dropdown-menu-custom">
+                          <div class="dropdown-item-custom">
+                            <img src="images/Approve.png" alt="Approve" class="option-icon">
+                            Approve
+                          </div>
+                          <div class="dropdown-item-custom">
+                            <img src="images/Reject.png" alt="Reject" class="option-icon">
+                            Reject
+                          </div>
+                          <div class="dropdown-item-custom">
+                            <img src="images/Return.png" alt="Return" class="option-icon">
+                            Return
+                          </div>
+                        </div>
+                      </div>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card overviewCard">
+        <h5>Overview</h5>
+        <div class="chart-container">
+          <canvas id="semiCircleChart"></canvas>
+          <div class="semi-circle-text">
+            <div class="number-text">109</div>
+            <div class="label-text">Requests</div>
+          </div>
+        </div>
+        <div class="sentences">
+          <div class="left-group">
+            <span class="purple-circle"></span>
+            <span class="label">Approved Requests</span>
+          </div>
+          <span class="percentage">45%</span>
+        </div>
+        <div class="sentences">
+          <div class="left-group">
+            <span class="peach-circle"></span>
+            <span class="label">In-Progress Requests</span>
+          </div>
+          <span class="percentage">27.5%</span>
+        </div>
+        <div class="sentences">
+          <div class="left-group">
+            <span class="beige-circle"></span>
+            <span class="label">Pending My Actions</span>
+          </div>
+          <span class="percentage">27.5%</span>
+        </div>
+      </div>
+      <div class="card totalRequests">
+        <div class="Top-dashboard-box">
+          <div class="left-content-box">
+            <h5>Total Requests</h5>
+          </div>
+          <div class="right-content dropdown">
+            <button class="custom-dropdown" type="button" id="timeFilterDropdown" data-bs-toggle="dropdown"
+              aria-expanded="false">
+              All-Time
+              <img src="images/Chevron Down.svg" alt="chevrondown" class="chevron-img">
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="timeFilterDropdown">
+              <li><a class="dropdown-item" href="#" data-filter="day">Daily</a></li>
+              <li><a class="dropdown-item" href="#" data-filter="month">Monthly</a></li>
+              <li><a class="dropdown-item" href="#" data-filter="year">Yearly</a></li>
+              <li><a class="dropdown-item" href="#" data-filter="all">All-Time</a></li>
+            </ul>
+          </div>
+
+        </div>
+
+        <div class="chart-container2">
+          <canvas id="myBarChart"></canvas>
+        </div>
+      </div>
+    </div>
+  </div>
+  </div>
+  <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/chart.js"></script>
+  <script src="../js/odometer.min.js"></script>
+  <script src="../js/marketing/script.js"></script>
+  <script src="../js/script.js"></script>
+</body>
+</html>
