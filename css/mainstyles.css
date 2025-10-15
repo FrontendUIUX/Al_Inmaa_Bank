@@ -589,6 +589,9 @@ html:not(.designer) .theme-entry [name*="s_header"] {
     transform:translateY(-50%);
     animation:1s fadeDown forwards;
 }
+.theme-entry .grid .grid-column-header-cell{
+padding:0!important;
+}
 html:not(.designer) .panel{
     background-color:transparent!important;
 }
@@ -980,7 +983,7 @@ html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"]{
     pointer-events: none;
 }
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] .grid-column-headers{
-	background-color:rgb(255 255 255 / 70%)!important;
+	background-color: var(--Table-header)!important;
 }
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] [name*="viewTitle"]{
 	color:rgb(57 94 117 / 85%)!important;
@@ -1025,16 +1028,22 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
 	height:.8rem;
 	width:.8rem;
 }
-.grid-column-header-table  td{
+.grid-column-header-table{
         background-color: var(--Table-header) !important;
+}
+.commentsAttachments .grid-column-header-table{
+	background-color:transparent!important;
+}
+.commentsAttachments .grid-column-header-table tr td{
+	border:none!important;
 }
 .grid-column-header-table td .grid-column-header-text{
    border: none;
-    padding: 0.8rem 0rem !important;
-    background-color: rgb(244 231 219) !important;
-    color: #002134 !important;
-        font-family:var(--Alinma-plain);
-        font-size:1.05rem;
+   padding: 0.8rem 0rem !important;
+   /* background-color: rgb(244 231 219) !important; */
+   color: #002134 !important;
+   font-family:var(--Alinma-plain);
+   font-size:1.05rem;
 }
 .file-delete {
     margin-right: 1rem;
