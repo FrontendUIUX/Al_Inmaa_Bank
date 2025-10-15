@@ -770,7 +770,7 @@ html:not(.designer) div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-
 }
 
 .on-focus[name*="s_textarea"] [name*="s_label"] {
-    transform: translateY(-0.6rem);
+    transform: translateY(-0.1rem);
     font-size: .8rem;
 }
 /* radio button */
