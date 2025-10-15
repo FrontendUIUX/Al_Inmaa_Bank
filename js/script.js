@@ -915,24 +915,29 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 // Filter table by search input
+// Filter table by search input (all columns in tbody)
 function myFunction() {
-  var input, filter, table, tr, td, i, txtValue;
-  input = document.getElementById("searchInput");
-  filter = input.value.toUpperCase();
-  table = document.getElementById("myTable");
-  tr = table.getElementsByTagName("tr");
-  for (i = 0; i < tr.length; i++) {
-    td = tr[i].getElementsByTagName("td")[0];
-    if (td) {
-      txtValue = td.textContent || td.innerText;
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toUpperCase();
+  const tbody = document.getElementById("requestsTable");
+  const tr = tbody.getElementsByTagName("tr");
+
+  for (let i = 0; i < tr.length; i++) {
+    const td = tr[i].getElementsByTagName("td");
+    let rowMatch = false;
+
+    for (let j = 0; j < td.length; j++) {
+      let txtValue = td[j].textContent || td[j].innerText;
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        tr[i].style.display = "";
-      } else {
-        tr[i].style.display = "none";
+        rowMatch = true;
+        break; // stop checking once one column matches
       }
     }
+
+    tr[i].style.display = rowMatch ? "" : "none";
   }
 }
+
 // Animate Counters
 function startOdometerWhenVisible(element) {
   var observer = new IntersectionObserver(
