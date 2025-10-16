@@ -706,8 +706,8 @@ body.dark .toggle-label {
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding: 4px 6px;
-  font-size: 0.8rem;
+  padding: .4rem 1rem;
+  font-size: 1REM;
   background: #f3e5e5;
   border-radius: 8px;
   border: none;

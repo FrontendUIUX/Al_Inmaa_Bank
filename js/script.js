@@ -1064,3 +1064,84 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 });
+// BAR CHART - MARKETING DASHBOARD
+const ctx = document.getElementById('myBarChart').getContext('2d');
+
+// Create a linear gradient
+const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+gradient.addColorStop(0, '#9795E0'); 
+gradient.addColorStop(1, 'rgba(191, 189, 249, 1)'); 
+
+// Initial chart data (All-Time)
+let chartData = {
+    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July'],
+    datasets: [{
+        data: [120, 90, 184, 130, 190, 70, 115],
+        backgroundColor: gradient,
+        borderRadius: 4,
+        barPercentage: 0.6,
+        categoryPercentage: 0.8
+    }]
+};
+
+const myBarChart = new Chart(ctx, {
+    type: 'bar',
+    data: chartData,
+    options: {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: {
+                beginAtZero: true,
+                min: 0,
+                max: 200,
+                ticks: { stepSize: 20, color: 'rgba(0, 33, 52, 1)', font: { size: 14 } },
+                grid: { borderDash: [5, 5], color: '#cccccc32' },
+                title: { display: false }
+            },
+            x: {
+                grid: { display: false },
+                ticks: { color: 'rgba(0, 33, 52, 1)', font: { size: 12 }, maxRotation: 0, minRotation: 0, autoSkip: false },
+                title: { display: false }
+            }
+        },
+        animations: {
+            y: {
+                duration: 1500,
+                easing: 'easeOutBounce',
+                delay: (context) => context.dataIndex * 150
+            }
+        }
+    }
+});
+
+// Trigger animation from 0 → actual values
+setTimeout(() => {
+    myBarChart.data.datasets[0].data = actualData;
+    myBarChart.update();
+}, 50);
+
+
+// Example data for different filters
+const chartValues = {
+    month: { labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], data: [120, 90, 184, 130, 190, 70, 115] },
+    year: { labels: ['2019', '2020', '2021', '2022', '2023'], data: [120, 80, 58, 13, 20] },
+};
+
+// Dropdown click listener
+document.querySelectorAll('.dropdown-item').forEach(item => {
+    item.addEventListener('click', function(e) {
+        e.preventDefault();
+        const filter = this.dataset.filter; // day, month, year, all
+        const selected = chartValues[filter];
+
+        // Update chart
+        myBarChart.data.labels = selected.labels;
+        myBarChart.data.datasets[0].data = selected.data;
+        myBarChart.update();
+
+        // Update dropdown text
+        document.getElementById('timeFilterDropdown').innerHTML = `${this.textContent} <img src="../images/net/Chevron Down.svg" alt="chevrondown" class="chevron-img">`;
+    });
+});

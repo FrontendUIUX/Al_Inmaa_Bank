@@ -927,6 +927,13 @@ th.sort span {
     display: flex;
     align-items: center;
     justify-content: space-between;
+   
+}
+.pendingRequestsTable th span {
+    /* display: flex; */
+    /* align-items: center; */
+    /* justify-content: space-between; */
+    font-size: .9rem;
 }
 table.table{
     margin-top: 1rem;
@@ -1498,11 +1505,15 @@ transform:translateY(-2rem);
     height:100%!important;
     width: 100%!important;
 }
+.pendingRequestsTable .actionsColumn span{
+    text-align: center;
+}
 /*  MARKETING DASHBOARD END */
 @media(min-width:992px){
        .marketingDashboard > .col-lg-9 {
         flex: 0 0 auto;
         width: 72%;
+        padding-right: 0;
     }
     [name="headerLogo"]{
    position: unset;

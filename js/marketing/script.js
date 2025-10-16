@@ -43,64 +43,6 @@ toggle.addEventListener("change", () => {
 
 
 
-const ctx = document.getElementById('myBarChart').getContext('2d');
-
-// Create a linear gradient
-const gradient = ctx.createLinearGradient(0, 0, 0, 400); // x0, y0, x1, y1
-gradient.addColorStop(0, '#9795E0'); // top color
-gradient.addColorStop(1, 'rgba(191, 189, 249, 1)'); // bottom color
-
-const myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: {
-        labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July'],
-        datasets: [{
-            data: [120, 90, 184, 130, 190, 70, 115],
-            backgroundColor: gradient,
-            borderRadius: 3,
-            barPercentage: 0.6,
-            categoryPercentage: 0.8
-        }]
-    },
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: {
-            legend: { display: false }
-        },
-        scales: {
-            y: {
-                beginAtZero: true,
-                min: 0,
-                max: 200,
-                ticks: {
-                    stepSize: 20,
-                    autoSkip: false,
-                    color: '#rgba(0, 33, 52, 1)',
-                    font: { size: 14 }
-                },
-                 grid: { borderDash: [100, 5], color: '#cccccc32' }, 
-                title: { display: false }
-            },
-            x: {
-                grid: { display: false },
-                ticks: {
-                    color: '#rgba(0, 33, 52, 1)',
-                    font: { size: 12 },
-                    maxRotation: 0,
-                    minRotation: 0,
-                    autoSkip: false
-                },
-                title: { display: false }
-            }
-        },
-        animation: {
-            duration: 1500,
-            easing: 'easeOutBounce'
-        }
-    }
-});
-
 
 
 document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
@@ -113,7 +55,6 @@ document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
     if (!isActive) parent.classList.add('active');
   });
 });
-
 document.addEventListener('click', (e) => {
   if (!e.target.closest('.dropdown-custom')) {
     document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
