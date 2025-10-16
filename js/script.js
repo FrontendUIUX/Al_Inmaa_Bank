@@ -1040,18 +1040,19 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
- function animateFill() {
+function animateFill() {
   let i = 0;
   function step() {
     if (i < chart.data.datasets[0].backgroundColor.length) {
       chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
       chart.update();
       i++;
-      requestAnimationFrame(step); // fastest smooth animation
+      setTimeout(step, 40); // faster animation
     }
   }
   step();
 }
+
 
 
   chartCanvas.style.transition = "all 0.1s ease";
