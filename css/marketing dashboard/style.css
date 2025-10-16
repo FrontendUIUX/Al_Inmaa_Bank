@@ -125,26 +125,30 @@
   padding: 6px 10px;
   cursor: pointer;
 }
-.purple-circle {
+.overviewCard .card-body .sentences{
+  position: relative;
+  padding-left: 1rem;
+}
+.overviewCard .card-body .sentences::before {
+  content:"";
+  position:absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
   width: 13px;
   height: 13px;
+  border-radius: 50%;
+  display: inline-block;
+}
+.overviewCard .card-body .sentences:nth-child(1)::before {
   background-color: #9795E0;
-  border-radius: 50%;
-  display: inline-block;
 }
-.peach-circle {
-  width: 13px;
-  height: 13px;
+.overviewCard .card-body .sentences:nth-child(2)::before  {
   background-color: #FF9480;
-  border-radius: 50%;
-  display: inline-block;
 }
-.beige-circle {
-  width: 13px;
-  height: 13px;
+.overviewCard .card-body .sentences:nth-child(3)::before  {
   background-color: #E9DBD0;
-  border-radius: 50%;
-  display: inline-block;
+ 
 }
 .percentage {
   font-size: 1rem;
