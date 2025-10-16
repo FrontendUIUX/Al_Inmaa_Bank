@@ -500,6 +500,17 @@
         <div class="card overviewCard">
           <div class="card-header">
             <h2>Overview</h2>
+             <div class="right-content dropdown">
+                <button class="custom-dropdown" type="button" id="timeFilterDropdown" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  Monthly
+                  <img src="../images/net/Chevron Down.svg" alt="chevrondown" class="chevron-img">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="timeFilterDropdown">
+                  <li><a class="dropdown-item" href="#" data-filter="month">Monthly</a></li>
+                  <li><a class="dropdown-item" href="#" data-filter="year">Yearly</a></li>
+                </ul>
+              </div>
           </div>
           <div class="card-body">
             <div class="chart-container">

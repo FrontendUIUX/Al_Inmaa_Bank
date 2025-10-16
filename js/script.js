@@ -1040,20 +1040,21 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  function animateFill() {
-    let i = 0;
-    function step() {
-      if (i < chart.data.datasets[0].backgroundColor.length) {
-        chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
-        chart.update();
-        i++;
-        setTimeout(step, 50);
-      }
+ function animateFill() {
+  let i = 0;
+  function step() {
+    if (i < chart.data.datasets[0].backgroundColor.length) {
+      chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
+      chart.update();
+      i++;
+      requestAnimationFrame(step); // fastest smooth animation
     }
-    step();
   }
+  step();
+}
 
-  chartCanvas.style.transition = "all 0.3s ease";
+
+  chartCanvas.style.transition = "all 0.1s ease";
   animateFill();
 
   // ===== UPDATE HTML PERCENTAGES =====
@@ -1108,8 +1109,8 @@ const myBarChart = new Chart(ctx, {
         },
         animations: {
             y: {
-                duration: 1500,
-                easing: 'easeOutBounce',
+                duration: 500,
+                easing: 'easeInOut',
                 delay: (context) => context.dataIndex * 150
             }
         }
