@@ -145,8 +145,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="userSettings d-flex align-items-center">
             <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
               <div class="userProfilePhoto">
-                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/UserProfile.png" 
-                     alt="${userName}" class="profilePhoto">
+                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
               </div>
               <div class="userInformations d-flex flex-column">
                 <span class="username">${userName}</span>
@@ -982,48 +981,58 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 // MARKETING DASHBOARD - OVERVIEW CHART 
 document.addEventListener("DOMContentLoaded", function() {
-  const chartCanvas = document.getElementById('semiCircleChart').getContext('2d');
+  const chartCanvas = document.getElementById('semiCircleChart');
+  const ctx = chartCanvas.getContext('2d');
+
   const dataMap = [
-    { color: '#8e44ad', value: 10 },
-    { color: '#ff9f68', value: 6 },
-    { color: '#f5d7a1', value: 6 }
+    { baseColor: '#b6b5faff', darkColor: '#8785d8ff', bars: 10, percent: 50 },   // purple
+    { baseColor: '#ffb5a0ff', darkColor: '#ff9581ff', bars: 6, percent: 30 },  // peach
+    { baseColor: '#F4E7DB', darkColor: '#F4E7DB', bars: 6, percent: 20 }     // beige
   ];
 
   const dataValues = [];
-  const finalColors = [];
+  const sliceColors = [];
   const greyColors = [];
 
-  // Build arrays for values and colors
-  dataMap.forEach(item => {
-    for (let i = 0; i < item.value; i++) {
-      dataValues.push(1);
-      finalColors.push(item.color);
-      greyColors.push('#cccccc'); // initial grey
+  function interpolateColor(color1, color2, factor) {
+    const c1 = color1.match(/\w\w/g).map(h => parseInt(h,16));
+    const c2 = color2.match(/\w\w/g).map(h => parseInt(h,16));
+    const result = c1.map((v,i) => Math.round(v + (c2[i]-v)*factor));
+    return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
+  }
 
+  dataMap.forEach(item => {
+    for (let i = 0; i < item.bars; i++) {
+      dataValues.push(1);
+      const factor = ((i + 1) / item.bars) * (item.percent / 100);
+      sliceColors.push(interpolateColor(item.baseColor, item.darkColor, factor));
+      greyColors.push('#cccccc');
+
+      // spacer slice
       dataValues.push(0.2);
-      finalColors.push('#ffffff'); // keep white spacers
-      greyColors.push('#ffffff');  // keep white for spacers
+      sliceColors.push('#ffffff');
+      greyColors.push('#ffffff');
     }
   });
 
-  const chart = new Chart(chartCanvas, {
+  const chart = new Chart(ctx, {
     type: 'doughnut',
     data: {
       labels: dataValues.map(() => ''),
       datasets: [{
         data: dataValues,
-        backgroundColor: greyColors.slice(), // start grey
+        backgroundColor: greyColors.slice(),
         borderWidth: 0,
         borderRadius: 10,
       }]
     },
     options: {
-      responsive: true,           // chart resizes with parent container
-      maintainAspectRatio: false, // allow flexible height/width
+      responsive: true,
+      maintainAspectRatio: false,
       rotation: -90,
       circumference: 180,
       cutout: '70%',
-      animation: false, // disable default Chart.js animation
+      animation: false,
       plugins: {
         legend: { display: false },
         tooltip: { enabled: false }
@@ -1031,24 +1040,27 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-  // sequential "fill" animation
   function animateFill() {
     let i = 0;
     function step() {
       if (i < chart.data.datasets[0].backgroundColor.length) {
-        chart.data.datasets[0].backgroundColor[i] = finalColors[i];
+        chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
         chart.update();
-
         i++;
-        setTimeout(step, 50); // faster speed (was 150)
+        setTimeout(step, 50);
       }
     }
     step();
   }
 
-  // Add a smooth transition effect to canvas
-  chartCanvas.canvas.style.transition = "all 0.3s ease";
-
-  // Start the animation
+  chartCanvas.style.transition = "all 0.3s ease";
   animateFill();
+
+  // ===== UPDATE HTML PERCENTAGES =====
+  const percentageSpans = document.querySelectorAll('.overviewCard .percentage');
+  dataMap.forEach((item, index) => {
+    if (percentageSpans[index]) {
+      percentageSpans[index].textContent = `${item.percent}%`;
+    }
+  });
 });
