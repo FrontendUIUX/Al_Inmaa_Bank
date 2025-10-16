@@ -45,21 +45,26 @@ toggle.addEventListener("change", () => {
 
 const ctx = document.getElementById('myBarChart').getContext('2d');
 
+// Create gradient for bars
+const gradient = ctx.createLinearGradient(0, 0, 0, 400);
+gradient.addColorStop(0, 'rgba(151, 149, 224, 0.7)'); // top
+gradient.addColorStop(1, 'rgba(151, 149, 224, 1)');   // bottom
+
 const myBarChart = new Chart(ctx, {
     type: 'bar',
     data: {
         labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July'],
         datasets: [{
             data: [120, 90, 184, 130, 190, 70, 115],
-            backgroundColor: '#9795E0',
-            borderRadius: 3,
-            barPercentage: 0.6, 
+            backgroundColor: gradient,
+            borderRadius: 6, // rounded top corners
+            barPercentage: 0.6,
             categoryPercentage: 0.8
         }]
     },
     options: {
         responsive: true,
-        maintainAspectRatio: false, 
+        maintainAspectRatio: false,
         plugins: {
             legend: { display: false }
         },
@@ -70,53 +75,28 @@ const myBarChart = new Chart(ctx, {
                 max: 200,
                 ticks: {
                     stepSize: 20,
-                    autoSkip: false,
-                    color: '#000',
+                    color: '#7a7a7a',
                     font: { size: 12 }
                 },
                 grid: {
-                    borderDash: [5, 5],
-                    color: '#ccc'
+                    borderDash: [4, 4],
+                    color: '#e0e0e0'
                 },
                 title: { display: false }
             },
             x: {
                 grid: { display: false },
                 ticks: {
-                    color: '#000',
+                    color: '#7a7a7a',
                     font: { size: 12 },
-                    maxRotation: 0,  
-                    minRotation: 0,  
-                    autoSkip: false 
+                    maxRotation: 0,
+                    minRotation: 0
                 },
                 title: { display: false }
             }
         }
     }
 });
-
-
-
-
-// overview chart
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

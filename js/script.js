@@ -1115,7 +1115,6 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // MARKETING DASHBOARD - OVERVIEW CHART 
-// overview chart
 document.addEventListener("DOMContentLoaded", function() {
   const chartCanvas = document.getElementById('semiCircleChart').getContext('2d');
   const dataMap = [
