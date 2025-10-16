@@ -98,51 +98,25 @@ const myBarChart = new Chart(ctx, {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-  const chartCanvas = document.getElementById('semiCircleChart').getContext('2d');
+// overview chart
 
 
-  const dataMap = [
-    { color: '#8e44ad', value: 10 },
-    { color: '#ff9f68', value: 6 },
-    { color: '#f5d7a1', value: 6 }
-  ];
-
-  const dataValues = [];
-  const colors = [];
-
-  dataMap.forEach(item => {
-    for (let i = 0; i < item.value; i++) {
-      dataValues.push(1);          
-      colors.push(item.color);      
-      dataValues.push(0.2);         
-      colors.push('#ffffff');
-    }
-  });
 
 
-  new Chart(chartCanvas, {
-    type: 'doughnut',
-    data: {
-      labels: dataValues.map(() => ''), 
-      datasets: [{
-        data: dataValues,
-        backgroundColor: colors,
-        borderWidth: 0,
-        borderRadius: 10,  
-      }]
-    },
-    options: {
-      rotation: -90,
-      circumference: 180,
-      cutout: '70%',
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: false }
-      }
-    }
-  });
-});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

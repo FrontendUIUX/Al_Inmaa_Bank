@@ -745,7 +745,9 @@ table td .editRow a::before{
     z-index: 1;
     background-color: #F8EFE8;
 }
-
+.pendingRequestsTable .table thead th{
+    padding:1rem 0!important;
+}
  thead tr {
      background-color: var(--Table-header);
      padding:.4rem 0!important;
@@ -898,6 +900,7 @@ html body .col-lg-3 .card .card-header{
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background-color: transparent;
 }
 .averageTime-card .card-body{
     display: flex;
@@ -1446,7 +1449,7 @@ display:none!important;
 }
 .marketingDashboard > .col-lg-9,
 .marketingDashboard > .col-lg-3{
-    padding:0 1rem;
+    padding-right:1rem;
 }
 .marketingKPIs{
     gap:1rem;
@@ -1463,18 +1466,32 @@ display:none!important;
     font-family: var(--Alinma-plain);
 }
 .overviewCard{
-    height: 20rem;
     border-radius: 1.2rem;
     border: 1px solid #E5E4DE;
-    padding: 1rem;
     width: 100%;
+    margin-bottom: 1rem;
+    height: 23rem;
+}
+.overviewCard .card-header,
+.totalRequests .card-header{
+    padding:1rem 1rem 0;
+}
+.overviewCard .card-body{
+transform:translateY(-2rem);
+}
+.overviewCard .card-body span.label{
+    font-size:.9rem;
+    font-family:var(--Alinma-plain);
 }
 .totalRequests{
     height:20rem;
     border-radius: 1.2rem;
     border: 1px solid #E5E4DE;
-    padding: 1rem;
     width: 100%;
+}
+#semiCircleChart{
+    height:100%!important;
+    width: 100%!important;
 }
 /*  MARKETING DASHBOARD END */
 @media(min-width:992px){

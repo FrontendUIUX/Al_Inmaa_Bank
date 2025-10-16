@@ -1114,3 +1114,76 @@ document.addEventListener("DOMContentLoaded", function () {
     svg.classList.add("inactive");
   });
 });
+// MARKETING DASHBOARD - OVERVIEW CHART 
+// overview chart
+document.addEventListener("DOMContentLoaded", function() {
+  const chartCanvas = document.getElementById('semiCircleChart').getContext('2d');
+  const dataMap = [
+    { color: '#8e44ad', value: 10 },
+    { color: '#ff9f68', value: 6 },
+    { color: '#f5d7a1', value: 6 }
+  ];
+
+  const dataValues = [];
+  const finalColors = [];
+  const greyColors = [];
+
+  // Build arrays for values and colors
+  dataMap.forEach(item => {
+    for (let i = 0; i < item.value; i++) {
+      dataValues.push(1);
+      finalColors.push(item.color);
+      greyColors.push('#cccccc'); // initial grey
+
+      dataValues.push(0.2);
+      finalColors.push('#ffffff'); // keep white spacers
+      greyColors.push('#ffffff');  // keep white for spacers
+    }
+  });
+
+  const chart = new Chart(chartCanvas, {
+    type: 'doughnut',
+    data: {
+      labels: dataValues.map(() => ''),
+      datasets: [{
+        data: dataValues,
+        backgroundColor: greyColors.slice(), // start grey
+        borderWidth: 0,
+        borderRadius: 10,
+      }]
+    },
+    options: {
+      responsive: true,           // chart resizes with parent container
+      maintainAspectRatio: false, // allow flexible height/width
+      rotation: -90,
+      circumference: 180,
+      cutout: '70%',
+      animation: false, // disable default Chart.js animation
+      plugins: {
+        legend: { display: false },
+        tooltip: { enabled: false }
+      }
+    }
+  });
+
+  // sequential "fill" animation
+  function animateFill() {
+    let i = 0;
+    function step() {
+      if (i < chart.data.datasets[0].backgroundColor.length) {
+        chart.data.datasets[0].backgroundColor[i] = finalColors[i];
+        chart.update();
+
+        i++;
+        setTimeout(step, 50); // faster speed (was 150)
+      }
+    }
+    step();
+  }
+
+  // Add a smooth transition effect to canvas
+  chartCanvas.canvas.style.transition = "all 0.3s ease";
+
+  // Start the animation
+  animateFill();
+});

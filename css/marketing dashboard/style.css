@@ -723,20 +723,16 @@ body.dark .toggle-label {
 
 
 .chart-container {
-  width: 200px;    
-  height: 200px; 
-  margin: 0 auto;
-  margin-top: -30px;  
-  margin-bottom: -10px;
-  padding-top: 0;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   position: relative;
+  width: 100%;
+  height: 14rem;
 }
 
 
-.chart-container2 {
+.barChart {
   width: 228px;
   height: 246px;
   display: flex;
@@ -1547,7 +1543,7 @@ padding-left:0.5rem;
   gap: 6.5rem;
  }
 
- .chart-container2 #myBarChart{
+ .barChart #myBarChart{
   margin-left: 2rem;
  }
 

@@ -282,292 +282,292 @@
   <!-- SIDEBAR END -->
   <div class="form border-0">
     <div class="dashboard-row marketingDashboard container d-flex flex-wrap">
-    <div class="col-lg-9">
-      <div class="d-flex marketingKPIs">
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <img class="kpiIcon" src="../images/net/pendingMyActions.png" alt="Pending My Actions">
-              <div class="kpiValue ">30</div>
-              <div class="kpiName">Pending My Actions</div>
+      <div class="col-lg-9">
+        <div class="d-flex marketingKPIs">
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <img class="kpiIcon" src="../images/net/pendingMyActions.png" alt="Pending My Actions">
+                <div class="kpiValue ">30</div>
+                <div class="kpiName">Pending My Actions</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <img class="kpiIcon" src="../images/net/in-progress-request.svg" alt="In-Progress Requests">
+                <div class="kpiValue">30</div>
+                <div class="kpiName">In-Progress Requests</div>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-4">
+            <div class="card">
+              <div class="card-body">
+                <img class="kpiIcon" src="../images/net/completed-requests.svg" alt="Logo">
+                <div class="kpiValue">49</div>
+                <div class="kpiName">Approved Requests</div>
+              </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <img class="kpiIcon" src="../images/net/in-progress-request.svg" alt="In-Progress Requests">
-              <div class="kpiValue">30</div>
-              <div class="kpiName">In-Progress Requests</div>
+        <div class="pendingRequestsTable">
+          <div class="d-flex align-items-center justify-content-between">
+            <h5 class="tableHeader">Pending Requests</h5>
+            <div class="search-box">
+              <input type="text" class="form-control" id="marketingsearchInput" placeholder="Search"
+                onkeyup="pendingRequestsTable()">
+            </div>
+          </div>
+          <div class="table-container table-responsive">
+            <table class="table" id="pendingrestable">
+              <thead>
+                <tr>
+                  <th class="requestNumber sort">
+                    <span>Request Number
+                      <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="inactive">
+                        <path opacity="0.5"
+                          d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </span>
+                  </th>
+                  <th class="service sort">
+                    <span>Service
+                      <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="inactive">
+                        <path opacity="0.5"
+                          d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </span>
+                  </th>
+                  <th class="submittedOnColumn sort">
+                    <span>Submitted On
+                      <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="inactive">
+                        <path opacity="0.5"
+                          d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </span>
+                  </th>
+                  <th class="responsible-column sort">
+                    <span>Requester
+                      <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="inactive">
+                        <path opacity="0.5"
+                          d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </span>
+                  </th>
+                  <th class="timeElapsedColumn sort">
+                    <span>Time Elapsed
+                      <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
+                        class="inactive">
+                        <path opacity="0.5"
+                          d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                        <path d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
+                          stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
+                      </svg>
+                    </span>
+                  </th>
+                  <th><span>Actions</span></th>
+                </tr>
+              </thead>
+              <tbody id="pendingRequestsTable">
+                <tr>
+                  <td data-title="Request Number">
+                    <a href="" class="request-number">RM-9052XZ1</a>
+                  </td>
+                  <td data-title="Service">Retail Banking</td>
+                  <td data-title="Submitted On">08/05/2025 09:00 AM</td>
+                  <td data-title="Responsible">Ibrahim K</td>
+                  <td class="timeElapsed " data-title="timeElapsed">
+                    <span>3 days</span>
+                  </td>
+                  <td data-title="Actions">
+                    <div class="dropdown-custom">
+                      <button type="button" class="btn Select-btn">
+                        Select Action
+                        <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
+                      </button>
+
+                      <div class="dropdown-menu-custom">
+                        <div class="dropdown-item-custom">
+                          <img src="images/Approve.png" alt="Approve" class="option-icon">
+                          Approve
+                        </div>
+                        <div class="dropdown-item-custom">
+                          <img src="images/Reject.png" alt="Reject" class="option-icon">
+                          Reject
+                        </div>
+                        <div class="dropdown-item-custom">
+                          <img src="images/Return.png" alt="Return" class="option-icon">
+                          Return
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-title="Request Number">
+                    <a href="" class="request-number">RM-2065183</a>
+                  </td>
+                  <td data-title="Service">Retail Banking</td>
+                  <td data-title="Submitted On">06/05/2025 09:24 AM</td>
+                  <td data-title="Responsible">Fatima S.</td>
+                  <td class="timeElapsed" data-title="timeElapsed">
+                    <span>5 days</span>
+                  </td>
+                  <td data-title="Actions">
+                    <div class="dropdown-custom">
+                      <button type="button" class="btn Select-btn">
+                        Select Action
+                        <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
+                      </button>
+
+                      <div class="dropdown-menu-custom">
+                        <div class="dropdown-item-custom">
+                          <img src="images/Approve.png" alt="Approve" class="option-icon">
+                          Approve
+                        </div>
+                        <div class="dropdown-item-custom">
+                          <img src="images/Reject.png" alt="Reject" class="option-icon">
+                          Reject
+                        </div>
+                        <div class="dropdown-item-custom">
+                          <img src="images/Return.png" alt="Return" class="option-icon">
+                          Return
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td data-title="Request Number">
+                    <a href="" class="request-number">RM-905Z32F</a>
+                  </td>
+                  <td data-title="Service">Request a Study</td>
+                  <td data-title="Submitted On">08/05/2025 01:00 PM</td>
+                  <td data-title="Responsible">Kholoud S.</td>
+                  <td class="timeElapsed" data-title="timeElapsed">
+                    <span>5 days</span>
+                  </td>
+                  <td data-title="Actions">
+                    <div class="dropdown-custom">
+                      <button type="button" class="btn Select-btn">
+                        Select Action
+                        <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
+                      </button>
+
+                      <div class="dropdown-menu-custom">
+                        <div class="dropdown-item-custom">
+                          <img src="images/Approve.png" alt="Approve" class="option-icon">
+                          Approve
+                        </div>
+                        <div class="dropdown-item-custom">
+                          <img src="images/Reject.png" alt="Reject" class="option-icon">
+                          Reject
+                        </div>
+                        <div class="dropdown-item-custom">
+                          <img src="images/Return.png" alt="Return" class="option-icon">
+                          Return
+                        </div>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+
+        </div>
+      </div>
+      <div class="col-lg-3">
+        <div class="card overviewCard">
+          <div class="card-header">
+            <h2>Overview</h2>
+          </div>
+          <div class="card-body">
+            <div class="chart-container">
+              <canvas id="semiCircleChart"></canvas>
+              <div class="semi-circle-text">
+                <div class="number-text">109</div>
+                <div class="label-text">Requests</div>
+              </div>
+            </div>
+            <div class="sentences">
+              <div class="left-group">
+                <span class="purple-circle"></span>
+                <span class="label">Approved Requests</span>
+              </div>
+              <span class="percentage">45%</span>
+            </div>
+            <div class="sentences">
+              <div class="left-group">
+                <span class="peach-circle"></span>
+                <span class="label">In-Progress Requests</span>
+              </div>
+              <span class="percentage">27.5%</span>
+            </div>
+            <div class="sentences">
+              <div class="left-group">
+                <span class="beige-circle"></span>
+                <span class="label">Pending My Actions</span>
+              </div>
+              <span class="percentage">27.5%</span>
             </div>
           </div>
         </div>
-        <div class="col-lg-4">
-          <div class="card">
-            <div class="card-body">
-              <img class="kpiIcon" src="../images/net/completed-requests.svg" alt="Logo">
-              <div class="kpiValue">49</div>
-              <div class="kpiName">Approved Requests</div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="pendingRequestsTable">
-        <div class="d-flex align-items-center justify-content-between">
-          <h5 class="tableHeader">Pending Requests</h5>
-          <div class="search-box">
-            <input type="text" class="form-control" id="marketingsearchInput" placeholder="Search"
-              onkeyup="pendingRequestsTable()">
-          </div>
-        </div>
-        <div class="table-container table-responsive">
-          <table class="table" id="pendingrestable">
-            <thead>
-              <tr>
-                <th class="requestNumber sort">
-                  <span>Request Number
-                    <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
-                      class="inactive">
-                      <path opacity="0.5"
-                        d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                      <path
-                        d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                  </span>
-                </th>
-                <th class="service sort">
-                  <span>Service
-                    <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
-                      class="inactive">
-                      <path opacity="0.5"
-                        d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                      <path
-                        d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                  </span>
-                </th>
-                <th class="submittedOnColumn sort">
-                  <span>Submitted On
-                    <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
-                      class="inactive">
-                      <path opacity="0.5"
-                        d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                      <path
-                        d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                  </span>
-                </th>
-                <th class="responsible-column sort">
-                  <span>Requester
-                    <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
-                      class="inactive">
-                      <path opacity="0.5"
-                        d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                      <path
-                        d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                  </span>
-                </th>
-                <th class="timeElapsedColumn sort">
-                  <span>Time Elapsed
-                    <svg width="21" height="17" viewBox="0 0 21 17" fill="none" xmlns="http://www.w3.org/2000/svg"
-                      class="inactive">
-                      <path opacity="0.5"
-                        d="M15.4169 15.2636V1.25M15.4169 1.25L19.9507 6.06717M15.4169 1.25L10.8831 6.06717"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                      <path
-                        d="M5.93718 1.25V15.2636M5.93718 15.2636L10.8832 10.4464M5.93718 15.2636L0.991211 10.4464"
-                        stroke="#002134" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path>
-                    </svg>
-                  </span>
-                </th>
-                <th><span>Actions</span></th>
-              </tr>
-            </thead>
-            <tbody id="pendingRequestsTable">
-              <tr>
-                <td data-title="Request Number">
-                  <a href="" class="request-number">RM-9052XZ1</a>
-                </td>
-                <td data-title="Service">Retail Banking</td>
-                <td data-title="Submitted On">08/05/2025 09:00 AM</td>
-                <td data-title="Responsible">Ibrahim K</td>
-                <td class="timeElapsed " data-title="timeElapsed">
-                  <span>3 days</span>
-                </td>
-                <td data-title="Actions">
-                  <div class="dropdown-custom">
-                    <button type="button" class="btn Select-btn">
-                      Select Action
-                      <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
-                    </button>
-
-                    <div class="dropdown-menu-custom">
-                      <div class="dropdown-item-custom">
-                        <img src="images/Approve.png" alt="Approve" class="option-icon">
-                        Approve
-                      </div>
-                      <div class="dropdown-item-custom">
-                        <img src="images/Reject.png" alt="Reject" class="option-icon">
-                        Reject
-                      </div>
-                      <div class="dropdown-item-custom">
-                        <img src="images/Return.png" alt="Return" class="option-icon">
-                        Return
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td data-title="Request Number">
-                  <a href="" class="request-number">RM-2065183</a>
-                </td>
-                <td data-title="Service">Retail Banking</td>
-                <td data-title="Submitted On">06/05/2025 09:24 AM</td>
-                <td data-title="Responsible">Fatima S.</td>
-                <td class="timeElapsed" data-title="timeElapsed">
-                  <span>5 days</span>
-                </td>
-                <td data-title="Actions">
-                  <div class="dropdown-custom">
-                    <button type="button" class="btn Select-btn">
-                      Select Action
-                      <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
-                    </button>
-
-                    <div class="dropdown-menu-custom">
-                      <div class="dropdown-item-custom">
-                        <img src="images/Approve.png" alt="Approve" class="option-icon">
-                        Approve
-                      </div>
-                      <div class="dropdown-item-custom">
-                        <img src="images/Reject.png" alt="Reject" class="option-icon">
-                        Reject
-                      </div>
-                      <div class="dropdown-item-custom">
-                        <img src="images/Return.png" alt="Return" class="option-icon">
-                        Return
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-              <tr>
-                <td data-title="Request Number">
-                  <a href="" class="request-number">RM-905Z32F</a>
-                </td>
-                <td data-title="Service">Request a Study</td>
-                <td data-title="Submitted On">08/05/2025 01:00 PM</td>
-                <td data-title="Responsible">Kholoud S.</td>
-                <td class="timeElapsed" data-title="timeElapsed">
-                  <span>5 days</span>
-                </td>
-                <td data-title="Actions">
-                  <div class="dropdown-custom">
-                    <button type="button" class="btn Select-btn">
-                      Select Action
-                      <img src="images/Chevron Down.svg" alt="Chevron" class="small-logo-chevron">
-                    </button>
-
-                    <div class="dropdown-menu-custom">
-                      <div class="dropdown-item-custom">
-                        <img src="images/Approve.png" alt="Approve" class="option-icon">
-                        Approve
-                      </div>
-                      <div class="dropdown-item-custom">
-                        <img src="images/Reject.png" alt="Reject" class="option-icon">
-                        Reject
-                      </div>
-                      <div class="dropdown-item-custom">
-                        <img src="images/Return.png" alt="Return" class="option-icon">
-                        Return
-                      </div>
-                    </div>
-                  </div>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-
-      </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="card overviewCard">
-        <div class="card-header">
-          <h2>Overview</h2>
-        </div>
-        <div class="chart-container">
-          <canvas id="semiCircleChart"></canvas>
-          <div class="semi-circle-text">
-            <div class="number-text">109</div>
-            <div class="label-text">Requests</div>
-          </div>
-        </div>
-        <div class="sentences">
-          <div class="left-group">
-            <span class="purple-circle"></span>
-            <span class="label">Approved Requests</span>
-          </div>
-          <span class="percentage">45%</span>
-        </div>
-        <div class="sentences">
-          <div class="left-group">
-            <span class="peach-circle"></span>
-            <span class="label">In-Progress Requests</span>
-          </div>
-          <span class="percentage">27.5%</span>
-        </div>
-        <div class="sentences">
-          <div class="left-group">
-            <span class="beige-circle"></span>
-            <span class="label">Pending My Actions</span>
-          </div>
-          <span class="percentage">27.5%</span>
-        </div>
-      </div>
-      <div class="card totalRequests">
-        <div class="card-header">
+        <div class="card totalRequests">
+          <div class="card-header">
             <h2>Total Requests</h2>
-          </div>
-        <div class=" Top-dashboard-box">
-          
-          <div class="right-content dropdown">
-            <button class="custom-dropdown" type="button" id="timeFilterDropdown" data-bs-toggle="dropdown"
-              aria-expanded="false">
-              All-Time
-              <img src="images/Chevron Down.svg" alt="chevrondown" class="chevron-img">
-            </button>
-            <ul class="dropdown-menu" aria-labelledby="timeFilterDropdown">
-              <li><a class="dropdown-item" href="#" data-filter="day">Daily</a></li>
-              <li><a class="dropdown-item" href="#" data-filter="month">Monthly</a></li>
-              <li><a class="dropdown-item" href="#" data-filter="year">Yearly</a></li>
-              <li><a class="dropdown-item" href="#" data-filter="all">All-Time</a></li>
-            </ul>
-          </div>
+            <div class=" Top-dashboard-box">
 
-        </div>
+              <div class="right-content dropdown">
+                <button class="custom-dropdown" type="button" id="timeFilterDropdown" data-bs-toggle="dropdown"
+                  aria-expanded="false">
+                  All-Time
+                  <img src="../images/net/Chevron Down.svg" alt="chevrondown" class="chevron-img">
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="timeFilterDropdown">
+                  <li><a class="dropdown-item" href="#" data-filter="day">Daily</a></li>
+                  <li><a class="dropdown-item" href="#" data-filter="month">Monthly</a></li>
+                  <li><a class="dropdown-item" href="#" data-filter="year">Yearly</a></li>
+                  <li><a class="dropdown-item" href="#" data-filter="all">All-Time</a></li>
+                </ul>
+              </div>
 
-        <div class="chart-container2">
-          <canvas id="myBarChart"></canvas>
+            </div>
+          </div>
+          <div class="card-body">
+            <div class="barChart">
+            <canvas id="myBarChart"></canvas>
+          </div>
+          </div>
         </div>
       </div>
     </div>
-  </div>
   </div>
   <script src="../js/bootstrap.bundle.min.js"></script>
+  <script src="../js/jquery.min.js"></script>
   <script src="../js/chart.js"></script>
   <script src="../js/odometer.min.js"></script>
   <script src="../js/marketing/script.js"></script>
   <script src="../js/script.js"></script>
 </body>
+
 </html>
