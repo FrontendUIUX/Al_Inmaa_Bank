@@ -705,13 +705,13 @@ body.dark .toggle-label {
 .custom-dropdown {
   display: flex;
   align-items: center;
-  justify-content: space-around; 
+  justify-content: space-around;
   padding: 4px 6px;
   font-size: 0.8rem;
-  background: #f3e5e5; 
+  background: #f3e5e5;
   border-radius: 8px;
   border: none;
-  font-family: 'AlinmaTheSans';
+  font-family: var(--Alinma-plain);
   gap: 3px;
 }
 
@@ -733,11 +733,11 @@ body.dark .toggle-label {
 
 
 .barChart {
-  width: 228px;
-  height: 246px;
+  width: 100%;
+  height: auto;
   display: flex;
-  justify-content: center; 
-  padding-top: 15px;
+  justify-content: center;
+  /* padding-top: 15px; */
 }
 
 .info-container {

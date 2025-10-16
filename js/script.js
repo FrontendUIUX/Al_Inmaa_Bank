@@ -48,8 +48,6 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200); // Check every 200ms until attachment exists
   }
 });
-
-
 // colapse
 document.addEventListener('DOMContentLoaded', () => {
   const statusContainer = document.querySelector('.status-container');
@@ -88,8 +86,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   }
 });
-
-
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(function () {
     try {
@@ -332,8 +328,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }, 1000);
 });
-
-
 $(document).ready(function () {
 
   // Attach to ALL textboxes that are inside spans whose name contains "s_textbox"
@@ -423,7 +417,6 @@ document.addEventListener("DOMContentLoaded", function () {
     });
   });
 });
-
 // stepper 
 function updateStepStatus() {
   const statusMap = {
@@ -532,43 +525,12 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 });
-
-
-// document.addEventListener("DOMContentLoaded", () => {
-//   // Run on page load
-//   updateStepStatus();
-
-//   // Example: attach to a button if it exists
-//   const button = document.querySelector("button#updateStepBtn"); // change selector as needed
-//   if (button) {
-//     button.addEventListener("click", () => {
-//       const firstStep = document.querySelector('[name*="s_step"] [name*="stepNumber"]');
-//       if (firstStep) {
-//         firstStep.textContent = "1"; // Update dynamically
-//         updateStepStatus();
-//       }
-//     });
-//   }
-
-//   // Attach to your specific link if it exists
-//   const link = document.querySelector(
-//     "div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 a#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec"
-//   );
-//   if (link) {
-//     link.addEventListener("click", updateStepStatus);
-//   }
-// });
-
-
 // Create the overlay div
 const overlay = document.createElement("div");
-
 // Add your CSS class (assuming you already defined `.overlay-shadow` in your stylesheet)
 overlay.classList.add("overlayShadow");
-
 // Append it to the body
 document.body.appendChild(overlay);
-
 function updateDropdownState(select) {
   const dropdownWrapper = select.closest(".s_dropdown");
   if (!dropdownWrapper) return;
@@ -599,11 +561,6 @@ document.querySelectorAll("select").forEach(select => {
     attributeFilter: ["class", "disabled"] // only watch relevant changes
   });
 });
-
-
-
-
-
 
 //add readonly class to textbox
 
@@ -637,59 +594,8 @@ document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
     attributeFilter: ["readonly", "class"], // only watch relevant attributes
   });
 });
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     const tableId = "ad572738-5d7f-182a-7ba6-e963826b1f74_2f633f38-daee-42d3-8b64-352ddb922960_Table";
-//     const tableEl = document.getElementById(tableId);
-
-//     if (tableEl) {
-//         // Create a header element
-//         const headerEl = document.createElement("header");
-
-//         // Move all child nodes of the table into the header
-//         while (tableEl.firstChild) {
-//             headerEl.appendChild(tableEl.firstChild);
-//         }
-
-//         // Optionally, insert the header before or after the table
-//         // For example, insert before the table
-//         tableEl.parentNode.insertBefore(headerEl, tableEl);
-
-//         // Remove the empty table if you don't need it anymore
-//         tableEl.remove();
-//     } else {
-//         console.warn(`Element with id ${tableId} not found.`);
-//     }
-// });
-
-
-
-
-//// comments section 
-// document.addEventListener("DOMContentLoaded", function () {
-//     // Check if the sticky header already exists
-//     let commentsSection = document.getElementById('commentsSection');
-
-//     if (!commentsSection) {
-//         // Create the sticky header container
-//         commentsSection = document.createElement('div');
-//         commentsSection.id = 'commentsSection';
-//         document.body.prepend(commentsSection);
-//     }
-
-//     // Select elements to move
-//     let commentsView = document.querySelector('[name*="commentsSection"]');
-
-//     // Move elements inside the sticky header in order
-//     if (commentsSection) {
-//         commentsSection.appendChild(commentsView);
-//     }
-// });
 var fqn = null;
 // Menu items
-
-
-
 document.addEventListener("DOMContentLoaded", function () {
   setTimeout(function () {
     try {
@@ -703,46 +609,6 @@ document.addEventListener("DOMContentLoaded", function () {
 
 
 //////////////// end of k2 scripts
-
-
-
-
-// const requestsData = [
-//     { type: 'marketing', percentage: 56, elementId: 'marketing-request', percentId: 'marketing-request-percentage' },
-//     { type: 'study', percentage: 20, elementId: 'request-a-study', percentId: 'request-study-percentage' },
-//     { type: 'branch', percentage: 17, elementId: 'branch-visit-notes', percentId: 'branch-viti-percentage' },
-//     { type: 'other', percentage: 7, elementId: 'other', percentId: 'other-percentage' },
-// ];
-// function showPercentages() {
-//     requestsData.forEach(item => {
-//         const percentElement = document.getElementById(item.percentId);
-//         if (percentElement) {
-//             percentElement.textContent = `${item.percentage}%`;
-//         }
-//     });
-// }
-// function animateSequentially(index = 0) {
-//     if (index >= requestsData.length) return;
-
-//     const item = requestsData[index];
-//     const segmentElement = document.getElementById(item.elementId);
-
-//     if (segmentElement) {
-//         segmentElement.style.width = '0';
-//         setTimeout(() => {
-//             segmentElement.style.width = `${item.percentage}%`;
-//             setTimeout(() => {
-//                 animateSequentially(index + 1);
-//             }, 1600);
-//         }, 100);
-//     }
-// }
-
-// document.addEventListener("DOMContentLoaded", () => {
-//     showPercentages();
-//     animateSequentially();
-// });
-
 document.addEventListener('DOMContentLoaded', () => {
   // 1. Create and append the progress bar container
   const progressBarContainer = document.createElement('div');

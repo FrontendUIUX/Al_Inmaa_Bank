@@ -1457,6 +1457,7 @@ display:none!important;
 }
 .marketingKPIs{
     gap:1rem;
+    margin-bottom: 1rem;
 }
 .marketingKPIs .col-lg-4 .card {
     width: 100%;
