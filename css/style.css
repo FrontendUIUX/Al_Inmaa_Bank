@@ -1453,7 +1453,7 @@ display:none!important;
 }
 .marketingDashboard > .col-lg-9,
 .marketingDashboard > .col-lg-3{
-    padding-right:1rem;
+    padding:1rem
 }
 .marketingKPIs{
     gap:1rem;
@@ -1500,6 +1500,10 @@ transform:translateY(-2rem);
 }
 /*  MARKETING DASHBOARD END */
 @media(min-width:992px){
+       .marketingDashboard > .col-lg-9 {
+        flex: 0 0 auto;
+        width: 72%;
+    }
     [name="headerLogo"]{
    position: unset;
    margin-top: 0.5rem!important;
@@ -1539,9 +1543,12 @@ transform:translateY(-2rem);
     html:not(.designer) body .kpiCards .card {
     width: 15rem;
 }
-    .marketingDashboard .col-lg-4 {
+    .marketingDashboard > .col-lg-3 {
         flex: 0 0 auto;
-        width: 32%;
+        width: 28%;
+    }
+    .marketingKPIs .col-lg-4{
+        width:32%;
     }
 }
 @media(min-width:1200px){
