@@ -1509,14 +1509,6 @@ transform:translateY(-2rem);
     text-align: center;
 }
 /* FEEDBACK SECTION START */
-body {
-    background-color: #e8e4df;
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 1.25rem;
-}
 
 .card {
     max-width: 46.5rem;
