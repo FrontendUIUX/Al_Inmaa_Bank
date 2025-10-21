@@ -1147,3 +1147,31 @@ document.querySelectorAll('.dropdown-item').forEach(item => {
         document.getElementById('timeFilterDropdown').innerHTML = `${this.textContent} <img src="../images/net/Chevron Down.svg" alt="chevrondown" class="chevron-img">`;
     });
 });
+
+/* FEEDBACK SECTION START */
+function submitRating(rating, el) {
+    console.log('Rating submitted:', rating);
+    const $buttons = $('.rating-btn');
+    $buttons.each(function () {
+        const $btn = $(this);
+        if (this === el) {
+            $btn.addClass('selected');
+        }
+        $btn.prop('disabled', true);
+    });
+
+    const $rating = $('#ratingScreen');
+    const $screens = $('#screens');
+
+    setTimeout(function () {
+        $rating.addClass('fade-out-right-to-left');
+
+        setTimeout(function () {
+            $rating.css('visibility', 'hidden');
+            $screens.addClass('slide-left');
+            $('#ratingScreen').attr('aria-hidden', 'true');
+            $('#successScreen').attr('aria-hidden', 'false');
+            $('#successScreen').addClass('fade-in-right-to-left');
+        }, 600); // Wait for fade animation to complete
+    }, 1000); // Wait 1 second before starting fade animation
+}
