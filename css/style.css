@@ -1460,7 +1460,8 @@ display:none!important;
 }
 .marketingDashboard > .col-lg-9,
 .marketingDashboard > .col-lg-3{
-    padding:1rem
+    padding:1rem;
+    padding-left: 0;
 }
 .marketingKPIs{
     gap:1rem;
