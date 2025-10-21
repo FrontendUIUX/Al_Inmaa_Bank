@@ -1352,6 +1352,9 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
  {
     width:100%!important;
  }
+ .pendingRequestsTable .table-responsive{
+    overflow-y: hidden;
+ }
 .innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr.selected td, .innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr:hover td{
 
     background-color: unset !important;
