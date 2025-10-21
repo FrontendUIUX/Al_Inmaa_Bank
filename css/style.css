@@ -1348,7 +1348,10 @@ html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text
     display: none !important;
 
 }
- 
+ html:not(.designer) [name="Admin Requests Dashboard Control"]
+ {
+    width:100%!important;
+ }
 .innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr.selected td, .innerpanel div[name="MarketingAttachments Area Item"] .grid-body-content-wrapper tr:hover td{
 
     background-color: unset !important;
