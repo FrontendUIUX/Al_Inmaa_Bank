@@ -2020,4 +2020,8 @@ transform:translateY(-2.5rem);
     td[data-title="Actions"] .dropdown-custom button{
         font-size: 0.75vw;
     }
+    html:not(.designer) body .kpiCards .card .card-body .kpiName, 
+    html:not(.designer) body .marketingKPIs .card .card-body .kpiName{
+        font-size: .75vw;
+    }
 }
