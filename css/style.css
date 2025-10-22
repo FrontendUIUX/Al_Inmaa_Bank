@@ -2004,6 +2004,9 @@ transform:translateY(-2.5rem);
 }
 }
 @media(min-width:1600px){
+    html,body{
+        font-size:1vw;
+    }
     .chart-container{
         width: 80%;
         margin: auto;
@@ -2014,6 +2017,6 @@ transform:translateY(-2.5rem);
     }
     .pendingRequestsTable td,
     td[data-title="Actions"] .dropdown-custom button{
-        font-size: 1vw;
+        font-size: 0.75vw;
     }
 }
