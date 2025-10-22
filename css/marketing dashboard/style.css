@@ -173,9 +173,9 @@
   align-items: center;
   justify-content: space-around;
   padding: .4rem 1rem;
-  font-size: 1REM;
+  font-size: 1rem;
   background: #f3e5e5;
-  border-radius: 8px;
+  border-radius: .8rem;
   border: none;
   font-family: var(--Alinma-plain);
   gap: 3px;
@@ -183,6 +183,9 @@
 .dropdown-item {
   padding: 0.5rem 1rem;
   font-family: 'AlinmaTheSans';
+}
+.dropdown-item-custom img{
+  display: none;
 }
 .chart-container {
   display: flex;
