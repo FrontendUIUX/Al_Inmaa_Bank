@@ -1511,7 +1511,7 @@ display:none!important;
     width: 100%;
     margin-bottom: 1rem;
     height: 23rem;
-    padding: 1rem;
+    padding: 1rem!important;
 }
 .overviewCard .card-header,
 .totalRequests .card-header{
@@ -1529,6 +1529,7 @@ transform:translateY(-2.5rem);
     border-radius: 1.2rem;
     border: 1px solid #E5E4DE;
     width: 100%;
+    padding: 1rem!important;
 }
 #semiCircleChart{
     height:100%!important;
