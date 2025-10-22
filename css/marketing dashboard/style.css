@@ -134,9 +134,9 @@
   position:absolute;
   left: 0;
   top: 50%;
-  transform: translateY(-50%);
-  width: 13px;
-  height: 13px;
+  transform: translateY(-80%);
+  width: .8rem;
+  height: .8rem;
   border-radius: 50%;
   display: inline-block;
 }
@@ -160,7 +160,7 @@
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  padding-bottom: 5px;
+  padding-bottom: .6rem;
 }
 .label {
   font-size: 0.9rem;
@@ -200,20 +200,20 @@
 }
 .semi-circle-text {
   position: absolute;
-  bottom: 50px;
+  bottom: 40px;
   text-align: center;
 }
 .number-text {
   margin-bottom: -8px;
-  font-size: 1.7rem;
-  font-family: 'AlinmaTheSans-Bold';
+  font-size: 2.5rem;
+  font-family: val(--Alinma-bold);
 
 }
 .value {
   display: block;
 }
 .label-text {
-  font-size: 0.9rem;
+  font-size: 1.2rem;
   font-family: 'AlinmaTheSans';
   display: block;
   color: rgba(0, 0, 0, 0.495);

@@ -1507,16 +1507,17 @@ display:none!important;
     width: 100%;
     margin-bottom: 1rem;
     height: 23rem;
+    padding: 1rem;
 }
 .overviewCard .card-header,
 .totalRequests .card-header{
-    padding:1rem 1rem 0;
+    padding:.5rem .5rem 0;
 }
 .overviewCard .card-body{
-transform:translateY(-2rem);
+transform:translateY(-2.5rem);
 }
 .overviewCard .card-body span.label{
-    font-size:.9rem;
+    font-size:1rem;
     font-family:var(--Alinma-plain);
 }
 .totalRequests{
@@ -1976,6 +1977,8 @@ transform:translateY(-2rem);
     .marketingDashboard > .col-lg-3 {
         flex: 0 0 auto;
         width: 28%;
+        padding-right: 0;
+        padding-left: 1.5rem;
     }
     .marketingKPIs .col-lg-4{
         width:32%;
