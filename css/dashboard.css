@@ -1,0 +1,19 @@
+/* form */
+html:not(.designer) .form {
+   margin: 0!important;
+   position: relative;
+   padding: 0!important;
+   border-radius: 0!important;
+   overflow: hidden;
+   border: none!important;
+   background-color:transparent!important;
+}
+html:not(.designer) .form .view .innerpanel > .panel{
+   background-color:transparent!important;
+}
+.RequestsDashboardControl-RequestsDashboardControl{
+   width:100%;
+}
+[name*="customControl"] [name*="Cell Cell3"] {
+    padding: 0!important;
+}
