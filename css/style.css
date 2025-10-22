@@ -352,7 +352,7 @@ html body .kpiCards .card:nth-child(4){
 }
 html body .kpiCards .card .card-body,
 html body .marketingKPIs .card .card-body {
-    padding: .5rem;
+    padding:0 .5rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
