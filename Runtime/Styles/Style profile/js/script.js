@@ -103,23 +103,23 @@ document.addEventListener("DOMContentLoaded", () => {
           category: "Main Links",
           links: [
             {
-              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg",
+              icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg",
               name: "New Request",
               url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/"
             },
             {
-              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg",
+              icon: "/Runtime/Styles/Style%20profile/images/net/Dashboard.svg",
               name: "Dashboard",
               url: "/Runtime/Runtime/Form/MainDashboard"
             },
             {
-              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg",
+              icon: "/Runtime/Styles/Style%20profile/images/net/My Requests.svg",
               name: "My Requests",
               url: "/Runtime/Form/UserDashboard/"
             }
             // },
             // {
-            //   icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/report-and-analytics.svg",
+            //   icon: "/Runtime/Styles/Style%20profile/images/net/report-and-analytics.svg",
             //   name: "Reports & Analytics",
             //   url: "#",
             //   // children: [
@@ -133,14 +133,14 @@ document.addEventListener("DOMContentLoaded", () => {
         // {
         //   category: "Departments",
         //   // links: [
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg", name: "Retail & Digital Banking", url: "#", children: [] },
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/", children: [] },
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg", name: "Shariah", url: "#", children: [] },
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg", name: "Information Technology", url: "#", children: [] },
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Operations.svg", name: "Operations", url: "#", children: [] },
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/facilities-management.svg", name: "Facilities Management", url: "#", children: [] },
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Business Acquistion.svg", name: "Human Capital", url: "#", children: [] },
-        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/risk-management.svg", name: "Risk Management", url: "#", children: [] }
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Retail Banking.svg", name: "Retail & Digital Banking", url: "#", children: [] },
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/", children: [] },
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Shariah.svg", name: "Shariah", url: "#", children: [] },
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/information-technology.svg", name: "Information Technology", url: "#", children: [] },
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Operations.svg", name: "Operations", url: "#", children: [] },
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/facilities-management.svg", name: "Facilities Management", url: "#", children: [] },
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Business Acquistion.svg", name: "Human Capital", url: "#", children: [] },
+        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/risk-management.svg", name: "Risk Management", url: "#", children: [] }
         //   // ]
         // }
       ];
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", () => {
           <div class="userSettings d-flex align-items-center">
             <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
               <div class="userProfilePhoto">
-                <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
+                <img src="/Runtime/Styles/Style%20profile/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
               </div>
               <div class="userInformations d-flex flex-column">
                 <span class="username">${userName}</span>
@@ -159,13 +159,13 @@ document.addEventListener("DOMContentLoaded", () => {
               </div>
             </div>
             <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
-              <img src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Notification.svg"/>
+              <img src="/Runtime/Styles/Style%20profile/images/net/Notification.svg"/>
             </button>
           </div>
           <div class="sideBarLinksGroup"></div>
           <div class="light-dark-mode">
             <div class="toggle-label d-flex align-items-center justify-content-between">
-              <img class="sun-img" src="https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Sun.svg" alt="">
+              <img class="sun-img" src="/Runtime/Styles/Style%20profile/images/net/Sun.svg" alt="">
               <span id="mode-label">Light Mode</span>
               <div class="form-check form-switch m-0">
                 <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
