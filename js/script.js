@@ -525,9 +525,9 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 // Create the overlay div
-const overlay = document.createElement("div");
+const overlayDiv = document.createElement("div");
 // Add your CSS class (assuming you already defined `.overlay-shadow` in your stylesheet)
-overlay.classList.add("overlayShadow");
+overlayDiv.classList.add("overlayShadow");
 // Append it to the body
 document.body.appendChild(overlay);
 function updateDropdownState(select) {
