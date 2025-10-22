@@ -984,12 +984,32 @@ document.addEventListener("DOMContentLoaded", function() {
   const chartCanvas = document.getElementById('semiCircleChart');
   const ctx = chartCanvas.getContext('2d');
 
-  const dataMap = [
-    { baseColor: '#b6b5faff', darkColor: '#8785d8ff', bars: 10, percent: 50 },   // purple
-    { baseColor: '#ffb5a0ff', darkColor: '#ff9581ff', bars: 6, percent: 30 },  // peach
-    { baseColor: '#F4E7DB', darkColor: '#F4E7DB', bars: 6, percent: 20 }     // beige
-  ];
+  // === Extract data directly from the HTML ===
+  const percentageItems = document.querySelectorAll('.overviewCard .sentences');
+  const dataMap = Array.from(percentageItems).map(item => {
+    const percentText = item.querySelector('.percentage')?.textContent.trim() || "0%";
+    const percent = parseInt(percentText.replace('%', '')) || 0;
 
+    // Assign colors dynamically (or customize per label keyword)
+    const label = item.querySelector('.label')?.textContent.toLowerCase() || "";
+    let baseColor = '#ccc';
+    let darkColor = '#999';
+
+    if (label.includes('approved')) {
+      baseColor = '#b6b5fa';  // purple
+      darkColor = '#8785d8';
+    } else if (label.includes('progress')) {
+      baseColor = '#ffb5a0';  // peach
+      darkColor = '#ff9581';
+    } else if (label.includes('pending')) {
+      baseColor = '#f4e7db';  // beige
+      darkColor = '#f4e7db';
+    }
+
+    return { baseColor, darkColor, percent };
+  });
+
+  // === Prepare data arrays ===
   const dataValues = [];
   const sliceColors = [];
   const greyColors = [];
@@ -1002,9 +1022,10 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   dataMap.forEach(item => {
-    for (let i = 0; i < item.bars; i++) {
+    const bars = 10; // fixed bar count per category (can adjust)
+    for (let i = 0; i < bars; i++) {
       dataValues.push(1);
-      const factor = ((i + 1) / item.bars) * (item.percent / 100);
+      const factor = ((i + 1) / bars) * (item.percent / 100);
       sliceColors.push(interpolateColor(item.baseColor, item.darkColor, factor));
       greyColors.push('#cccccc');
 
@@ -1015,6 +1036,7 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
+  // === Create Chart ===
   const chart = new Chart(ctx, {
     type: 'doughnut',
     data: {
@@ -1040,31 +1062,22 @@ document.addEventListener("DOMContentLoaded", function() {
     }
   });
 
-function animateFill() {
-  let i = 0;
-  function step() {
-    if (i < chart.data.datasets[0].backgroundColor.length) {
-      chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
-      chart.update();
-      i++;
-      setTimeout(step, 40); // faster animation
+  // === Animate Fill ===
+  function animateFill() {
+    let i = 0;
+    function step() {
+      if (i < chart.data.datasets[0].backgroundColor.length) {
+        chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
+        chart.update();
+        i++;
+        setTimeout(step, 40); // animation speed
+      }
     }
+    step();
   }
-  step();
-}
-
-
 
   chartCanvas.style.transition = "all 0.1s ease";
   animateFill();
-
-  // ===== UPDATE HTML PERCENTAGES =====
-  const percentageSpans = document.querySelectorAll('.overviewCard .percentage');
-  dataMap.forEach((item, index) => {
-    if (percentageSpans[index]) {
-      percentageSpans[index].textContent = `${item.percent}%`;
-    }
-  });
 });
 // BAR CHART - MARKETING DASHBOARD
 const ctx = document.getElementById('myBarChart').getContext('2d');
