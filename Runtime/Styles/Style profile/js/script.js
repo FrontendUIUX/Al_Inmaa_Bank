@@ -103,6 +103,11 @@ document.addEventListener("DOMContentLoaded", () => {
           category: "Main Links",
           links: [
             {
+              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg",
+              name: "New Request",
+              url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/"
+            },
+            {
               icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Dashboard.svg",
               name: "Dashboard",
               url: "/Runtime/Runtime/Form/MainDashboard"
@@ -111,32 +116,33 @@ document.addEventListener("DOMContentLoaded", () => {
               icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/My Requests.svg",
               name: "My Requests",
               url: "/Runtime/Form/UserDashboard/"
-            },
-            {
-              icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/report-and-analytics.svg",
-              name: "Reports & Analytics",
-              url: "#",
-              // children: [
-              //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Marketing Dashboard", url: "#" },
-              //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Communication Dashboard", url: "#" },
-              //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Information Technology Dashboard", url: "#" }
-              // ]
             }
+            // },
+            // {
+            //   icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/report-and-analytics.svg",
+            //   name: "Reports & Analytics",
+            //   url: "#",
+            //   // children: [
+            //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Marketing Dashboard", url: "#" },
+            //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Communication Dashboard", url: "#" },
+            //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", name: "Information Technology Dashboard", url: "#" }
+            //   // ]
+            // }
           ]
         },
-        {
-          category: "Departments",
-          links: [
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg", name: "Retail & Digital Banking", url: "#", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg", name: "Shariah", url: "#", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg", name: "Information Technology", url: "#", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Operations.svg", name: "Operations", url: "#", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/facilities-management.svg", name: "Facilities Management", url: "#", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Business Acquistion.svg", name: "Human Capital", url: "#", children: [] },
-            { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/risk-management.svg", name: "Risk Management", url: "#", children: [] }
-          ]
-        }
+        // {
+        //   category: "Departments",
+        //   // links: [
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Retail Banking.svg", name: "Retail & Digital Banking", url: "#", children: [] },
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/", children: [] },
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Shariah.svg", name: "Shariah", url: "#", children: [] },
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/information-technology.svg", name: "Information Technology", url: "#", children: [] },
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Operations.svg", name: "Operations", url: "#", children: [] },
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/facilities-management.svg", name: "Facilities Management", url: "#", children: [] },
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/Business Acquistion.svg", name: "Human Capital", url: "#", children: [] },
+        //   //   { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/risk-management.svg", name: "Risk Management", url: "#", children: [] }
+        //   // ]
+        // }
       ];
 
       // ===== Sidebar HTML skeleton =====
@@ -689,8 +695,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
   const submenuLinks = {
     "Reports & Analytics": [
-      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Marketing Dashboard", url: "#" },
-      { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
+      { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
       { icon: "https://frontenduiux.github.io/Al_Inmaa_Bank/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
     ],
     "Retail & Digital Banking": [
