@@ -1,19 +1,4 @@
-
-
-const toggle = document.getElementById("modeToggle");
-const label = document.getElementById("modeLabel");
-
-toggle.addEventListener("change", () => {
-  document.body.classList.toggle("dark");
-
-  if (document.body.classList.contains("dark")) {
-    label.textContent = "Dark Mode";
-  } else {
-    label.textContent = "Light Mode";
-  }
-});
-  ///dashboard page///
-
+///dashboard page///
     document.addEventListener('DOMContentLoaded', () => {
   const table = document.querySelector('.requests-table-dashboard');
   const serviceHeader = table.querySelector('th:nth-child(2)');
