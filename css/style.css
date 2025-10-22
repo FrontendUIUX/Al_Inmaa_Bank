@@ -352,7 +352,7 @@ html body .kpiCards .card:nth-child(4){
 }
 html body .kpiCards .card .card-body,
 html body .marketingKPIs .card .card-body {
-    padding: 1rem;
+    padding: .5rem;
     display: flex;
     flex-direction: column;
     justify-content: flex-end;
@@ -565,7 +565,7 @@ h2 {
     background-color: white;
     border-radius: 1rem;
     border: 1px solid #E5E4DE;
-    padding: 2rem;
+    padding: 2rem 1.5rem;
     font-size: 1rem;
     opacity: 0;
     transform: translateY(100%);
@@ -623,6 +623,21 @@ html body .col-lg-3 .card .card-header h2{
     color: #002035;
     font-family: var(--Alinma-bold);
     font-size: 1.3rem;
+    margin-bottom:unset;
+}
+.pendingRequestsTable table{
+    margin-top: 1.5rem!important;
+}
+.pendingRequestsTable td,
+td[data-title="Actions"] .dropdown-custom button{
+    font-size: .95rem;
+}
+td[data-title="Actions"] .dropdown-custom button{
+    background-color: #f1dfda;
+    border-radius: .8rem;
+}
+td[data-title="Request Number"]{
+    font-family: var(--Alinma-bold);
 }
  .search-box {
     position: relative;
@@ -1483,6 +1498,8 @@ display:none!important;
     animation: 1s fadeUp forwards;
     flex-grow: 1;
     font-family: var(--Alinma-plain);
+    padding: 1rem;
+    box-shadow: unset;
 }
 .overviewCard{
     border-radius: 1.2rem;
