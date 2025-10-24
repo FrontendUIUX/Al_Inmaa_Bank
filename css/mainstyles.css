@@ -29,13 +29,13 @@ html:not(.designer),:not(.designer) body{
 }
 @font-face {
     font-family: "AlinmaTheSans-Plain";
-    src: url("https://frontenduiux.github.io/Al_Inmaa_Bank/fonts/AlinmaTheSans-Plain.ttf");
+    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
     font-display: swap;
 }
 
 @font-face {
     font-family: "AlinmaTheSans-Bold";
-    src: url("https://frontenduiux.github.io/Al_Inmaa_Bank/fonts/AlinmaTheSans-Bold.ttf");
+    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
 /* VIEW TITLE START */
@@ -55,7 +55,7 @@ html:not(.designer) .theme-entry .message-box-content.confirmation:before,
 html:not(.designer) .theme-entry .message-box-content.info:before,
 html:not(.designer) .theme-entry .message-box-content.message:before,
 .theme-entry .message-box-content.message:before{
-	background-image: url("https://frontenduiux.github.io/OBB_Services/Images/general.png");
+	background-image: url("/Runtime/Styles/Style%20profile/Images/general.png");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -63,7 +63,7 @@ html:not(.designer) .theme-entry .message-box-content.message:before,
 	transform: translateY(-50%);
 }
 html:not(.designer) .theme-entry .message-box-content.warning:before{
-	background-image: url("https://frontenduiux.github.io/OBB_Services/Images/Warning.svg");
+	background-image: url("/Runtime/Styles/Style%20profile/Images/Warning.svg");
 	background-size: contain;
 	background-repeat: no-repeat;
 	background-position: center;
@@ -116,7 +116,7 @@ html:not(.designer) .popup.dialog .popup-header .popup-header-text{
     font-size:1.4rem;
 }
 html:not(.designer) .theme-entry .message-box-content.error:before{
-    background-image:url("https://frontenduiux.github.io/OBB_Services/Images/error.svg");
+    background-image:url("/Runtime/Styles/Style%20profile/Images/error.svg");
     background-size:3rem;
     background-repeat:no-repeat;
     background-position:center;
@@ -570,6 +570,9 @@ html:not(.designer) [name*="s_button s_save_button"]:hover{
 div#d0300780-c69e-30af-366b-fb216c06c0a2_18a1ca65-4c9d-7340-a6d9-d6da3cb0f632_Table {
     display: flex;
     justify-content: space-between;
+    opacity: 0;
+    transform: translateY(100%);
+    animation: 1s fadeUp 4s forwards;
 }
 html:not(.designer) [name*="s_button s_save_button"]::before{
     content:"";
@@ -579,7 +582,7 @@ html:not(.designer) [name*="s_button s_save_button"]::before{
     transform:translateY(-50%);
     height: 1.3rem;
     width: 1.3rem;
-    background-image: url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/save-icon.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -589,12 +592,13 @@ html:not(.designer) [name*="s_asterik"] {
 }
 /* form */
 html:not(.designer) .form {
-   margin: 0!important;
+   margin: 1rem 00!important;
    position: relative;
    padding: 0 2rem;
    border-radius: 1rem;
    overflow: hidden;
    border: 1.6px solid #e5e4de;
+   border: none;
 }
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
@@ -614,7 +618,7 @@ html:not(.designer) .form {
     padding-bottom: 2rem;
 }
 /* header */
-html:not(.designer) .theme-entry [name*="s_header"],
+html:not(.designer) .theme-entry header,
 html:not(.designer) header {
     position:fixed;
     top:0;
@@ -630,6 +634,17 @@ html:not(.designer) header {
     opacity:0;
     transform:translateY(-50%);
     animation:1s fadeDown forwards;
+}
+html:not(.designer) .theme-entry header > span{
+	width:100%;
+}
+html:not(.designer) .theme-entry [name*="s_header"]{
+	display:none;
+}
+html:not(.designer) .theme-entry header [name*="s_header"]{
+	display:flex;
+	align-items:center;
+	justify-content:space-between;
 }
 html:not(.designer) .panel{
     background-color:transparent!important;
@@ -650,6 +665,7 @@ html:not(.designer) [name*="view_move_right"]{
     height: unset;
     min-height: unset;
     margin-bottom: 1rem;
+    padding-top: 1rem;
 }
 html:not(.designer) .theme-entry span[name*="PageTitle"]{
     font-size: 1.6rem!important;
@@ -662,6 +678,7 @@ html:not(.designer) .theme-entry [name*="PageDesc"]{
     font-size: 1rem;
     font-family: var(--Alinma-plain)!important;
     padding-top: 0!important;
+    color: rgb(0 0 0 / 70%);
 }
 html:not(.designer) .closeSubPanel:hover{
     background-color: var(--Navy-blue-low-opacity);
@@ -726,8 +743,8 @@ html:not(.designer) .theme-entry [name*="s_textarea"]{
 	position:relative;
 }
 html:not(.designer) .row:not([style*="display: none;"]) .view {
-    padding: 0 1rem!important;
-    margin: .7rem 0 0!important;
+    /* padding: 0 1rem!important; */
+    /* margin: .7rem 0 0!important; */
 }
 html:not(.designer) div#\38 e458c01-9131-958c-6a07-4ffe569768cf_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table,
 html:not(.designer) span#\30 c681cbb-b33a-fadc-6c71-3df1f2a23845,
@@ -741,7 +758,7 @@ html:not(.designer) [name*="tableGap"] {
 /* stepper */
 html:not(.designer) .completedStep::before{
     content:"";
-    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/Done.png");
+    background-image:url("/Runtime/Styles/Style%20profile/images/k2/Done.png");
     background-size:contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -753,7 +770,7 @@ html:not(.designer) .completedStep::before{
 }
 html:not(.designer) .inProgressStep::before{
     content:"";
-    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/InProgress.png");
+    background-image:url("/Runtime/Styles/Style%20profile/images/k2/InProgress.png");
     background-size:contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -765,7 +782,7 @@ html:not(.designer) .inProgressStep::before{
 }
 html:not(.designer) .pendingStep::before{
     content:"";
-    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/Pending.png");
+    background-image:url("/Runtime/Styles/Style%20profile/images/k2/Pending.png");
     background-size:contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -820,10 +837,10 @@ div#\36 fb1c2f9-761d-94a4-edc6-7090c460123a_f25fbbe5-959e-25be-71e6-246c4c9fc7ba
 /* position control buttons at the bottom of the form */
 html:not(.designer) div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_d0300780-c69e-30af-366b-fb216c06c0a2_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba {
    margin-bottom: 2rem!important;
-   margin-top: 2rem!important;
+   margin-top: 1rem!important;
 }
 .runtime-content {
-    margin: 0 3rem!important;
+    margin: 0 2rem!important;
 }
 
 .on-focus[name*="s_textarea"] [name*="s_label"] {
@@ -906,16 +923,16 @@ html:not(.designer) [name*="attachmentSection"]{
     width:1rem;
 }
 .toolbar-button.add::before{
-    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/add.svg");
+    background-image:url("/Runtime/Styles/Style%20profile/images/k2/add.svg");
 }
 .toolbar-button.edit::before{
-    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/edit.svg");
+    background-image:url("/Runtime/Styles/Style%20profile/images/k2/edit.svg");
 }
 .toolbar-button.delete::before{
-    background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/delete.svg");
+    background-image:url("/Runtime/Styles/Style%20profile/images/k2/delete.svg");
 }
 .toolbar-button.save::before{
-	 background-image:url(https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/save-icon.svg);
+	 background-image:url(/Runtime/Styles/Style%20profile/images/k2/save-icon.svg);
 }
 html:not(.designer) .theme-entry .grid.without-footer.without-summary .grid-body-content-wrapper{
     background-color: transparent!important;
@@ -998,7 +1015,7 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
 a#d0300780-c69e-30af-366b-fb216c06c0a2_ee685e75-a8a7-e2b2-183a-e1f5a769bb1a,
 a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588{
     position:relative;
-    left: -11%;
+    left: 3%;
     transform:translateX(-50%);
 }
 [name*="successIcon"]{
@@ -1104,7 +1121,7 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
 	transform:translateY(-50%);
 	height:1.2rem;
 	width:1.2rem;
-	background-image:url("https://frontenduiux.github.io/Al_Inmaa_Bank/images/k2/review details.png");
+	background-image:url("/Runtime/Styles/Style%20profile/images/k2/review details.png");
 	background-repeat:no-repeat;
 	background-size:contain;
 	background-position:center;
@@ -1131,24 +1148,157 @@ html:not(.designer) .theme-entry .SourceCodeFormsControlsWorklist .searchBar tr>
     padding-left: 1rem;
 }
 @media(min-width:992px){
+    div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table {
+    margin: 8rem auto;
+}
 	    html body .requestsTile {
         flex: 0 0 auto;
         width: 58.33333333%;
         padding-right: 1rem;
     }
 	html:not(.designer) body.theme-entry{
-    padding-top: 8rem;
+    padding-top:7.5rem;
 }
 	html:not(.designer) .theme-entry span[name*="PageTitle"]{
 		margin:0;
 	}
-	html:not(.designer) .theme-entry [name*="s_header"],
+	html:not(.designer) .theme-entry header,
     html:not(.designer) header {
-    left:22rem;
-    width: calc(100% - 22rem);
+    left:19.5rem;
+    width: calc(100% - 19.7rem);
     flex-direction: row;
     justify-content: space-between!important;
-    height: 8rem!important;
-    padding: 1rem 3rem;
+    height: 7rem!important;
+    padding: 1rem 2rem;
 }
+}
+@media(min-width:1600px){
+	[name*="headerLogo"]{
+		width: 8vw;
+		height: auto!important;
+	}
+	html:not(.designer) .theme-entry [name*="PageDesc"] {
+    font-size: 1vw;
+}
+	html:not(.designer) .theme-entry span[name*="PageTitle"] {
+    font-size: 1.6vw !important;
+    margin-top: 0vw;
+}
+    div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table {
+    margin: 8vw auto;
+}
+	a#d0300780-c69e-30af-366b-fb216c06c0a2_ee685e75-a8a7-e2b2-183a-e1f5a769bb1a, a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588 {
+    left: 7%;
+}
+	.on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
+    width: calc(100% - 2vw) !important;
+    height: 2vw !important;
+    min-height: 2vw !important;
+    top: 1.4vw;
+}
+    [name*="viewTitle"], .theme-entry .grid-header-wrapper .grid-header-text>span{
+		font-size:1.4vw;
+	}	html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text {
+    font-size: .95vw;
+}
+	[name*="viewTitle"], .theme-entry .grid-header-wrapper .grid-header-text>span{
+		font-size:1.4vw;
+	}
+	.theme-entry.runtime-form .grid .grid-content-cell-wrapper {
+    font-size: .9vw;
+    padding: 1vw!important;
+}
+ 
+	html:not(.designer) [name*="s_button s_save_button"] {
+	    font-size: 1.05vw;
+	    padding: 0.6vw 0vw 0.vw 2vw!important;
+	}
+	html:not(.designer) [name*="s_button"], html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button {
+    border-radius: 0.5vw !important;
+    padding: 0.6vw 2.4vw !important;
+    font-size: 1.05vw;
+    margin-bottom: 1vw!important;
+}
+    html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"], html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"], .on-focus[name*="s_textarea"] [name*="s_label"] {
+    font-size: .7vw !important;
+    color: var(--Navy-blue-low-opacity);
+}
+	.on-focus[name*="s_textarea"] textarea {
+	    min-height: 2vw!important;
+	    top: -0.3vw;
+		font-size:1vw !important;
+	}
+	html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"] {
+    transform: translateY(-0.7vw);
+}
+html:not(.designer) [name*="s_textbox"], html:not(.designer) [name*="s_dropdown"] {
+ 
+    font-size: 1vw !important;
+    border-radius: 0.5rem !important;
+    padding: 0.4vw 1vw !important;
+    width: 100%;
+    min-height: 3.5vw !important;
+    height: 3.5vw !important;
+    padding: 0 1vw!important;
+}
+    html:not(.designer) .inProgressStep::before, html:not(.designer) .pendingStep::before {
+    height: 2.9vw;
+    width: 2.9vw;
+	}
+	html:not(.designer) [name*="s_step"]::after {
+    left: 1.5vw;
+    height: 2.5vw;
+	}
+    html:not(.designer) .theme-entry header, 
+	html:not(.designer) header {
+        left: 16vw;
+        width: calc(100% - 16vw);
+        height: 6vw !important;
+        padding: 1vw 1.5vw;
+ 
+    }
+	html:not(.designer) [name*="stepDescription"]{
+		font-size:1vw;
+	}
+	[name*="s_sub_sidebar"]{
+		width:20vw !important;
+	}
+	html:not(.designer) [name*="view_move_right"]{
+		margin-left: 22vw !important;
+		width: calc(100% - 22vw)!important;
+		margin-bottom: 1vw;
+		padding-top: 1vw;
+	}
+	html:not(.designer) [name*="stepTitle"], html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text{
+		font-size: 1vw !important;
+	}
+	 html:not(.designer) [name*="s_label"]{
+		 font-size:.95vw !important;
+	 }
+	html:not(.designer) .completedStep::before {
+	    height: 2.9vw;
+	    width: 2.9vw;
+	}
+	html:not(.designer) [name*="s_step"] {
+    padding-left: 4vw;
+    margin-bottom: 2vw;
+	}
+	html:not(.designer) .completedStep[name*="s_step"]::after {
+    left: 1.4vw;
+    width: 1.5px;
+    height: 2.3vw;
+	}
+    html:not(.designer) body.theme-entry{
+        padding-top: 7vw;
+    }
+	.runtime-content {
+    margin: 0 1.5vw !important;
+}
+	 html:not(.designer) .theme-entry header, 
+	html:not(.designer) header {
+        left: 16vw;
+        width: calc(100% - 16vw);
+        height: 7vw !important;
+        padding: 1vw 1.5vw;
+    }
 }
