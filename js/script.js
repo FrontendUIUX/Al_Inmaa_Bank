@@ -1056,17 +1056,21 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 // MARKETING DASHBOARD - OVERVIEW CHART 
+// MARKETING DASHBOARD - OVERVIEW CHART 
 document.addEventListener("DOMContentLoaded", function() {
   const chartCanvas = document.getElementById('semiCircleChart');
+  if (!chartCanvas || !window.Chart) return; // ⛔ safely exit if chart or Chart.js not available
+
   const ctx = chartCanvas.getContext('2d');
 
   // === Extract data directly from the HTML ===
   const percentageItems = document.querySelectorAll('.overviewCard .sentences');
+  if (!percentageItems.length) return; // ⛔ no data, skip chart initialization
+
   const dataMap = Array.from(percentageItems).map(item => {
     const percentText = item.querySelector('.percentage')?.textContent.trim() || "0%";
     const percent = parseInt(percentText.replace('%', '')) || 0;
 
-    // Assign colors dynamically (or customize per label keyword)
     const label = item.querySelector('.label')?.textContent.toLowerCase() || "";
     let baseColor = '#ccc';
     let darkColor = '#999';
@@ -1098,7 +1102,7 @@ document.addEventListener("DOMContentLoaded", function() {
   }
 
   dataMap.forEach(item => {
-    const bars = 10; // fixed bar count per category (can adjust)
+    const bars = 10;
     for (let i = 0; i < bars; i++) {
       dataValues.push(1);
       const factor = ((i + 1) / bars) * (item.percent / 100);
@@ -1121,7 +1125,7 @@ document.addEventListener("DOMContentLoaded", function() {
         data: dataValues,
         backgroundColor: greyColors.slice(),
         borderWidth: 0,
-        borderRadius: 10,
+        borderRadius: 10
       }]
     },
     options: {
@@ -1144,7 +1148,7 @@ document.addEventListener("DOMContentLoaded", function() {
     function step() {
       if (i < chart.data.datasets[0].backgroundColor.length) {
         chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
-        chart.update();
+        chart.update('none');
         i++;
         setTimeout(step, 40); // animation speed
       }
@@ -1155,6 +1159,7 @@ document.addEventListener("DOMContentLoaded", function() {
   chartCanvas.style.transition = "all 0.1s ease";
   animateFill();
 });
+
 // BAR CHART - MARKETING DASHBOARD
 const canvas = document.getElementById('myBarChart');
 if (canvas) {
@@ -1246,9 +1251,7 @@ if (canvas) {
     });
   });
 
-} else {
-  console.info("ℹ️ Skipping chart initialization — element #myBarChart not found.");
-}
+} 
 
 
 
@@ -1311,3 +1314,361 @@ document.addEventListener('click', (e) => {
     document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
   }
 });
+
+// USER SATISFACTION SCRIPT 
+
+/*!
+ * Custom Dashboard Script – Chart.js v4.5.1 Compatible
+ * Includes:
+ *  - Circular (Doughnut) Chart
+ *  - Popular Requests Chart
+ *  - User Satisfaction Bar Animation
+ *  - Table Column Sorters
+ *  © 2025 – Works with Chart.js 4.5.1 + chartjs-plugin-datalabels@2.2.0
+ */
+
+(() => {
+  // ================================
+  //  CIRCULAR OVERVIEW CHART
+  // ================================
+  const circularCanvas = document.getElementById('myCircularChart');
+
+  if (circularCanvas && window.Chart) {
+    if (window.ChartDataLabels && !Chart.registry.plugins.get('datalabels')) {
+      Chart.register(ChartDataLabels);
+    }
+
+    const labelEls = [
+      document.querySelector('.segment-label1'),
+      document.querySelector('.segment-label2'),
+      document.querySelector('.segment-label3')
+    ].filter(Boolean);
+
+    const hideLabels = () => {
+      labelEls.forEach(el => {
+        if (!el) return;
+        el.style.opacity = '0';
+        el.style.transform = 'translateY(6px)';
+        el.style.transition = 'opacity 0.45s ease, transform 0.45s ease';
+        el.style.pointerEvents = 'none';
+      });
+    };
+
+    const showLabels = () => {
+      labelEls.forEach(el => {
+        if (!el) return;
+        setTimeout(() => {
+          el.style.opacity = '1';
+          el.style.transform = 'translateY(0)';
+          el.style.pointerEvents = '';
+        }, 120);
+      });
+    };
+
+    hideLabels();
+
+    new Chart(circularCanvas, {
+      type: 'doughnut',
+      data: {
+        labels: ['Completed', 'In Progress', 'Pending'],
+        datasets: [{
+          data: [55, 30, 15],
+          backgroundColor: ['#9795E0', '#FF9480', '#E9DBD0'],
+          borderWidth: 12,
+          borderColor: '#ffffff',
+          borderRadius: 12
+        }]
+      },
+      options: {
+        cutout: '60%',
+        responsive: true,
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false },
+          datalabels: { display: false }
+        },
+        hover: { mode: null },
+        animation: {
+          duration: 900,
+          easing: 'easeOutCubic',
+          onProgress: (anim) => hideLabels(anim.chart),
+          onComplete: (anim) => showLabels(anim.chart)
+        }
+      },
+      plugins: [ChartDataLabels]
+    });
+  }
+
+  // ================================
+  //  USER SATISFACTION RATING BAR
+  // ================================
+  function roundRectPath(ctx, x, y, w, h, r) {
+    const rr = Math.min(r, h / 2, w / 2);
+    ctx.beginPath();
+    ctx.moveTo(x + rr, y);
+    ctx.lineTo(x + w - rr, y);
+    ctx.quadraticCurveTo(x + w, y, x + w, y + rr);
+    ctx.lineTo(x + w, y + h - rr);
+    ctx.quadraticCurveTo(x + w, y + h, x + w - rr, y + h);
+    ctx.lineTo(x + rr, y + h);
+    ctx.quadraticCurveTo(x, y + h, x, y + h - rr);
+    ctx.lineTo(x, y + rr);
+    ctx.quadraticCurveTo(x, y, x + rr, y);
+    ctx.closePath();
+  }
+
+  function prepCanvasForDPR(canvas) {
+    const dpr = window.devicePixelRatio || 1;
+    const cssW = canvas.clientWidth || canvas.width;
+    const cssH = canvas.clientHeight || canvas.height;
+    canvas.width = Math.round(cssW * dpr);
+    canvas.height = Math.round(cssH * dpr);
+    const ctx = canvas.getContext('2d');
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    return ctx;
+  }
+
+  function drawRatingBar(canvas, rating, opts = {}) {
+    const {
+      segments = 5,
+      gap = 4,
+      height = 8,
+      fillColor = '#FF9480',
+      bgColor = '#e0e0e0',
+      radius = 50
+    } = opts;
+
+    const ctx = prepCanvasForDPR(canvas);
+    const W = canvas.clientWidth || canvas.width;
+    const H = canvas.clientHeight || height;
+    const totalGap = gap * (segments - 1);
+    const segW = (W - totalGap) / segments;
+    const segH = height;
+    const y = Math.round((H - segH) / 2);
+    ctx.clearRect(0, 0, W, H);
+
+    for (let i = 0; i < segments; i++) {
+      const x = Math.round(i * (segW + gap));
+      ctx.fillStyle = bgColor;
+      roundRectPath(ctx, x, y, segW, segH, radius);
+      ctx.fill();
+    }
+
+    const full = Math.floor(Math.max(0, Math.min(rating, segments)));
+    const part = Math.max(0, Math.min(1, rating - full));
+    ctx.fillStyle = fillColor;
+
+    for (let i = 0; i < full; i++) {
+      const x = Math.round(i * (segW + gap));
+      roundRectPath(ctx, x, y, segW, segH, radius);
+      ctx.fill();
+    }
+    if (part > 0 && full < segments) {
+      const x = Math.round(full * (segW + gap));
+      roundRectPath(ctx, x, y, segW * part, segH, radius);
+      ctx.fill();
+    }
+  }
+
+  const easeOutCubic = t => 1 - Math.pow(1 - t, 3);
+
+  function animateRatingBar(canvas, targetRating, options = {}) {
+    const { duration = 900, easing = easeOutCubic, ...drawOpts } = options;
+    let rafId = null, start = null;
+
+    if (canvas.__animCancel) canvas.__animCancel();
+    canvas.__animCancel = () => { if (rafId) cancelAnimationFrame(rafId); };
+
+    const step = (ts) => {
+      if (!start) start = ts;
+      const t = Math.min(1, (ts - start) / duration);
+      const eased = easing(t);
+      const current = targetRating * eased;
+      drawRatingBar(canvas, current, drawOpts);
+      if (t < 1) rafId = requestAnimationFrame(step);
+    };
+    rafId = requestAnimationFrame(step);
+  }
+
+  function initAllRatingBars() {
+    document.querySelectorAll('.rating-canvas').forEach(canvas => {
+      if (!canvas.style.width) canvas.style.width = '234px';
+      if (!canvas.style.height) canvas.style.height = '8px';
+
+      const card = canvas.closest('.small-box-reports') || document;
+      const numEl = card.querySelector('.big-number');
+      const raw = parseFloat((numEl?.textContent || '0').trim());
+      const rating = isNaN(raw) ? 0 : Math.max(0, Math.min(5, raw));
+
+      animateRatingBar(canvas, rating);
+
+      let rAF;
+      const onResize = () => {
+        cancelAnimationFrame(rAF);
+        rAF = requestAnimationFrame(() => drawRatingBar(canvas, rating));
+      };
+      window.addEventListener('resize', onResize, { passive: true });
+
+      const obs = new MutationObserver(() => {
+        const n = parseFloat((numEl?.textContent || '0').trim());
+        if (!isNaN(n)) animateRatingBar(canvas, Math.max(0, Math.min(5, n)));
+      });
+      if (numEl) obs.observe(numEl, { characterData: true, childList: true, subtree: true });
+    });
+  }
+
+  document.addEventListener('DOMContentLoaded', initAllRatingBars);
+
+  window.updateRatingCanvas = (selector, newVal) => {
+    const c = document.querySelector(selector);
+    if (c) animateRatingBar(c, Math.max(0, Math.min(5, +newVal)));
+  };
+
+  // ================================
+  //  POPULAR REQUESTS BAR CHART
+  // ================================
+  (function initPopularRequests() {
+    const el = document.getElementById('popularRequestsChart');
+    if (!el || !window.Chart) return;
+
+    if (window.ChartDataLabels && !Chart.registry.plugins.get('datalabels')) {
+      Chart.register(ChartDataLabels);
+    }
+
+    const labels = [
+      'Account Approvals',
+      'Audit Request',
+      'Branch Visit',
+      'RGB Tasks',
+      'Request Study'
+    ];
+    const values = [4700, 7200, 5200, 3700, 10300];
+    const colors = ['#2FC04F', '#FF9480', '#CAD8E1', '#0B1B24', '#9795E0'];
+
+    let labelAlpha = 0;
+    let hasFaded = false;
+
+    function getBarPixelLength(ctx) {
+      const chart = ctx.chart;
+      const scale = chart.scales.x;
+      const v = ctx.dataset.data[ctx.dataIndex];
+      const p0 = scale.getPixelForValue(0);
+      const pV = scale.getPixelForValue(v);
+      return Math.abs(pV - p0);
+    }
+
+    function canvasMeasure(ctx2d, text, fontSpec) {
+      const prev = ctx2d.font;
+      ctx2d.font = fontSpec;
+      const w = ctx2d.measureText(text).width;
+      ctx2d.font = prev;
+      return w;
+    }
+
+    function computeFittingFontSize(ctx) {
+      const chart = ctx.chart;
+      const c2d = chart.ctx;
+      const label = chart.data.labels[ctx.dataIndex];
+
+      const barLen = getBarPixelLength(ctx);
+      const innerPadding = 10;
+      const available = Math.max(0, barLen - innerPadding);
+
+      const family = 'AlinmaTheSans';
+      const weight = '200';
+      const maxSize = 12;
+      const minSize = 1;
+
+      for (let size = maxSize; size >= minSize; size--) {
+        const fontSpec = `${weight} ${size}px ${family}`;
+        if (canvasMeasure(c2d, label, fontSpec) <= available) return size;
+      }
+      return minSize;
+    }
+
+    const chart = new Chart(el, {
+      type: 'bar',
+      data: {
+        labels,
+        datasets: [{
+          data: values,
+          backgroundColor: colors,
+          borderRadius: 6,
+          barThickness: 22,
+          maxBarThickness: 26,
+          borderSkipped: false
+        }]
+      },
+      options: {
+        indexAxis: 'y',
+        maintainAspectRatio: false,
+        animation: {
+          duration: 800,
+          easing: 'easeOutCubic',
+          onComplete: (anim) => {
+            if (!hasFaded) {
+              hasFaded = true;
+              fadeInLabels(anim.chart, 500);
+            }
+          }
+        },
+        responsiveAnimationDuration: 0,
+        transitions: { resize: { animation: { duration: 0 } } },
+        layout: { padding: { left: 0, right: 10, top: 6, bottom: 0 } },
+        plugins: {
+          legend: { display: false },
+          tooltip: { enabled: false },
+          datalabels: {
+            display: true,
+            anchor: 'start',
+            align: 'right',
+            offset: 0,
+            clamp: true,
+            clip: true,
+            font: (ctx) => ({
+              family: 'AlinmaTheSans',
+              weight: '400',
+              size: computeFittingFontSize(ctx)
+            }),
+            formatter: (_v, ctx) =>
+              ctx.chart.data.labels[ctx.dataIndex].split('').join('\u200A'),
+            color: () => `rgba(255,255,255,${labelAlpha})`
+          }
+        },
+        scales: {
+          y: { display: false, grid: { display: false }, border: { display: false } },
+          x: {
+            type: 'linear',
+            min: 0,
+            max: 12000,
+            display: false,
+            grid: { display: false },
+            border: { display: false }
+          },
+          x2: {
+            type: 'category',
+            position: 'bottom',
+            labels: ['0', '100', '1K', '2K', '4K', '8K', '12K'],
+            ticks: { font: { weight: '700' }, color: '#000' },
+            grid: { drawOnChartArea: true, drawTicks: false, color: 'rgba(0,0,0,0.12)', lineWidth: 1 },
+            border: { display: false }
+          }
+        },
+        categoryPercentage: 1.0,
+        barPercentage: 0.9
+      },
+      plugins: [ChartDataLabels]
+    });
+
+    function fadeInLabels(chart, duration = 500) {
+      const start = performance.now();
+      function step(ts) {
+        const t = Math.min(1, (ts - start) / duration);
+        labelAlpha = t;
+        chart.update('none');
+        if (t < 1) requestAnimationFrame(step);
+      }
+      requestAnimationFrame(step);
+    }
+  })();
+})();

@@ -959,7 +959,8 @@ table td .editRow a::before{
     width: 100%;
 }
 .averageTime-card .card-header,
-html body .col-lg-3 .card .card-header{
+html body .col-lg-3 .card .card-header,
+.popularRequests .card-header,.marketingoverview .card-header{
     border-bottom: none;
     display: flex;
     align-items: center;
@@ -1552,6 +1553,24 @@ display:none!important;
     box-shadow: unset;
 }
 .overviewCard{
+    border-radius: 1.2rem;
+    border: 1px solid #E5E4DE;
+    border: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    height: 22rem;
+    padding: 1rem!important;
+}
+.marketingoverview{
+    border-radius: 1.2rem;
+    border: 1px solid #E5E4DE;
+    border: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    height: 22rem;
+    padding: 1rem!important;
+}
+.popularRequests{
     border-radius: 1.2rem;
     border: 1px solid #E5E4DE;
     border: none;
