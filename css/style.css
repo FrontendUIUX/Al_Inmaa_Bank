@@ -402,12 +402,10 @@ html body .marketingKPIs .card .card-body .kpiName {
 }
 
 html body .requestsTile {
-    /* padding-right: 1rem; */
     opacity: 0;
     transform: translateY(100%);
     animation: 1s fadeUp forwards;
     width: 100%;
-    /* margin-bottom:1rem; */
 }
 
 html body .requestsTile .card {
@@ -416,7 +414,8 @@ html body .requestsTile .card {
     border: 1px solid #E5E4DE;
     border: none;
 }
-html body .requestsTile .card .card-header{
+html body .requestsTile .card .card-header,
+.card .card-header{
     background-color:transparent;
     border: 0;
     padding: 0.9rem 1rem 0;
@@ -442,7 +441,6 @@ h2 {
     color: var(--Navy-blue);
 }
 
-/* --- Progress Bar Styling --- */
 .progress-bar-container {
     display: flex;
     height: 0.8rem;
@@ -454,10 +452,8 @@ h2 {
 
 .request-progress-zone {
     height: 100%;
-    /* Width will be set by JavaScript */
 }
 
-/* Define colors for each segment */
 .marketing-request {
     background-color: #9993c9;
 }
@@ -1567,7 +1563,7 @@ display:none!important;
     border: none;
     width: 100%;
     margin-bottom: 1rem;
-    height: 22rem;
+    height: 25rem;
     padding: 1rem!important;
 }
 .popularRequests{
@@ -1576,11 +1572,12 @@ display:none!important;
     border: none;
     width: 100%;
     margin-bottom: 1rem;
-    height: 22rem;
+    height: 25rem;
     padding: 1rem!important;
 }
 .overviewCard .card-header,
-.totalRequests .card-header{
+.totalRequests .card-header,
+.card .card-header{
     padding:.5rem .5rem 0;
 }
 .overviewCard .card-body{transform:translateY(-2.5rem);}
@@ -2575,6 +2572,128 @@ button.lastPage{
   width: 100%;
   height: 14rem;
 }
+.card.userSatisfaction,.card.averageTime {
+    border-radius: 1.2rem;
+    border: 1px solid #E5E4DE;
+    border: none;
+    width: 100%;
+    margin-bottom: 1rem;
+    height: 12rem;
+    padding: 1rem !important;
+}
+/* MARKETING DASHBOARD START */
+.marketingDashboard{
+    gap:.6rem;
+    align-items: flex-start;
+}
+#myCircularChart {
+    width: 17rem !important;
+    height: 17rem !important;
+    /* margin-top: 3rem; */
+    transform: rotate(21deg);
+}
+.circleChart {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.segment-label1 {
+    position: absolute;
+    pointer-events: none;
+    top: 56%;
+    right: 0;
+}
+.segment-label2 {
+    position: absolute;
+    pointer-events: none;
+    top: -11%;
+    left: 39%;
+}
+.segment-label3 {
+    position: absolute;
+    pointer-events: none;
+    top: 58%;
+    left: 0;
+}
+.chart-center-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+    pointer-events: none;
+    margin-top: 1.2rem;
+}
+.chart-center-text .number {
+    display: block;
+    font-family: 'AlinmaTheSans-Bold';
+    font-size: 1.9rem;
+}
+.number {
+    font-size: 1.8rem;
+    font-weight: bold;
+    padding-left: 0.3rem;
+    font-family: 'AlinmaTheSans-Bold';
+}
+.chart-center-text .label {
+    display: block;
+    font-family: 'AlinmaTheSans';
+    font-size: 0.8rem;
+    margin-top: -4px;
+}
+.label-box1 {
+    background-color: #ffffff;
+    min-width: 80px;
+    border-radius: 5px 5px 5px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: 'AlinmaTheSans-Bold';
+    font-size: 12px;
+    padding: -1px 22px 2px 10px;
+}
+
+.label-box2 {
+    background-color: #ffffff;
+    min-width: 80px;
+    border-radius: 5px 5px 5px 0;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: 'AlinmaTheSans-Bold';
+    font-size: 12px;
+    padding: 2px 22px 2px 10px;
+}
+.label-box3 {
+    background-color: #ffffff;
+    min-width: 80px;
+    border-radius: 5px 5px 0 5px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+    font-family: 'AlinmaTheSans-Bold';
+    font-size: 12px;
+    padding: 2px 22px 2px 10px;
+}
+.value {
+    display: block;
+}
+.label-text {
+    display: block;
+    font-size: 10px;
+    color: rgba(0, 0, 0, 0.495);
+    font-family: 'AlinmaTheSans-Bold';
+}
+#popularRequestsChartBox {
+    height: 210px;
+}
+
+.chart {
+    position: relative;
+    width: 330px;
+    height: 200px;
+    margin: 2rem auto 0;
+    z-index: 0;
+}
+/* MARKETING DASHBOARD END */
 @media(min-width:992px){
         .pendingRequestsTable {
         height: 35.5rem;
@@ -2844,7 +2963,9 @@ button.lastPage{
     font-size:1.9vw;
     margin-bottom: .7vw;
     }
-    .tableHeader, html body .requestsTile .card .card-header h2, html body .col-lg-3 .card .card-header h2{
+    .tableHeader, html body .requestsTile .card .card-header h2, 
+    html body .col-lg-3 .card .card-header h2, 
+    .card .card-header h2{
         font-size: 1.3vw;
     }
     div#a1785b7c-5537-44bf-a510-6f3e6760d6b1 {
