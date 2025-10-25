@@ -1173,6 +1173,22 @@ html:not(.designer) .theme-entry .SourceCodeFormsControlsWorklist .searchBar tr>
 }
 }
 @media(min-width:1600px){
+	html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"],
+html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_dropdown"],
+html:not(.designer) .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textarea"],
+.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_textbox"],
+.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_dropdown"],
+.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_textarea"],
+html:not(.designer) .theme-entry [name*="s_textbox"],
+html:not(.designer) .theme-entry [name*="s_dropdown"],
+html:not(.designer) .theme-entry [name*="s_textarea"]{
+  padding: 0 1vw!important;
+}
+	html:not(.designer) .form {
+   margin: 1vw 0!important;
+   padding: 0 2vw;
+   border-radius: 1vw;
+}
 	[name*="headerLogo"]{
 		width: 8vw;
 		height: auto!important;
@@ -1234,9 +1250,8 @@ html:not(.designer) .theme-entry .SourceCodeFormsControlsWorklist .searchBar tr>
 html:not(.designer) [name*="s_textbox"], html:not(.designer) [name*="s_dropdown"] {
  
     font-size: 1vw !important;
-    border-radius: 0.5rem !important;
+    border-radius: 0.5vw !important;
     padding: 0.4vw 1vw !important;
-    width: 100%;
     min-height: 3.5vw !important;
     height: 3.5vw !important;
     padding: 0 1vw!important;
@@ -1273,8 +1288,8 @@ html:not(.designer) [name*="s_textbox"], html:not(.designer) [name*="s_dropdown"
 		font-size: 1vw !important;
 	}
 	 html:not(.designer) [name*="s_label"]{
-		 font-size:.95vw !important;
-	 }
+		 font-size: 1vw !important;
+		}
 	html:not(.designer) .completedStep::before {
 	    height: 2.9vw;
 	    width: 2.9vw;
