@@ -1,3 +1,247 @@
+// Get the current URL
+const urlParams = new URLSearchParams(window.location.search);
+
+// Check conditions properly with parentheses
+const hasValidParams = (urlParams.has('RequestID') && urlParams.has('MarketingID')) || 
+                       (urlParams.has('RequestID') && urlParams.has('AwardID'));
+
+if (hasValidParams) {
+  // Wait for DOM to be fully loaded
+  document.addEventListener('DOMContentLoaded', function() {
+    // Get the form element
+    const form = document.querySelector('.form');
+    
+    if (form) {
+      form.classList.add('editingForm');
+      console.log('editingForm class added to .form');
+    } else {
+      console.error('Form with class ".form" not found');
+    }
+  });
+}
+var fqn = null;
+// Menu items
+document.addEventListener("DOMContentLoaded", function () {
+  setTimeout(function () {
+    try {
+      const fqn = SourceCode.Forms.Settings.User.FQN;
+      // console.log("Logged-in User FQN: " + fqn);
+    } catch (e) {
+      console.error("Error retrieving FQN:", e);
+    }
+  }, 1000);
+});
+
+// STEPPER MODULE START 
+const Stepper = (() => {
+
+    function updateStepStatus() {
+        const steps = document.querySelectorAll('[name*="s_step"]');
+        if (steps.length === 0) return;
+
+        const statusMap = {
+            0: "pendingStep",
+            1: "inProgressStep",
+            2: "completedStep"
+        };
+
+        steps.forEach(step => {
+            const stepNumberEl = step.querySelector('[name*="stepNumber"]');
+            if (!stepNumberEl) return;
+
+            const raw = (stepNumberEl.textContent || "").trim();
+            const stepNumber = Number(raw.replace(/\D/g, '')) || 0;
+
+            const currentClass = Array.from(step.classList)
+                .find(cls => Object.values(statusMap).includes(cls));
+
+            const newClass = statusMap[stepNumber];
+
+            if (newClass && currentClass !== newClass) {
+                step.classList.remove(...Object.values(statusMap));
+                step.classList.add(newClass);
+            }
+        });
+    }
+
+    function moveToNextStep() {
+        const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
+        if (steps.length === 0) return;
+
+        const currentIndex = steps.findIndex(step => {
+            const el = step.querySelector('[name*="stepNumber"]');
+            return el && el.textContent.trim().replace(/\D/g, '') === '1';
+        });
+
+        if (currentIndex >= 0) {
+            const current = steps[currentIndex];
+            const next = steps[currentIndex + 1];
+
+            if (next) {
+                current.classList.remove("pendingStep", "inProgressStep", "completedStep");
+                current.classList.add("completedStep");
+
+                next.classList.remove("pendingStep", "inProgressStep", "completedStep");
+                next.classList.add("inProgressStep");
+            }
+        } else {
+            // No step is in progress → start from the first pending step
+            const firstPendingIndex = steps.findIndex(step => {
+                const el = step.querySelector('[name*="stepNumber"]');
+                return (el ? el.textContent.trim().replace(/\D/g, '') : '0') === '0';
+            });
+
+            if (firstPendingIndex >= 0) {
+                const firstStep = steps[firstPendingIndex];
+                firstStep.classList.remove("pendingStep", "inProgressStep", "completedStep");
+                firstStep.classList.add("inProgressStep");
+            }
+        }
+    }
+
+    function moveToPreviousStep() {
+        const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
+        if (steps.length === 0) return;
+
+        const currentIndex = steps.findIndex(step => {
+            const el = step.querySelector('[name*="stepNumber"]');
+            return el && el.textContent.trim().replace(/\D/g, '') === '1';
+        });
+
+        if (currentIndex > 0) {
+            const current = steps[currentIndex];
+            const previous = steps[currentIndex - 1];
+
+            current.classList.remove("pendingStep", "inProgressStep", "completedStep");
+            current.classList.add("pendingStep");
+
+            previous.classList.remove("pendingStep", "inProgressStep", "completedStep");
+            previous.classList.add("inProgressStep");
+        }
+    }
+
+    function debug() {
+        const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
+        steps.forEach((step, i) => {
+            const num = step.querySelector('[name*="stepNumber"]');
+            console.log(`Step ${i + 1}:`, {
+                number: num ? num.textContent : "N/A",
+                classes: Array.from(step.classList).filter(c => c.includes("Step"))
+            });
+        });
+    }
+
+    function init() {
+        const steps = document.querySelectorAll('[name*="s_step"]');
+        if (steps.length === 0) return; // Do NOT initialize if no steps
+
+        updateStepStatus();
+
+        const continueBtn = document.querySelector('[name*="Continue Button"]');
+        const backBtn = document.querySelector('[name*="Back Button"]');
+
+        if (continueBtn) {
+            continueBtn.addEventListener("click", e => {
+                e.preventDefault();
+                moveToNextStep();
+            });
+        }
+
+        if (backBtn) {
+            backBtn.addEventListener("click", e => {
+                e.preventDefault();
+                moveToPreviousStep();
+            });
+        }
+
+        console.log("Stepper initialized.");
+    }
+
+    // Exposed public API
+    return {
+        init,
+        update: updateStepStatus,
+        next: moveToNextStep,
+        previous: moveToPreviousStep,
+        debug
+    };
+
+})();
+// Boot the stepper ONLY if steps exist
+document.addEventListener("DOMContentLoaded", () => {
+    Stepper.init();
+});
+// STEPPER MODULE END
+
+// TABLE SORTING FEATURE - MAIN DASHBOARD START
+function initTableSortingMainDashboard() {
+  const table = document.getElementById("pendingrestable");
+  if (!table) return;
+
+  const sortDirection = {};
+
+  document.removeEventListener("click", handleTableSort);
+  document.addEventListener("click", handleTableSort);
+
+  function handleTableSort(e) {
+    const headerSpan = e.target.closest("th span");
+    if (!headerSpan) return;
+    if (!headerSpan.closest("th")?.querySelector("svg")) return;
+
+    const th = headerSpan.closest("th");
+    const theadRow = th.parentElement;
+    const tbody = table?.querySelector("tbody") || table;
+    if (!tbody) return;
+
+    const columnIndex = Array.from(theadRow.children).indexOf(th);
+    const columnName = headerSpan.textContent.trim();
+
+    const rows = Array.from(tbody.querySelectorAll("tr"));
+    const direction = sortDirection[columnName] || 1;
+
+    rows.sort((a, b) => {
+      const cellA = a.children[columnIndex]?.innerText.toLowerCase().trim() || "";
+      const cellB = b.children[columnIndex]?.innerText.toLowerCase().trim() || "";
+      if (cellA < cellB) return -1 * direction;
+      if (cellA > cellB) return 1 * direction;
+      return 0;
+    });
+
+    sortDirection[columnName] = direction * -1;
+    rows.forEach(row => tbody.appendChild(row));
+
+    // Reset icons
+    document.querySelectorAll("th svg").forEach(svg => {
+      svg.classList.remove("ascending", "descending");
+      svg.classList.add("inactive");
+    });
+
+    // Update current column’s icon
+    const svg = th.querySelector("svg");
+    if (svg) {
+      svg.classList.remove("inactive");
+      if (sortDirection[columnName] === 1) {
+        svg.classList.add("descending");
+      } else {
+        svg.classList.add("ascending");
+      }
+    }
+  }
+
+  // Keep SVGs inactive for new headers
+  const observer = new MutationObserver(() => {
+    document.querySelectorAll("th svg:not(.inactive)").forEach(svg => {
+      svg.classList.add("inactive");
+    });
+  });
+  observer.observe(document.body, { childList: true, subtree: true });
+
+  console.log("✅ Table sorting initialized");
+}
+document.addEventListener("DOMContentLoaded", initTableSortingMainDashboard);
+// TABLE SORTING FEATURE - MAIN DASHBOARD END 
+
+// Move Comments and attachments section in addition to the buttons outside the form
 document.addEventListener("DOMContentLoaded", function () {
   // --- Get the comments div and form div ---
   const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
@@ -48,7 +292,368 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200); // Check every 200ms until attachment exists
   }
 });
-// colapse
+
+// move the action buttons of the form outside the form
+document.addEventListener("DOMContentLoaded", function () {
+  const divId = "a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_d0300780-c69e-30af-366b-fb216c06c0a2_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba";
+
+  const interval = setInterval(() => {
+    const divToMove = document.getElementById(divId);
+    const form = document.querySelector(".form");
+    const header = document.querySelector(".formHeader");
+
+    if (form && divToMove && header) {
+      // ✅ Move div below the form only
+      form.insertAdjacentElement("afterend", divToMove);
+      console.info("✅ Div moved below form; header already exists.");
+
+      clearInterval(interval);
+    }
+  }, 300);
+});
+
+// move the action buttons of the form outside the form
+document.addEventListener("DOMContentLoaded", function () {
+  const divId = "096be5b7-6d7c-4600-b68b-5cb91a9d0323_43a0cf06-c0ec-fe93-3bbc-c014fc40a1f5_e38beaa1-91cc-b6c7-ed3c-f28a1fe0b315_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba";
+
+  const interval = setInterval(() => {
+    const divToMove = document.getElementById(divId);
+    const form = document.querySelector(".form");
+    const header = document.querySelector(".formHeader");
+
+    if (form && divToMove && header) {
+      // ✅ Move div below the form only
+      form.insertAdjacentElement("afterend", divToMove);
+      console.info("✅ Div moved below form; header already exists.");
+
+      clearInterval(interval);
+    }
+  }, 300);
+});
+
+//FILTER MY REQUESTS TABLE - MY REQUESTS DASHBOARD START
+function myFunction() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toUpperCase();
+
+  const table = document.getElementById("myTable"); // your table
+  const tbody = document.getElementById("requestsTable"); // tbody
+  const tr = tbody.getElementsByTagName("tr");
+
+  // Placeholder wrapper outside the table
+  let placeholderWrapper = document.querySelector(".noDataPlaceholderWrapper");
+
+  if (!placeholderWrapper) {
+    placeholderWrapper = document.createElement("div");
+    placeholderWrapper.classList.add("noDataPlaceholderWrapper");
+    placeholderWrapper.style.width = "100%";
+    placeholderWrapper.style.textAlign = "center";
+    placeholderWrapper.style.padding = "40px 0";
+    placeholderWrapper.innerHTML = `
+      <div class="noData d-flex align-items-center justify-content-center flex-column">
+        <div class="noDataImg">
+          <img src="/Runtime/Styles/Style%20profile/images/placeholdericon.png" alt="no data available">
+        </div>
+        <h5>Nothing to Display Yet</h5>
+        <p>This section will show data once it becomes available</p>
+      </div>
+    `;
+    table.parentNode.insertBefore(placeholderWrapper, table);
+  }
+
+  // Select the pagination div
+  const tablePager = document.getElementById("TablePager");
+
+  let hasVisibleRows = false;
+
+  for (let i = 0; i < tr.length; i++) {
+    const td = tr[i].getElementsByTagName("td");
+    let rowMatch = false;
+
+    for (let j = 0; j < td.length; j++) {
+      const txtValue = td[j].textContent || td[j].innerText;
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        rowMatch = true;
+        break;
+      }
+    }
+
+    tr[i].style.display = rowMatch ? "" : "none";
+    if (rowMatch) hasVisibleRows = true;
+  }
+
+  // Show/hide table, placeholder, and pagination based on search results
+  if (!hasVisibleRows) {
+    table.style.display = "none";
+    placeholderWrapper.style.display = "block";
+    if (tablePager) tablePager.setAttribute("style", "display: none !important;");
+  } else {
+    table.style.display = "";
+    placeholderWrapper.style.display = "none";
+    if (tablePager) tablePager.setAttribute("style", "display: flex !important;"); // force it
+  }
+}
+//FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD END
+
+//FILTER PENDING MY REQUESTS TABLE - MAIN DASHBOARD START 
+function pendingRequestsTable(event) {
+  // Prevent default behavior if event is provided (for Enter key)
+  if (event && event.preventDefault) {
+    event.preventDefault();
+  }
+
+  const input = document.getElementById("marketingsearchInput");
+  const filter = input.value.toUpperCase();
+
+  const tableWrapper = document.getElementById("AdminRequestsTableContainer");
+  const tbody = document.getElementById("pendingRequestsTable");
+  const tr = tbody.getElementsByTagName("tr");
+
+  // Create placeholder if it doesn't exist
+  let placeholderWrapper = document.querySelector(".noDataPlaceholderWrapperPending");
+  if (!placeholderWrapper) {
+    placeholderWrapper = document.createElement("div");
+    placeholderWrapper.classList.add("noDataPlaceholderWrapperPending");
+    placeholderWrapper.innerHTML = `
+      <div class="noData d-flex align-items-center justify-content-center flex-column">
+        <div class="noDataImg">
+          <img src="/Runtime/Styles/Style%20profile/images/placeholdericon.png" alt="no data available">
+        </div>
+        <h5>Nothing to Display Yet</h5>
+        <p>This section will show data once it becomes available</p>
+      </div>
+    `;
+    tableWrapper.parentNode.insertBefore(placeholderWrapper, tableWrapper);
+  }
+
+  // Pagination
+  const tablePager = document.getElementById("TablePager");
+
+  let hasVisibleRows = false;
+
+  for (let i = 0; i < tr.length; i++) {
+    const td = tr[i].getElementsByTagName("td");
+    let rowMatch = false;
+
+    for (let j = 0; j < td.length; j++) {
+      const cell = td[j];
+      const txtValue = cell.textContent || cell.innerText;
+
+      // Reset previous highlights
+      cell.innerHTML = txtValue;
+
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        rowMatch = true;
+
+        // Highlight matched text
+        if (filter !== "") {
+          const regex = new RegExp(`(${filter})`, "gi");
+          cell.innerHTML = txtValue.replace(regex, `<span class="highlight">$1</span>`);
+        }
+      }
+    }
+
+    tr[i].style.display = rowMatch ? "" : "none";
+    if (rowMatch) hasVisibleRows = true;
+  }
+
+  // Show/hide table, placeholder, and pager
+  if (!hasVisibleRows) {
+    tableWrapper.style.display = "none";
+    placeholderWrapper.style.display = "block";
+    if (tablePager) tablePager.style.setProperty("display", "none", "important");
+  } else {
+    tableWrapper.style.display = "";
+    placeholderWrapper.style.display = "none";
+    if (tablePager) tablePager.style.setProperty("display", "flex", "important");
+  }
+}
+// Override the onkeyup handler from HTML
+document.addEventListener('DOMContentLoaded', function() {
+  const searchInput = document.getElementById("marketingsearchInput");
+  
+  if (searchInput) {
+    // Store the original onkeyup function
+    const originalOnKeyUp = searchInput.onkeyup;
+    
+    // Override it with our own handler
+    searchInput.onkeyup = function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      }
+      
+      // Call the original function for non-enter keys
+      if (originalOnKeyUp) {
+        originalOnKeyUp.call(this, event);
+      }
+    };
+    
+    // Also add keydown to prevent form submission
+    searchInput.addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        event.preventDefault();
+        event.stopPropagation();
+        return false;
+      }
+    });
+  }
+});
+document.addEventListener("DOMContentLoaded", function() {
+  const searchInput = document.getElementById("marketingsearchInput");
+  
+  if (searchInput) {
+    // Add Enter key prevention
+    searchInput.addEventListener("keydown", function(event) {
+      if (event.key === "Enter") {
+        event.preventDefault();
+        pendingRequestsTable();
+      }
+    });
+    searchInput.addEventListener("input", pendingRequestsTable);
+  }
+});
+//FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD END
+
+//FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD START
+function searcheport() {
+  const input = document.getElementById("searchInput");
+  const filter = input.value.toUpperCase();
+
+  const tbody = document.getElementById("reportsTable");
+  const tr = tbody.getElementsByTagName("tr");
+
+  let hasVisibleRows = false;
+
+  for (let i = 0; i < tr.length; i++) {
+    const td = tr[i].getElementsByTagName("td");
+    let rowMatch = false;
+
+    for (let j = 0; j < td.length; j++) {
+      const cell = td[j];
+      const txtValue = cell.textContent || cell.innerText;
+
+      cell.innerHTML = txtValue; // reset highlight
+
+      if (txtValue.toUpperCase().indexOf(filter) > -1) {
+        rowMatch = true;
+
+        // highlight
+        if (filter !== "") {
+          const regex = new RegExp(`(${filter})`, "gi");
+          cell.innerHTML = txtValue.replace(regex, `<span class="highlight">$1</span>`);
+        }
+      }
+    }
+
+    tr[i].style.display = rowMatch ? "" : "none";
+    if (rowMatch) hasVisibleRows = true;
+  }
+
+  // Only show placeholder (NO hiding table wrapper, NO touching pager)
+  const placeholder = document.querySelector(".noDataPlaceholderWrapperPending");
+  if (placeholder) {
+    placeholder.style.display = hasVisibleRows ? "none" : "block";
+  }
+}
+//FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD END
+
+// TABLE SCROLLING FEATURE START
+document.addEventListener("DOMContentLoaded", () => {
+  const container = document.querySelector('.table-container');
+  if (!container) {
+    console.warn('No element with class .table-container found.');
+    return;
+  }
+
+  let isDown = false;
+  let startX;
+  let scrollLeft;
+
+  // --- Drag to scroll ---
+  container.addEventListener('pointerdown', (e) => {
+    isDown = true;
+    container.classList.add('dragging');
+    startX = e.clientX;
+    scrollLeft = container.scrollLeft;
+    e.preventDefault();
+  });
+
+  container.addEventListener('pointermove', (e) => {
+    if (!isDown) return;
+    const walk = (startX - e.clientX);
+    container.scrollLeft = scrollLeft + walk;
+  });
+
+  const endDrag = () => {
+    isDown = false;
+    container.classList.remove('dragging');
+  };
+  container.addEventListener('pointerup', endDrag);
+  container.addEventListener('pointerleave', endDrag);
+
+  // --- Detect scroll to toggle shadow ---
+  container.addEventListener('scroll', () => {
+    if (container.scrollLeft > 0) {
+      container.classList.add('scrolled');
+    } else {
+      container.classList.remove('scrolled');
+    }
+  });
+});
+
+// KPIS COUNTER ANIMATION START 
+function startOdometerWhenVisible(element) {
+  var observer = new IntersectionObserver(
+    function (entries, observer) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          var targetValue = parseFloat($(element).attr("data-stat")) || 0;
+
+          // Initialize odometer
+          var odometer = new Odometer({
+            el: element,
+            value: 0, // start from zero
+            duration: 4000, // animation duration in ms
+            format: '(,ddd).d' // include decimal formatting
+          });
+
+          // Start animation
+          odometer.update(targetValue);
+
+          // After animation ends (duration = 4000ms)
+          setTimeout(function () {
+            var formattedValue = targetValue.toLocaleString(undefined, {
+              minimumFractionDigits: 1,
+              maximumFractionDigits: 1
+            });
+
+            // Add the currency label
+            $(element).text(formattedValue + " USD M");
+          }, 4000);
+
+          // Stop observing this element
+          observer.unobserve(entry.target);
+        }
+      });
+    },
+    {
+      threshold: 0.5, // triggers when 50% of the element is visible
+    }
+  );
+
+  observer.observe(element);
+}
+function initializeCounters() {
+  $(".kpiCards .card .kpiValue").each(function () {
+    startOdometerWhenVisible(this);
+  });
+}
+initializeCounters();
+// KPIS COUNTER ANIMATION END 
+
+// STATUS CONTAINER - ACCORDION START 
 document.addEventListener('DOMContentLoaded', () => {
   const statusContainer = document.querySelector('.status-container');
 
@@ -76,1120 +681,702 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 });
-document.addEventListener("DOMContentLoaded", function () {
-  const userProfiledp = document.querySelector(".userProfile");
-  const userModal = document.querySelector(".user-modal");
+// STATUS CONTAINER - ACCORDION END 
 
-  if (userProfiledp && userModal) {
-    userProfiledp.addEventListener("click", function () {
-      userModal.classList.toggle("show");
-    });
-  }
-});
-document.addEventListener("DOMContentLoaded", () => {
-  setTimeout(function () {
-    try {
-      // ===== Get user info from K2 SourceCode object =====
-      const fqn = SourceCode.Forms.Settings.User.FQN;
-      const userName = fqn.split("\\").pop();
+// DROPDOWN PICKER START 
+function initPicker() {
+  const wrappers = document.querySelectorAll('span[name*="s_dropdown"] .picker');
 
-      // ===== Get department text from form label =====
-      const departmentEl = document.querySelector("[name*='User_Department_DataLabel']");
-      const department = departmentEl ? departmentEl.textContent.trim() : "Unknown Department";
+  wrappers.forEach(picker => {
+    const wrapper = picker.closest('span[name*="s_dropdown"]');
 
-      // ===== Sidebar configuration (dynamic links) =====
-      const sidebarConfig = [
-        {
-          category: "Main Links",
-          links: [
-            {
-              icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg",
-              name: "New Request",
-              url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/"
-            },
-            {
-              icon: "/Runtime/Styles/Style%20profile/images/net/Dashboard.svg",
-              name: "Dashboard",
-              url: "/Runtime/Runtime/Form/MainDashboard"
-            },
-            {
-              icon: "/Runtime/Styles/Style%20profile/images/net/My Requests.svg",
-              name: "My Requests",
-              url: "/Runtime/Form/UserDashboard/"
-            }
-            // },
-            // {
-            //   icon: "/Runtime/Styles/Style%20profile/images/net/report-and-analytics.svg",
-            //   name: "Reports & Analytics",
-            //   url: "#",
-            //   // children: [
-            //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", name: "Marketing Dashboard", url: "#" },
-            //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", name: "Communication Dashboard", url: "#" },
-            //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", name: "Information Technology Dashboard", url: "#" }
-            //   // ]
-            // }
-          ]
-        },
-        // {
-        //   category: "Departments",
-        //   // links: [
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Retail Banking.svg", name: "Retail & Digital Banking", url: "#", children: [] },
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg", name: "Marketing & Corporate", url: "/Runtime/Runtime/Form/NR__MarketingRequest__Form/", children: [] },
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Shariah.svg", name: "Shariah", url: "#", children: [] },
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/information-technology.svg", name: "Information Technology", url: "#", children: [] },
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Operations.svg", name: "Operations", url: "#", children: [] },
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/facilities-management.svg", name: "Facilities Management", url: "#", children: [] },
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/Business Acquistion.svg", name: "Human Capital", url: "#", children: [] },
-        //   //   { icon: "/Runtime/Styles/Style%20profile/images/net/risk-management.svg", name: "Risk Management", url: "#", children: [] }
-        //   // ]
-        // }
-      ];
+    const editableArea = picker.querySelector('.editable-area');
+    const searchBtn = picker.querySelector('.picker-search');
+    const resolveBtn = picker.querySelector('.picker-resolve');
 
-      // ===== Sidebar HTML skeleton =====
-      document.body.insertAdjacentHTML("beforeend", `
-        <aside class="sidebar">
-          <div class="userSettings d-flex align-items-center">
-            <div class="userProfile d-flex align-items-center" data-bs-toggle="modal" data-bs-target="#userModal">
-              <div class="userProfilePhoto">
-                <img src="/Runtime/Styles/Style%20profile/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
-              </div>
-              <div class="userInformations d-flex flex-column">
-                <span class="username">${userName}</span>
-                <span class="userPosition">${department}</span>
-              </div>
-            </div>
-            <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
-              <img src="/Runtime/Styles/Style%20profile/images/net/Notification.svg"/>
-            </button>
-          </div>
-          <div class="sideBarLinksGroup"></div>
-          <div class="light-dark-mode">
-            <div class="toggle-label d-flex align-items-center justify-content-between">
-              <img class="sun-img" src="/Runtime/Styles/Style%20profile/images/net/Sun.svg" alt="">
-              <span id="mode-label">Light Mode</span>
-              <div class="form-check form-switch m-0">
-                <input class="form-check-input" type="checkbox" role="switch" id="modeToggle">
-              </div>
-            </div>
-          </div>
-        </aside>
-        <div class="overlayShadow" style="display:none;"></div>
-        <aside class="subPanel">
-          <div class="closeSubpanel">X</div>
-          <div class="subPanelHeader"><h5 class="subSectionTitle"></h5></div>
-          <div class="subPanelBody"><ul></ul></div>
-        </aside>
-        <!-- USER PROFILE POPUP START -->
-    <div class="modal user-modal" id="userModal" tabindex="-1" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-end">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <div class="user-modal-header">
-                        <img src="../images/net/UserProfile.png" alt="">
-                        <div class="name-email">
-                            <p class="userNAME">${userName}</p>
-                            <p class="user-mail"></p>
-                        </div>
-
-                    </div>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body">
-                    <div class="user-settings">
-                        <a href="#" class="viewProfile">
-                            <img src="../images/net/user.svg" alt="user">
-                            <p>View Profile</p>
-                        </a>
-                        <a href="#" class="account-settings">
-                            <img src="../images/net/settings.svg" alt="settings">
-                            Account Settings
-                        </a>
-                        <a href="#" class="sign-out">
-                            <img src="../images/net/Sign Out.svg" alt="sign-out">
-                            Sign Out
-                        </a>
-                    </div>
-
-                </div>
-
-            </div>
-        </div>
-    </div>
-    <!-- USER PROFILE POPUP END -->
-      `);
-
-      // ===== Render Sidebar Links =====
-      const sidebarContainer = document.querySelector(".sideBarLinksGroup");
-      const currentPath = window.location.pathname;
-
-      sidebarConfig.forEach(section => {
-        const category = document.createElement("div");
-        category.classList.add("sidebarCategory");
-
-        const title = document.createElement("h6");
-        title.classList.add("categoryName");
-        title.textContent = section.category;
-        category.appendChild(title);
-
-        const ul = document.createElement("ul");
-        ul.classList.add("links");
-
-        section.links.forEach(link => {
-          const li = document.createElement("li");
-          if (link.children && link.children.length > 0) {
-            li.classList.add("isSubMenu");
-          } else {
-            li.classList.add("noSubChildren");
-          }
-
-          // mark active link based on current page
-          if (link.url && currentPath === new URL(link.url, window.location.origin).pathname) {
-            li.classList.add("active");
-          }
-
-          li.innerHTML = `
-            <div class="icon"><img src="${link.icon}" alt=""></div>
-            <a href="${link.url || '#'}">${link.name}</a>
-          `;
-          // ====== Add disabled class if href is empty or '#' ======
-          const anchor = li.querySelector("a");
-          if (!anchor.getAttribute("href") || anchor.getAttribute("href").trim() === "#" || anchor.getAttribute("href").trim() === "") {
-            anchor.classList.add("disabled");
-            anchor.setAttribute("aria-disabled", "true");
-            anchor.setAttribute("tabindex", "-1"); // remove from tab order
-          }
-
-          // Prevent clicks on disabled links
-          anchor.addEventListener("click", (e) => {
-            if (anchor.classList.contains("disabled")) {
-              e.preventDefault();
-              e.stopPropagation();
-              // optional: show tooltip or message
-            }
-          });
-          ul.appendChild(li);
-        });
-
-        category.appendChild(ul);
-        sidebarContainer.appendChild(category);
-      });
-
-      // ===== Submenu rendering logic =====
-      const subPanel = document.querySelector(".subPanel");
-      const subPanelList = subPanel.querySelector(".subPanelBody ul");
-      const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
-      const overlayShadow = document.querySelector(".overlayShadow");
-      const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
-
-      function updateOverlay() {
-        overlayShadow.style.display = subPanel.classList.contains("active") ? "block" : "none";
-      }
-
-      document.querySelectorAll(".isSubMenu").forEach(menu => {
-        menu.addEventListener("click", e => {
-          e.preventDefault();
-          const title = menu.querySelector("a").innerText.trim();
-
-          // find config
-          let found = null;
-          sidebarConfig.forEach(sec => {
-            sec.links.forEach(l => {
-              if (l.name === title) found = l;
-            });
-          });
-
-          if (!found || !found.children || found.children.length === 0) {
-            subPanel.classList.remove("active");
-            updateOverlay();
-            return;
-          }
-
-          subPanelTitle.textContent = title;
-          subPanelList.innerHTML = "";
-
-          found.children.forEach(child => {
-            const li = document.createElement("li");
-            li.innerHTML = `
-              <div class="icon"><img src="${child.icon}" alt=""></div>
-              <a href="${child.url}">${child.name}</a>
-            `;
-            subPanelList.appendChild(li);
-          });
-
-          subPanel.classList.add("active");
-          updateOverlay();
-        });
-      });
-
-      if (closeSubpanelBtn) {
-        closeSubpanelBtn.addEventListener("click", () => {
-          subPanel.classList.remove("active");
-          updateOverlay();
-        });
-      }
-
-    } catch (e) {
-      console.error("Error rendering sidebar:", e);
-    }
-  }, 1000);
-});
-$(document).ready(function () {
-
-  // Attach to ALL textboxes that are inside spans whose name contains "s_textbox"
-  $(document).on('focus', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
-    if (!$(this).is('[readonly]')) {
-      $(this).closest('[name*=s_textbox]').addClass('on-focus');
-    }
-  });
-
-  $(document).on('blur', '[name*=s_textbox] input, [name*=s_textbox] > input', function () {
-    const $parent = $(this).closest('[name*=s_textbox]');
-    // If textbox is empty, remove class
-    if ($(this).val().trim() === '') {
-      $parent.removeClass('on-focus');
-    }
-  });
-
-
-  // TextArea
-  $(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
-    if (!$(this).is('[readonly]')) {
-      $(this).closest('[name*=s_textarea]').addClass('on-focus');
-    }
-  });
-
-  $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function () {
-    const $parent = $(this).closest('[name*=s_textarea]');
-    // If textarea is empty, remove class
-    if ($(this).val().trim() === '') {
-      $parent.removeClass('on-focus');
-    }
-  });
-
-
-});
-// dropdown
-document.addEventListener("DOMContentLoaded", function () {
-  // Find all dropdown wrappers
-  const wrappers = document.querySelectorAll('span[name*="s_dropdown"]');
-
-  wrappers.forEach(wrapper => {
-    const select = wrapper.querySelector("select");
-    const icon = wrapper.querySelector(".dropdown");
-    const visibleControl = wrapper.querySelector("a.input-control");
-    const fontSpan = visibleControl ? visibleControl.querySelector(".styling-font") : null;
-
-    // Add focus class only if NOT readonly or disabled
     const addFocus = () => {
-      // if (select && (select.hasAttribute("readonly") || select.disabled)) return;
-      wrapper.classList.add("on-focus");
+      if (wrapper) wrapper.classList.add("on-focus");
     };
 
-    // Check if user has selected a value (text inside .styling-font)
-    const hasValue = () => fontSpan && fontSpan.textContent.trim() !== "";
-
-    // When clicking dropdown icon
-    if (icon) {
-      icon.addEventListener("click", addFocus);
+    // When clicking inside the editable area
+    if (editableArea) {
+      editableArea.addEventListener("focus", addFocus);
+      editableArea.addEventListener("click", addFocus);
     }
 
-    // When clicking visible control
-    if (visibleControl) {
-      visibleControl.addEventListener("click", addFocus);
-    }
+    // Clicking search or resolve icons
+    if (searchBtn) searchBtn.addEventListener("click", addFocus);
+    if (resolveBtn) resolveBtn.addEventListener("click", addFocus);
 
-    // When hidden select changes (in case it updates .styling-font)
-    if (select) {
-      select.addEventListener("change", () => {
-        addFocus();
-      });
+    // Detect manual typing or removal
+    if (editableArea) {
+      editableArea.addEventListener("input", addFocus);
     }
   });
 
-  // Remove on-focus only if no value selected
+  // Remove on outside click IF picker is empty
   document.addEventListener("click", function (e) {
-    const clickedInside = e.target.closest('span[name*="s_dropdown"]');
+    const clickedInside = e.target.closest('.picker');
 
     document.querySelectorAll('span[name*="s_dropdown"].on-focus').forEach(wrapper => {
-      if (clickedInside && clickedInside === wrapper) return; // ignore clicks inside current wrapper
+      if (clickedInside && wrapper.contains(clickedInside)) return;
 
-      const fontSpan = wrapper.querySelector(".styling-font");
-      const hasValue = fontSpan && fontSpan.textContent.trim() !== "";
+      const editable = wrapper.querySelector(".editable-area");
+      const valueText = editable ? editable.innerText.trim() : "";
 
-      if (!hasValue) {
-        wrapper.classList.remove("on-focus");
-      }
+      if (!valueText) wrapper.classList.remove("on-focus");
     });
   });
+}
+document.addEventListener("readystatechange", function () {
+  if (document.readyState === "complete") {
+    setTimeout(() => {
+   
+      initPicker();
+    }, 200);
+  }
 });
-// stepper 
-function updateStepStatus() {
-  const statusMap = {
-    0: "pendingStep",
-    1: "inProgressStep",
-    2: "completedStep"
-  };
-
-  document.querySelectorAll('[name*="s_step"]').forEach(step => {
-    const stepNumberEl = step.querySelector('[name*="stepNumber"]');
-    if (!stepNumberEl) return;
-
-    // Force number comparison
-    const stepNumber = parseInt(stepNumberEl.textContent.trim(), 10);
-
-    // Remove all status classes before applying new one
-    step.classList.remove(...Object.values(statusMap));
-
-    if (statusMap.hasOwnProperty(stepNumber)) {
-      step.classList.add(statusMap[stepNumber]);
-    }
-  });
-}
-
-function moveToNextStep() {
-  const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
-
-  // Find the step currently in progress
-  const currentStep = steps.find(step =>
-    step.classList.contains("inProgressStep")
-  );
-
-  if (currentStep) {
-    const stepNumberEl = currentStep.querySelector('[name*="stepNumber"]');
-
-    // Mark current step as completed (2)
-    if (stepNumberEl) {
-      stepNumberEl.textContent = "2";
-    }
-
-    // Move to next step and mark as in progress (1)
-    const nextStep = steps[steps.indexOf(currentStep) + 1];
-    if (nextStep) {
-      const nextStepNumberEl = nextStep.querySelector('[name*="stepNumber"]');
-      if (nextStepNumberEl) {
-        nextStepNumberEl.textContent = "1";
-      }
-    }
+$(document).on("DOMNodeInserted", function (e) {
+  if ($(e.target).closest('.SFC').length > 0) {
+    setTimeout(() => {
+  
+      initPicker();
+    }, 50);
   }
+});
+// DROPDOWN PICKER END 
 
-  // Refresh classes
-  updateStepStatus();
+// DROPDOWN  START 
+function initPicker() {
+    const pickers = document.querySelectorAll(
+        'span[name*="s_dropdown"] .select-box.dropdown-box'
+    );
+
+    pickers.forEach(box => {
+        const wrapper = box.closest('span[name*="s_dropdown"]');
+        if (!wrapper) return;
+
+        const valueAnchor = box.querySelector(".input-control-wrapper a");
+        const dropdownBtn = box.querySelector(".dropdown");
+
+        const addFocus = () => wrapper.classList.add("on-focus");
+
+        // CLICKING VALUE DISPLAY AREA
+        if (valueAnchor) {
+            valueAnchor.addEventListener("click", addFocus);
+            valueAnchor.addEventListener("focus", addFocus);
+        }
+
+        // CLICKING DROPDOWN BUTTON (...)
+        if (dropdownBtn) {
+            dropdownBtn.addEventListener("click", addFocus);
+        }
+    });
+
+    // CLICK OUTSIDE HANDLER
+    document.addEventListener("click", function (e) {
+        const insidePicker = e.target.closest('.select-box.dropdown-box');
+
+        document.querySelectorAll('span[name*="s_dropdown"].on-focus').forEach(wrapper => {
+
+            // If clicked inside this dropdown → keep focus
+            if (insidePicker && wrapper.contains(insidePicker)) return;
+
+            // Get selected text
+            const selectedText = wrapper.querySelector(
+                ".input-control-wrapper span.styling-font"
+            );
+
+            const value = selectedText ? selectedText.innerText.trim() : "";
+
+            // Remove ONLY if empty
+            if (!value) wrapper.classList.remove("on-focus");
+        });
+    });
 }
-
-function moveToPreviousStep() {
-  const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
-
-  // Find the step currently in progress
-  const currentStep = steps.find(step =>
-    step.classList.contains("inProgressStep")
-  );
-
-  if (currentStep) {
-    const stepNumberEl = currentStep.querySelector('[name*="stepNumber"]');
-
-    // Mark current step as pending (0)
-    if (stepNumberEl) {
-      stepNumberEl.textContent = "0";
+// Init when document finishes loading
+document.addEventListener("readystatechange", function () {
+    if (document.readyState === "complete") {
+        setTimeout(() => initPicker(), 200);
     }
-
-    // Move to previous step and mark as in progress (1)
-    const prevStep = steps[steps.indexOf(currentStep) - 1];
-    if (prevStep) {
-      const prevStepNumberEl = prevStep.querySelector('[name*="stepNumber"]');
-      if (prevStepNumberEl) {
-        prevStepNumberEl.textContent = "1";
-      }
+});
+// Init when K2 loads views dynamically
+$(document).on("DOMNodeInserted", function (e) {
+    if ($(e.target).closest('.SFC').length > 0) {
+        setTimeout(() => initPicker(), 50);
     }
-  }
+});
+// DROPDOWN  END 
 
-  // Refresh classes
-  updateStepStatus();
-}
+// DATE PICKER - CALENDAR START 
+$(document).ready(function() {
 
+    $(document).on("click", '.theme-entry .input-control.select-box .input-control-buttons a', function() {
+        const cell = $(this).closest('[name*="s_calendar"]');
+        if (cell.length)
+            cell.addClass("on-focus");
+    });
+
+    $(document).on("input change", '[name*="s_calendar"] input', function() {
+        const cell = $(this).closest('[name*="s_calendar"]');
+        $(this).val().trim() !== "" ? cell.addClass("on-focus") : cell.removeClass("on-focus");
+    });
+
+    $('[name*="s_calendar"] input').each(function() {
+        const cell = $(this).closest('[name*="s_calendar"]');
+        if ($(this).val().trim() !== "")
+            cell.addClass("on-focus");
+    });
+
+});
+// DATE PICKER - CALENDAR END 
+
+// HEADER START 
 document.addEventListener("DOMContentLoaded", () => {
-  updateStepStatus();
+  const spanToMove = document.getElementById("5651e70b-1c9a-4907-b3fe-0cfec8b1f339");
+  const form = document.querySelector(".form");
 
-  const continueBtn = document.querySelector(
-    "#d0300780-c69e-30af-366b-fb216c06c0a2_6aaf7a9c-0919-dc4a-0dd7-8e94cc163dec"
-  );
-  const backBtn = document.querySelector(
-    "a#d0300780-c69e-30af-366b-fb216c06c0a2_80e627c7-7f8e-62f7-4f44-88a84122ffeb"
-  );
-
-  if (continueBtn) {
-    continueBtn.addEventListener("click", event => {
-      event.preventDefault();
-      moveToNextStep();
-    });
+  // ✅ Only create header if it doesn't already contain the span
+  if (!spanToMove || !form) {
+    console.warn("⚠️ Span or form not found.");
+    return;
   }
 
-  if (backBtn) {
-    backBtn.addEventListener("click", event => {
-      event.preventDefault();
-      moveToPreviousStep();
-    });
+  const existingHeader = document.querySelector(".formHeader");
+  if (existingHeader && existingHeader.contains(spanToMove)) {
+    console.warn("⚠️ Span already inside header — skipping creation.");
+    return;
   }
-});
-// Create the overlay div
-const overlayDiv = document.createElement("div");
-// Add your CSS class (assuming you already defined `.overlay-shadow` in your stylesheet)
-overlayDiv.classList.add("overlayShadow");
-// Append it to the body
-document.body.appendChild(overlay);
-function updateDropdownState(select) {
-  const dropdownWrapper = select.closest(".s_dropdown");
-  if (!dropdownWrapper) return;
 
-  if (select.classList.contains("disabled") || select.disabled) {
-    dropdownWrapper.classList.add("disabled");
-  } else {
-    dropdownWrapper.classList.remove("disabled");
-  }
-}
+  // Create header if not exists
+  const header = existingHeader || document.createElement("header");
+  header.className = "formHeader";
 
-// Initial run (page load)
-document.querySelectorAll("select").forEach(updateDropdownState);
-
-// Watch for changes to class/attributes
-const observer = new MutationObserver(mutations => {
-  mutations.forEach(mutation => {
-    if (mutation.target.tagName === "SELECT") {
-      updateDropdownState(mutation.target);
-    }
-  });
-});
-
-// Observe all selects
-document.querySelectorAll("select").forEach(select => {
-  observer.observe(select, {
-    attributes: true,
-    attributeFilter: ["class", "disabled"] // only watch relevant changes
-  });
-});
-
-//add readonly class to textbox
-
-function updateTextboxState(input) {
-  const textboxWrapper = input.closest(".s_textbox");
-  if (!textboxWrapper) return;
-
-  if (input.hasAttribute("readonly") || input.classList.contains("readonly")) {
-    textboxWrapper.classList.add("readonly");
-  } else {
-    textboxWrapper.classList.remove("readonly");
-  }
-}
-
-// Initial sync on page load
-document.querySelectorAll('.s_textbox input[type="text"]').forEach(updateTextboxState);
-
-// Watch for attribute/class changes dynamically
-const observer1 = new MutationObserver(mutations => {
-  mutations.forEach(mutation => {
-    if (mutation.target.tagName === "INPUT") {
-      updateTextboxState(mutation.target);
-    }
-  });
-});
-
-// Observe all text inputs inside .s_textbox
-document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
-  observer.observe(input, {
-    attributes: true,
-    attributeFilter: ["readonly", "class"], // only watch relevant attributes
-  });
-});
-var fqn = null;
-// Menu items
-document.addEventListener("DOMContentLoaded", function () {
-  setTimeout(function () {
-    try {
-      const fqn = SourceCode.Forms.Settings.User.FQN;
-      console.log("Logged-in User FQN: " + fqn);
-    } catch (e) {
-      console.error("Error retrieving FQN:", e);
-    }
-  }, 1000);
-});
-
-
-//////////////// end of k2 scripts
-document.addEventListener('DOMContentLoaded', () => {
-  // 1. Create and append the progress bar container
-  const progressBarContainer = document.createElement('div');
-  progressBarContainer.className = 'progress-bar-container';
-  progressBarContainer.id = 'progress-bar-container';
-
-  progressBarContainer.innerHTML = `
-        <div class="request-progress-zone marketing-request progress-segment" id="marketing-request"></div>
-        <div class="request-progress-zone request-a-study progress-segment" id="request-a-study"></div>
-        <div class="request-progress-zone branch-visit-notes progress-segment" id="branch-visit-notes"></div>
-        <div class="request-progress-zone other progress-segment" id="other"></div>
+  // Add SVG only if not already present
+  if (!header.querySelector(".openSidebar")) {
+    const svgIcon = `
+      <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 50 50" fill="none" class="openSidebar">
+        <rect width="50" height="50" rx="12" fill="#F1DFDA"/>
+        <rect x="0.5" y="0.5" width="49" height="49" rx="11.5" stroke="#002134" stroke-opacity="0.05"/>
+        <path d="M14.5 32.5H35.5M14.5 25H35.5M14.5 17.5H35.5" stroke="#002134" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"/>
+      </svg>
     `;
-
-  // 2. Insert it right after the #requests-total element
-  const requestsTotalElement = document.querySelector('.resquestText');
-  if (requestsTotalElement && requestsTotalElement.parentNode) {
-    requestsTotalElement.insertAdjacentElement('afterend', progressBarContainer);
+    header.insertAdjacentHTML("beforeend", svgIcon);
   }
 
-  // 3. Map request types to progress segment IDs
-  const segmentMap = {
-    'Marketing Request': 'marketing-request',
-    'HR': 'request-a-study',
-    'Accounting': 'branch-visit-notes',
-    'Other': 'other'
-  };
+  // Move the span inside the header (if not already moved)
+  if (!header.contains(spanToMove)) {
+    header.appendChild(spanToMove);
+  }
 
-  // 4. Extract percentages from request cards
-  const percentages = {};
-  const requestCards = document.querySelectorAll('.request-card');
+  // Insert header before form if it was newly created
+  if (!existingHeader) {
+    form.insertAdjacentElement("beforebegin", header);
+    // console.info("✅ Header created with SVG and span.");
+  }
 
-  requestCards.forEach(card => {
-    const label = card.querySelector('.request-name span')?.textContent.trim();
-    const percentText = card.querySelector('.percentage')?.textContent.trim();
-    const percentValue = parseInt(percentText?.replace('%', ''), 10) || 0;
+  // Sidebar toggle
+  setTimeout(() => {
+    const sidebar = document.querySelector(".sidebar");
+    const openSidebarBtn = document.querySelector(".formHeader .openSidebar");
+    const darkOverlay = document.querySelector(".overlayShadow");
 
-    const segmentId = segmentMap[label];
-    if (segmentId) {
-      percentages[segmentId] = percentValue;
-    }
-  });
+    if (sidebar && openSidebarBtn && darkOverlay) {
+      openSidebarBtn.addEventListener("click", () => {
+        sidebar.classList.toggle("open");
+        darkOverlay.classList.toggle("active");
+      });
 
-  // 5. Animate each segment sequentially
-  const segmentIdsInOrder = ['marketing-request', 'request-a-study', 'branch-visit-notes', 'other'];
+      darkOverlay.addEventListener("click", () => {
+        sidebar.classList.remove("open");
+        darkOverlay.classList.remove("active");
+      });
 
-  function animateSegment(index = 0) {
-    if (index >= segmentIdsInOrder.length) return;
-
-    const segmentId = segmentIdsInOrder[index];
-    const segmentElement = document.getElementById(segmentId);
-    const percentValue = percentages[segmentId] || 0;
-
-    if (segmentElement) {
-      segmentElement.style.width = '0'; // Reset
-      setTimeout(() => {
-        segmentElement.style.transition = 'width 1.5s ease';
-        segmentElement.style.width = `${percentValue}%`;
-        setTimeout(() => {
-          animateSegment(index + 1);
-        }, 1600); // Delay before next
-      }, 100);
+      // console.info("✅ Sidebar toggle and overlay click functionality added.");
     } else {
-      animateSegment(index + 1);
+      console.warn("⚠️ Sidebar, openSidebar button, or overlay not found.");
     }
-  }
-
-  // Start the animation
-  animateSegment();
+  }, 1200);
 });
+// HEADER END 
 
-// SIDE BAR SUBMENU 
+// Select the element by its ID
+const element = document.getElementById('511d9373-ca00-4925-a0f9-b9e97e08e6e4_e6d522f3-1ab1-219a-ca97-6bbc63715b61');
+// Select the form element
+const form = document.querySelector('.form');
+// If both exist, move the element outside the form
+if (element && form) {
+  form.parentNode.insertBefore(element, form.nextSibling);
+}
+
+// ACCREDITATION OF MEETING MINUTES MOVE BUTTON OUTSIDE THE FORM
 document.addEventListener("DOMContentLoaded", () => {
-  const subMenus = document.querySelectorAll(".isSubMenu");
-  const subPanel = document.querySelector(".subPanel");
-  const subPanelList = subPanel.querySelector(".subPanelBody ul");
-  const subPanelTitle = subPanel.querySelector(".subPanelHeader .subSectionTitle");
-  const overlayShadow = document.querySelector(".overlayShadow");
-  const closeSubpanelBtn = subPanel.querySelector(".closeSubpanel");
+  const targetDiv = document.getElementById("667130a1-d4a1-4448-95c8-338ef3a5c2ae_e347f1be-47a2-4710-9fb1-aaa230ebda40_4f374200-55a5-22d6-fd23-2b3667c6d8d3_2544a28d-c21d-4f47-a48a-41e993a245ba");
+  const form = document.querySelector(".form");
 
-  const submenuLinks = {
-    "Reports & Analytics": [
-      { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", text: "Communication Dashboard", url: "#" },
-      { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", text: "Information Technology Dashboard", url: "#" }
-    ],
-    "Retail & Digital Banking": [
-      { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", text: "Branch Reports", url: "#" },
-      { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", text: "Customer Insights", url: "#" }
-    ],
-    "Marketing & Corporate": [
-      { icon: "/Runtime/Styles/Style%20profile/images/net/sada 1.svg", text: "Campaign Performance", url: "https://win-0q5t2palbof/Runtime/Runtime/Form/NR__MarketingRequest__Form/" }
-    ],
-    "Shariah": [],
-    "Information Technology": [],
-    "Operations": [],
-    "Facilities Management": [],
-    "Human Capital": [],
-    "Risk Management": []
-  };
-
-  function renderSubLinks(title) {
-    subPanelList.innerHTML = ""; // Clear old links
-
-    if (submenuLinks[title] && submenuLinks[title].length > 0) {
-      submenuLinks[title].forEach(link => {
-        const li = document.createElement("li");
-        li.innerHTML = `
-                    <div class="icon">
-                        <img src="${link.icon}" alt="">
-                    </div>
-                    <a href="${link.url}">${link.text}</a>
-                `;
-        subPanelList.appendChild(li);
-      });
-      return true;
-    }
-    return false;
-  }
-
-  // helper to sync overlay with active panels
-  function updateOverlay() {
-    const hasActivePanel = document.querySelector(".subPanel.active");
-    if (overlayShadow) {
-      overlayShadow.style.display = hasActivePanel ? "block" : "none";
-    }
-  }
-
-  subMenus.forEach(menu => {
-    menu.addEventListener("click", e => {
-      e.preventDefault();
-
-      const title = menu.querySelector("a").innerText.trim();
-
-      // If no links → close panel and update overlay
-      if (!submenuLinks[title] || submenuLinks[title].length === 0) {
-        subPanel.classList.remove("active");
-        updateOverlay();
-        return;
-      }
-
-      // Update panel title
-      subPanelTitle.textContent = title;
-
-      if (subPanel.classList.contains("active")) {
-        // remove first
-        subPanel.classList.remove("active");
-
-        // wait 1 second before adding back
-        setTimeout(() => {
-          renderSubLinks(title);
-          subPanel.classList.add("active");
-          updateOverlay();
-        }, 1000); // ← enforce 1 second delay
+  if (targetDiv && form) {
+    // Only move for screens <= 768px (mobile)
+    const moveDivForMobile = () => {
+      if (window.innerWidth <= 768) {
+        if (targetDiv.parentNode !== form.parentNode) {
+          form.insertAdjacentElement("afterend", targetDiv);
+        }
       } else {
-        renderSubLinks(title);
-        subPanel.classList.add("active");
-        updateOverlay();
-      }
-    });
-  });
-
-  // Close Sub Panel
-  if (closeSubpanelBtn) {
-    closeSubpanelBtn.addEventListener("click", function () {
-      subPanel.classList.remove("active");
-      updateOverlay();
-    });
-  }
-});
-
-
-//FILTER MY REQUESTS TABLE - MY REQUESTS DASHBOARD
-function myFunction() {
-  const input = document.getElementById("searchInput");
-  const filter = input.value.toUpperCase();
-  const tbody = document.getElementById("requestsTable");
-  const tr = tbody.getElementsByTagName("tr");
-
-  for (let i = 0; i < tr.length; i++) {
-    const td = tr[i].getElementsByTagName("td");
-    let rowMatch = false;
-
-    for (let j = 0; j < td.length; j++) {
-      let txtValue = td[j].textContent || td[j].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        rowMatch = true;
-        break; // stop checking once one column matches
-      }
-    }
-
-    tr[i].style.display = rowMatch ? "" : "none";
-  }
-}
-//FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD
-function pendingRequestsTable(){
-   const input = document.getElementById("marketingsearchInput");
-  const filter = input.value.toUpperCase();
-  const tbody = document.getElementById("pendingRequestsTable");
-  const tr = tbody.getElementsByTagName("tr");
-
-  for (let i = 0; i < tr.length; i++) {
-    const td = tr[i].getElementsByTagName("td");
-    let rowMatch = false;
-
-    for (let j = 0; j < td.length; j++) {
-      let txtValue = td[j].textContent || td[j].innerText;
-      if (txtValue.toUpperCase().indexOf(filter) > -1) {
-        rowMatch = true;
-        break; // stop checking once one column matches
-      }
-    }
-
-    tr[i].style.display = rowMatch ? "" : "none";
-  }
-}
-
-
-// Animate Counters
-function startOdometerWhenVisible(element) {
-  var observer = new IntersectionObserver(
-    function (entries, observer) {
-      entries.forEach(function (entry) {
-        if (entry.isIntersecting) {
-          var targetValue = parseFloat($(element).attr("data-stat")) || 0;
-
-          var odometer = new Odometer({
-            el: element,
-            value: 0, // Start from 0
-            duration: 4000,
-            format: '(,ddd).d', // Include decimal point in the format
-          });
-
-          // Update the odometer value
-          odometer.update(targetValue);
-
-          // Add the currency label after the animation finishes
-          odometer.on('stop', function () {
-            var formattedValue = targetValue.toLocaleString(undefined, { minimumFractionDigits: 1, maximumFractionDigits: 1 });
-            $(element).text(formattedValue + " USD M"); // Update text with currency and suffix
-          });
-
-          observer.unobserve(entry.target);
+        // Optional: move it back inside .form on larger screens
+        if (targetDiv.parentNode !== form) {
+          form.appendChild(targetDiv);
         }
-      });
-    },
-    {
-      threshold: 0.5, // Adjust threshold as needed
-    }
-  );
-  observer.observe(element);
-}
-function initializeCounters() {
-  $(".card .kpiValue").each(function () {
-    startOdometerWhenVisible(this);
-  });
-}
-initializeCounters();
-// Light mode toggle
-$("#modeToggle").on("change", function () {
-  if ($(this).is(":checked")) {
-    $(".sun-img").hide();
-  } else {
-    $(".sun-img").show();
+      }
+    };
+
+    // Initial check
+    moveDivForMobile();
+
+    // Update on window resize
+    window.addEventListener("resize", moveDivForMobile);
   }
 });
-// TABLE SORTING FEATURE START - MY REQUESTS
+document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    const parent = button.parentElement;
+    const isActive = parent.classList.contains('active');
+
+    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
+
+    if (!isActive) parent.classList.add('active');
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown-custom')) {
+    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
+  }
+});
+// process 2 move buttons outside the form
 document.addEventListener("DOMContentLoaded", function () {
-  const tbody = document.getElementById("requestsTable");
-  const headers = document.querySelectorAll("th:has(svg) span"); // clickable spans with sort icons
-  let sortDirection = {}; // Keep track of sort direction per column
+  const divId = "7edaed9a-032c-4fce-a780-69a0ae1005ad_f2b548b2-fbcf-9c4a-74eb-fb39a0963d43_f50c64b5-3824-30c9-f024-a655c48cf5c5_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba";
 
-  headers.forEach(header => {
-    header.addEventListener("click", function () {
-      const columnName = header.textContent.trim();
-      let rows = Array.from(tbody.querySelectorAll("tr"));
+  const interval = setInterval(() => {
+    const divToMove = document.getElementById(divId);
+    const form = document.querySelector(".form");
+    const header = document.querySelector(".formHeader");
 
-      // Detect which column to sort by
-      let columnIndex = Array.from(header.closest("tr").children).indexOf(header.closest("th"));
+    if (form && divToMove && header) {
+      // ✅ Move div below the form only
+      form.insertAdjacentElement("afterend", divToMove);
+      console.info("✅ Div moved below form; header already exists.");
 
-      rows.sort((a, b) => {
-        let cellA = a.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
-        let cellB = b.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
-
-        if (cellA < cellB) return -1 * (sortDirection[columnName] || 1);
-        if (cellA > cellB) return 1 * (sortDirection[columnName] || 1);
-        return 0;
-      });
-
-      // Toggle direction for this column
-      sortDirection[columnName] = (sortDirection[columnName] || 1) * -1;
-
-      // Re-append sorted rows
-      rows.forEach(row => tbody.appendChild(row));
-
-      // Reset all icons → inactive
-      document.querySelectorAll("th svg").forEach(svg => {
-        svg.classList.remove("ascending", "descending");
-        svg.classList.add("inactive");
-      });
-
-      // Apply class to current icon
-      const svg = header.querySelector("svg");
-      if (svg) {
-        svg.classList.remove("inactive");
-        if (sortDirection[columnName] === 1) {
-          svg.classList.add("descending"); // last click flipped to descending
-        } else {
-          svg.classList.add("ascending");
-        }
-      }
-    });
-  });
-
-  // Initialize all icons as inactive
-  document.querySelectorAll("th svg").forEach(svg => {
-    svg.classList.add("inactive");
-  });
-});
-// TABLE SORTING FEATURE START - Marketing Dashboard
-document.addEventListener("DOMContentLoaded", function () {
-  const tbody = document.getElementById("pendingRequestsTable");
-  const headers = document.querySelectorAll("th:has(svg) span"); // clickable spans with sort icons
-  let sortDirection = {}; // Keep track of sort direction per column
-
-  headers.forEach(header => {
-    header.addEventListener("click", function () {
-      const columnName = header.textContent.trim();
-      let rows = Array.from(tbody.querySelectorAll("tr"));
-
-      // Detect which column to sort by
-      let columnIndex = Array.from(header.closest("tr").children).indexOf(header.closest("th"));
-
-      rows.sort((a, b) => {
-        let cellA = a.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
-        let cellB = b.querySelectorAll("td")[columnIndex]?.innerText.toLowerCase().trim() || "";
-
-        if (cellA < cellB) return -1 * (sortDirection[columnName] || 1);
-        if (cellA > cellB) return 1 * (sortDirection[columnName] || 1);
-        return 0;
-      });
-
-      // Toggle direction for this column
-      sortDirection[columnName] = (sortDirection[columnName] || 1) * -1;
-
-      // Re-append sorted rows
-      rows.forEach(row => tbody.appendChild(row));
-
-      // Reset all icons → inactive
-      document.querySelectorAll("th svg").forEach(svg => {
-        svg.classList.remove("ascending", "descending");
-        svg.classList.add("inactive");
-      });
-
-      // Apply class to current icon
-      const svg = header.querySelector("svg");
-      if (svg) {
-        svg.classList.remove("inactive");
-        if (sortDirection[columnName] === 1) {
-          svg.classList.add("descending"); // last click flipped to descending
-        } else {
-          svg.classList.add("ascending");
-        }
-      }
-    });
-  });
-
-  // Initialize all icons as inactive
-  document.querySelectorAll("th svg").forEach(svg => {
-    svg.classList.add("inactive");
-  });
-});
-// MARKETING DASHBOARD - OVERVIEW CHART 
-document.addEventListener("DOMContentLoaded", function() {
-  const chartCanvas = document.getElementById('semiCircleChart');
-  const ctx = chartCanvas.getContext('2d');
-
-  // === Extract data directly from the HTML ===
-  const percentageItems = document.querySelectorAll('.overviewCard .sentences');
-  const dataMap = Array.from(percentageItems).map(item => {
-    const percentText = item.querySelector('.percentage')?.textContent.trim() || "0%";
-    const percent = parseInt(percentText.replace('%', '')) || 0;
-
-    // Assign colors dynamically (or customize per label keyword)
-    const label = item.querySelector('.label')?.textContent.toLowerCase() || "";
-    let baseColor = '#ccc';
-    let darkColor = '#999';
-
-    if (label.includes('approved')) {
-      baseColor = '#b6b5fa';  // purple
-      darkColor = '#8785d8';
-    } else if (label.includes('progress')) {
-      baseColor = '#ffb5a0';  // peach
-      darkColor = '#ff9581';
-    } else if (label.includes('pending')) {
-      baseColor = '#f4e7db';  // beige
-      darkColor = '#f4e7db';
+      clearInterval(interval);
     }
-
-    return { baseColor, darkColor, percent };
-  });
-
-  // === Prepare data arrays ===
-  const dataValues = [];
-  const sliceColors = [];
-  const greyColors = [];
-
-  function interpolateColor(color1, color2, factor) {
-    const c1 = color1.match(/\w\w/g).map(h => parseInt(h,16));
-    const c2 = color2.match(/\w\w/g).map(h => parseInt(h,16));
-    const result = c1.map((v,i) => Math.round(v + (c2[i]-v)*factor));
-    return `rgb(${result[0]}, ${result[1]}, ${result[2]})`;
+  }, 300); // check every 300ms until elements exist
+});
+window.addEventListener("load", function () {
+  const skeleton = document.getElementById("skeletonOverlay");
+  if (skeleton) {
+    skeleton.classList.add("hidden");
+    // Optionally remove it from the DOM after fade out
+    setTimeout(() => skeleton.remove(), 6000);
   }
-
-  dataMap.forEach(item => {
-    const bars = 10; // fixed bar count per category (can adjust)
-    for (let i = 0; i < bars; i++) {
-      dataValues.push(1);
-      const factor = ((i + 1) / bars) * (item.percent / 100);
-      sliceColors.push(interpolateColor(item.baseColor, item.darkColor, factor));
-      greyColors.push('#cccccc');
-
-      // spacer slice
-      dataValues.push(0.2);
-      sliceColors.push('#ffffff');
-      greyColors.push('#ffffff');
-    }
-  });
-
-  // === Create Chart ===
-  const chart = new Chart(ctx, {
-    type: 'doughnut',
-    data: {
-      labels: dataValues.map(() => ''),
-      datasets: [{
-        data: dataValues,
-        backgroundColor: greyColors.slice(),
-        borderWidth: 0,
-        borderRadius: 10,
-      }]
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      rotation: -90,
-      circumference: 180,
-      cutout: '70%',
-      animation: false,
-      plugins: {
-        legend: { display: false },
-        tooltip: { enabled: false }
-      }
-    }
-  });
-
-  // === Animate Fill ===
-  function animateFill() {
-    let i = 0;
-    function step() {
-      if (i < chart.data.datasets[0].backgroundColor.length) {
-        chart.data.datasets[0].backgroundColor[i] = sliceColors[i];
-        chart.update();
-        i++;
-        setTimeout(step, 40); // animation speed
-      }
-    }
-    step();
-  }
-
-  chartCanvas.style.transition = "all 0.1s ease";
-  animateFill();
-});
-// BAR CHART - MARKETING DASHBOARD
-const ctx = document.getElementById('myBarChart').getContext('2d');
-
-// Create a linear gradient
-const gradient = ctx.createLinearGradient(0, 0, 0, 400);
-gradient.addColorStop(0, '#9795E0'); 
-gradient.addColorStop(1, 'rgba(191, 189, 249, 1)'); 
-
-// Initial chart data (All-Time)
-let chartData = {
-    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'July'],
-    datasets: [{
-        data: [120, 90, 184, 130, 190, 70, 115],
-        backgroundColor: gradient,
-        borderRadius: 4,
-        barPercentage: 0.6,
-        categoryPercentage: 0.8
-    }]
-};
-
-const myBarChart = new Chart(ctx, {
-    type: 'bar',
-    data: chartData,
-    options: {
-        responsive: true,
-        maintainAspectRatio: false,
-        plugins: { legend: { display: false } },
-        scales: {
-            y: {
-                beginAtZero: true,
-                min: 0,
-                max: 200,
-                ticks: { stepSize: 20, color: 'rgba(0, 33, 52, 1)', font: { size: 14 } },
-                grid: { borderDash: [5, 5], color: '#cccccc32' },
-                title: { display: false }
-            },
-            x: {
-                grid: { display: false },
-                ticks: { color: 'rgba(0, 33, 52, 1)', font: { size: 12 }, maxRotation: 0, minRotation: 0, autoSkip: false },
-                title: { display: false }
-            }
-        },
-        animations: {
-            y: {
-                duration: 500,
-                easing: 'easeInOut',
-                delay: (context) => context.dataIndex * 150
-            }
-        }
-    }
 });
 
-// Trigger animation from 0 → actual values
-setTimeout(() => {
-    myBarChart.data.datasets[0].data = actualData;
-    myBarChart.update();
-}, 50);
 
 
-// Example data for different filters
-const chartValues = {
-    month: { labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul'], data: [120, 90, 184, 130, 190, 70, 115] },
-    year: { labels: ['2019', '2020', '2021', '2022', '2023'], data: [120, 80, 58, 13, 20] },
-};
+// // Observe all selects
+// document.querySelectorAll("select").forEach(select => {
+//   observer.observe(select, {
+//     attributes: true,
+//     attributeFilter: ["class", "disabled"] // only watch relevant changes
+//   });
+// });
+// //add readonly class to textbox
+// function updateTextboxState(input) {
+//   const textboxWrapper = input.closest(".s_textbox");
+//   if (!textboxWrapper) return;
 
-// Dropdown click listener
-document.querySelectorAll('.dropdown-item').forEach(item => {
-    item.addEventListener('click', function(e) {
-        e.preventDefault();
-        const filter = this.dataset.filter; // day, month, year, all
-        const selected = chartValues[filter];
+//   if (input.hasAttribute("readonly") || input.classList.contains("readonly")) {
+//     textboxWrapper.classList.add("readonly");
+//   } else {
+//     textboxWrapper.classList.remove("readonly");
+//   }
+// }
+// // Initial sync on page load
+// document.querySelectorAll('.s_textbox input[type="text"]').forEach(updateTextboxState);
 
-        // Update chart
-        myBarChart.data.labels = selected.labels;
-        myBarChart.data.datasets[0].data = selected.data;
-        myBarChart.update();
+// // Watch for attribute/class changes dynamically
+// const observer1 = new MutationObserver(mutations => {
+//   mutations.forEach(mutation => {
+//     if (mutation.target.tagName === "INPUT") {
+//       updateTextboxState(mutation.target);
+//     }
+//   });
+// });
 
-        // Update dropdown text
-        document.getElementById('timeFilterDropdown').innerHTML = `${this.textContent} <img src="../images/net/Chevron Down.svg" alt="chevrondown" class="chevron-img">`;
-    });
-});
+// // Observe all text inputs inside .s_textbox
+// document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
+//   observer.observe(input, {
+//     attributes: true,
+//     attributeFilter: ["readonly", "class"], // only watch relevant attributes
+//   });
+// });
+
 
 /* FEEDBACK SECTION START */
 function submitRating(rating, el) {
-    console.log('Rating submitted:', rating);
-    const $buttons = $('.rating-btn');
-    $buttons.each(function () {
-        const $btn = $(this);
-        if (this === el) {
-            $btn.addClass('selected');
+  console.log("rating clicked");
+  console.log('Rating submitted:', rating);
+
+  const $buttons = $('.rating-btn');
+  const $rating  = $('#ratingScreen');
+  const $screens = $('#screens');
+  const $success = $('#successScreen');
+
+  $buttons.each(function () {
+    const $btn = $(this);
+
+    if (this === el) {
+      $btn.addClass('selected');
+
+      $btn.get(0).animate(
+        [
+          { transform: 'translateY(-2px) scale(1.02)' },
+          { transform: 'translateY(-7px) scale(1.10)' },
+          { transform: 'translateY(-5px) scale(1.08)' }
+        ],
+        { duration: 280, easing: 'cubic-bezier(0.22,0.61,0.36,1)', fill: 'forwards' }
+      );
+    } else {
+    
+      $btn.get(0).animate(
+        [
+          { opacity: 1,   transform: 'scale(1)',   filter: 'blur(0px) saturate(1)'   },
+          { opacity: 0.45, transform: 'scale(0.98)', filter: 'blur(0.3px) saturate(0.85)' }
+        ],
+        { duration: 300, easing: 'ease', fill: 'forwards' }
+      );
+    }
+
+    $btn.prop('disabled', true);
+  });
+
+  $rating.get(0).animate(
+    [
+      { filter: 'brightness(1)'   },
+      { filter: 'brightness(0.98)' },
+      { filter: 'brightness(1)'   }
+    ],
+    { duration: 1000, easing: 'ease-in-out', iterations: 1 }
+  );
+
+  setTimeout(function () {
+    const fadeOut = $rating.get(0).animate(
+      [
+        { opacity: 1, transform: 'translateX(0px) rotateZ(0deg)' },
+        { opacity: 0, transform: 'translateX(-100px) rotateZ(-0.35deg)' }
+      ],
+      { duration: 600, easing: 'ease', fill: 'forwards' }
+    );
+
+    fadeOut.onfinish = function () {
+
+      $rating.css('visibility', 'hidden');
+      $screens.addClass('slide-left');
+      $('#ratingScreen').attr('aria-hidden', 'true');
+      $success.attr('aria-hidden', 'false');
+
+      $success.get(0).animate(
+        [
+          { opacity: 0, transform: 'translateX(60px) scale(0.98)' },
+          { opacity: 1, transform: 'translateX(0) scale(1)' }
+        ],
+        { duration: 600, easing: 'cubic-bezier(.2,.7,.2,1)', fill: 'forwards' }
+      );
+
+      const circle = document.querySelector('.checkmark-circle');
+      if (circle) {
+        circle.animate(
+          [
+            { transform: 'scale(0)', opacity: 0 },
+            { transform: 'scale(1)', opacity: 1 }
+          ],
+          { duration: 600, delay: 200, easing: 'ease', fill: 'both' }
+        );
+      }
+
+      const path = document.querySelector('.checkmark path');
+      if (path) {
+        const len = path.getTotalLength ? path.getTotalLength() : 100;
+        path.style.strokeDasharray  = len;
+        path.style.strokeDashoffset = len;
+        path.animate(
+          [
+            { strokeDashoffset: len },
+            { strokeDashoffset: 0 }
+          ],
+          { duration: 500, delay: 300, easing: 'ease', fill: 'forwards' }
+        );
+      }
+
+      ['.success-title', '.success-message'].forEach((sel, i) => {
+        const el = document.querySelector(sel);
+        if (!el) return;
+        el.animate(
+          [
+            { opacity: 0, transform: 'translateY(10px)' },
+            { opacity: 1, transform: 'translateY(0)' }
+          ],
+          { duration: 450, delay: 550 + i * 150, easing: 'ease', fill: 'forwards' }
+        );
+      });
+    };
+  }, 1000); 
+}
+document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
+  button.addEventListener('click', (e) => {
+    const parent = button.parentElement;
+    const isActive = parent.classList.contains('active');
+
+    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
+
+    if (!isActive) parent.classList.add('active');
+  });
+});
+document.addEventListener('click', (e) => {
+  if (!e.target.closest('.dropdown-custom')) {
+    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
+  }
+});
+document.addEventListener("DOMContentLoaded", function () {
+    (function() {
+        const card = document.querySelector('.card.marketingoverview');
+        if (!card) return;
+
+        const valueSpans = card.querySelectorAll(
+            '.label-box1 .value, .label-box2 .value, .label-box3 .value'
+        );
+
+        const allZero = Array.from(valueSpans).every(span => {
+            const text = (span.textContent || '').trim();
+            return text.includes('(0%)');
+        });
+
+        if (allZero) {
+            card.classList.add('no-content');
+        } else {
+            card.classList.remove('no-content');
         }
-        $btn.prop('disabled', true);
+    })();
+});
+document.addEventListener("DOMContentLoaded", () => {
+  // Scope inside the .averageTime card
+  const card = document.querySelector(".card.averageTime");
+  if (!card) return;
+
+  const dropdownBtn = card.querySelector("#timeFilterDropdown");
+  const dropdownMenu = card.querySelector(".dropdown-menu");
+  const numberBox = card.querySelector(".box-number-reports");
+  if (!dropdownBtn || !dropdownMenu || !numberBox) return;
+
+  const chevron = dropdownBtn.querySelector(".chevron-img");
+
+  // Create or reuse a span for the button label
+  let labelSpan = dropdownBtn.querySelector(".dropdown-label");
+  if (!labelSpan) {
+    labelSpan = document.createElement("span");
+    labelSpan.className = "dropdown-label";
+    labelSpan.style.marginRight = "0.3em";
+    // Insert labelSpan before chevron if chevron exists, otherwise prepend
+    if (chevron) dropdownBtn.insertBefore(labelSpan, chevron);
+    else dropdownBtn.insertBefore(labelSpan, dropdownBtn.firstChild);
+  }
+
+  // ---- remove any direct text nodes (like the hardcoded "Announcement") ----
+  Array.from(dropdownBtn.childNodes).forEach(node => {
+    if (node.nodeType === Node.TEXT_NODE && node.textContent.trim()) {
+      // remove the stray text node so only labelSpan + chevron remain
+      node.remove();
+    }
+  });
+
+  // Function to update number & button label
+  function updateSelection(item) {
+    if (!item) return;
+    const raw = (item.dataset.average || "").toString().trim().replace(",", ".");
+    const value = parseFloat(raw);
+    const rounded = Number.isNaN(value) ? 0 : Math.round(value);
+
+    numberBox.textContent = rounded;
+    labelSpan.textContent = item.textContent.trim();
+    dropdownMenu.classList.remove("show");
+  }
+
+  // Item click handlers (scoped)
+  dropdownMenu.querySelectorAll(".dropdown-item").forEach(item => {
+    item.addEventListener("click", e => {
+      e.preventDefault();
+      updateSelection(item);
+    });
+  });
+
+  // Toggle dropdown (scoped)
+  dropdownBtn.addEventListener("click", e => {
+    e.preventDefault();
+    dropdownMenu.classList.toggle("show");
+  });
+
+  // Close when clicking outside the card
+  document.addEventListener("click", e => {
+    if (!card.contains(e.target)) dropdownMenu.classList.remove("show");
+  });
+
+  // Set initial/default selection (prefer "Total Average", fallback to first)
+  const defaultItem =
+    Array.from(dropdownMenu.querySelectorAll(".dropdown-item"))
+      .find(i => i.textContent.trim() === "Total Average") ||
+    dropdownMenu.querySelector(".dropdown-item");
+  if (defaultItem) updateSelection(defaultItem);
+});
+console.log("Screen Resolution: " + window.screen.width + " x " + window.screen.height);
+console.log("Available Resolution: " + window.screen.availWidth + " x " + window.screen.availHeight);
+console.log("Browser Window Size: " + window.innerWidth + " x " + window.innerHeight);
+// Lock button size
+function lockButtonSize(btn) {
+    const originalWidth = btn.offsetWidth;
+    const originalHeight = btn.offsetHeight;
+    btn.style.width = `${originalWidth}px`;
+    btn.style.height = `${originalHeight}px`;
+    btn.style.minWidth = `${originalWidth}px`;
+    return () => {
+        btn.style.width = '';
+        btn.style.height = '';
+        btn.style.minWidth = '';
+    };
+}
+// Open dropdown
+function openDropdown(dropdown) {
+    if (!dropdown) return;
+    const btn = dropdown.querySelector('.Select-btn');
+    document.querySelectorAll('.dropdown-custom').forEach(d => {
+        if (d !== dropdown) {
+            closeDropdown(d);
+        }
+    });
+    dropdown.classList.add('open', 'active');
+    btn.classList.add('active');
+}
+// Close dropdown
+function closeDropdown(dropdown) {
+    if (!dropdown) return;
+    const btn = dropdown.querySelector('.Select-btn');
+    dropdown.classList.remove('open', 'active');
+    btn.classList.remove('active');
+}
+// Show loader and hide dropdown content
+function showLoader(dropdown) {
+    if (!dropdown) return;
+    const btn = dropdown.querySelector('.Select-btn');
+    const btnText = dropdown.querySelector('.select-btn-text');
+    const btnIcon = dropdown.querySelector('.small-logo-chevron');
+    const spinner = dropdown.querySelector('.spinner-border');
+
+    const releaseSize = lockButtonSize(btn);
+
+    // Hide dropdown and show loader
+    closeDropdown(dropdown);
+    btn.classList.add('dropdown-loader');
+    btn.classList.remove('choosen');
+    spinner.style.display = 'inline-block';
+    btnText.style.visibility = 'hidden';
+    btnIcon.style.visibility = 'hidden';
+
+    return releaseSize; // Return release function to call later
+}
+// Hide loader and show final text/icon
+function hideLoader(dropdown, label, iconSrc, iconAlt) {
+    if (!dropdown) return;
+    const btn = dropdown.querySelector('.Select-btn');
+    const btnText = dropdown.querySelector('.select-btn-text');
+    const btnIcon = dropdown.querySelector('.small-logo-chevron');
+    const spinner = dropdown.querySelector('.spinner-border');
+
+    btnText.textContent = label;
+    btnIcon.src = iconSrc;
+    btnIcon.alt = iconAlt;
+
+    btn.classList.remove('dropdown-loader');
+    btn.classList.add('choosen');
+    spinner.style.display = 'none';
+    btnText.style.visibility = 'visible';
+    btnIcon.style.visibility = 'visible';
+
+    // Release button size after short delay
+    setTimeout(() => {
+        btn.style.width = '';
+        btn.style.height = '';
+        btn.style.minWidth = '';
+    }, 50);
+}
+// --- Initialize dropdown functionality ---
+document.querySelectorAll('.dropdown-custom').forEach(dropdown => {
+    const btn = dropdown.querySelector('.Select-btn');
+    const items = dropdown.querySelectorAll('.dropdown-item-custom');
+
+    // Toggle dropdown on button click
+    btn.addEventListener('click', e => {
+        e.stopPropagation();
+        if (dropdown.classList.contains('open')) {
+            closeDropdown(dropdown);
+        } else {
+            openDropdown(dropdown);
+        }
     });
 
-    const $rating = $('#ratingScreen');
-    const $screens = $('#screens');
+    // When an item is selected
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const label = item.dataset.label;
+            const iconEl = item.querySelector('.option-icon');
+            const iconSrc = iconEl.src;
+            const iconAlt = iconEl.alt;
 
-    setTimeout(function () {
-        $rating.addClass('fade-out-right-to-left');
+            const releaseSize = showLoader(dropdown);
 
-        setTimeout(function () {
-            $rating.css('visibility', 'hidden');
-            $screens.addClass('slide-left');
-            $('#ratingScreen').attr('aria-hidden', 'true');
-            $('#successScreen').attr('aria-hidden', 'false');
-            $('#successScreen').addClass('fade-in-right-to-left');
-        }, 600); // Wait for fade animation to complete
-    }, 1000); // Wait 1 second before starting fade animation
-}
+            // Simulate AJAX / action
+            setTimeout(() => {
+                hideLoader(dropdown, label, iconSrc, iconAlt);
+                releaseSize(); // Release button size lock
+            }, 1500);
+        });
+    });
+});
+// Close dropdowns if clicking outside
+document.addEventListener('click', () => {
+    document.querySelectorAll('.dropdown-custom').forEach(dropdown => closeDropdown(dropdown));
+});
+// FOCUS STATE FOR FIELDS
+$(document).on('focus', '[name*=s_textbox] input, [name*=s_textbox] > input', function() {
+    if (!$(this).is('[readonly]')) {
+        $(this).closest('[name*=s_textbox]').addClass('on-focus');
+    }
+});
+
+$(document).on('blur', '[name*=s_textbox] input, [name*=s_textbox] > input', function() {
+    const $parent = $(this).closest('[name*=s_textbox]');
+    // If textbox is empty, remove class
+    if ($(this).val().trim() === '') {
+        $parent.removeClass('on-focus');
+    }
+});
+
+// TextArea
+$(document).on('focus', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function() {
+    if (!$(this).is('[readonly]')) {
+        $(this).closest('[name*=s_textarea]').addClass('on-focus');
+    }
+});
+$(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textarea', function() {
+    const $parent = $(this).closest('[name*=s_textarea]');
+    // If textarea is empty, remove class
+    if ($(this).val().trim() === '') {
+        $parent.removeClass('on-focus');
+    }
+});
+
