@@ -4671,6 +4671,9 @@ html:not(.designer).dark div#NotificationsLoadMoreBtn:hover{
 }
 
 @media(min-width:1600px) {
+    html:not(.designer) .commentsAttachments {
+        width: calc(100% - 28vw) !important;
+    }
     .subPanel .closeSubpanel {
         height: 3.5vw;
         width: 3.5vw;
