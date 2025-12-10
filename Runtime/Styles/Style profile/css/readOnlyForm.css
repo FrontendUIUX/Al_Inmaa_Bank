@@ -8,6 +8,14 @@ html body.theme-entry .form .row:first-child{
     fill: var(--Navy-blue-low-opacity) !important;
 
 }
+html:not(.designer) [name*="s_textbox"] [name*="s_label"]{
+     top: -0.7rem;
+     transform:none;
+}
+html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
+    top: 0.3rem;
+    transform:none;
+}
 @media(min-width:992px){
     html:not(.designer) .form {
     width: calc(100% - 28rem);
