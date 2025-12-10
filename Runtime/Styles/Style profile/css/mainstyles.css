@@ -815,7 +815,6 @@ html:not(.designer) .form.editingForm [name*="s_dropdown"] .select-box .input-co
 html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"],
 html:not(.designer) .form.editingForm [name*="s_textbox"] [name*="s_label"]{
     font-size: .8rem !important;
-    /* color: var(--Navy-blue); */
     transform: translateY(-.7rem);
     padding: 0 !important;
     z-index: 2!important;
@@ -1966,7 +1965,7 @@ div#\37 edaed9a-032c-4fce-a780-69a0ae1005ad> .row:first-child {
     display: none;
 }
 [name*="s_dropdown"] .picker{
-    top: 0;
+    top: 1rem;
     height: calc(100% - 0.6rem);
     align-content: center;
 }
@@ -2071,7 +2070,6 @@ html:not(.designer) .theme-entry span[name*="s_textbox"]:has(input[readonly]) [n
 html:not(.designer) .form [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
      font-size: var(--fs-caption)!important;
      color: var(--Read_Only_Label_Color);
-     /* top: 0rem; */
 }
 html:not(.designer) .form  [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
     top: 0.5rem;
@@ -2274,7 +2272,7 @@ html:not(.designer) .pendingStep::before {
     padding-right: 0rem;
 }
 
-    /* header */
+/* header */
 html:not(.designer) .theme-entry header,
 html:not(.designer) header {
     position: fixed;
@@ -2385,7 +2383,6 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     top: 0.5vw;
 }
 html:not(.designer) span[name*="s_calendar"]:has(.select-box.read-only) [name*="s_label"] {
-    /* font-size: .8vw !important; */
     transform: translateY(-1.2vw);
 }
     .theme-entry .input-control.select-box .input-control-buttons a.date > span span, 
