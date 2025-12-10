@@ -102,6 +102,36 @@ html:not(.designer) .theme-entry [name*="s_textbox"]:has([name*="s_label"].hidde
 html:not(.designer) .theme-entry [name*="s_textarea"]:has([name*="s_label"].hidden){
     display:none!important;
 }
+/* Calendar End */
+html:not(.designer) .theme-entry .popup.id-calendar-control-popup{
+    width: 18rem !important;
+    z-index: 100000;
+}
+    .theme-entry .top-calendar a {
+        margin-top: 1rem;
+        background-repeat: no-repeat;
+        height: 1rem;
+    }
+.theme-entry .top-calendar a.today-title {
+    border: none;
+    border-radius: 0;
+    margin-top: 1rem;
+    padding: 0;
+    background-color: transparent !important;
+    color: unset !important;
+}
+.theme-entry .week {
+    display: flex;
+}
+.calendar-row .dayname {
+    height: 2.5rem !important;
+    width: 2.5rem !important;
+    margin-bottom: 1rem;
+}
+.theme-entry .day {
+    font-size: 1rem;
+}
+/*Calendar Start */
 /* PREVENT TITLES AND TEXT FROM BEING CUT START */
 html:not(.designer) .theme-entry span.SourceCode-Forms-Controls-Web-Label, 
 html:not(.designer) .theme-entry h1.SourceCode-Forms-Controls-Web-Label, 
