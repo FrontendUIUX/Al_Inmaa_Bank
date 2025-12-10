@@ -88,13 +88,13 @@ html.dark:root{
 }
 @font-face {
     font-family: "AlinmaTheSans-Plain";
-    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
+    src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
     font-display: swap;
 }
 
 @font-face {
     font-family: "AlinmaTheSans-Bold";
-    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
+    src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
 html:not(.designer) .theme-entry [name*="s_dropdown"]:has([name*="s_label"].hidden),
@@ -1416,7 +1416,7 @@ html:not(.designer) .completedStep::before {
 
 html:not(.designer) .inProgressStep::before {
     content: "";
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/InProgress.png");
+    background-image: url("https://win-0q5t2palbof//Runtime/Styles/Style%20profile/images/k2/InProgress.png");
     background-size: contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -1429,7 +1429,7 @@ html:not(.designer) .inProgressStep::before {
 
 html:not(.designer) .pendingStep::before {
     content: "";
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/Pending.png");
+    background-image: url("https://win-0q5t2palbof//Runtime/Styles/Style%20profile/images/k2/Pending.png");
     background-size: contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -1441,7 +1441,7 @@ html:not(.designer) .pendingStep::before {
 }
 
 html:not(.designer).dark .pendingStep::before {
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/PendingDark.png");
+    background-image: url("https://win-0q5t2palbof//Runtime/Styles/Style%20profile/images/k2/PendingDark.png");
 }
 
 html:not(.designer) [name*="s_step"]{
