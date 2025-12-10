@@ -316,9 +316,10 @@ html:not(.designer) .theme-entry .picker-input .editable-area .entity > span{
 }
 html:not(.designer) .on-focus[name*="s_calendar"] input[type=text].input-control {
     font-size: .9rem;
-    top: 1.7vw;
+    top: .7rem;
     padding: 0;
     color: var(--Navy-blue);
+    position: relative!important;
 }
 html:not(.designer).dark .on-focus[name*="s_calendar"] input[type=text].input-control {
     color:rgb(255 255 255);
