@@ -102,6 +102,15 @@ html:not(.designer) .theme-entry [name*="s_textbox"]:has([name*="s_label"].hidde
 html:not(.designer) .theme-entry [name*="s_textarea"]:has([name*="s_label"].hidden){
     display:none!important;
 }
+.theme-entry .day {
+        font-size: 1rem;
+        height: 2.5rem !important;
+        width: 2.5rem !important;
+        text-align: center !important;
+        display: flex !important;
+        align-items: center;
+        justify-content: center;
+    }
 /* Calendar End */
 html:not(.designer) .theme-entry .popup.id-calendar-control-popup{
     width: 18rem !important;
