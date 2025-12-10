@@ -904,8 +904,10 @@ html:not(.designer) .theme-entry .input-control a.input-control {
     z-index: 1 !important;
 }
 
-.on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox,
-html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox{
+html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox,
+html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox,
+html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:focus,
+html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox:focus{
     position: absolute !important;
     width: calc(100% - 2rem) !important;
     border: 0 !important;
