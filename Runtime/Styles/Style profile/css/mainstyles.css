@@ -2434,7 +2434,8 @@ html:not(.designer) span[name*="s_calendar"]:has(.select-box.read-only) [name*="
         padding-right:1vw!important;
     }
 
-    div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table {
+    div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
+    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table{
         margin: 8vw auto 10vw;
     }
     html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
@@ -2601,7 +2602,8 @@ width:8vw;
         width: 11vw;
         height: auto !important;
     }
-    div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table {
+    div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
+    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table{
         margin: 6vw auto 5vw;
     }
 
