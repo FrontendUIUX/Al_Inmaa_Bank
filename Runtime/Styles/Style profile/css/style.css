@@ -913,6 +913,7 @@ td[data-title="Actions"] .dropdown-custom button {
 }
 td[data-title="Actions"] .dropdown-custom button.choosen {
     flex-direction: row-reverse;
+    pointer-events: none;
 }
 html:not(.designer).dark td[data-title="Actions"] .dropdown-custom button {
     background-color: #05263A;
