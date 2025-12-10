@@ -34,7 +34,8 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     width: calc(100% - 28vw);
     padding: 0vw 2vw 1vw!important;
 }
-    html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
-    transform: translateY(-0.4vw);
+html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"] {
+    top: 0.3vw;
+
 }
 }
