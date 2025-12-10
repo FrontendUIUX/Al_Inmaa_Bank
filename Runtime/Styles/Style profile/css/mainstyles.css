@@ -1877,14 +1877,8 @@ span[name*="s_dropdown"]:has(.select-box.disabled) input {
     rx: 3;
     ry: 3;
 }
-
 .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
     fill: #37C759 !important;
-    height: .8rem;
-    width: .8rem;
-}
-.theme-entry .input-control.checkbox.style-aware.read-only .svg-checkbox-checked {
-    fill: var(--Navy-blue-low-opacity) !important;
     height: .8rem;
     width: .8rem;
 }
@@ -1948,7 +1942,7 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
 }
 
 .theme-entry.runtime-form .grid .grid-content-cell-wrapper {
-    font-size: .9rem;
+    font-size: var(--fs-caption);
     padding: 0rem !important;
     color: var(--Navy-blue);
     text-align: left;
@@ -2630,7 +2624,6 @@ width:8vw;
         font-size: 1vw;
     }
     .theme-entry.runtime-form .grid .grid-content-cell-wrapper {
-        font-size: .9vw;
         padding: 1vw !important;
         padding: 0 0.6vw!important;
     }

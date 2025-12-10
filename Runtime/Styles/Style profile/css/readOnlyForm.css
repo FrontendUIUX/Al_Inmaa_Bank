@@ -4,6 +4,10 @@ html body.theme-entry .form .row:first-child{
 [name*="s_dropdown"] .picker{
     top: 0rem;
 }
+.theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
+    fill: var(--Navy-blue-low-opacity) !important;
+
+}
 @media(min-width:992px){
     html:not(.designer) .form {
     width: calc(100% - 28rem);
