@@ -91,7 +91,6 @@ html.dark:root{
     src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
     font-display: swap;
 }
-
 @font-face {
     font-family: "AlinmaTheSans-Bold";
     src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
@@ -102,6 +101,22 @@ html:not(.designer) .theme-entry [name*="s_textbox"]:has([name*="s_label"].hidde
 html:not(.designer) .theme-entry [name*="s_textarea"]:has([name*="s_label"].hidden){
     display:none!important;
 }
+/* LABELS INSIDE FIELDS START */
+html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"],
+html:not(.designer) .form.editingForm [name*="s_dropdown"] [name*="s_label"]{
+    top: 25% !important;
+    padding: 0;
+    font-size: var(--fs-caption);
+}
+html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"],
+html:not(.designer) .form.editingForm [name*="s_textbox"] [name*="s_label"]{
+    font-size: var(--fs-caption);
+    padding: 0 !important;
+    z-index: 2!important;
+    top: -25%;
+    transform: none!important;
+}
+/* LABELS INSIDE FIELDS END */
 .theme-entry .day {
         font-size: 1rem;
         height: 2.5rem !important;
@@ -301,7 +316,7 @@ html:not(.designer) .theme-entry .picker-input .editable-area .entity > span{
 }
 html:not(.designer) .on-focus[name*="s_calendar"] input[type=text].input-control {
     font-size: .9rem;
-    top: 1.5vw;
+    top: 1.7vw;
     padding: 0;
     color: var(--Navy-blue);
 }
@@ -812,13 +827,7 @@ html:not(.designer) .form.editingForm [name*="s_dropdown"] .select-box .input-co
     padding-top: .8rem;
 }
 
-html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"],
-html:not(.designer) .form.editingForm [name*="s_textbox"] [name*="s_label"]{
-    font-size: .8rem !important;
-    transform: translateY(-.7rem);
-    padding: 0 !important;
-    z-index: 2!important;
-}
+
 
 
 html:not(.designer) .input-control.select-box.dropdown-box .input-control-m-c,
@@ -1354,14 +1363,6 @@ html:not(.designer) .theme-entry [name*="PageDesc"] {
 html:not(.designer) .closeSubPanel:hover {
     background-color: var(--Navy-blue-low-opacity);
 }
-
-html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"],
-html:not(.designer) .form.editingForm [name*="s_dropdown"] [name*="s_label"]{
-    top: 25% !important;
-    padding: 0;
-    font-size: var(--fs-caption);
-}
-
 .theme-entry .root-table.Grid-Layout>.editor-cell.lastrow,
 .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0 !important;
@@ -2652,11 +2653,6 @@ width:8vw;
         min-height: 2vw !important;
         top: 0.5vw;
         border-radius: .5vw;
-    }
-
-    html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"],
-    .form.editingForm [name*="s_textbox"] [name*="s_label"]{
-        transform: translateY(-0.7vw);
     }
     html:not(.designer) .inProgressStep::before,
     html:not(.designer) .pendingStep::before {
