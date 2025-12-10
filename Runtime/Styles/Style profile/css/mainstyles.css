@@ -316,10 +316,13 @@ html:not(.designer) .theme-entry .picker-input .editable-area .entity > span{
 }
 html:not(.designer) .on-focus[name*="s_calendar"] input[type=text].input-control {
     font-size: .9rem;
-    top: .7rem;
+    top: 0.4rem;
     padding: 0;
     color: var(--Navy-blue);
     position: relative!important;
+    height: unset;
+    min-height: unset;
+    line-height: unset;
 }
 html:not(.designer).dark .on-focus[name*="s_calendar"] input[type=text].input-control {
     color:rgb(255 255 255);
@@ -1864,6 +1867,11 @@ html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td {
 }
 .theme-entry .input-control.select-box .input-control-m-c{
     border:none!important;
+    min-height: unset!important;
+    height: unset!important;
+    align-content: center;
+    align-items: center;
+    display: flex;
 }
 span[name*="s_dropdown"]:has(.select-box.disabled) input {
     color: rgb(57 94 117 / 85%) !important;
