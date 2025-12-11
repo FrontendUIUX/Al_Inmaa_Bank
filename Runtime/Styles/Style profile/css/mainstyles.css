@@ -2031,6 +2031,7 @@ form.file-input{
     flex-direction: column!important;
     align-items: center!important;
     justify-content: center!important;
+    height: 100%;
 }
 span#e0eb6758-87f1-b262-e4cb-bdfa14d879b3 {
     width: 90%!important;
