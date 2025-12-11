@@ -1,0 +1,58 @@
+html body.theme-entry .form .row:first-child{
+    display:none;
+}
+[name*="s_dropdown"] .picker{
+    top: 0rem;
+}
+.theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
+    fill: var(--Navy-blue-low-opacity) !important;
+
+}
+html:not(.designer) [name*="s_textbox"] [name*="s_label"]{
+     top: -0.7rem;
+     transform:none;
+}
+html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
+    top: 0.3rem;
+    transform:none;
+}
+/*  TEXTBOX READONLY START */
+
+html:not(.designer) body.theme-entry .form span[name*="s_textbox"],
+html:not(.designer) body.theme-entry .form [name*="s_textbox"].editor-cell.lastcellinrow,
+html:not(.designer) body.theme-entry .form  [name*="s_textarea"],
+html:not(.designer) body.theme-entry .form [name*="s_dropdown"],
+html:not(.designer) body.theme-entry .form [name*="s_dropdown"].editor-cell.lastcellinrow,
+html:not(.designer) body.theme-entry .form.editingForm [name*="s_calendar"].editor-cell.lastcellinrow,
+html:not(.designer) body.theme-entry .form [name*="s_calendar"],
+html:not(.designer) body.theme-entry .form [name*="s_dropdown"],
+html:not(.designer) body.theme-entry span[name*="s_dropdown"],
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"]{
+      background-color: var(--Read_Only_Fields_Background)!important;
+      border: var(--Read_Only_Fields_Border)!important;
+}
+
+/*  TEXTBOX READONLY END */
+@media(min-width:992px){
+    html:not(.designer) .form {
+    width: calc(100% - 28rem);
+    margin: 0!important;
+    background-color: white;
+        padding-bottom:1rem;
+}
+
+    html body.theme-entry .form .row{
+     background-color:transparent!important;
+    border-radius:0rem;
+}
+}
+@media(min-width:1600px){
+    html:not(.designer) .form {
+    width: calc(100% - 28vw);
+    padding: 0vw 2vw 1vw!important;
+}
+html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"] {
+    top: 0.3vw;
+
+}
+}

@@ -88,12 +88,12 @@ html.dark:root{
 }
 @font-face {
     font-family: "AlinmaTheSans-Plain";
-    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
+    src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
     font-display: swap;
 }
 @font-face {
     font-family: "AlinmaTheSans-Bold";
-    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
+    src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
 html:not(.designer) .theme-entry [name*="s_dropdown"]:has([name*="s_label"].hidden),
@@ -226,7 +226,7 @@ html:not(.designer) body.theme-entry .toolbar-wrapper{
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.date:focus > span span, 
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:hover > span span, 
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:focus > span span{
-    background-image:url("/Runtime/Styles/Style%20Profile/images/date.svg")!important;
+    background-image:url("https://win-0q5t2palbof/Runtime/Styles/Style%20Profile/images/date.svg")!important;
     background-size: contain;
     height:1rem;
     width:1rem;
@@ -276,7 +276,7 @@ html:not(.designer) body.theme-entry .grid-body .select-box{
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.picker-search:focus > span span,
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:hover > span span, 
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:focus > span span{
-    background-image:url("/Runtime/Styles/Style%20Profile/images/search.svg")!important;
+    background-image:url("https://win-0q5t2palbof/Runtime/Styles/Style%20Profile/images/search.svg")!important;
     background-size:contain;
     background-position:center!important;
     background-repeat:no-repeat;
@@ -409,7 +409,7 @@ html:not(.designer) .theme-entry .message-box-content.confirmation:before,
 html:not(.designer) .theme-entry .message-box-content.info:before,
 html:not(.designer) .theme-entry .message-box-content.message:before,
 .theme-entry .message-box-content.message:before {
-    background-image: url("/Runtime/Styles/Style%20profile/Images/general.png");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/Images/general.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -420,7 +420,7 @@ html:not(.designer) .theme-entry .message-box-content.message:before,
 }
 
 html:not(.designer) .theme-entry .message-box-content.warning:before {
-    background-image: url("/Runtime/Styles/Style%20profile/Images/Warning.svg");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/Images/Warning.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -495,7 +495,7 @@ html:not(.designer) .popup.dialog .popup-header .popup-header-text {
 }
 
 html:not(.designer) .theme-entry .message-box-content.error:before {
-    background-image: url("/Runtime/Styles/Style%20profile/Images/error.svg");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/Images/error.svg");
     background-size: 3rem;
     background-repeat: no-repeat;
     background-position: center;
@@ -1228,7 +1228,7 @@ html:not(.designer) [name*="s_button s_save_button"]::before {
     transform: translateY(-50%);
     height: 1.3rem;
     width: 1.3rem;
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1448,7 +1448,7 @@ html:not(.designer) [name*="tableGap"] {
 /* stepper */
 html:not(.designer) .completedStep::before {
     content: "";
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/Done.png");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/Done.png");
     background-size: contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -1461,7 +1461,7 @@ html:not(.designer) .completedStep::before {
 
 html:not(.designer) .inProgressStep::before {
     content: "";
-    background-image: url("//Runtime/Styles/Style%20profile/images/k2/InProgress.png");
+    background-image: url("https://win-0q5t2palbof//Runtime/Styles/Style%20profile/images/k2/InProgress.png");
     background-size: contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -1474,7 +1474,7 @@ html:not(.designer) .inProgressStep::before {
 
 html:not(.designer) .pendingStep::before {
     content: "";
-    background-image: url("//Runtime/Styles/Style%20profile/images/k2/Pending.png");
+    background-image: url("https://win-0q5t2palbof//Runtime/Styles/Style%20profile/images/k2/Pending.png");
     background-size: contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -1486,7 +1486,7 @@ html:not(.designer) .pendingStep::before {
 }
 
 html:not(.designer).dark .pendingStep::before {
-    background-image: url("//Runtime/Styles/Style%20profile/images/k2/PendingDark.png");
+    background-image: url("https://win-0q5t2palbof//Runtime/Styles/Style%20profile/images/k2/PendingDark.png");
 }
 
 html:not(.designer) [name*="s_step"]{
@@ -1703,15 +1703,15 @@ html:not(.designer).dark [name*="Review Details Button mr-1 s_button s_secondary
 }
 
 .toolbar-button.add::before {
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/add.svg");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/add.svg");
 }
 
 .toolbar-button.edit::before {
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/edit.svg");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/edit.svg");
 }
 
 .toolbar-button.delete::before {
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/delete.svg");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/delete.svg");
 }
 
 .toolbar-button.save::before {
@@ -1948,7 +1948,7 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
     transform: translateY(-50%);
     height: 1.2rem;
     width: 1.2rem;
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/review details.png");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/review details.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -2233,7 +2233,7 @@ a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588 {
     transform: translateY(-50%);
     height: 1.3rem;
     width: 1.3rem;
-    background-image: url("/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
+    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
