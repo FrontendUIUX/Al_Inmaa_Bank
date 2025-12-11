@@ -8,6 +8,9 @@ html body.theme-entry .form .row:first-child{
     fill: var(--Navy-blue-low-opacity) !important;
 
 }
+.dark .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
+    fill: white!important;
+}
 html:not(.designer) [name*="s_textbox"] [name*="s_label"]{
      top: -0.7rem;
      transform:none;
