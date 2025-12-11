@@ -382,9 +382,39 @@ $(document).ready(function(){
 
   if(textt.toLowerCase()==("No data").toLowerCase()){
     $("#NotificationsPopupContainer").text("");
-    $("#NotificationsPopupContainer").addClass("noNotifications");
+    // $("#NotificationsPopupContainer").addClass("noNotifications");
+    $(".noNotifications").addClass("show");
+    $(".icon-popup-close").remove();
+    $(".popup-count").hide();
   }
   },1000)
 });
 
 
+$(document).ready(function () {
+    setTimeout(function () {
+
+        var textt = $("#NotificationsPopupContainer").text().trim();
+
+        if (textt.toLowerCase() === "no data") {
+
+            // Clear the container
+            $("#NotificationsPopupContainer").empty();
+
+            // Append your HTML
+            $("#NotificationsPopupContainer").append(`
+                <div class="noNotifications show" id="noNotifications">
+                    <div class="d-flex align-items-center justify-content-center">
+                        <img src="/Runtime/Styles/Style%20Profile/images/placeholdericon.png">
+                        <h5>No Notifications Yet</h5>
+                        <p>You’re all caught up!</p>
+                    </div>
+                </div>
+            `);
+
+            // Hide load more button
+            $("#NotificationsLoadMoreBtn").hide();
+        }
+
+    }, 1000);
+});

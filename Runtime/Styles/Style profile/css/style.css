@@ -4105,11 +4105,20 @@ html:not(.designer).dark .notification-avatar {
     flex-direction: column;
 }
 
-.noNotifications .d-flex h5 {
+.noNotifications .d-flex h5{
     color: var(--Navy-blue);
     font-family: var(--Alinma-bold);
 }
-
+.noNotifications .d-flex p{
+    color: var(--Navy-blue);
+    font-family: var(--Alinma-plain);
+    font-size:var(--fs-body);
+}
+.dark .noNotifications .d-flex h5,
+.dark .noNotifications .d-flex p{
+    color: #ffffff;
+   
+}
 .form:has(.UserNotificationsControl-UserNotificationsControl) {
     background-color: transparent !important;
 }
@@ -4224,8 +4233,17 @@ html:not(.designer) body.theme-entry .notification-form-content .notificationCar
 
 .noNotifications {
     display: none;
+    padding: 3rem 0;
 }
-
+.noNotifications.show{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+.noNotifications img{
+    height:8rem;
+    width:auto;
+}
 html:not(.designer).dark .notification-base-icon {
     filter: brightness(0) invert(1);
 }
