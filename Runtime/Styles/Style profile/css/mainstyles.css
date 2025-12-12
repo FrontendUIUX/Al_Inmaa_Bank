@@ -59,6 +59,7 @@
     --pb-3: #002134;
     --pb-4: #e8dbd0;
     --transition: all .3s ease-in-out;
+    --field_label_top: 0.2rem;
 }
 /* DARK MODE COLORS */
 html.dark:root{
@@ -88,33 +89,54 @@ html.dark:root{
 }
 @font-face {
     font-family: "AlinmaTheSans-Plain";
-    src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
+    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Plain.ttf");
     font-display: swap;
 }
 @font-face {
     font-family: "AlinmaTheSans-Bold";
-    src: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
+    src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaTheSans-Bold.ttf");
     font-display: swap;
 }
+
+html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"],
+html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"],
+html:not(.designer) body.theme-entry [name*="s_calendar"] [name*="s_label"],
+html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"],
+html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color:var(--Navy-blue-low-opacity);
+    font-size: var(--fs-body)!important;
+}
+html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+    position: absolute;
+    top: 15%;
+    transform: translateY(-50%);
+    color:var(--Navy-blue-low-opacity);
+    font-size: var(--fs-body)!important;
+}
+html:not(.designer) body.theme-entry .on-focus [name*="s_label"],
+html:not(.designer) body.theme-entry [name*="s_dropdown"]:has(span.styling-font:not(:empty)) [name*="s_label"],
+html:not(.designer) body.theme-entry .editingForm [name*="s_label"]{
+    top: var(--field_label_top)!important;
+    transform: none;
+    font-size: var(--fs-caption)!important;
+}
 html:not(.designer) .theme-entry [name*="s_dropdown"]:has([name*="s_label"].hidden),
+html:not(.designer) .theme-entry [name*="s_picker"]:has([name*="s_label"].hidden),
 html:not(.designer) .theme-entry [name*="s_textbox"]:has([name*="s_label"].hidden),
 html:not(.designer) .theme-entry [name*="s_textarea"]:has([name*="s_label"].hidden){
     display:none!important;
 }
 /* LABELS INSIDE FIELDS START */
 html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"],
-html:not(.designer) .form.editingForm [name*="s_dropdown"] [name*="s_label"]{
+html:not(.designer) .form.editingForm [name*="s_dropdown"] [name*="s_label"],
+html:not(.designer) .on-focus[name*="s_picker"] [name*="s_label"],
+html:not(.designer) .form.editingForm [name*="s_picker"] [name*="s_label"]{
     top: 25% !important;
     padding: 0;
     font-size: var(--fs-caption);
-}
-html:not(.designer) .on-focus[name*="s_textbox"] [name*="s_label"],
-html:not(.designer) .form.editingForm [name*="s_textbox"] [name*="s_label"]{
-    font-size: var(--fs-caption);
-    padding: 0 !important;
-    z-index: 2!important;
-    top: -25%;
-    transform: none!important;
 }
 /* LABELS INSIDE FIELDS END */
 .theme-entry .day {
@@ -190,16 +212,17 @@ html:not(.designer) body.theme-entry .toolbar-wrapper{
 }
 .tooltip.validation{
     position: fixed;
-    font-size: .8rem;
-    color: #ff6a6a!important;
+    font-size: var(--fs-caption)!important;
+    color: #b71c1c!important;
     background-color: white!important;
     padding: 0.8rem 1rem;
     text-wrap: nowrap;
     height: fit-content;
     border-radius: 0.7rem!important;
-    border: 1px solid #d3d3d3!important;
+    border: 2px solid #d3d3d3!important;
     width: fit-content;
     opacity:1!important;
+    font-family:var(--Alinma-plain)!important;
 }
 .tooltip.validation span{
     line-height: 1.6;
@@ -226,7 +249,7 @@ html:not(.designer) body.theme-entry .toolbar-wrapper{
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.date:focus > span span, 
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:hover > span span, 
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:focus > span span{
-    background-image:url("https://win-0q5t2palbof/Runtime/Styles/Style%20Profile/images/date.svg")!important;
+    background-image:url("/Runtime/Styles/Style%20Profile/images/date.svg")!important;
     background-size: contain;
     height:1rem;
     width:1rem;
@@ -276,7 +299,7 @@ html:not(.designer) body.theme-entry .grid-body .select-box{
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.picker-search:focus > span span,
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:hover > span span, 
 .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:focus > span span{
-    background-image:url("https://win-0q5t2palbof/Runtime/Styles/Style%20Profile/images/search.svg")!important;
+    background-image:url("/Runtime/Styles/Style%20Profile/images/search.svg")!important;
     background-size:contain;
     background-position:center!important;
     background-repeat:no-repeat;
@@ -295,7 +318,8 @@ html:not(.designer).dark .theme-entry .input-control.select-box.disabled .input-
 .dark body {
   background-color: #002134;
 }
-[name*="s_dropdown"] .picker-resolve{
+[name*="s_dropdown"] .picker-resolve,
+[name*="s_picker"] .picker-resolve{
     display: none!important;
 }
 html:not(.designer) .theme-entry .ajaxLoader {
@@ -314,9 +338,11 @@ html:not(.designer) .theme-entry .picker-input .editable-area .entity > span{
     font-size: inherit;
     color: var(--Navy-blue);
 }
+html:not(.designer) .on-focus[name*="s_calendar"] .input-control-m-c{
+    margin-top: 1rem;
+}
 html:not(.designer) .on-focus[name*="s_calendar"] input[type=text].input-control {
-    font-size: .9rem;
-    top: 0.4rem;
+    font-size: var(--fs-body)!important;
     padding: 0;
     color: var(--Navy-blue);
     position: relative!important;
@@ -353,7 +379,7 @@ html:not(.designer).dark .on-focus[name*="s_textbox"] input.SourceCode-Forms-Con
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   box-shadow: 0 0 0 1000px transparent inset !important;
   -webkit-text-fill-color: #05263A !important;
-     caret-color: #05263A !important;
+  caret-color: #05263A !important;
   transition: background-color 9999s ease-in-out 0s !important;
 }
 
@@ -409,7 +435,7 @@ html:not(.designer) .theme-entry .message-box-content.confirmation:before,
 html:not(.designer) .theme-entry .message-box-content.info:before,
 html:not(.designer) .theme-entry .message-box-content.message:before,
 .theme-entry .message-box-content.message:before {
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/Images/general.png");
+    background-image: url("/Runtime/Styles/Style%20profile/Images/general.png");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -420,7 +446,7 @@ html:not(.designer) .theme-entry .message-box-content.message:before,
 }
 
 html:not(.designer) .theme-entry .message-box-content.warning:before {
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/Images/Warning.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/Images/Warning.svg");
     background-size: contain;
     background-repeat: no-repeat;
     background-position: center;
@@ -495,7 +521,7 @@ html:not(.designer) .popup.dialog .popup-header .popup-header-text {
 }
 
 html:not(.designer) .theme-entry .message-box-content.error:before {
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/Images/error.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/Images/error.svg");
     background-size: 3rem;
     background-repeat: no-repeat;
     background-position: center;
@@ -747,10 +773,13 @@ html:not(.designer) .searchDdl .input-control.select-box.dropdown-box,
 }
 html:not(.designer) body.theme-entry .form [name*="s_textbox"],
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"],
+html:not(.designer) body.theme-entry .form [name*="s_picker"],
 html:not(.designer) body.theme-entry .form [name*="s_calendar"],
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_textbox"],
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"],
-html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_calendar"]{
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_picker"],
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_calendar"],
+html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .dropdown-box{
     border: var(--Fields_Border) !important;
     background-color: var(--Fields_Background) !important;
     border-radius: var(--Fields_Border_Radius)!important;
@@ -766,19 +795,20 @@ html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_c
     align-content: center;
     position: relative;
 }
-html:not(.designer) [name*="s_textbox"]:has(.invalid),
-html:not(.designer) [name*="s_textbox"].editor-cell.lastcellinrow:has(.invalid){
+html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .input-control.select-box .styling-outer-wrapper{
+    display:flex!important;
+    align-items:center;
+    justify-content:space-between
+}
+html:not(.designer) body.theme-entry .form [name*="s_textbox"]:has(.invalid),
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_textbox"]:has(.invalid),
+html:not(.designer) body.theme-entry .form [name*="s_dropdown"]:has(.input-control.invalid), 
+html:not(.designer) body.theme-entry .form [name*="s_picker"]:has(.input-control.invalid), 
+html:not(.designer) body.theme-entry .form [name*="s_calendar"]:has(.invalid), 
+html:not(.designer) body.theme-entry .form [name*="s_calendar"].editor-cell.lastcellinrow:has(.invalid){
     background-color: var(--input-error-background-color) !important;
     border-color: var(--input-error-border-color) !important;
 }
-
-html:not(.designer) [name*="s_dropdown"]:has(.input-control.invalid),
-html:not(.designer) [name*="s_calendar"]:has(.invalid),
-html:not(.designer) [name*="s_calendar"].editor-cell.lastcellinrow:has(.invalid){
-    background-color: var(--input-error-background-color)!important;
-    border-color: var(--input-error-border-color) !important;
-}
-
 html:not(.designer) .grid-column-header-cell-wrapper [name*="s_textbox"] {
     background-color:transparent!important;
 }
@@ -827,13 +857,11 @@ html:not(.designer).dark .drop-menu li a:hover{
 
 
 html:not(.designer) .on-focus[name*="s_dropdown"] .select-box .input-control-body,
-html:not(.designer) .form.editingForm [name*="s_dropdown"] .select-box .input-control-body{
+html:not(.designer) .form.editingForm [name*="s_dropdown"] .select-box .input-control-body,
+html:not(.designer) .on-focus[name*="s_picker"] .select-box .input-control-body,
+html:not(.designer) .form.editingForm [name*="s_picker"] .select-box .input-control-body{
     padding-top: .8rem;
 }
-
-
-
-
 html:not(.designer) .input-control.select-box.dropdown-box .input-control-m-c,
 html:not(.designer) .input-control-buttons.styling-right.styling-inner-wrapper {
     background-color: transparent !important;
@@ -847,64 +875,58 @@ html:not(.designer) .input-control-buttons.styling-right.styling-inner-wrapper {
 
 html:not(.designer) .input-control.select-box.dropdown-box {
     height: 100%;
-    min-height: 2rem !important;
+    min-height: unset !important;
 }
-
-html:not(.designer) .theme-entry .input-control a.input-control span,
-html:not(.designer) .theme-entry .input-control.watermark a.input-control span {
+    html:not(.designer) .theme-entry [name*="s_dropdown"] .select-box .input-control a.input-control span, 
+    html:not(.designer) .theme-entry [name*="s_dropdown"] .select-box .input-control.watermark a.input-control span,
+    html:not(.designer) [name*="s_dropdown"] a.styling-font,
+    html:not(.designer) [name*="s_picker"] a.styling-font{
     padding: 0 !important;
     line-height: normal !important;
     min-height: unset !important;
     height: unset !important;
-    font-size: 1rem;
+    font-size: var(--fs-body);
+    margin-top: 1rem;
 }
-
-
+    html:not(.designer) .theme-entry .editingForm [name*="s_dropdown"] .select-box .input-control a.input-control span, 
+    html:not(.designer) .theme-entry .editingForm [name*="s_dropdown"] .select-box .input-control.watermark a.input-control span,
+    html:not(.designer) .editingForm [name*="s_dropdown"] a.styling-font, 
+    html:not(.designer) .editingForm [name*="s_picker"] a.styling-font{
+        margin-top: 0vw;
+    }
 html:not(.designer) .theme-entry .form.editingForm .input-control a.input-control span,
-html:not(.designer) .theme-entry .form.editingForm .input-control.watermark a.input-control span {
+html:not(.designer) .theme-entry .form.editingForm .input-control.watermark a.input-control span,
+html:not(.designer) .theme-entry .editingForm [name*="s_dropdown"] a.styling-font span,
+html:not(.designer) .theme-entry .editingForm [name*="s_calendar"] .input-control-m-c .input-control-wrapper input,
+html:not(.designer) .theme-entry .editingForm [name*="s_textbox"]  input{
     font-size: 1rem;
     color: rgb(57 94 117 / 85%) !important;
 }
-
-
-
-
-
-
 html:not(.designer).dark .input-control a.input-control span,
 html:not(.designer).dark .input-control.watermark a.input-control span,
 html:not(.designer).dark .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox, 
 html:not(.designer).dark .on-focus[name*="s_textarea"] textarea, 
-html:not(.designer).dark .form.editingForm [name*="s_textarea"] textarea
- {
+html:not(.designer).dark .form.editingForm [name*="s_textarea"] textarea{
     color: white !important;
 }
-
 html:not(.designer).dark .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly,
 html:not(.designer).dark .form.editingForm span[name*="s_textarea"]:has(textarea[readonly]) textarea,
-html:not(.designer).dark [name*="s_dropdown"] .read-only a.styling-font span{
+html:not(.designer).dark [name*="s_dropdown"] .read-only a.styling-font span,
+html:not(.designer).dark [name*="s_picker"] .read-only a.styling-font span{
     color: #537A91 !important; 
 }
-
-
-
- html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly
- {
+ html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly{
      color: rgb(57 94 117 / 70%) !important;
  }
-
-
 html:not(.designer) .theme-entry .input-control a.input-control {
     height: 100% !important;
     display: flex;
     align-items: center;
 }
-
 .theme-entry .input-control.text-input .input-control-m-c {
     border: none !important;
     background-color: transparent;
 }
-
 [name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox {
     position: absolute !important;
     width: calc(100% - 2rem) !important;
@@ -921,19 +943,19 @@ html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls
 html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox,
 html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:focus,
 html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox:focus{
-    position: absolute !important;
+    position: relative !important;
     width: calc(100% - 2rem) !important;
     border: 0 !important;
     background-color: transparent !important;
     height: 2rem !important;
     min-height: 2rem !important;
     padding: 0 !important;
-    top: 1.4rem;
+    top: 0rem;
     z-index: 1 !important;
     color: var(--Navy-blue);
 }
-
-html:not(.designer) [name*="s_dropdown"] a.styling-font {
+html:not(.designer) [name*="s_dropdown"] a.styling-font,
+html:not(.designer) [name*="s_picker"] a.styling-font{
     position: relative !important;
     z-index: 1 !important;
     border: 0 !important;
@@ -945,9 +967,14 @@ html:not(.designer) [name*="s_dropdown"] a.styling-font {
     cursor: pointer !important;
     color: var(--Navy-blue) !important;
 }
-
-.on-focus[name*="s_dropdown"] a.styling-font,
-html:not(.designer) .form.editingForm [name*="s_dropdown"] a.styling-font{
+html:not(.designer) [name*="s_dropdown"] a.styling-font .styling-font,
+html:not(.designer) [name*="s_picker"] a.styling-font .styling-font{
+     padding:0!important;
+}
+html:not(.designer) .form .on-focus[name*="s_dropdown"] a.styling-font,
+html:not(.designer) .form .on-focus[name*="s_picker"] a.styling-font,
+html:not(.designer) .form.editingForm [name*="s_dropdown"] a.styling-font,
+html:not(.designer) .form.editingForm [name*="s_picker"] a.styling-font{
     position: relative !important;
     z-index: 0 !important;
     border: 0 !important;
@@ -957,18 +984,6 @@ html:not(.designer) .form.editingForm [name*="s_dropdown"] a.styling-font{
     padding: 0 !important;
     top: 0rem;
 }
-
-
-
-html:not(.designer) body.theme-entry [name*="s_dropdown"] .read-only a.styling-font {
-    top: -1.2rem !important;
-    color: var(--Navy-blue-low-opacity) !important;
-}
-
-
-
-
-
 .theme-entry .input-control.select-box .input-control-buttons a.dropdown>span span,
 .theme-entry .input-control.select-box .input-control-buttons a.dropdown:active>span span,
 .theme-entry .input-control.select-box.active .input-control-buttons a.dropdown>span span,
@@ -978,7 +993,6 @@ html:not(.designer) body.theme-entry [name*="s_dropdown"] .read-only a.styling-f
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
     background-position: 0 0 !important;
 }
-
 html:not(.designer).dark .input-control.select-box .input-control-buttons a.dropdown>span span,
 html:not(.designer).dark .input-control.select-box .input-control-buttons a.dropdown:active>span span,
 html:not(.designer).dark .input-control.select-box.active .input-control-buttons a.dropdown>span span,
@@ -1023,14 +1037,17 @@ html:not(.designer) body.theme-entry .form .readonly[name*="s_textbox"],
 html:not(.designer) body.theme-entry .form .empty[name*="s_textbox"],
 html:not(.designer) body.theme-entry .form .disabled[name*="s_textbox"],
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"]:has(.ui-lookupbox-disabled),
+html:not(.designer) body.theme-entry .form [name*="s_picker"]:has(.ui-lookupbox-disabled),
 html:not(.designer) body.theme-entry .form .read-only textarea .input-control-m-c,
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"].editor-cell.lastcellinrow:has(.ui-lookupbox-disabled),
+html:not(.designer) body.theme-entry .form [name*="s_picker"].editor-cell.lastcellinrow:has(.ui-lookupbox-disabled),
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_calendar"]:has(.read-only){
     background-color: var(--Read_Only_Fields_Background) !important;
     border: var(--Read_Only_Fields_Border)!important;
     pointer-events: none;
 }
-html:not(.designer) [name*="s_dropdown"]:has(.input-control.select-box.read-only) .input-control-m-c{
+html:not(.designer) [name*="s_dropdown"]:has(.input-control.select-box.read-only) .input-control-m-c,
+html:not(.designer) [name*="s_picker"]:has(.input-control.select-box.read-only) .input-control-m-c{
     background-color:transparent;
 }
 .theme-entry .dialog .popup-footer .popup-footer-c{
@@ -1046,11 +1063,16 @@ html:not(.designer) body.theme-entry .form [name*="s_textbox"].editor-cell.lastc
 html:not(.designer) body.theme-entry .form  [name*="s_textarea"]:has(textarea[readonly]),
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"]:has(.readonly),
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"].editor-cell.lastcellinrow:has(.readonly),
+html:not(.designer) body.theme-entry .form [name*="s_picker"]:has(.readonly),
+html:not(.designer) body.theme-entry .form [name*="s_picker"].editor-cell.lastcellinrow:has(.readonly),
 html:not(.designer) body.theme-entry .form.editingForm [name*="s_calendar"].editor-cell.lastcellinrow,
 html:not(.designer) body.theme-entry .form [name*="s_calendar"]:has(.read-only),
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"]:has(.readonly),
 html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only),
-html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"]:has(.select-box.read-only){
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"]:has(.select-box.read-only),
+html:not(.designer) body.theme-entry .form [name*="s_picker"]:has(.readonly),
+html:not(.designer) body.theme-entry span[name*="s_picker"]:has(.select-box.read-only),
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_picker"]:has(.select-box.read-only){
       /* background-color: var(--Read_Only_Fields_Background)!important;
       border: var(--Read_Only_Fields_Border)!important; */
 }
@@ -1060,26 +1082,13 @@ html:not(.designer).dark .form.editingForm  [name*="s_dropdown"]{
     background-color: #05263A !important;
 }
 /*  TEXTBOX READONLY END */
-html:not(.designer) [name*="s_dropdown"] {
+html:not(.designer) [name*="s_dropdown"],
+html:not(.designer) [name*="s_picker"]{
     cursor: pointer;
-}
-
-html:not(.designer) [name*="s_dropdown"] [name*="s_label"], 
-html:not(.designer) [name*="s_calendar"] [name*="s_label"] {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    padding: 0 !important;
-    color:var(--Navy-blue-low-opacity);
 }
 .dark [name*="s_calendar"] input{
     color:white!important;
     top:.3rem;
-}
-html:not(.designer) [name*="s_calendar"].on-focus [name*="s_label"],
-html:not(.designer) .editingForm [name*="s_calendar"] [name*="s_label"]{
-    font-size:.85rem;
-    transform:translateY(-1.4rem);
 }
 .theme-entry .input-control.select-box input[type=text]{
     padding:0;
@@ -1087,22 +1096,16 @@ html:not(.designer) .editingForm [name*="s_calendar"] [name*="s_label"]{
 html:not(.designer) [name*="s_label"] {
     font-size: var(--fs-body);
     color: var(--Light-black);
-    font-family: var(--Alinma-plain);
+    font-family: var(--Alinma-plain)!important;
     transition: all .3s ease-in-out;
     height: unset !important;
     min-height: unset !important;
     line-height: unset !important;
     text-wrap: auto;
+    padding: 0!important;
 }
 html:not(.designer).dark [name*="s_label"]{
     color: var(--Read_Only_Label_Color);
-}
-html:not(.designer) [name*="s_textbox"] [name*="s_label"],
-html:not(.designer) [name*="s_textarea"] [name*="s_label"] {
-    position: relative;
-    z-index: 0 !important;
-    padding: 0;
-    color: var(--Navy-blue-low-opacity);
 }
 html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     top:1rem;
@@ -1118,7 +1121,6 @@ html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]{
     align-items: center;
     font-family: var(--Alinma-plain);
     width: 100%;
-    /* min-height: 3rem !important; */
     height: unset;
     position: relative;
 }
@@ -1153,44 +1155,31 @@ html:not(.designer).dark .dialog .popup-footer .SourceCode-Forms-Controls-Web-Bu
 html:not(.designer).dark [name*="s_button s_primary_button"]:hover{
      background-color: #ffad9c !important;
 }
-
-
 html:not(.designer) [name*="s_button s_primary_button"]:hover,
 html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button:hover {
     background-color: #001E2D !important;
     color: var(--White) !important;
     border: 1px solid #001E2D !important;
 }
-
 html:not(.designer) [name*="s_button s_secondary_button"] {
     border: 1px solid var(--Navy-blue) !important;
     color: var(--Navy-blue) !important;
     background-color: transparent;
     transition: all .3s ease-in-out !important;
 }
-
-
 html:not(.designer).dark [name*="s_button s_secondary_button"] {
     border: 1px solid white !important;
     color: white !important;
 }
-
-
-
-
-
 html:not(.designer) [name*="s_button s_secondary_button"]:hover {
     border: 1px solid var(--Navy-blue-low-opacity) !important;
     color: var(--Navy-blue) !important;
     background-color: rgb(0 33 52 / 10%);
-    ;
+    
 }
-
 html:not(.designer).dark [name*="s_button s_secondary_button"]:hover {
     background-color: rgb(255 255 255 / 10%);
-    ;
 }
-
 html:not(.designer) [name*="s_button s_save_button"] {
     position: relative;
     background-color: transparent !important;
@@ -1201,7 +1190,6 @@ html:not(.designer) [name*="s_button s_save_button"] {
     width: fit-content;
     color: var(--Navy-blue);
 }
-
 html:not(.designer).dark [name*="s_button s_save_button"] {
     color: white;
     
@@ -1228,7 +1216,7 @@ html:not(.designer) [name*="s_button s_save_button"]::before {
     transform: translateY(-50%);
     height: 1.3rem;
     width: 1.3rem;
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1238,18 +1226,12 @@ html:not(.designer).dark .form .view .innerpanel > .grid{
     background-color: transparent;
     
 }
-
-
 html:not(.designer).dark [name*="attachmentSection"] {
     border: 1px solid rgb(255 255 255 / 12%) !important;
 }
-
-
-
 html:not(.designer).dark [name*="s_button s_save_button"]::before {
   filter: brightness(0) invert(1);
 }
-
 html:not(.designer) [name*="s_asterik"] {
     color: var(--Navy-blue) !important;
 }
@@ -1258,7 +1240,6 @@ html.mobile,
 html.mobile body {
     position: relative !important;
 }
-
 /* form */
 html:not(.designer) .form,
 .mobile .theme-entry .runtime-form>.form {
@@ -1278,7 +1259,6 @@ html:not(.designer).dark .form,
 [name*="s_sub_sidebar"] {
     display: none;
 }
-
 [name*="s_sub_sidebar"] {
     width: 100% !important;
     background-color: white;
@@ -1374,16 +1354,22 @@ html:not(.designer) .closeSubPanel:hover {
 
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"],
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_dropdown"],
+html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_picker"],
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textarea"],
 html:not(.designer) body.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_textbox"],
 html:not(.designer) body.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_dropdown"],
+html:not(.designer) body.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_picker"],
 html:not(.designer) body.theme-entry .root-table.editor-grid>.editor-cell.lastrow[name*="s_textarea"],
 html:not(.designer) body.theme-entry .form  [name*="s_textbox"],
 html:not(.designer) body.theme-entry .form  [name*="s_dropdown"],
+html:not(.designer) body.theme-entry .form  [name*="s_picker"],
 html:not(.designer) body.theme-entry .form  [name*="s_textarea"] {
     padding: var(--Fields_Padding)!important;
 }
-
+html:not(.designer) body.theme-entry .form [name*="s_textarea"]{
+    padding-top:1rem!important;
+    padding-bottom:1rem!important;
+}
 .theme-entry .grid .grid-column-header-cell.asc .grid-column-header-cell-wrapper:before {
     display: none;
 }
@@ -1424,11 +1410,9 @@ html:not(.designer) body.theme-entry .form  [name*="s_textarea"] {
     align-items: center;
     justify-content: center;
 }
-
 .quickSearch.filter {
     position: relative;
 }
-
 html:not(.designer) div#\38 e458c01-9131-958c-6a07-4ffe569768cf_9fdca353-36fd-de2d-3a7f-ac96d5f78878_Table,
 html:not(.designer) span#\30 c681cbb-b33a-fadc-6c71-3df1f2a23845,
 div#\38 1f2822e-9863-4253-9c88-ab211b945765_f9e31820-4dcd-c52d-0995-057692a749e0_Table,
@@ -1448,7 +1432,7 @@ html:not(.designer) [name*="tableGap"] {
 /* stepper */
 html:not(.designer) .completedStep::before {
     content: "";
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/Done.png");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/Done.png");
     background-size: contain;
     height: 2.9rem;
     width: 2.9rem;
@@ -1471,7 +1455,6 @@ html:not(.designer) .inProgressStep::before {
     top: -50%;
     transform: translateX(-50%) translateY(100%);
 }
-
 html:not(.designer) .pendingStep::before {
     content: "";
     background-image: url("/Runtime/Styles/Style%20profile/images/k2/Pending.png");
@@ -1521,24 +1504,18 @@ html:not(.designer) .completedStep[name*="s_step"]::after {
 
 html:not(.designer) [name*="stepTitle"] {
     color: #002134 !important;
-    font-size: .8rem;
-    font-family: var(--Alinma-bold);
+    font-size: var(--fs-body)!important;
+    font-family: var(--Alinma-bold)!important;
     padding: 0 !important;
     text-align: center;
     margin-top: 4rem;
 }
-
-
 html:not(.designer).dark [name*="stepTitle"]  {
     color: white !important;
 }
-
-
 html:not(.designer).dark [name*="stepDescription"]  {
     color: rgba(255,255,255,.7) !important;
 }
-
-
 html:not(.designer) [name*="stepDescription"] {
     font-size: VAR(--fs-caption);
     color: rgb(0 0 0 / 70%) !important;
@@ -1547,12 +1524,10 @@ html:not(.designer) [name*="stepDescription"] {
     padding: 0 !important;
     display: none;
 }
-
 /* remove the vertical line from the last step */
 div#\36 fb1c2f9-761d-94a4-edc6-7090c460123a_f25fbbe5-959e-25be-71e6-246c4c9fc7ba_Table::after {
     display: none !important;
 }
-
 /* position control buttons at the bottom of the form */
 [name*="AR_AwardRecommendationRequest_Form"],
 html:not(.designer) div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_d0300780-c69e-30af-366b-fb216c06c0a2_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba,
@@ -1560,15 +1535,12 @@ html:not(.designer) div#\30 96be5b7-6d7c-4600-b68b-5cb91a9d0323_43a0cf06-c0ec-fe
     margin-bottom: 2rem !important;
     margin-top: 1rem !important;
 }
-
 .runtime-content {
     margin: 0 0rem !important;
 }
-
 .on-focus[name*="s_textarea"] [name*="s_label"],
 html:not(.designer) .form.editingForm [name*="s_textarea"] [name*="s_label"]{
     transform: translateY(-1.3rem);
-    /* font-size: .8rem; */
     font-size: var(--fs-caption);
 }
 
@@ -1613,8 +1585,6 @@ html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-li
     font-size: var(--fs-body)!important;
     font-family: var(--Alinma-plain) !important;
 }
-
-
 html:not(.designer).dark .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
     color: white;
 }
@@ -1622,10 +1592,6 @@ html:not(.designer).dark .stack-container .stack div.multi-select-box-list-item 
 html:not(.designer).dark .form.editingForm .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text, html:not(.designer) body.theme-entry .form.editingForm .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
     color: #537A91;
 }
-
-
-
-
 html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-list-item label.input-control {
     display: flex;
     align-items: center;
@@ -1663,7 +1629,15 @@ html:not(.designer) [name*="attachmentSection"] {
     border-radius: .8rem !important;
     padding: 1rem 1rem;
 }
-
+html:not(.designer) [name*="attachmentSection"] col.sortable{
+    width: auto !important;
+}
+html:not(.designer) [name*="attachmentSection"] .grid-column-header-cell{
+    width:100%!important;
+}
+html:not(.designer) body.theme-entry .grid-content-cell.edit-mode{
+    padding:1rem 0!important;
+}
 /* toolbar icons */
 .toolbar-button.add,
 .toolbar-button.edit,
@@ -1703,15 +1677,15 @@ html:not(.designer).dark [name*="Review Details Button mr-1 s_button s_secondary
 }
 
 .toolbar-button.add::before {
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/add.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/add.svg");
 }
 
 .toolbar-button.edit::before {
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/edit.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/edit.svg");
 }
 
 .toolbar-button.delete::before {
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/delete.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/delete.svg");
 }
 
 .toolbar-button.save::before {
@@ -1819,22 +1793,17 @@ html:not(.designer).dark [name*="successMessageTitle"] {
     border-radius: 0.5rem;
     color: var(--Navy-blue) !important;
 }
-
-
 [name*="successIcon"] {
     height: 6rem !important;
     width: 6rem !important;
 }
-
 a.fileImage.static {
     font-size: 1.05rem;
     font-family: var(--Alinma-bold) !important;
     color: var(--Table_Body_Color) !important;
     padding: 1rem 1.2rem !important;
     width: 100%;
-    /* border-bottom: 1px solid rgb(0 0 0 / 15%); */
 }
-
 .theme-entry [name*="attachmentSection"] table.grid-content-table.zebra-stripes tr {
     background-color: transparent !important;
 }
@@ -1873,7 +1842,11 @@ html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td {
     align-items: center;
     display: flex;
 }
-span[name*="s_dropdown"]:has(.select-box.disabled) input {
+html:not(.designer) .theme-entry .editingForm [name*="s_calendar"] .input-control.select-box .input-control-m-c{
+    margin-top:1rem!important;
+}
+span[name*="s_dropdown"]:has(.select-box.disabled) input
+span[name*="s_picker"]:has(.select-box.disabled) input{
     color: rgb(57 94 117 / 85%) !important;
 }
 
@@ -1918,11 +1891,8 @@ html:not(.designer).dark [name*="attachmentSection"] .grid-column-headers .grid-
 }
 
 html:not(.designer).dark .grid-column-header-table td {
-
     background-color: var(--Navy-blue) !important;
-
 }
-
 .file-delete {
     margin-right: 1rem;
     margin-top: 1rem;
@@ -1948,7 +1918,7 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
     transform: translateY(-50%);
     height: 1.2rem;
     width: 1.2rem;
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/review details.png");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/review details.png");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -1971,8 +1941,8 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
 div#\37 edaed9a-032c-4fce-a780-69a0ae1005ad> .row:first-child {
     display: none;
 }
-[name*="s_dropdown"] .picker{
-    top: 1rem;
+[name*="s_picker"] .picker{
+    top: 0rem;
     height: calc(100% - 0.6rem);
     align-content: center;
 }
@@ -2062,6 +2032,7 @@ html:not(.designer).dark .grid-column-header-table td .grid-column-header-text {
 }
 html:not(.designer).dark .form.editingForm  [name*="s_textarea"],
 html:not(.designer).dark .form.editingForm  [name*="s_dropdown"],
+html:not(.designer).dark .form.editingForm  [name*="s_picker"],
 html:not(.designer).dark span[name*="s_textbox"]:has(input[readonly]),
 html:not(.designer).dark span[name*="s_textbox"]:has(input[readonly]), 
 html:not(.designer).dark [name*="s_textbox"].editor-cell.lastcellinrow:has(input[readonly]){
@@ -2070,33 +2041,20 @@ html:not(.designer).dark [name*="s_textbox"].editor-cell.lastcellinrow:has(input
 }
 html:not(.designer) .theme-entry .input-control.select-box.read-only input[type=text], 
 html:not(.designer) .theme-entry .input-control.select-box.read-only a.input-control{
-    padding:1.2rem 0 0!important;
     color:rgba(57, 94, 117, 0.85)!important;
     position: relative!important;
-}
-html:not(.designer) .theme-entry span[name*="s_textbox"]:has(input[readonly]) [name*="s_label"],
-html:not(.designer) .form [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
-     font-size: var(--fs-caption)!important;
-     color: var(--Read_Only_Label_Color);
 }
 html:not(.designer) .form  [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
     top: 0.5rem;
 }
- span[name*="s_calendar"]:has(.select-box.read-only) [name*="s_label"] {
-    font-size: var(--fs-caption)!important;
-    transform: translateY(-1.2rem);
-}
-html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
+html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"],
+html:not(.designer) body.theme-entry span[name*="s_picker"]:has(.select-box.read-only) [name*="s_label"]{
     font-size: var(--fs-caption)!important;
     color: var(--Read_Only_Label_Color);
     padding: 0 !important;
 }
     span[name*="s_textbox"]:has(input[readonly]) input {
-        top: 0.6rem;
         color: rgba(57, 94, 117, 0.85)!important;
-    }
-    html:not(.designer) body.theme-entry [name*="s_dropdown"] .read-only a.styling-font {
-        top: -0.1rem !important;
     }
     html:not(.designer) .theme-entry .grid .grid-body-content{
         font-family: var(--Alinma-plain)!important;
@@ -2104,17 +2062,16 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     html:not(.designer) body.theme-entry textarea[name*="s_textarea"] {
     padding:.6rem 1rem!important;
 }
-.theme-entry [name*="s_dropdown"].on-focus .input-control.select-box .input-control-buttons{
+.theme-entry [name*="s_dropdown"].on-focus .input-control.select-box .input-control-buttons,
+.theme-entry [name*="s_picker"].on-focus .input-control.select-box .input-control-buttons{
     top: 0.6rem;
 }
 html:not(.designer).dark .notification-item a{
      border-bottom: 0.0625rem solid rgba(255, 255, 255, .12);
 }
- 
 .notification-list .notification-item:last-child a {
     border-bottom: unset !important;
 }
- 
 html:not(.designer).dark .request-status-badge {
     border: 0.188rem solid rgb(0 33 52 / 100%);
 }
@@ -2234,7 +2191,7 @@ a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588 {
     transform: translateY(-50%);
     height: 1.3rem;
     width: 1.3rem;
-    background-image: url("https://win-0q5t2palbof/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
+    background-image: url("/Runtime/Styles/Style%20profile/images/k2/save-icon.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
@@ -2302,10 +2259,6 @@ html:not(.designer) header {
         justify-content:space-between;
     }
     html:not(.designer) [name*="stepTitle"] {
-    color: #002134 !important;
-    font-size: 1.1rem;
-    font-family: var(--Alinma-bold);
-    padding: 0 !important;
     margin-top: 0;
 }
     html:not(.designer) [name*="s_step"] {
@@ -2383,6 +2336,35 @@ html:not(.designer) header {
     --Fields_Min_Height:3vw;
     --Fields_Border_Radius:0.5vw;
     --Fields_Padding:0 1vw;
+    --field_label_top: 0.2vw;
+}
+    html:not(.designer) body.theme-entry .grid-content-cell.edit-mode{
+    padding:1vw 0!important;
+}
+    html:not(.designer)  .theme-entry .editingForm [name*="s_calendar"] .input-control.select-box .input-control-m-c{
+    margin-top:1rem!important;
+}
+    html:not(.designer) body.theme-entry .form [name*="s_textarea"]{
+    padding-top:1vw!important;
+    padding-bottom:1vw!important;
+}
+    html:not(.designer) .theme-entry [name*="s_dropdown"] .select-box .input-control a.input-control span, 
+    html:not(.designer) .theme-entry [name*="s_dropdown"] .select-box .input-control.watermark a.input-control span,
+    html:not(.designer) [name*="s_dropdown"] a.styling-font, 
+    html:not(.designer) [name*="s_picker"] a.styling-font{
+        margin-top:1vw;
+    }
+    html:not(.designer) .theme-entry .editingForm [name*="s_dropdown"] .select-box .input-control a.input-control span, 
+    html:not(.designer) .theme-entry .editingForm [name*="s_dropdown"] .select-box .input-control.watermark a.input-control span,
+    html:not(.designer) .editingForm [name*="s_dropdown"] a.styling-font, 
+    html:not(.designer) .editingForm [name*="s_picker"] a.styling-font{
+        margin-top: 0vw;
+    }
+html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox,
+html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox,
+html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:focus,
+html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox:focus{
+    top:.5vw;
 }
 html:not(.designer) .on-focus[name*="s_textarea"] [name*="s_label"],
 html:not(.designer) .form.editingForm [name*="s_textarea"] [name*="s_label"]{
@@ -2393,12 +2375,13 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     top:1vw;
     top: 0.5vw;
 }
+    html:not(.designer) .on-focus[name*="s_calendar"] .input-control-m-c{
+    margin-top: 0.6vw;
+}
     html:not(.designer) .form [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"] {
     top: 0.5vw;
 }
-html:not(.designer) span[name*="s_calendar"]:has(.select-box.read-only) [name*="s_label"] {
-    transform: translateY(-1.2vw);
-}
+
     .theme-entry .input-control.select-box .input-control-buttons a.date > span span, 
 .theme-entry .input-control.select-box .input-control-buttons a.date:active > span span, 
 .theme-entry .input-control.select-box.active .input-control-buttons a.date > span span, 
@@ -2416,10 +2399,6 @@ html:not(.designer) span[name*="s_calendar"]:has(.select-box.read-only) [name*="
     height:1vw;
     width:1vw;
 }
-    html:not(.designer) .on-focus[name*="s_calendar"] [name*="s_label"] {
-        transform: translateY(-1vw);
-        font-size: .7vw;
-    }
     html:not(.designer) body.theme-entry .stack-container{
         gap:2vw;
     }
@@ -2429,10 +2408,6 @@ html:not(.designer) span[name*="s_calendar"]:has(.select-box.read-only) [name*="
     min-height: 3vw!important;
     border-radius: .5vw!important;
     padding: 0 1vw;
-}
-    html:not(.designer) .theme-entry .input-control a.input-control span, 
-    html:not(.designer) .theme-entry .input-control.watermark a.input-control span {
-    font-size: 0.85vw;
 }
     .theme-entry .id-picker-search .input-control.select-box input[type=text]{
     font-size: 1vw !important;
@@ -2491,31 +2466,20 @@ width:8vw;
     .theme-entry .input-control.select-box.read-only a.input-control{
         padding:0;
     }
- span[name*="s_textbox"]:has(input[readonly]) input {
-
-    top: 0.5vw;
-}
     html:not(.designer) body.theme-entry input, 
     html:not(.designer) body.theme-entry textarea{
         font-size: var(--fs-body)!important;
     }
-    html:not(.designer) body.theme-entry [name*="s_dropdown"] .read-only a.styling-font {
-    top: 0vw !important;
-}
     html:not(.designer) .commentsAttachments {
     width: calc(100% - 28vw) !important;
     padding: 2vw 2vw;
     margin-top: 2vw;
     border-radius: 1vw;
 }
-    span[name*="s_textbox"]:has(input[readonly]) [name*="s_label"]{
-    top: -.5vw;
-}
-    html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
+ 
+    html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"],
+    html:not(.designer) body.theme-entry span[name*="s_picker"]:has(.select-box.read-only) [name*="s_label"]{
         top: 0.7vw;
-    }
-    html:not(.designer) [name*="s_calendar"].on-focus [name*="s_label"]{
-         transform: translateY(-1.4vw);
     }
     html:not(.designer) div#a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_d0300780-c69e-30af-366b-fb216c06c0a2_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba,
     html:not(.designer) div#\30 96be5b7-6d7c-4600-b68b-5cb91a9d0323_43a0cf06-c0ec-fe93-3bbc-c014fc40a1f5_e38beaa1-91cc-b6c7-ed3c-f28a1fe0b315_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba{
@@ -2525,7 +2489,8 @@ width:8vw;
     .theme-entry .drop-menu ul.drop-menu li a span{
         font-size:.8vw;
     }
-    html:not(.designer) [name*="s_dropdown"] a.styling-font {
+    html:not(.designer) [name*="s_dropdown"] a.styling-font,
+    html:not(.designer) [name*="s_picker"] a.styling-font{
     min-height: 3vw !important;
 }
         [name*="s_sub_sidebar"] {
@@ -2629,13 +2594,6 @@ width:8vw;
     a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588 {
         left: 7%;
     }
-    .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox,
-    html:not(.designer) .form.editingForm [name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox{
-        width: calc(100% - 2vw) !important;
-        height: 2vw !important;
-        min-height: 2vw !important;
-        top: 0.7vw;
-    }
     [name*="viewTitle"],
     .theme-entry .grid-header-wrapper .grid-header-text>span {
         font-size: 1.4vw;
@@ -2671,7 +2629,7 @@ width:8vw;
     .on-focus[name*="s_textarea"] textarea,
     html:not(.designer) .form.editingForm [name*="s_textarea"] textarea{
         min-height: 2vw !important;
-        top: 0.5vw;
+        top: 0vw;
         border-radius: .5vw;
     }
     html:not(.designer) .inProgressStep::before,
@@ -2698,10 +2656,6 @@ width:8vw;
         padding: 1vw 1.5vw;
 
     }
-
-    html:not(.designer) [name*="stepDescription"] {
-    }
-
     [name*="s_sub_sidebar"] {
         width: 20vw !important;
     }

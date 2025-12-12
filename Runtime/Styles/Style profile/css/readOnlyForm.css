@@ -1,3 +1,30 @@
+html:not(.designer) .theme-entry span[name*="s_textbox"]:has(input[readonly]) [name*="s_label"],
+html:not(.designer) .form [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
+     font-size: var(--fs-caption)!important;
+     color: var(--Read_Only_Label_Color);
+}
+html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+    position: absolute;
+    top: 15%;
+    transform: translateY(-50%);
+    color:var(--Navy-blue-low-opacity);
+    font-size: var(--fs-body)!important;
+}
+html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
+html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"], 
+html:not(.designer) body.theme-entry [name*="s_calendar"] [name*="s_label"], 
+html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"], 
+html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+    top: var(--field_label_top)!important;
+    transform: none;
+    font-size: var(--fs-caption)!important;
+}
+html:not(.designer) .theme-entry [name*="s_textbox"] input{
+    margin-top: 0.6rem!important;
+}
+html:not(.designer) body.theme-entry [name*="s_calendar"] input{
+    margin-top: 0.9rem!important;
+}
 html body.theme-entry .form .row:first-child{
     display:none;
 }
@@ -10,10 +37,6 @@ html body.theme-entry .form .row:first-child{
 }
 .dark .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
     fill: white!important;
-}
-html:not(.designer) [name*="s_textbox"] [name*="s_label"]{
-     top: -0.7rem;
-     transform:none;
 }
 html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
     top: 0.3rem;
@@ -57,5 +80,11 @@ html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_d
 html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"] {
     top: 0.3vw;
 
+}
+    html:not(.designer) body.theme-entry [name*="s_calendar"] input{
+    margin-top: 0.9vw!important;
+}
+    html:not(.designer) .theme-entry [name*="s_textbox"] input {
+    margin-top: 0.6vw!important;
 }
 }

@@ -3,7 +3,8 @@ const urlParams = new URLSearchParams(window.location.search);
 
 // Check conditions properly with parentheses
 const hasValidParams = (urlParams.has('RequestID') && urlParams.has('MarketingID')) || 
-                       (urlParams.has('RequestID') && urlParams.has('AwardID'));
+                       (urlParams.has('RequestID') && urlParams.has('AwardID')) ||
+                       (urlParams.has('RequestID') && urlParams.has('AOMID'));
 
 if (hasValidParams) {
   // Wait for DOM to be fully loaded
@@ -323,6 +324,22 @@ document.addEventListener("DOMContentLoaded", function () {
 
     if (form && divToMove && header) {
       // ✅ Move div below the form only
+      form.insertAdjacentElement("afterend", divToMove);
+      console.info("✅ Div moved below form; header already exists.");
+
+      clearInterval(interval);
+    }
+  }, 300);
+});
+//
+document.addEventListener("DOMContentLoaded", function () {
+  const interval = setInterval(() => {
+    const divToMove = document.querySelector('[name*="buttonsView"]');
+    const form = document.querySelector(".form");
+    const header = document.querySelector(".formHeader");
+
+    if (form && divToMove && header) {
+      // Move div below the form only
       form.insertAdjacentElement("afterend", divToMove);
       console.info("✅ Div moved below form; header already exists.");
 
@@ -684,11 +701,11 @@ document.addEventListener('DOMContentLoaded', () => {
 // STATUS CONTAINER - ACCORDION END 
 
 // DROPDOWN PICKER START 
-function initPicker() {
-  const wrappers = document.querySelectorAll('span[name*="s_dropdown"] .picker');
+function initPickerEditable() {
+  const wrappers = document.querySelectorAll('span[name*="s_picker"] .picker');
 
   wrappers.forEach(picker => {
-    const wrapper = picker.closest('span[name*="s_dropdown"]');
+    const wrapper = picker.closest('span[name*="s_picker"]');
 
     const editableArea = picker.querySelector('.editable-area');
     const searchBtn = picker.querySelector('.picker-search');
@@ -698,20 +715,14 @@ function initPicker() {
       if (wrapper) wrapper.classList.add("on-focus");
     };
 
-    // When clicking inside the editable area
     if (editableArea) {
       editableArea.addEventListener("focus", addFocus);
       editableArea.addEventListener("click", addFocus);
-    }
-
-    // Clicking search or resolve icons
-    if (searchBtn) searchBtn.addEventListener("click", addFocus);
-    if (resolveBtn) resolveBtn.addEventListener("click", addFocus);
-
-    // Detect manual typing or removal
-    if (editableArea) {
       editableArea.addEventListener("input", addFocus);
     }
+
+    if (searchBtn) searchBtn.addEventListener("click", addFocus);
+    if (resolveBtn) resolveBtn.addEventListener("click", addFocus);
   });
 
   // Remove on outside click IF picker is empty
@@ -730,84 +741,15 @@ function initPicker() {
 }
 document.addEventListener("readystatechange", function () {
   if (document.readyState === "complete") {
-    setTimeout(() => {
-   
-      initPicker();
-    }, 200);
+    setTimeout(() => initPickerEditable(), 200);
   }
 });
 $(document).on("DOMNodeInserted", function (e) {
   if ($(e.target).closest('.SFC').length > 0) {
-    setTimeout(() => {
-  
-      initPicker();
-    }, 50);
+    setTimeout(() => initPickerEditable(), 50);
   }
 });
 // DROPDOWN PICKER END 
-
-// DROPDOWN  START 
-function initPicker() {
-    const pickers = document.querySelectorAll(
-        'span[name*="s_dropdown"] .select-box.dropdown-box'
-    );
-
-    pickers.forEach(box => {
-        const wrapper = box.closest('span[name*="s_dropdown"]');
-        if (!wrapper) return;
-
-        const valueAnchor = box.querySelector(".input-control-wrapper a");
-        const dropdownBtn = box.querySelector(".dropdown");
-
-        const addFocus = () => wrapper.classList.add("on-focus");
-
-        // CLICKING VALUE DISPLAY AREA
-        if (valueAnchor) {
-            valueAnchor.addEventListener("click", addFocus);
-            valueAnchor.addEventListener("focus", addFocus);
-        }
-
-        // CLICKING DROPDOWN BUTTON (...)
-        if (dropdownBtn) {
-            dropdownBtn.addEventListener("click", addFocus);
-        }
-    });
-
-    // CLICK OUTSIDE HANDLER
-    document.addEventListener("click", function (e) {
-        const insidePicker = e.target.closest('.select-box.dropdown-box');
-
-        document.querySelectorAll('span[name*="s_dropdown"].on-focus').forEach(wrapper => {
-
-            // If clicked inside this dropdown → keep focus
-            if (insidePicker && wrapper.contains(insidePicker)) return;
-
-            // Get selected text
-            const selectedText = wrapper.querySelector(
-                ".input-control-wrapper span.styling-font"
-            );
-
-            const value = selectedText ? selectedText.innerText.trim() : "";
-
-            // Remove ONLY if empty
-            if (!value) wrapper.classList.remove("on-focus");
-        });
-    });
-}
-// Init when document finishes loading
-document.addEventListener("readystatechange", function () {
-    if (document.readyState === "complete") {
-        setTimeout(() => initPicker(), 200);
-    }
-});
-// Init when K2 loads views dynamically
-$(document).on("DOMNodeInserted", function (e) {
-    if ($(e.target).closest('.SFC').length > 0) {
-        setTimeout(() => initPicker(), 50);
-    }
-});
-// DROPDOWN  END 
-
 // DATE PICKER - CALENDAR START 
 $(document).ready(function() {
 
