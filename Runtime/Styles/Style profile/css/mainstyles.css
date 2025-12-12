@@ -134,9 +134,9 @@ html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"],
 html:not(.designer) .form.editingForm [name*="s_dropdown"] [name*="s_label"],
 html:not(.designer) .on-focus[name*="s_picker"] [name*="s_label"],
 html:not(.designer) .form.editingForm [name*="s_picker"] [name*="s_label"]{
-    top: 25% !important;
-    padding: 0;
-    font-size: var(--fs-caption);
+    /* top: 25% !important; */
+    /* padding: 0; */
+    /* font-size: var(--fs-caption); */
 }
 /* LABELS INSIDE FIELDS END */
 .theme-entry .day {
