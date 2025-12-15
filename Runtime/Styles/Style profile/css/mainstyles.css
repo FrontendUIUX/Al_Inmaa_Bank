@@ -109,12 +109,18 @@ html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
     color:var(--Navy-blue-low-opacity);
     font-size: var(--fs-body)!important;
 }
-html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
-    position: absolute;
-    top: 15%;
-    transform: translateY(-50%);
-    color:var(--Navy-blue-low-opacity);
-    font-size: var(--fs-body)!important;
+html:not(.designer).dark body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_picker"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_calendar"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_textbox"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_textarea"] [name*="s_label"]
+html:not(.designer).dark body.theme-entry [name*="s_textarea"] [name*="s_label"],
+html:not(.designer).dark body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_picker"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_calendar"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_textbox"] [name*="s_label"], 
+html:not(.designer).dark body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+    color:white!important;
 }
 html:not(.designer) body.theme-entry .on-focus [name*="s_label"],
 html:not(.designer) body.theme-entry [name*="s_dropdown"]:has(span.styling-font:not(:empty)) [name*="s_label"],
