@@ -981,13 +981,23 @@ html:not(.designer).dark .search-box::before {
     padding-bottom: .5rem;
     color: white;
 }
-html:not(.designer).dark .search-box input {
-    border: 1px solid rgb(221 221 221 / 10%);
+html:not(.designer) .search-box input {
+    border: 1px solid rgb(221 221 221 / 10%)!important;
     background-color: rgb(0 33 52 / 30%) !important;
 }
 html:not(.designer).dark .search-box input,
 html:not(.designer).dark .search-box input::placeholder {
     color: inherit;
+
+    background-color:transparent!important;
+}
+html:not(.designer).dark .search-box input{
+    border: 1px solid rgb(0 0 0 / 10%)!important;
+    background-color:transparent!important;
+}
+html:not(.designer).search-box input,
+html:not(.designer) .search-box input::placeholder {
+    color: #ffffff;
 }
 html:not(.designer).dark .search-box input::placeholder {
     opacity: .7
@@ -1007,8 +1017,8 @@ html:not(.designer).dark .search-box input::placeholder {
 }
 
 .status.in-progress span {
-    background-color: #EEE7D7;
-    color: #AE9866;
+    background-color: #3A3A05;
+    color: #DACE6E;
 }
 
 .badge-returned {
@@ -1325,8 +1335,8 @@ html:not(.designer) body.theme-entry .table tbody td {
 }
 
 html:not(.designer).dark .status.in-progress span {
-    background-color: #3A3A05;
-    color: #DACE6E;
+    background-color: #EEE7D7;
+    color: #AE9866;
 }
 
 .status.returned span {
@@ -1361,7 +1371,7 @@ html:not(.designer).dark .status.returned span {
 .spinner-border {
     width: 50px;
     height: 28px;
-    --_g: no-repeat radial-gradient(farthest-side, #002134 94%, #0000);
+    --_g: no-repeat radial-gradient(farthest-side, #ffffff 94%, #0000);
     background:
         var(--_g) 50% 0,
         var(--_g) 100% 0;
@@ -1372,6 +1382,9 @@ html:not(.designer).dark .status.returned span {
     border-radius: unset;
     vertical-align: unset;
     margin-top: 5rem;
+}
+.spinner-border.dark{
+     --_g: no-repeat radial-gradient(farthest-side, #002134 94%, #0000);
 }
 
 .dropdown-custom .spinner-border {
@@ -1397,7 +1410,7 @@ html:not(.designer).dark .status.returned span {
     height: 12px;
     aspect-ratio: 1;
     border-radius: 50%;
-    background: #002134;
+    background: #ffffff;
     left: 0;
     top: 0;
     animation:
@@ -1405,15 +1418,17 @@ html:not(.designer).dark .status.returned span {
         l23-2 0.5s cubic-bezier(0, 200, .8, 200) infinite;
 }
 
-
+html:not(.designer).dark .spinner-border:before{
+    background:#002134!important;
+}
 html:not(.designer).dark .spinner-border {
-    --_g: no-repeat radial-gradient(farthest-side, #fff 94%, #0000);
+    --_g: no-repeat radial-gradient(farthest-side, #002134 94%, #0000);
 }
 
 
 
 html:not(.designer).dark .spinner-border:before {
-    background: #fff;
+    background: #002134;
 }
 
 
@@ -1464,14 +1479,16 @@ html:not(.designer).dark .spinner-border:before {
 
 html:not(.designer).dark .status.submit span,
 html:not(.designer).dark .status.completed span {
-    background-color: #053A2B;
-    color: #75E5B0;
+    background-color: #DEFCE2;
+    color: #2B7635;
 }
 
 .status.submit span,
 .status.completed span {
-    background-color: #DEFCE2;
-    color: #2B7635;
+    
+    background-color: #053A2B;
+    color: #75E5B0;
+    
 }
 
 .status.awaitingfeedback span {
@@ -2476,10 +2493,12 @@ html:not(.designer).dark .slider {
     transition: 0.4s;
 }
 
-html:not(.designer).dark .paginationIcons svg path {
+html:not(.designer) .paginationIcons svg path {
     stroke: rgb(255 255 255)
 }
-
+html:not(.designer).dark .paginationIcons svg path {
+    stroke: var(--Navy-blue);
+}
 html:not(.designer).dark .slider::before {
     left: auto;
     right: 0.25rem;
@@ -3165,11 +3184,12 @@ html:not(.designer).dark .option-icon[alt="Return"] {
     justify-content: space-around;
     padding: .4rem 1rem;
     font-size: 1REM;
-    background: #f3e5e5;
+    background: #05263A;
     border-radius: 8px;
     border: none;
     font-family: var(--regularFont);
     gap: 3px;
+    color: white;
 }
 
 .dropdown-item {
@@ -3763,7 +3783,8 @@ html:not(.designer) .averageTime span {
 }
 html:not(.designer).dark .custom-dropdown {
     background-color: #05263A;
-    color: white;
+    color: inherit;
+    background-color: #f3e5e5;
 }
 
 html:not(.designer).dark .custom-dropdown img {
