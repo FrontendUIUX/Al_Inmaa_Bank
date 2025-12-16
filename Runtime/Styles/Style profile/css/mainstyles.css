@@ -101,8 +101,7 @@ html.dark:root{
 html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"],
 html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"],
 html:not(.designer) body.theme-entry [name*="s_calendar"] [name*="s_label"],
-html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"],
-html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"]{
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
@@ -136,14 +135,7 @@ html:not(.designer) .theme-entry [name*="s_textarea"]:has([name*="s_label"].hidd
     display:none!important;
 }
 /* LABELS INSIDE FIELDS START */
-html:not(.designer) .on-focus[name*="s_dropdown"] [name*="s_label"],
-html:not(.designer) .form.editingForm [name*="s_dropdown"] [name*="s_label"],
-html:not(.designer) .on-focus[name*="s_picker"] [name*="s_label"],
-html:not(.designer) .form.editingForm [name*="s_picker"] [name*="s_label"]{
-    /* top: 25% !important; */
-    /* padding: 0; */
-    /* font-size: var(--fs-caption); */
-}
+
 /* LABELS INSIDE FIELDS END */
 .theme-entry .day {
         font-size: 1rem;
@@ -784,8 +776,7 @@ html:not(.designer) body.theme-entry .form [name*="s_calendar"],
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_textbox"],
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"],
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_picker"],
-html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_calendar"],
-html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .dropdown-box{
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_calendar"]{
     border: var(--Fields_Border) !important;
     background-color: var(--Fields_Background) !important;
     border-radius: var(--Fields_Border_Radius)!important;
@@ -800,6 +791,35 @@ html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .dropdown-box{
     width: 100%;
     align-content: center;
     position: relative;
+}
+html:not(.designer) body.theme-entry table tr.edit-template-row{
+    border:1px solid rgb(255 255 255 / 20%)!important;
+}
+html:not(.designer).dark body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
+html:not(.designer).dark body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
+html:not(.designer).dark body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
+    border:1px solid rgb(255 255 255 / 20%)!important;
+    border-radius:.5rem!important;
+    background-color:transparent!important;
+    height: var(--Fields_Height)!important;
+    min-height: var(--Fields_Min_Height)!important;
+    display: flex;
+}
+/**/
+html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
+html:not(.designer) body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
+html:not(.designer) body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
+    border:1px solid rgb(0 0 0 / 20%)!important;
+    border-radius:.5rem!important;
+    background-color:transparent!important;
+    height: var(--Fields_Height)!important;
+    min-height: var(--Fields_Min_Height)!important;
+    display: flex;
+}
+html:not(.designer) .theme-entry.runtime-form span.runtime-list-item-wrap, 
+html:not(.designer) .theme-entry.runtime-form span.runtime-list-item{
+    text-align:left!important;
+    padding:0!important;
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .input-control.select-box .styling-outer-wrapper{
     display:flex!important;
@@ -1063,25 +1083,6 @@ html:not(.designer) [name*="s_picker"]:has(.input-control.select-box.read-only) 
     flex-direction: row-reverse;
 }
 /*  TEXTBOX READONLY START */
-
-html:not(.designer) body.theme-entry .form span[name*="s_textbox"]:has(input[readonly]),
-html:not(.designer) body.theme-entry .form [name*="s_textbox"].editor-cell.lastcellinrow:has(input[readonly]),
-html:not(.designer) body.theme-entry .form  [name*="s_textarea"]:has(textarea[readonly]),
-html:not(.designer) body.theme-entry .form [name*="s_dropdown"]:has(.readonly),
-html:not(.designer) body.theme-entry .form [name*="s_dropdown"].editor-cell.lastcellinrow:has(.readonly),
-html:not(.designer) body.theme-entry .form [name*="s_picker"]:has(.readonly),
-html:not(.designer) body.theme-entry .form [name*="s_picker"].editor-cell.lastcellinrow:has(.readonly),
-html:not(.designer) body.theme-entry .form.editingForm [name*="s_calendar"].editor-cell.lastcellinrow,
-html:not(.designer) body.theme-entry .form [name*="s_calendar"]:has(.read-only),
-html:not(.designer) body.theme-entry .form [name*="s_dropdown"]:has(.readonly),
-html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only),
-html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"]:has(.select-box.read-only),
-html:not(.designer) body.theme-entry .form [name*="s_picker"]:has(.readonly),
-html:not(.designer) body.theme-entry span[name*="s_picker"]:has(.select-box.read-only),
-html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_picker"]:has(.select-box.read-only){
-      /* background-color: var(--Read_Only_Fields_Background)!important;
-      border: var(--Read_Only_Fields_Border)!important; */
-}
 html:not(.designer).dark .form.editingForm  [name*="s_textarea"],
 html:not(.designer).dark .form.editingForm  [name*="s_dropdown"]{
     border: 1px solid #04324C !important;
@@ -2081,7 +2082,8 @@ html:not(.designer).dark .notification-item a{
 html:not(.designer).dark .request-status-badge {
     border: 0.188rem solid rgb(0 33 52 / 100%);
 }
-html:not(.designer) body.theme-entry [name*="s_textbox"] input.invalid{
+html:not(.designer) body.theme-entry [name*="s_textbox"] input.invalid,
+html:not(.designer).dark body.theme-entry [name*="s_textbox"] input.invalid{
     color:var(--pill-error-text-color)!important;
 }
 .edit-template-row{
