@@ -352,6 +352,7 @@ html:not(.designer) body.theme-entry .grid-body .select-box{
     background-repeat:no-repeat;
     height:1rem;
     width:1rem;
+    filter: brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
 }
 html:not(.designer).light .theme-entry .input-control.select-box .input-control-buttons a.picker-search > span span, 
 html:not(.designer).light .theme-entry .input-control.select-box .input-control-buttons a.picker-search:active > span span, 
@@ -360,7 +361,7 @@ html:not(.designer).light .theme-entry .input-control.select-box.read-only .inpu
 html:not(.designer).light .theme-entry .input-control.select-box.read-only .input-control-buttons a.picker-search:focus > span span,
 html:not(.designer).light .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:hover > span span, 
 html:not(.designer).light .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:focus > span span{
-    filter:brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
+    filter: none;
 }
 .light body {
   background-color: #002134;
@@ -904,7 +905,9 @@ html:not(.designer) [name*="s_textarea"] textarea[readonly]{
 }
 html:not(.designer) body.theme-entry [name*="s_textarea"] textarea,
 html:not(.designer) body.theme-entry [name*="s_textbox"] input ,
-html:not(.designer) body.theme-entry .picker-input .editable-area .entity > span{
+html:not(.designer) body.theme-entry .picker-input .editable-area .entity > span,
+html:not(.designer) [name*="s_dropdown"] a.styling-font .styling-font, 
+html:not(.designer) [name*="s_picker"] a.styling-font .styling-font{
     color: var(--Read_Only_Label_Color)!important;
 }
 html:not(.designer).light [name*="s_textarea"] textarea,
@@ -2428,7 +2431,7 @@ html:not(.designer) header {
 }
 
 @media(min-width: 1600px) {
-    :root {
+    html:root {
     --border-radius-05:.5vw;
     --font-size-1rem:1vw;
     --font-size-2rem:2vw;
@@ -2809,4 +2812,5 @@ width:8vw;
         padding: 0.8vw 1.5vw;
     }
 }
+
 /* final backup 17 december 2025*/

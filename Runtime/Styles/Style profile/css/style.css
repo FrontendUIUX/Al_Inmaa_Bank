@@ -181,6 +181,7 @@ html:not(.designer).light .sideBarLinksGroup .icon img {
 html:not(.designer) .sidebar ul>li:hover,
 html:not(.designer) .sidebar ul>li.active {
     background-color: #ffffff;
+    color: var(--Navy-blue);
 }
 html:not(.designer).light .sidebar ul>li:hover,
 html:not(.designer).light .sidebar ul>li.active {
