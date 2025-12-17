@@ -69,16 +69,6 @@ function initRequestProgressBar() {
     progressBarContainer.appendChild(segment);
   });
 
-  // 5. Assign colors based on position (index-based) with dark mode check
- /* let colorPalette;
-  if (document.body.classList.contains('dark')) {
-    console.log("🌙 Dark mode detected — using dark color palette");
-    colorPalette = ['#9795e0', '#ff9581', '#FFFFFF', '#e8dbd0'];
-  } else {
-    console.log("☀️ Light mode — using default color palette");
-    colorPalette = ['#9795e0', '#ff9581', '#002134', '#e8dbd0'];
-  }*/
-
     const colorPalette = [
   'var(--pb-1)',
   'var(--pb-2)',
@@ -370,8 +360,8 @@ function initializeBarChart(canvasId = 'myBarChart') {
     // ------------------------
     const getTickColor = () =>
         document.documentElement.classList.contains('dark')
-            ? '#ffffff'
-            : 'rgba(0, 33, 52, 1)';
+            ? 'rgba(0, 33, 52, 1)'
+            : '#ffffff';
 
     // ------------------------
     // INITIAL CHART DATA
@@ -507,7 +497,7 @@ function initPopularRequests() {
         // CONFIGURATION
         // ------------------------
         const config = {
-            fontFamily: "'Poppins', 'AlinmaTheSans', sans-serif",
+            fontFamily: "regularFont",
             baseRem: { labels: .7, ticks: .8 },
             baseVw: { labels: .9, ticks: .8 }
         };
@@ -748,20 +738,20 @@ function initPopularRequests() {
                             display: false,
                             grid: { display: false },
                             border: { display: false },
-                            ticks: { color: isDarkMode() ? '#fff' : '#000' }
+                            ticks: { color: isDarkMode() ? '#000' : '#fff' }
                         },
                         x2: {
                             type: 'category',
                             position: 'bottom',
                             labels: ['0', '2', '6', '8', '10', '12', '16', '18', '20'],
                             ticks: {
-                                color: isDarkMode() ? '#fff' : '#000',
+                                color: isDarkMode() ? '#000' : '#fff',
                                 font: { family: config.fontFamily, weight: '600', size: fontSize('ticks') }
                             },
                             grid: {
                                 drawOnChartArea: true,
                                 drawTicks: false,
-                                color: isDarkMode() ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)',
+                                color: isDarkMode() ? 'rgba(255,255,255,0.2)rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.2)',
                                 lineWidth: 1
                             },
                             border: { display: false }
@@ -785,10 +775,10 @@ function initPopularRequests() {
             const updateChartColors = () => {
                 const dark = isDarkMode();
                 const { x2, x, y } = chart.options.scales;
-                if (x2?.ticks) x2.ticks.color = dark ? '#fff' : '#000';
-                if (x2?.grid) x2.grid.color = dark ? 'rgba(255,255,255,0.2)' : 'rgba(0,0,0,0.1)';
-                if (x?.ticks) x.ticks.color = dark ? '#fff' : '#000';
-                if (y?.ticks) y.ticks.color = dark ? '#fff' : '#000';
+                if (x2?.ticks) x2.ticks.color = dark ? '#000' : '#fff';
+                if (x2?.grid) x2.grid.color = dark ? 'rgba(0,0,0,0.1)' : 'rgba(255,255,255,0.2)';
+                if (x?.ticks) x.ticks.color = dark ? '#000' : '#fff';
+                if (y?.ticks) y.ticks.color = dark ? '#000' : '#fff';
                 chart.update();
             };
 
