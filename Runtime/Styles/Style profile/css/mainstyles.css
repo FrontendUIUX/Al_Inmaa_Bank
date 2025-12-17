@@ -109,7 +109,8 @@ html:root{
     --Sidebar_border:1.5px solid rgb(255 255 255 / 10%);
     --Table_Row_Border:1px solid rgba(255, 255, 255, .1);
     --Sidebar_Background_Color:#002134;
-    --Pending_Status_BG:rgb(229 42 54 / 30%);
+     --Pending_Status_BG:rgb(229 42 54 / 30%);
+    --Pending_Status_Color:rgb(229 42 54);
     --pb-1: #9795e0;
     --pb-2: #ff9581;
     --pb-3: #ffffff;
