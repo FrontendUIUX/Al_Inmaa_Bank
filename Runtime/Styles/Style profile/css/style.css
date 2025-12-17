@@ -697,7 +697,7 @@ html:not(.designer).light .request-cards {
 }
 
 html:not(.designer).light .request-card {
-    border-bottom: 1px solid rgb(255 255 255 / 12%);
+    border-bottom: 1px solid rgb(0 0 0 / 12%);
 }
 
 .request-card {
@@ -705,7 +705,7 @@ html:not(.designer).light .request-card {
     align-items: center;
     justify-content: space-between;
     padding: 5px 0;
-    border-bottom: 1px solid rgb(0 0 0 / 10%);
+    border-bottom: 1px solid rgb(255 255 255 / 10%);
     border-top: 0;
     padding: .8rem 1.2rem;
     border-right: none;
@@ -4601,7 +4601,7 @@ html:not(.designer).light div#NotificationsLoadMoreBtn:hover{
 
     .request-card:nth-child(2n+1) {
         
-        border-right: 1px solid rgb(255 255 255 / 12%);
+border-right: 1px solid rgb(255 255 255 / 12%);
     }
 
     html:not(.designer).light .request-card:nth-child(2n+1) {
@@ -4672,7 +4672,7 @@ html:not(.designer).light div#NotificationsLoadMoreBtn:hover{
         gap: 0;
         border-radius: .8rem;
         overflow: hidden;
-        border: 1px solid rgb(0 0 0 /10%);
+        border: 1px solid rgb(255 255 255 /10%);
     }
 
     html:not(.designer) body aside.sidebar {
