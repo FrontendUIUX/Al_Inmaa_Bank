@@ -28,11 +28,6 @@ html.light:root {
     --Notification_Card_Background:#FFFFFF;
     --Navy-blue-low-opacity: rgb(0 33 52 / 70%);
     --Header_Description_Color:rgb(0 0 0 / 70%);
-    --Fields_Height:3.5rem;
-    --Fields_Min_Height:3.5rem;
-    --Fields_Border_Radius:0.5rem;
-    --Fields_Padding:0 1rem;
-   
     --Purple: #9795E0;
     --Orange: #FF9581;
     --Table-header: rgb(244 231 219 / 60%);
@@ -302,7 +297,7 @@ html:not(.designer) body.theme-entry .toolbar-wrapper{
     width:1rem;
     background-position:center!important;
     background-repeat:no-repeat;
-
+    filter: brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
 }
 .light .theme-entry .input-control.select-box .input-control-buttons a.date > span span, 
 .light .theme-entry .input-control.select-box .input-control-buttons a.date:active > span span, 
@@ -311,7 +306,7 @@ html:not(.designer) body.theme-entry .toolbar-wrapper{
 .light .theme-entry .input-control.select-box.read-only .input-control-buttons a.date:focus > span span, 
 .light .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:hover > span span, 
 .light .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:focus > span span{
-    filter:brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
+    filter: none;
 }
 .theme-entry .grid-summary .grid-summary-item{
     border: none!important;
@@ -384,7 +379,7 @@ html:not(.designer) .theme-entry .picker-input .editable-area .entity > span{
     padding:0!important;
     background-color:transparent!important;
     font-size: inherit;
-    color: var(--Navy-blue);
+    color: var(--Navy-blue)!important;
 }
 html:not(.designer) .on-focus[name*="s_calendar"] .input-control-m-c{
     margin-top: 1rem;
@@ -392,14 +387,14 @@ html:not(.designer) .on-focus[name*="s_calendar"] .input-control-m-c{
 html:not(.designer) .on-focus[name*="s_calendar"] input[type=text].input-control {
     font-size: var(--fs-body)!important;
     padding: 0;
-    color: var(--Navy-blue);
+    color: white!important;
     position: relative!important;
     height: unset;
     min-height: unset;
     line-height: unset;
 }
 html:not(.designer).light .on-focus[name*="s_calendar"] input[type=text].input-control {
-    color:rgb(255 255 255);
+    color: var(--Navy-blue)!important;
 }
 html:not(.designer) .theme-entry .input-control.select-box.picker-input div.editable-area{
     padding:0!important;
@@ -570,8 +565,11 @@ html:not(.designer) .popup.dialog .message{
 }
 html:not(.designer) .popup.dialog .popup-header .popup-header-text {
     font-size: 1.4rem;
+    color: white;
 }
-
+html:not(.designer).light .popup.dialog .popup-header .popup-header-text{
+    color:var(--Navy-blue);
+}
 html:not(.designer) .theme-entry .message-box-content.error:before {
     background-image: url("/Runtime/Styles/Style%20profile/Images/error.svg");
     background-size: 3rem;
@@ -815,13 +813,18 @@ html:not(.designer) .searchDdl .input-control.select-box.dropdown-box,
     background-color: var(--Textbox-background-color) !important;
     border:1px solid var(--Textbox-border-color) !important;
 }
-.theme-entry .id-picker-search .input-control.select-box input[type=text]{
+html:not(.designer).light body.theme-entry .id-picker-search .input-control.select-box input[type=text]{
+    color: white;
     border: 1px solid var(--Textbox-border-color) !important;
     background-color: var(--Textbox-background-color) !important;
     font-size: 1rem !important;
     border-radius: .5rem !important;
     padding: .4rem 1rem !important;
-    width:calc(100% - 2rem)!important;
+}
+html:not(.designer) body.theme-entry .id-picker-search .input-control.select-box input[type=text]{
+    background-color: var(--Navy-blue-low-opacity)!important;
+    border: 1px solid rgb(255 255 255 / 10%)!important;
+    font-size: var(--fs-body);
 }
 html:not(.designer) body.theme-entry .form [name*="s_textbox"],
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"],
@@ -852,12 +855,13 @@ html:not(.designer) body.theme-entry table tr.edit-template-row{
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
-    border:1px solid rgb(255 255 255 / 20%)!important;
+    border: 1px solid rgb(0 0 0 / 20%)!important;
     border-radius:.5rem!important;
     background-color:transparent!important;
     height: var(--Fields_Height)!important;
     min-height: var(--Fields_Min_Height)!important;
     display: flex;
+    color: inherit;
 }
 /**/
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
@@ -869,6 +873,7 @@ html:not(.designer) body.theme-entry .grid-content-cell.edit-mode [name*="s_text
     height: var(--Fields_Height)!important;
     min-height: var(--Fields_Min_Height)!important;
     display: flex;
+    color: white;
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .input-control.select-box .styling-outer-wrapper{
     display:flex!important;
@@ -913,7 +918,7 @@ html:not(.designer) [name*="s_picker"] a.styling-font .styling-font{
 html:not(.designer).light [name*="s_textarea"] textarea,
 html:not(.designer).light [name*="s_textbox"] input,
 html:not(.designer).light .theme-entry .picker-input .editable-area .entity > span{
-    color: var(--Light-black) !important;
+    color: var(--Navy-blue)!important;
 }
 html:not(.designer).light .theme-entry .grid table.grid-content-table > tbody > tr > td
 {
@@ -1252,6 +1257,12 @@ html:not(.designer).light [name*="s_button s_secondary_button"] {
     border-color: var(--Navy-blue) !important;
 }
 html:not(.designer) [name*="s_button s_secondary_button"]:hover {
+    border: 1px solid rgb(255 255 255 / 20%) !important;
+    color: white !important;
+    background-color: rgb(0 33 52 / 10%);
+    
+}
+html:not(.designer).light [name*="s_button s_secondary_button"]:hover {
     border: 1px solid var(--Navy-blue-low-opacity) !important;
     color: var(--Navy-blue) !important;
     background-color: rgb(0 33 52 / 10%);
@@ -1704,7 +1715,7 @@ html:not(.designer) .commentsAttachments [name*="attachmentSection"] .toolbar .t
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers ,
 html:not(.designer) .grid-column-headers {
     border-radius: .5rem !important;
-    background-color: rgb(244 231 219)!important;
+    background-color: #002134!important;
     overflow: hidden;
     border: none !important;
     padding: 0;
@@ -1712,7 +1723,7 @@ html:not(.designer) .grid-column-headers {
 
 html:not(.designer).light [name*="attachmentSection"] .grid-column-headers ,
 html:not(.designer).light .grid-column-headers {
-    background-color:#002134!important;
+    background-color: rgb(249 242 237) !important;
 }
 html:not(.designer).light [name*="attachmentSection"] .grid-column-headers {
     background-color: var(--Navy-blue) !important;
@@ -1937,6 +1948,7 @@ html:not(.designer) .theme-entry .toolbar>.toolbar-wrapper>table>tbody>tr>td {
     align-content: center;
     align-items: center;
     display: flex;
+    background-color: transparent;
 }
 html:not(.designer) .theme-entry .editingForm [name*="s_calendar"] .input-control.select-box .input-control-m-c{
     margin-top:1rem!important;
@@ -2031,6 +2043,7 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
 .theme-entry .grid .grid-column-header-cell .grid-column-header-text{
     font-size:.9rem!important;
     text-transform:capitalize!important;
+    color: white!important;
 }
 .theme-entry .grid .grid-column-header-cell-content{
     padding:1rem 0;
@@ -2119,6 +2132,7 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
 .dropdown-item{
     font-family:var(--regularFont)!important;
     font-size:.9rem!important;
+    color: white;
 }
     .noData h5 {
     font-size: 1.1vw;
@@ -2128,7 +2142,7 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
 }
 .light  .noData h5,
 .light .noData p{
-    color:white!important;
+    color: var(--Navy-blue);
 }
 html:not(.designer).light .grid-column-header-table td .grid-column-header-text {
     color: #001e2d!important;
@@ -2431,7 +2445,7 @@ html:not(.designer) header {
 }
 
 @media(min-width: 1600px) {
-    html:root {
+    html:root{
     --border-radius-05:.5vw;
     --font-size-1rem:1vw;
     --font-size-2rem:2vw;
@@ -2515,14 +2529,11 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     padding: 0 1vw;
 }
     .theme-entry .id-picker-search .input-control.select-box input[type=text]{
-    font-size: 1vw !important;
     border-radius: .5vw !important;
     padding: .4vw 1vw !important;
     width:calc(100% - 2.1vw)!important;
 }
-    html:not(.designer) .theme-entry .picker-input .editable-area .entity > span{
-    font-size:.85vw;
-}
+
 .theme-entry .popup-footer-c{
     gap:1rem;
 }
@@ -2550,7 +2561,7 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     font-size: 1.1vw;
     margin-bottom:.6vw;
     font-family:var(--mediumFont);
-    color:var(--Navy-blue);
+    color: white;
 }
 .noData p{
     font-size:1vw;

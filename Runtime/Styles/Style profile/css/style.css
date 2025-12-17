@@ -762,12 +762,12 @@ html:not(.designer) div#requests-label {
 }
 
 .request-card:nth-child(3) .request-name::before {
-    background-color: var(--Navy-blue);
+    background-color: white;
 }
 
 
 html:not(.designer).light .request-card:nth-child(3) .request-name::before {
-    background-color: white;
+    background-color: var(--Navy-blue);
 }
 
 .request-card:nth-child(2) .request-name::before {
@@ -930,27 +930,28 @@ html body .averageTime .card-header h2 {
     margin-top: 1.5rem !important;
 }
 td[data-title="Actions"] .dropdown-custom button {
-    background-color: #f1dfda;
+    background-color: #05263A;
     border-radius: .8rem;
     display: flex;
     justify-content: center;
     margin: auto;
     min-width: 8rem;
     align-content: center;
+    color: white;
 }
 td[data-title="Actions"] .dropdown-custom button.choosen {
     flex-direction: row-reverse;
     pointer-events: none;
 }
 html:not(.designer).light td[data-title="Actions"] .dropdown-custom button {
-    background-color: #05263A;
-    color: white;
+    color: inherit;
+    background-color: #f1dfda;
 }
 html:not(.designer).light .dropdown-menu-custom {
     background-color: #05263A;
 }
 html:not(.designer).light .Select-btn .small-logo-chevron {
-    filter: brightness(0) invert(1);
+    filter: none;
 }
 td[data-title="Request Number"] {
     font-family: var(--mediumFont);
@@ -2360,7 +2361,8 @@ html:not(.designer).light .card.totalRequests .dropdown-menu {
 
 
 html:not(.designer).light .card.totalRequests .dropdown-menu .dropdown-item {
-    color: white;
+    color: inherit;
+    background-color: white;
 }
 
 .pendingRequestsTable .actionsColumn span {
@@ -3056,6 +3058,7 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .feedba
 .Select-btn .small-logo-chevron {
     width: .8rem;
     height: .8rem;
+    filter: brightness(0) invert(1);
 }
 
 .Select-btn {
@@ -3065,7 +3068,7 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .feedba
     background-color: #F0DFDB;
     border-radius: 8px;
     padding: .3rem 1rem;
-    font-size: 0.8rem;
+    font-size: var(--fs-button);
 }
 
 .dropdown-menu-custom {
@@ -3123,17 +3126,16 @@ html:not(.designer).light .option-icon[alt="Return"] {
 .dropdown-custom.active .small-logo-chevron {
     transform: rotate(180deg);
 }
-
 .dropdown-menu {
     padding: 0;
 }
-
 .dropdown-item {
     display: flex;
     align-items: center;
     gap: 8px;
     padding: 6px 10px;
     cursor: pointer;
+    background-color: var(--Navy-blue);
 }
 
 .overviewCard .card-body .sentences {
@@ -5050,7 +5052,6 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
         gap: .3vw;
         border-radius: .5vw;
         padding: 0.3vw 0.6vw;
-        font-size: 0.8vw;
     }
 
     .barChart {
