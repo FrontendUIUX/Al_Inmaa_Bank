@@ -1339,12 +1339,12 @@ html:not(.designer) .form,
 html:not(.designer).light .form,
 .mobile.light .theme-entry .runtime-form>.form {
     position: relative;
-    padding: 1rem 2rem !important;
+    /* padding: 1rem 2rem !important; */
     border-radius: 1rem;
     overflow: hidden;
     border: 1.6px solid #e5e4de;
     border: none;
-    background-color: white!important;
+    /* background-color: white!important; */
 }
 html:not(.designer) .form,
 .mobile body.theme-entry .runtime-form>.form {
@@ -2132,7 +2132,6 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
 .dropdown-item{
     font-family:var(--regularFont)!important;
     font-size:.9rem!important;
-    color: white;
 }
     .noData h5 {
     font-size: 1.1vw;
@@ -2142,7 +2141,7 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
 }
 .light  .noData h5,
 .light .noData p{
-    color: var(--Navy-blue);
+    color:white!important;
 }
 html:not(.designer).light .grid-column-header-table td .grid-column-header-text {
     color: #001e2d!important;
@@ -2561,7 +2560,7 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     font-size: 1.1vw;
     margin-bottom:.6vw;
     font-family:var(--mediumFont);
-    color: white;
+    color:var(--Navy-blue);
 }
 .noData p{
     font-size:1vw;

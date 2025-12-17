@@ -944,11 +944,12 @@ td[data-title="Actions"] .dropdown-custom button.choosen {
     pointer-events: none;
 }
 html:not(.designer).light td[data-title="Actions"] .dropdown-custom button {
-    color: inherit;
+    background-color: #05263A;
     background-color: #f1dfda;
+    color: inherit;
 }
 html:not(.designer).light .dropdown-menu-custom {
-    background-color: #05263A;
+    background-color: #ffffff;
 }
 html:not(.designer).light .Select-btn .small-logo-chevron {
     filter: none;
@@ -2361,8 +2362,7 @@ html:not(.designer).light .card.totalRequests .dropdown-menu {
 
 
 html:not(.designer).light .card.totalRequests .dropdown-menu .dropdown-item {
-    color: inherit;
-    background-color: white;
+    color: white;
 }
 
 .pendingRequestsTable .actionsColumn span {
@@ -3068,13 +3068,13 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .feedba
     background-color: #F0DFDB;
     border-radius: 8px;
     padding: .3rem 1rem;
-    font-size: var(--fs-button);
+    font-size: 0.8rem;
 }
 
 .dropdown-menu-custom {
     display: none;
     position: absolute;
-    background: #fff;
+    background: #05263A;
     border-radius: 10px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     z-index: 10;
@@ -3126,8 +3126,13 @@ html:not(.designer).light .option-icon[alt="Return"] {
 .dropdown-custom.active .small-logo-chevron {
     transform: rotate(180deg);
 }
+
 .dropdown-menu {
     padding: 0;
+}
+.light .dropdown-item{
+    background-color:white;
+    color:var(--Navy-blue);
 }
 .dropdown-item {
     display: flex;
@@ -3136,6 +3141,7 @@ html:not(.designer).light .option-icon[alt="Return"] {
     padding: 6px 10px;
     cursor: pointer;
     background-color: var(--Navy-blue);
+    color: white;
 }
 
 .overviewCard .card-body .sentences {
@@ -5052,6 +5058,7 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
         gap: .3vw;
         border-radius: .5vw;
         padding: 0.3vw 0.6vw;
+        font-size: 0.8vw;
     }
 
     .barChart {
