@@ -35,7 +35,7 @@ html body.theme-entry .form .row:first-child{
     fill: var(--Navy-blue-low-opacity) !important;
 
 }
-.dark .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
+.light .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
     fill: white!important;
 }
 html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
@@ -88,3 +88,4 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     margin-top: 0.6vw!important;
 }
 }
+/* final backup 17 december 2025*/

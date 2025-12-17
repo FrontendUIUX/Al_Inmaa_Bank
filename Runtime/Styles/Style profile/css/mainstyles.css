@@ -1,4 +1,4 @@
-html.dark:root {
+html.light:root {
     --Body_Background_Color:#F9F2ED;
     --Table_Header_Color:#002134;
     --Table_Body_Color:#002134;
@@ -157,17 +157,17 @@ html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"]{
     color:white!important;
     font-size: var(--fs-body)!important;
 }
-html:not(.designer).dark body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_picker"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_calendar"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_textbox"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_textarea"] [name*="s_label"]
-html:not(.designer).dark body.theme-entry [name*="s_textarea"] [name*="s_label"],
-html:not(.designer).dark body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_picker"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_calendar"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_textbox"] [name*="s_label"], 
-html:not(.designer).dark body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+html:not(.designer).light body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_picker"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_calendar"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_textbox"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_textarea"] [name*="s_label"]
+html:not(.designer).light body.theme-entry [name*="s_textarea"] [name*="s_label"],
+html:not(.designer).light body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_picker"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_calendar"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_textbox"] [name*="s_label"], 
+html:not(.designer).light body.theme-entry [name*="s_textarea"] [name*="s_label"]{
     color:var(--Navy-blue-low-opacity)!important;
 }
 html:not(.designer) body.theme-entry .on-focus [name*="s_label"],
@@ -304,13 +304,13 @@ html:not(.designer) body.theme-entry .toolbar-wrapper{
     background-repeat:no-repeat;
 
 }
-.dark .theme-entry .input-control.select-box .input-control-buttons a.date > span span, 
-.dark .theme-entry .input-control.select-box .input-control-buttons a.date:active > span span, 
-.dark .theme-entry .input-control.select-box.active .input-control-buttons a.date > span span, 
-.dark .theme-entry .input-control.select-box.read-only .input-control-buttons a.date:hover > span span, 
-.dark .theme-entry .input-control.select-box.read-only .input-control-buttons a.date:focus > span span, 
-.dark .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:hover > span span, 
-.dark .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:focus > span span{
+.light .theme-entry .input-control.select-box .input-control-buttons a.date > span span, 
+.light .theme-entry .input-control.select-box .input-control-buttons a.date:active > span span, 
+.light .theme-entry .input-control.select-box.active .input-control-buttons a.date > span span, 
+.light .theme-entry .input-control.select-box.read-only .input-control-buttons a.date:hover > span span, 
+.light .theme-entry .input-control.select-box.read-only .input-control-buttons a.date:focus > span span, 
+.light .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:hover > span span, 
+.light .theme-entry .input-control.select-box.disabled .input-control-buttons a.date:focus > span span{
     filter:brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
 }
 .theme-entry .grid-summary .grid-summary-item{
@@ -353,16 +353,16 @@ html:not(.designer) body.theme-entry .grid-body .select-box{
     height:1rem;
     width:1rem;
 }
-html:not(.designer).dark .theme-entry .input-control.select-box .input-control-buttons a.picker-search > span span, 
-html:not(.designer).dark .theme-entry .input-control.select-box .input-control-buttons a.picker-search:active > span span, 
-html:not(.designer).dark .theme-entry .input-control.select-box.active .input-control-buttons a.picker-search > span span, 
-html:not(.designer).dark .theme-entry .input-control.select-box.read-only .input-control-buttons a.picker-search:hover > span span, 
-html:not(.designer).dark .theme-entry .input-control.select-box.read-only .input-control-buttons a.picker-search:focus > span span,
-html:not(.designer).dark .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:hover > span span, 
-html:not(.designer).dark .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:focus > span span{
+html:not(.designer).light .theme-entry .input-control.select-box .input-control-buttons a.picker-search > span span, 
+html:not(.designer).light .theme-entry .input-control.select-box .input-control-buttons a.picker-search:active > span span, 
+html:not(.designer).light .theme-entry .input-control.select-box.active .input-control-buttons a.picker-search > span span, 
+html:not(.designer).light .theme-entry .input-control.select-box.read-only .input-control-buttons a.picker-search:hover > span span, 
+html:not(.designer).light .theme-entry .input-control.select-box.read-only .input-control-buttons a.picker-search:focus > span span,
+html:not(.designer).light .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:hover > span span, 
+html:not(.designer).light .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:focus > span span{
     filter:brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
 }
-.dark body {
+.light body {
   background-color: #002134;
 }
 [name*="s_dropdown"] .picker-resolve,
@@ -397,7 +397,7 @@ html:not(.designer) .on-focus[name*="s_calendar"] input[type=text].input-control
     min-height: unset;
     line-height: unset;
 }
-html:not(.designer).dark .on-focus[name*="s_calendar"] input[type=text].input-control {
+html:not(.designer).light .on-focus[name*="s_calendar"] input[type=text].input-control {
     color:rgb(255 255 255);
 }
 html:not(.designer) .theme-entry .input-control.select-box.picker-input div.editable-area{
@@ -409,9 +409,9 @@ html:not(.designer) .theme-entry .input-control.select-box.picker-input div.edit
 html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button.help{
     display: none;
 }
-html:not(.designer).dark .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill,
-html:not(.designer).dark .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:hover,
-html:not(.designer).dark .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:focus {
+html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill,
+html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:hover,
+html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:focus {
   background-color: #05263A  !important;
   -webkit-box-shadow: 0 0 0 1000px #05263A  inset !important;
   box-shadow: 0 0 0 1000px #05263A  inset !important;
@@ -440,16 +440,16 @@ html:not(.designer) body.theme-entry .stack-container{
     display: flex;
     gap: 2rem;
 }
-html:not(.designer).dark .grid-column-header-table td .grid-column-header-text {
-    color: white !important;
+html:not(.designer).light .grid-column-header-table td .grid-column-header-text {
+    color: #001e2d !important;
 }
  
-html:not(.designer).dark .theme-entry .grid table.grid-content-table.zebra-stripes .empty-grid{
-    background-color: #043049 !important;
+html:not(.designer).light .theme-entry .grid table.grid-content-table.zebra-stripes .empty-grid{
+    background-color: white!important;
 }
  
 html:not(.designer) .theme-entry .grid table.grid-content-table.zebra-stripes .empty-grid{
-    background-color: white !important;
+    background-color: #043049 !important;
 }
 
 /* VIEW TITLE START */
@@ -461,8 +461,8 @@ html:not(.designer) .theme-entry .grid table.grid-content-table.zebra-stripes .e
     font-size: 1.4rem;
 }
 
-html:not(.designer).dark [name*="viewTitle"],
-html:not(.designer).dark .grid-header-wrapper .grid-header-text>span {
+html:not(.designer).light [name*="viewTitle"],
+html:not(.designer).light .grid-header-wrapper .grid-header-text>span {
     color: var(--Navy-blue) !important;
 }
 
@@ -531,7 +531,7 @@ html:not(.designer) .theme-entry .popup-footer {
 
 html:not(.designer) .theme-entry .popup-header {
     padding: 1rem 2rem;
-    background-color: #f7f7f7;
+    background-color: #001E2D;
     margin: 0 !important;
     position: relative !important;
     height: fit-content !important;
@@ -553,14 +553,18 @@ html:not(.designer) .popup.dialog {
     border-radius: 1rem !important;
     overflow: hidden;
     z-index: 5;
+    background-color: var(--Navy-blue);
 }
-html:not(.designer).dark .theme-entry .popup-header{
-    background-color: #001E2D !important;
+html:not(.designer).light .theme-entry .popup-header{
+    background-color: #f7f7f7;
 }
-html:not(.designer).dark .popup.dialog{
-    background-color:var(--Navy-blue);
+html:not(.designer).light .popup.dialog{
+    background-color: #ffffff;
 }
-html:not(.designer).dark .popup.dialog .message{
+html:not(.designer).light .popup.dialog .message{
+    color:inherit;
+}
+html:not(.designer) .popup.dialog .message{
     color:white;
 }
 html:not(.designer) .popup.dialog .popup-header .popup-header-text {
@@ -844,9 +848,9 @@ html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_c
 html:not(.designer) body.theme-entry table tr.edit-template-row{
     border:1px solid rgb(255 255 255 / 20%)!important;
 }
-html:not(.designer).dark body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
-html:not(.designer).dark body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
-html:not(.designer).dark body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
     border:1px solid rgb(255 255 255 / 20%)!important;
     border-radius:.5rem!important;
     background-color:transparent!important;
@@ -887,9 +891,7 @@ html:not(.designer) [name*="s_calendar"]:has(.invalid) input,
 html:not(.designer) [name*="s_calendar"].editor-cell.lastcellinrow:has(.invalid) input{
     color: var(--input-error-text-color)!important;
 }
-html:not(.designer).dark .file-table{
-    filter: brightness(0) invert(1);
-}
+
 .empty-grid .grid-content-cell-wrapper {
     text-align: center!important;
     margin-top:1rem;
@@ -905,26 +907,32 @@ html:not(.designer) body.theme-entry [name*="s_textbox"] input ,
 html:not(.designer) body.theme-entry .picker-input .editable-area .entity > span{
     color: var(--Read_Only_Label_Color)!important;
 }
-html:not(.designer).dark [name*="s_textarea"] textarea,
-html:not(.designer).dark [name*="s_textbox"] input,
-html:not(.designer).dark .theme-entry .picker-input .editable-area .entity > span{
+html:not(.designer).light [name*="s_textarea"] textarea,
+html:not(.designer).light [name*="s_textbox"] input,
+html:not(.designer).light .theme-entry .picker-input .editable-area .entity > span{
     color: var(--Light-black) !important;
 }
-html:not(.designer).dark .theme-entry .grid table.grid-content-table > tbody > tr > td,
-html:not(.designer).dark .theme-entry .grid table.grid-column-header-table td
+html:not(.designer).light .theme-entry .grid table.grid-content-table > tbody > tr > td
 {
      border-bottom: 1px solid rgb(255 255 255 / 10%)!important;
-     background-color: transparent;
+     background-color: transparent!important;
+     
+}
+.theme-entry .file-wrapper{
+    color:white!important;
+}
+html:not(.designer).light .theme-entry .grid table.grid-column-header-table td{
+    background-color: var(--Isabelline)!important;
 }
 html:not(.designer) .drop-menu{
     background-color: #05263A;
 }
-html:not(.designer).dark .drop-menu{
+html:not(.designer).light .drop-menu{
     background-color: white;
 }
-html:not(.designer).dark .drop-menu li a,
-html:not(.designer).dark .drop-menu li:hover a,
-html:not(.designer).dark .drop-menu li:hover a span{
+html:not(.designer).light .drop-menu li a,
+html:not(.designer).light .drop-menu li:hover a,
+html:not(.designer).light .drop-menu li:hover a span{
     color: #05263A;
 }
 html:not(.designer) .drop-menu li a,
@@ -932,7 +940,7 @@ html:not(.designer) .drop-menu li:hover a,
 html:not(.designer) .drop-menu li:hover a span{
     /* color: #ffffff!important; */
 }
-html:not(.designer).dark .drop-menu li a:hover{
+html:not(.designer).light .drop-menu li a:hover{
    background-color: hsl(0deg 0% 96.08% / 18%);
 }
 
@@ -983,17 +991,17 @@ html:not(.designer) .theme-entry .editingForm [name*="s_textbox"]  input{
     font-size: 1rem;
     color: rgb(57 94 117 / 85%) !important;
 }
-html:not(.designer).dark .input-control a.input-control span,
-html:not(.designer).dark .input-control.watermark a.input-control span,
-html:not(.designer).dark .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox, 
-html:not(.designer).dark .on-focus[name*="s_textarea"] textarea, 
-html:not(.designer).dark .form.editingForm [name*="s_textarea"] textarea{
+html:not(.designer).light .input-control a.input-control span,
+html:not(.designer).light .input-control.watermark a.input-control span,
+html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox, 
+html:not(.designer).light .on-focus[name*="s_textarea"] textarea, 
+html:not(.designer).light .form.editingForm [name*="s_textarea"] textarea{
     color: var(--Navy-blue) !important;
 }
-html:not(.designer).dark .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly,
-html:not(.designer).dark .form.editingForm span[name*="s_textarea"]:has(textarea[readonly]) textarea,
-html:not(.designer).dark [name*="s_dropdown"] .read-only a.styling-font span,
-html:not(.designer).dark [name*="s_picker"] .read-only a.styling-font span{
+html:not(.designer).light .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly,
+html:not(.designer).light .form.editingForm span[name*="s_textarea"]:has(textarea[readonly]) textarea,
+html:not(.designer).light [name*="s_dropdown"] .read-only a.styling-font span,
+html:not(.designer).light [name*="s_picker"] .read-only a.styling-font span{
     color: #537A91 !important; 
 }
  html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly{
@@ -1074,13 +1082,13 @@ html:not(.designer) .form.editingForm [name*="s_picker"] a.styling-font{
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
     background-position: 0 0 !important;
 }
-html:not(.designer).dark .input-control.select-box .input-control-buttons a.dropdown>span span,
-html:not(.designer).dark .input-control.select-box .input-control-buttons a.dropdown:active>span span,
-html:not(.designer).dark .input-control.select-box.active .input-control-buttons a.dropdown>span span,
-html:not(.designer).dark .input-control.select-box.active .input-control-buttons a.dropdown:focus>span span,
-html:not(.designer).dark .input-control.select-box.active .input-control-buttons a.dropdown:hover>span span,
-html:not(.designer).dark .input-control.select-box.read-only .input-control-buttons a.dropdown:hover>span span,
-html:not(.designer).dark .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
+html:not(.designer).light .input-control.select-box .input-control-buttons a.dropdown>span span,
+html:not(.designer).light .input-control.select-box .input-control-buttons a.dropdown:active>span span,
+html:not(.designer).light .input-control.select-box.active .input-control-buttons a.dropdown>span span,
+html:not(.designer).light .input-control.select-box.active .input-control-buttons a.dropdown:focus>span span,
+html:not(.designer).light .input-control.select-box.active .input-control-buttons a.dropdown:hover>span span,
+html:not(.designer).light .input-control.select-box.read-only .input-control-buttons a.dropdown:hover>span span,
+html:not(.designer).light .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
     filter: invert(1);
 }
 
@@ -1106,7 +1114,7 @@ html:not(.designer) .form.editingForm [name*="s_textarea"] textarea{
 }
 
 
-html:not(.designer).dark .commentsAttachments textarea{
+html:not(.designer).light .commentsAttachments textarea{
     color: white !important;
 }
 
@@ -1138,8 +1146,8 @@ html:not(.designer) [name*="s_picker"]:has(.input-control.select-box.read-only) 
     flex-direction: row-reverse;
 }
 /*  TEXTBOX READONLY START */
-html:not(.designer).dark .form.editingForm  [name*="s_textarea"],
-html:not(.designer).dark .form.editingForm  [name*="s_dropdown"]{
+html:not(.designer).light .form.editingForm  [name*="s_textarea"],
+html:not(.designer).light .form.editingForm  [name*="s_dropdown"]{
     /* border: 1px solid #04324C !important; */
     /* background-color: #05263A !important; */
 }
@@ -1148,7 +1156,7 @@ html:not(.designer) [name*="s_dropdown"],
 html:not(.designer) [name*="s_picker"]{
     cursor: pointer;
 }
-.dark [name*="s_calendar"] input{
+.light [name*="s_calendar"] input{
     color:white!important;
     top:.3rem;
 }
@@ -1166,7 +1174,7 @@ html:not(.designer) [name*="s_label"] {
     text-wrap: auto;
     padding: 0!important;
 }
-html:not(.designer).dark [name*="s_label"]{
+html:not(.designer).light [name*="s_label"]{
     color: var(--Light-black);
 }
 html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
@@ -1209,20 +1217,25 @@ html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Control
 }
 
 
-html:not(.designer).dark [name*="s_button s_primary_button"],
-html:not(.designer).dark .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button {
+html:not(.designer).light [name*="s_button s_primary_button"],
+html:not(.designer).light .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button {
      background-color: var(--Navy-blue) !important;
     color: var(--White) !important;
 }
 
-html:not(.designer).dark [name*="s_button s_primary_button"]:hover{
-     background-color: #ffad9c !important;
+html:not(.designer).light [name*="s_button s_primary_button"]:hover{
+     background-color: #001E2D !important;
 }
 html:not(.designer) [name*="s_button s_primary_button"]:hover,
 html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button:hover {
     background-color: #001E2D !important;
     color: var(--White) !important;
     border: 1px solid #001E2D !important;
+    background-color: #ffad9c !important;
+}
+html:not(.designer).light [name*="s_button s_primary_button"]:hover,
+html:not(.designer).light .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button:hover{
+    background-color:var(--Navy-blue-low-opacity)!important
 }
 html:not(.designer) [name*="s_button s_secondary_button"] {
     border: 1px solid var(--Navy-blue) !important;
@@ -1231,8 +1244,9 @@ html:not(.designer) [name*="s_button s_secondary_button"] {
     color: white !important;
      background-color: transparent!important;
 }
-html:not(.designer).dark [name*="s_button s_secondary_button"] {
+html:not(.designer).light [name*="s_button s_secondary_button"] {
     color: var(--Navy-blue) !important;
+    border-color: var(--Navy-blue) !important;
 }
 html:not(.designer) [name*="s_button s_secondary_button"]:hover {
     border: 1px solid var(--Navy-blue-low-opacity) !important;
@@ -1240,7 +1254,7 @@ html:not(.designer) [name*="s_button s_secondary_button"]:hover {
     background-color: rgb(0 33 52 / 10%);
     
 }
-html:not(.designer).dark [name*="s_button s_secondary_button"]:hover {
+html:not(.designer).light [name*="s_button s_secondary_button"]:hover {
     background-color: rgb(255 255 255 / 10%);
 }
 html:not(.designer) [name*="s_button s_save_button"] {
@@ -1251,11 +1265,10 @@ html:not(.designer) [name*="s_button s_save_button"] {
     font-family: var(--regularFont);
     padding: 0.6rem 0rem .6rem 2rem !important;
     width: fit-content;
-    color: var(--Navy-blue);
-}
-html:not(.designer).dark [name*="s_button s_save_button"] {
     color: white;
-    
+}
+html:not(.designer).light [name*="s_button s_save_button"] {
+    color: var(--Navy-blue);
 }
 span#c655df8d-4567-342e-b826-2fb81eaaa47c {
     padding: 0 !important;
@@ -1283,17 +1296,18 @@ html:not(.designer) [name*="s_button s_save_button"]::before {
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    filter: brightness(0) invert(1);
 }
 
-html:not(.designer).dark .form .view .innerpanel > .grid{
+html:not(.designer) .form .view .innerpanel > .grid{
     background-color: transparent;
     
 }
-html:not(.designer).dark [name*="attachmentSection"] {
+html:not(.designer).light [name*="attachmentSection"] {
     border: 1px solid rgb(255 255 255 / 12%) !important;
 }
-html:not(.designer).dark [name*="s_button s_save_button"]::before {
-  filter: brightness(0) invert(1);
+html:not(.designer).light [name*="s_button s_save_button"]::before {
+  filter: none;
 }
 html:not(.designer) [name*="s_asterik"] {
     color: var(--Navy-blue) !important;
@@ -1304,24 +1318,27 @@ html.mobile body {
     position: relative !important;
 }
 /* form */
-html:not(.designer).dark .form,
-.mobile.dark .theme-entry .runtime-form>.form {
+html:not(.designer) .form,
+.mobile .theme-entry .runtime-form>.form{
+    
+}
+html:not(.designer).light .form,
+.mobile.light .theme-entry .runtime-form>.form {
     position: relative;
     padding: 1rem 2rem !important;
     border-radius: 1rem;
     overflow: hidden;
     border: 1.6px solid #e5e4de;
     border: none;
-    background-color:white;
+    background-color: white!important;
 }
 html:not(.designer) .form,
 .mobile body.theme-entry .runtime-form>.form {
-    background-color: rgb(4 50 76 / 90%);
+    background-color: rgb(4 50 76 / 90%)!important;
     position: relative;
     padding: 1rem 2rem !important;
     border-radius: 1rem;
     overflow: hidden;
-
 }
 
 /* sub sidebar start  */
@@ -1361,7 +1378,7 @@ html:not(.designer) header {
 html:not(.designer) header{
     background-color: rgb(0 33 52 / 80%);
 }
-html:not(.designer).dark header{
+html:not(.designer).light header{
      background-color: hsl(25deg 50% 95% / 30%);
 }
 html:not(.designer) .theme-entry header>span {
@@ -1540,7 +1557,7 @@ html:not(.designer) .pendingStep::before {
     transform: translateX(-50%) translateY(100%);
 }
 
-html:not(.designer).dark .pendingStep::before {
+html:not(.designer).light .pendingStep::before {
     background-image: url("/Runtime/Styles/Style%20profile/images/k2/Pending.png");
 }
 
@@ -1548,7 +1565,7 @@ html:not(.designer) [name*="s_step"]{
     position:relative;
 }
 
-html:not(.designer).dark [name*="s_step"]::after {
+html:not(.designer).light [name*="s_step"]::after {
     background-color: rgb(0 0 0 / 15%) !important;
 }
 
@@ -1582,10 +1599,10 @@ html:not(.designer) [name*="stepTitle"] {
     text-align: center;
     margin-top: 4rem;
 }
-html:not(.designer).dark [name*="stepTitle"]  {
+html:not(.designer).light [name*="stepTitle"]  {
     color: #002134 !important;
 }
-html:not(.designer).dark [name*="stepDescription"]  {
+html:not(.designer).light [name*="stepDescription"]  {
     color: rgb(0 0 0 / 70%) !important;
 }
 html:not(.designer) [name*="stepDescription"] {
@@ -1619,17 +1636,17 @@ html:not(.designer) .form.editingForm [name*="s_textarea"] [name*="s_label"]{
 /* radio button */
 html:not(.designer) .theme-entry .input-control.radio.style-aware svg .svg-radio-btn-circle,
 html:not(.designer) .theme-entry .input-control.radio.style-aware circle.svg-radio-btn-checked {
-    fill: var(--Isabelline) !important;
+    fill: #002134 !important;
     stroke: none;
 }
 
-html:not(.designer).dark .input-control.radio.style-aware svg .svg-radio-btn-circle,  
-html:not(.designer).dark .input-control.radio.style-aware circle.svg-radio-btn-checked{
-    fill: #002134 !important;
+html:not(.designer).light .input-control.radio.style-aware svg .svg-radio-btn-circle,  
+html:not(.designer).light .input-control.radio.style-aware circle.svg-radio-btn-checked{
+    fill: var(--Isabelline) !important;
 }
 
-html:not(.designer).dark .input-control.style-aware.radio.checked svg .svg-radio-btn-circle,  
-html:not(.designer).dark .input-control.style-aware.radio.checked circle.svg-radio-btn-checked{
+html:not(.designer).light .input-control.style-aware.radio.checked svg .svg-radio-btn-circle,  
+html:not(.designer).light .input-control.style-aware.radio.checked circle.svg-radio-btn-checked{
     fill: var(--Purple) !important;
 }
 
@@ -1646,7 +1663,7 @@ html:not(.designer) .input-control.style-aware.radio.checked circle.svg-radio-bt
 html:not(.designer) .input-control.style-aware.radio.checked.read-only circle.svg-radio-btn-checked {
     fill: rgba(57, 94, 117, 0.6) !important;
 }
-html:not(.designer).dark .input-control.style-aware.radio.checked.read-only circle.svg-radio-btn-checked {
+html:not(.designer).light .input-control.style-aware.radio.checked.read-only circle.svg-radio-btn-checked {
     fill: #50778D !important;
 }
 html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
@@ -1657,11 +1674,13 @@ html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-li
     font-size: var(--fs-body)!important;
     font-family: var(--regularFont) !important;
 }
-html:not(.designer).dark .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
+html:not(.designer) .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
     color: white;
 }
-
-html:not(.designer).dark .form.editingForm .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text, html:not(.designer) body.theme-entry .form.editingForm .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
+html:not(.designer).light .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
+    color: inherit;
+}
+html:not(.designer).light .form.editingForm .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text, html:not(.designer) body.theme-entry .form.editingForm .stack-container .stack div.multi-select-box-list-item label.input-control .input-control-text {
     color: #537A91;
 }
 html:not(.designer) .theme-entry .stack-container .stack div.multi-select-box-list-item label.input-control {
@@ -1688,11 +1707,11 @@ html:not(.designer) .grid-column-headers {
     padding: 0;
 }
 
-html:not(.designer).dark [name*="attachmentSection"] .grid-column-headers ,
-html:not(.designer).dark .grid-column-headers {
+html:not(.designer).light [name*="attachmentSection"] .grid-column-headers ,
+html:not(.designer).light .grid-column-headers {
     background-color:#002134!important;
 }
-html:not(.designer).dark [name*="attachmentSection"] .grid-column-headers {
+html:not(.designer).light [name*="attachmentSection"] .grid-column-headers {
     background-color: var(--Navy-blue) !important;
 }
 
@@ -1737,19 +1756,21 @@ html:not(.designer) body.theme-entry .grid-content-cell.edit-mode{
     background-size: contain;
     height: 1rem;
     width: 1rem;
+    filter: brightness(0) invert(1);
 }
 
 
-html:not(.designer).dark .toolbar-button.add::before,
-html:not(.designer).dark .toolbar-button.edit::before,
-html:not(.designer).dark .toolbar-button.delete::before,
-html:not(.designer).dark .toolbar-button.save::before,
-html:not(.designer).dark [name*="Review Details Button mr-1 s_button s_secondary_button"]::before{
-    filter: brightness(0) invert(1);
+html:not(.designer).light .toolbar-button.add::before,
+html:not(.designer).light .toolbar-button.edit::before,
+html:not(.designer).light .toolbar-button.delete::before,
+html:not(.designer).light .toolbar-button.save::before,
+html:not(.designer).light [name*="Review Details Button mr-1 s_button s_secondary_button"]::before{
+    filter: none;
 }
 
 .toolbar-button.add::before {
     background-image: url("/Runtime/Styles/Style%20profile/images/k2/add.svg");
+    filter: brightness(0) invert(1);
 }
 
 .toolbar-button.edit::before {
@@ -1804,7 +1825,7 @@ html:not(.designer) body.theme-entry .drop-menu ul.drop-menu {
 }
 
 
-html:not(.designer).dark .drop-menu li.selected:first-child {
+html:not(.designer).light .drop-menu li.selected:first-child {
     background-color: #05263A !important;
 }
 
@@ -1850,11 +1871,11 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
     font-size: 1.6rem !important;
     font-family: var(--mediumFont) !important;
     margin: 1rem 0 0rem !important;
-    color: var(--Navy-blue) !important;
+    color: white !important;
 }
 
-html:not(.designer).dark [name*="successMessageTitle"] {
-    color: white !important;
+html:not(.designer).light [name*="successMessageTitle"] {
+    color: var(--Navy-blue) !important;
 }
 
 [name*="Reference No Data Label"] {
@@ -1925,8 +1946,8 @@ span[name*="s_picker"]:has(.select-box.disabled) input{
 .theme-entry .input-control.checkbox .svg-checkbox-box {
     rx: 3;
     ry: 3;
-    stroke: #EAD1C2 !important;
-    fill: #F6E2D5 !important;
+    stroke: #0b3d5a !important;
+    fill: var(--Navy-blue) !important;
 }
 
 .theme-entry .input-control.checkbox.style-aware.read-only .svg-checkbox-box {
@@ -1958,11 +1979,11 @@ span[name*="s_picker"]:has(.select-box.disabled) input{
     border:none;
 }
 
-html:not(.designer).dark [name*="attachmentSection"] .grid-column-headers .grid-column-header-text{
-    color: white !important;
+html:not(.designer).light [name*="attachmentSection"] .grid-column-headers .grid-column-header-text{
+    color: #001e2d !important;
 }
 
-html:not(.designer).dark .grid-column-header-table td {
+html:not(.designer) .grid-column-header-table td {
     background-color: var(--Navy-blue) !important;
 }
 .file-delete {
@@ -1994,6 +2015,7 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
+    filter: brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
 }
 
 .theme-entry.runtime-form .grid .grid-content-cell-wrapper {
@@ -2024,21 +2046,21 @@ html:not(.designer) .grid .grid-content-cell-wrapper,
 html:not(.designer) .theme-entry .grid .grid-content-cell{
     color: white;
 }
-html:not(.designer).dark .runtime-form .grid .grid-content-cell-wrapper,
-html:not(.designer).dark .input-control.checkbox.style-aware .input-control-text,
-html:not(.designer).dark .grid .grid-content-cell-wrapper,
-html:not(.designer).dark .theme-entry .grid .grid-content-cell{
+html:not(.designer).light .runtime-form .grid .grid-content-cell-wrapper,
+html:not(.designer).light .input-control.checkbox.style-aware .input-control-text,
+html:not(.designer).light .grid .grid-content-cell-wrapper,
+html:not(.designer).light .theme-entry .grid .grid-content-cell{
     color: var(--Navy-blue);
 }
 .theme-entry .grid .grid-body-content-wrapper{
     background-color:transparent!important;
 }
-html:not(.designer).dark .theme-entry .grid .grid-content-cell{
+html:not(.designer).light .theme-entry .grid .grid-content-cell{
     background-color:transparent!important;
 }
-html:not(.designer).dark .input-control.checkbox .svg-checkbox-box{
-    fill: var(--Navy-blue) !important;
-    stroke: #0b3d5a !important;
+html:not(.designer).light .input-control.checkbox .svg-checkbox-box{
+    fill: #F6E2D5 !important;
+    stroke: #EAD1C2 !important;
 }
 
 
@@ -2101,19 +2123,19 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
     font-family:var(--mediumFont);
     color:var(--Navy-blue);
 }
-.dark  .noData h5,
-.dark .noData p{
+.light  .noData h5,
+.light .noData p{
     color:white!important;
 }
-html:not(.designer).dark .grid-column-header-table td .grid-column-header-text {
-    color: white !important;
+html:not(.designer).light .grid-column-header-table td .grid-column-header-text {
+    color: #001e2d!important;
 }
-html:not(.designer).dark .form.editingForm  [name*="s_textarea"],
-html:not(.designer).dark .form.editingForm  [name*="s_dropdown"],
-html:not(.designer).dark .form.editingForm  [name*="s_picker"],
-html:not(.designer).dark span[name*="s_textbox"]:has(input[readonly]),
-html:not(.designer).dark span[name*="s_textbox"]:has(input[readonly]), 
-html:not(.designer).dark [name*="s_textbox"].editor-cell.lastcellinrow:has(input[readonly]){
+html:not(.designer).light .form.editingForm  [name*="s_textarea"],
+html:not(.designer).light .form.editingForm  [name*="s_dropdown"],
+html:not(.designer).light .form.editingForm  [name*="s_picker"],
+html:not(.designer).light span[name*="s_textbox"]:has(input[readonly]),
+html:not(.designer).light span[name*="s_textbox"]:has(input[readonly]), 
+html:not(.designer).light [name*="s_textbox"].editor-cell.lastcellinrow:has(input[readonly]){
     /* border: 1px solid #04324C !important; */
     /* background-color: #05263A !important; */
 }
@@ -2144,17 +2166,17 @@ html:not(.designer) body.theme-entry span[name*="s_picker"]:has(.select-box.read
 .theme-entry [name*="s_picker"].on-focus .input-control.select-box .input-control-buttons{
     top: 0.6rem;
 }
-html:not(.designer).dark .notification-item a{
+html:not(.designer).light .notification-item a{
      border-bottom: 0.0625rem solid rgba(255, 255, 255, .12);
 }
 .notification-list .notification-item:last-child a {
     border-bottom: unset !important;
 }
-html:not(.designer).dark .request-status-badge {
+html:not(.designer).light .request-status-badge {
     border: 0.188rem solid rgb(0 33 52 / 100%);
 }
 html:not(.designer) body.theme-entry [name*="s_textbox"] input.invalid,
-html:not(.designer).dark body.theme-entry [name*="s_textbox"] input.invalid{
+html:not(.designer).light body.theme-entry [name*="s_textbox"] input.invalid{
     color:var(--pill-error-text-color)!important;
 }
 .edit-template-row{
@@ -2162,6 +2184,7 @@ html:not(.designer).dark body.theme-entry [name*="s_textbox"] input.invalid{
 }
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-column-header-text {
         font-size:var(--fs-body)!important;
+        color: white!important;
     }
 .theme-entry .grid-content-cell a.fileImage.static{
     font-size:var(--fs-caption);
@@ -2281,7 +2304,7 @@ a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588 {
 }
     html:not(.designer) [name*="s_button"], html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button{
         width:auto;
-        margin: 1rem unset;
+        margin: 1rem 0;
     }
     div#d0300780-c69e-30af-366b-fb216c06c0a2_18a1ca65-4c9d-7340-a6d9-d6da3cb0f632_Table{
         justify-content:space-between;
@@ -2664,7 +2687,7 @@ width:8vw;
         height: auto !important;
         filter:brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
     }
-    .dark [name*="headerLogo"]{
+    .light [name*="headerLogo"]{
         filter:none;
     }
     div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
@@ -2786,3 +2809,4 @@ width:8vw;
         padding: 0.8vw 1.5vw;
     }
 }
+/* final backup 17 december 2025*/

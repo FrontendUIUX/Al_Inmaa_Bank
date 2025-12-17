@@ -1,0 +1,121 @@
+@keyframes fadeLeft-rtl {
+    0% {
+        opacity: 0;
+        transform: translateX(100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes fadeRight-rtl {
+    0% {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    100% {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+html:not(.designer)[dir="rtl"] body.theme-entry aside.sidebar {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+    border-left: var(--Sidebar_border);
+    border-right: none;
+    animation: 1s fadeLeft-rtl  forwards;
+}
+
+html:not(.designer)[dir="rtl"] body .sidebar .userProfilePhoto {
+    margin-left: 1rem;
+    margin-right: 0;
+}
+
+html:not(.designer)[dir="rtl"] [name*="s_step"]::after {
+    right: 1.5rem;
+    left: auto;
+}
+
+@media (min-width: 992px) {
+    html:not(.designer)[dir="rtl"] body {
+        padding-right: 19.5rem;
+        padding-left: 0 !important
+    }
+
+    html:not(.designer)[dir="rtl"] [name*="view_move_right"] {
+        margin-right: 22rem !important;
+        margin-left: 0 !important;
+    }
+
+    html:not(.designer)[dir="rtl"] [name*="s_sub_sidebar"] {
+        right: 2rem;
+        left: auto;
+    }
+
+    html:not(.designer)[dir="rtl"] [name*="s_step"] {
+        padding-right: 4rem;
+        padding-left: 0;
+    }
+    html:not(.designer)[dir="rtl"] .theme-entry header, 
+    html:not(.designer)[dir="rtl"] header {
+        right: 18rem;
+        left:auto;
+    }
+}
+
+@media (min-width: 1200px) {
+    html:not(.designer)[dir="rtl"] body {
+        padding-right: 18rem;
+    }
+}
+
+@media (min-width: 1600px) {
+    html:not(.designer)[dir="rtl"] .theme-entry header, 
+    html:not(.designer)[dir="rtl"] header {
+        right: 16vw;
+        left:auto;
+    }
+    html:not(.designer)[dir="rtl"] body {
+        padding-right: 16vw;
+    }
+
+    html:not(.designer)[dir="rtl"] .sideBarLinksGroup .icon {
+        margin-right: 0;
+        margin-left: 0.8vw !important;
+    }
+
+    html:not(.designer)[dir="rtl"] body .sidebar .userProfilePhoto {
+        margin-left: 1vw;
+        margin-right: 0;
+    }
+
+    html:not(.designer)[dir="rtl"] [name*="view_move_right"] {
+        margin-right: 22vw !important;
+        margin-left: 0 !important;
+    }
+
+    html:not(.designer)[dir="rtl"] [name*="s_sub_sidebar"] {
+        right: 2vw;
+        left: auto;
+    }
+
+    html:not(.designer)[dir="rtl"] .inProgressStep::before,
+    html:not(.designer)[dir="rtl"] .pendingStep::before {
+
+        right: 0.3vw !important;
+        left: auto !important;
+    }
+
+    html:not(.designer)[dir="rtl"] [name*="s_step"] {
+        padding-right: 4vw;
+        padding-left: 0;
+    }
+
+    html:not(.designer)[dir="rtl"] [name*="s_step"]::after {
+        right: 1.5vw;
+        left: auto;
+    }
+}
+/* final backup 17 december 2025*/

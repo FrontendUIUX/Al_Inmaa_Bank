@@ -63,7 +63,7 @@ html:not(.designer) .form .view .innerpanel > .panel{
     background-size: contain;
     background-position: center;
 }
-.dark .no-content .card-body{
+.light .no-content .card-body{
     background-image: url("/Runtime/Styles/Style%20Profile/images/dark.svg");
 }
 .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text {
@@ -75,35 +75,33 @@ html:not(.designer) .form .view .innerpanel > .panel{
     pointer-events: none;
 }
 .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .number {
-    display: block;
-    font-family: 'AlinmaTheSans-Bold';
-    font-size: 1.9rem;
     padding: 0;
 }
 
 
-html:not(.designer) body.theme-entry.dark .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .number,
-html:not(.designer) body.theme-entry.dark .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .label{
+html:not(.designer) body.theme-entry.light .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .number,
+html:not(.designer) body.theme-entry.light .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .label{
     color: white;
 }
 
 
 
 .AnalyticsDashboardControl-AnalyticsDashboardControl .number {
-    font-size: 1.8rem;
-    font-weight: bold;
+    font-size: var(--fs-h1);
     padding-left: 0.3rem;
-    font-family: 'AlinmaTheSans-Bold';
+    font-family: var(--mediumFont);
+    color: white;
 }
 .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .label {
     display: block;
-    font-family: var(--Alinma-plain);
-    font-size: 0.8rem;
+    font-family: var(--regularFont);
+    font-size: var(--fs-caption);
     padding: 0;
+    color: white;
 }
-.dark .AnalyticsDashboardControl-AnalyticsDashboardControl .number,
-.dark .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .label {
-    color:white;
+.light .AnalyticsDashboardControl-AnalyticsDashboardControl .number,
+.light .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .label {
+    color: inherit;
 }
 .AnalyticsDashboardControl-AnalyticsDashboardControl .label-box1,
 .AnalyticsDashboardControl-AnalyticsDashboardControl .label-box2,
@@ -187,11 +185,11 @@ span.small-number {
 }
 
 
-html:not(.designer) body.theme-entry.dark .averageTime .dropdown-menu.show{
+html:not(.designer) body.theme-entry.light .averageTime .dropdown-menu.show{
   background-color: #002134;
 }
 
-html:not(.designer) body.theme-entry.dark .averageTime .dropdown-menu.show li a{
+html:not(.designer) body.theme-entry.light .averageTime .dropdown-menu.show li a{
   color: white;
 }
 
@@ -248,7 +246,7 @@ html:not(.designer) body.theme-entry.dark .averageTime .dropdown-menu.show li a{
     background-size: 90%;
     background-position: center;
 }
-.dark .totalRequests.noData .card-body{
+.light .totalRequests.noData .card-body{
     background-image: url("/Runtime/Styles/Style%20Profile/images/completedrequestsdark.png");
 }
 @media (max-width: 768px) {
@@ -375,11 +373,6 @@ html:not(.designer) body.theme-entry.dark .averageTime .dropdown-menu.show li a{
       pointer-events: none;
       margin-top: 1.2rem;
    }
-   .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .number {
-      display: block;
-      font-family: 'AlinmaTheSans-Bold';
-      font-size: 1.9vw;
-   }
    .number {
       font-size: 1.8rem;
       font-weight: bold;
@@ -387,7 +380,6 @@ html:not(.designer) body.theme-entry.dark .averageTime .dropdown-menu.show li a{
       font-family: 'AlinmaTheSans-Bold';
    }
    .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text .label {
-      font-size: .8vw;
       margin-top: -.1vw;
    }
    .label-box1 {
@@ -442,3 +434,4 @@ html:not(.designer) body.theme-entry.dark .averageTime .dropdown-menu.show li a{
       z-index: 0;
    }
 }
+/* final backup 17 december 2025*/
