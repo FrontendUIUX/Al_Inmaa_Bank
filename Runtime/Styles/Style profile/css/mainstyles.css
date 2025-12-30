@@ -884,9 +884,7 @@ html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_c
 html:not(.designer) body.theme-entry table tr.edit-template-row{
     border:1px solid rgb(255 255 255 / 20%)!important;
 }
-html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
-html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
-html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode .dropdown-box{
     border: 1px solid rgb(0 0 0 / 20%)!important;
     border-radius:.5rem!important;
     background-color:transparent!important;
@@ -1803,7 +1801,9 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-header-cell{
     padding: 0rem 1rem;
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode{
-    padding:1rem 0!important;
+    padding: .4rem 1rem .4rem 1rem!important;
+    border-right: 1px solid rgb(0 0 0 / 10%);
+    margin: 1rem 0;
 }
 /* toolbar icons */
 .toolbar-button.add,
