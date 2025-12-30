@@ -909,6 +909,7 @@ html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode .dropdow
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
     border:1px solid rgb(0 0 0 / 20%)!important;
+    color: var(--Navy-blue);
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .input-control.select-box .styling-outer-wrapper{
     display:flex!important;
