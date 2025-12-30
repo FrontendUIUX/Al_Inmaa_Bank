@@ -1417,7 +1417,7 @@ html:not(.designer) .form,
     display: none;
     border-right: 1px solid rgb(255 255 255 / 10%);
     border-radius: 0!Important;
-    height: 100%;
+    height: calc(100% - 4rem);
 }
 html:not(.designer).light body.theme-entry [name*="s_sub_sidebar"] {
     border-right: 1px solid rgb(0 0 0 / 10%);
