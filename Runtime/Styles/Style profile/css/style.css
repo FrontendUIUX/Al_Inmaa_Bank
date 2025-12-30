@@ -4570,6 +4570,9 @@ span#\33 cadd518-d4e8-7b10-93f0-0e742c7279b9 {
     display: flex!important;
     align-items: center;
 }
+div#\30 96be5b7-6d7c-4600-b68b-5cb91a9d0323_43a0cf06-c0ec-fe93-3bbc-c014fc40a1f5_6458ca05-14ac-77d6-cdbf-46283a061121_9d0d7b6b-1889-4dd4-9ce1-c4b3a10e35ba td span {
+    text-align: left!important;
+}
 @media(min-width:768px) {
     .RequestFeedbackControl-RequestFeedbackControl .rating-container {
         justify-content: space-between;

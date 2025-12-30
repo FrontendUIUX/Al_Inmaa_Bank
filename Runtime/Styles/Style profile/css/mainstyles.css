@@ -164,6 +164,12 @@ color:white;
 .light .theme-entry .drop-menu ul.drop-menu li a span{
     color:inherit;
 }
+.light .theme-entry .drop-menu ul.drop-menu a.selected, 
+.light .theme-entry .drop-menu ul.drop-menu a.selected:hover, 
+.light .theme-entry .drop-menu ul.drop-menu li.selected, 
+.light .theme-entry .drop-menu ul.drop-menu li.selected a:hover{
+    background-color:var(--Isabelline)!important;
+}
 .runtime-view aside{
     display:none;
 }
@@ -453,9 +459,10 @@ html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Co
   background-color: transparent !important;
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: transparent !important;
+  -webkit-text-fill-color: var(--Navy-blue)!important;
   caret-color: transparent !important;
   transition: background-color 9999s ease-in-out 0s !important;
+  color: var(--Navy-blue)!important;
 }
 
 html:not(.designer),
@@ -910,6 +917,9 @@ html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
     border:1px solid rgb(0 0 0 / 20%)!important;
     color: var(--Navy-blue);
+}
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
+    padding: 1rem!important;
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .input-control.select-box .styling-outer-wrapper{
     display:flex!important;
