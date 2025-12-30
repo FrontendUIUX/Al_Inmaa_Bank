@@ -2019,15 +2019,15 @@ html:not(.designer).light a.toolbar-button span.button-c span.button-text {
     top: 3.125rem;
     bottom: -1.875rem;
     width: 1px;
-    background-color: #d0d0d0;
-
+    background-color: rgba(255, 255, 255, .3);
 }
 
 
 html:not(.designer).light .status-item::before {
 
-    background-color: rgba(255, 255, 255, .3);
+background-color: rgba(255, 255, 255, .3);
 
+background-color: #d0d0d0;
 }
 
 .status-item:nth-last-of-type(1)::before {
