@@ -143,6 +143,33 @@ html:root{
     src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaDisplay-Medium.ttf");
     font-display: swap;
 }
+html:not(.designer) body.theme-entry [name*="checkboxContainer"]{
+    display:flex!important;
+    align-items: end;
+    flex-direction:row;
+}
+html:not(.designer) body.theme-entry [name*="checkboxContainer"] [name="Table3"]{
+    width:80%;
+}
+html:not(.designer) body.theme-entry [name*="checkboxContainer"] [name="Table3"] span{
+    display:flex;
+    align-items:center;
+    line-height:1;
+    min-height: unset;
+    height: 2rem;
+}
+.theme-entry .drop-menu ul.drop-menu li a span{
+color:white;
+}
+.light .theme-entry .drop-menu ul.drop-menu li a span{
+    color:inherit;
+}
+.runtime-view aside{
+    display:none;
+}
+body.runtime-view{
+    padding:0!important;
+}
 html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"],
 html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"],
 html:not(.designer) body.theme-entry [name*="s_calendar"] [name*="s_label"],
@@ -245,8 +272,12 @@ html:not(.designer) .theme-entry p.SourceCode-Forms-Controls-Web-DataLabel{
 }
 /* PREVENT TITLES AND TEXT FROM BEING CUT END */
 html:not(.designer){
-    background-color:var(--Body_Background_Color)!important;
+    background-color:var(--Navy-blue)!important;
 }
+html:not(.designer).light{
+    background-color:var(--Isabelline)!important;
+}
+
 .noDataPlaceholderWrapperPending{
     height:100%;
 }
@@ -332,6 +363,9 @@ html:not(.designer) body.theme-entry .grid-body .grid-body-content tr td{
     border-bottom: 1px solid rgb(0 0 0 / 10%)!important;
     border-radius: 0!important;
 }
+html:not(.designer) body.theme-entry .grid-body .grid-body-content tr.edit-template-row td{
+    padding:0 .5rem!important;
+}
 html:not(.designer) body.theme-entry .grid-body .select-box{
     border:none!Important;
 }
@@ -358,9 +392,6 @@ html:not(.designer).light .theme-entry .input-control.select-box.read-only .inpu
 html:not(.designer).light .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:hover > span span, 
 html:not(.designer).light .theme-entry .input-control.select-box.disabled .input-control-buttons a.picker-search:focus > span span{
     filter: none;
-}
-.light body {
-  background-color: #002134;
 }
 [name*="s_dropdown"] .picker-resolve,
 [name*="s_picker"] .picker-resolve{
@@ -406,9 +437,9 @@ html:not(.designer) .theme-entry .input-control.select-box.picker-input div.edit
 html:not(.designer) .theme-entry .dialog .popup-footer .SourceCode-Forms-Controls-Web-Button.help{
     display: none;
 }
-html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill,
-html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:hover,
-html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:focus {
+html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill,
+html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:hover,
+html:not(.designer) .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:focus {
   background-color: #05263A  !important;
   -webkit-box-shadow: 0 0 0 1000px #05263A  inset !important;
   box-shadow: 0 0 0 1000px #05263A  inset !important;
@@ -416,14 +447,14 @@ html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Co
   caret-color: #fff !important;
   transition: background-color 9999s ease-in-out 0s !important;
 }
-.on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill,
-.on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:hover,
-.on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:focus {
+html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill,
+html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:hover,
+html:not(.designer).light .on-focus[name*="s_textbox"] input.SourceCode-Forms-Controls-Web-TextBox:-webkit-autofill:focus {
   background-color: transparent !important;
   -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   box-shadow: 0 0 0 1000px transparent inset !important;
-  -webkit-text-fill-color: #05263A !important;
-  caret-color: #05263A !important;
+  -webkit-text-fill-color: transparent !important;
+  caret-color: transparent !important;
   transition: background-color 9999s ease-in-out 0s !important;
 }
 
@@ -868,13 +899,18 @@ html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
-    border:1px solid rgb(0 0 0 / 20%)!important;
+    border:1px solid rgb(255 255 255 / 20%)!important;
     border-radius:.5rem!important;
     background-color:transparent!important;
     height: var(--Fields_Height)!important;
     min-height: var(--Fields_Min_Height)!important;
     display: flex;
     color: white;
+}
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode .dropdown-box,
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textarea"],
+html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
+    border:1px solid rgb(0 0 0 / 20%)!important;
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode .input-control.select-box .styling-outer-wrapper{
     display:flex!important;
@@ -905,9 +941,10 @@ html:not(.designer) [name*="s_calendar"].editor-cell.lastcellinrow:has(.invalid)
     margin-bottom: 1rem;
 }
 html:not(.designer) [name*="s_textarea"] textarea[readonly]{
-    top: 0.7rem;
+    top: 1.2rem;
     position:absolute;
     color: var(--Navy-blue-low-opacity)!important;
+    position: relative!important;
 }
 html:not(.designer) body.theme-entry [name*="s_textarea"] textarea,
 html:not(.designer) body.theme-entry [name*="s_textbox"] input ,
@@ -998,7 +1035,8 @@ html:not(.designer) .theme-entry .editingForm [name*="s_dropdown"] a.styling-fon
 html:not(.designer) .theme-entry .editingForm [name*="s_calendar"] .input-control-m-c .input-control-wrapper input,
 html:not(.designer) .theme-entry .editingForm [name*="s_textbox"]  input{
     font-size: 1rem;
-    color: rgb(57 94 117 / 85%) !important;
+    /* color: rgb(57 94 117 / 85%) !important; */
+    color:var(--Navy-blue)!important;
 }
 html:not(.designer).light .input-control a.input-control span,
 html:not(.designer).light .input-control.watermark a.input-control span,
@@ -1014,6 +1052,9 @@ html:not(.designer).light [name*="s_picker"] .read-only a.styling-font span{
     color: #537A91 !important; 
 }
  html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly{
+     color: rgb(255 255 255 / 70%) !important;
+ }
+ html:not(.designer).light .form.editingForm input.SourceCode-Forms-Controls-Web-TextBox.readonly{
      color: rgb(57 94 117 / 70%) !important;
  }
 html:not(.designer) .theme-entry .input-control a.input-control {
@@ -1048,9 +1089,10 @@ html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBo
     height: 2rem !important;
     min-height: 2rem !important;
     padding: 0 !important;
-    top: 0rem;
+    top: 0.3rem;
     z-index: 1 !important;
     color: var(--Navy-blue);
+
 }
 html:not(.designer) [name*="s_dropdown"] a.styling-font,
 html:not(.designer) [name*="s_picker"] a.styling-font{
@@ -1089,7 +1131,9 @@ html:not(.designer) .form.editingForm [name*="s_picker"] a.styling-font{
 .theme-entry .input-control.select-box.active .input-control-buttons a.dropdown:hover>span span,
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:hover>span span,
 .theme-entry .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
-    background-position: 0 0 !important;
+    background-size: 1rem;
+    background-image: url("/Runtime/Styles/Style%20profile/images/chevron-down.png")!important;
+    background-position: center!important;
 }
 html:not(.designer).light .input-control.select-box .input-control-buttons a.dropdown>span span,
 html:not(.designer).light .input-control.select-box .input-control-buttons a.dropdown:active>span span,
@@ -1098,9 +1142,17 @@ html:not(.designer).light .input-control.select-box.active .input-control-button
 html:not(.designer).light .input-control.select-box.active .input-control-buttons a.dropdown:hover>span span,
 html:not(.designer).light .input-control.select-box.read-only .input-control-buttons a.dropdown:hover>span span,
 html:not(.designer).light .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
+    filter: none;
+}
+html:not(.designer) .input-control.select-box .input-control-buttons a.dropdown>span span,
+html:not(.designer) .input-control.select-box .input-control-buttons a.dropdown:active>span span,
+html:not(.designer) .input-control.select-box.active .input-control-buttons a.dropdown>span span,
+html:not(.designer) .input-control.select-box.active .input-control-buttons a.dropdown:focus>span span,
+html:not(.designer) .input-control.select-box.active .input-control-buttons a.dropdown:hover>span span,
+html:not(.designer) .input-control.select-box.read-only .input-control-buttons a.dropdown:hover>span span,
+html:not(.designer) .input-control.select-box.read-only .input-control-buttons a.dropdown:focus>span span {
     filter: invert(1);
 }
-
 [name*="s_textarea"] textarea {
     position: absolute !important;
     z-index: 1 !important;
@@ -1110,7 +1162,7 @@ html:not(.designer).light .input-control.select-box.read-only .input-control-but
     min-height: 3.5rem !important;
     height: auto;
     padding: 0 !important;
-    top: -2.3rem;
+    /* top: 9.7rem; */
     font-family: var(--regularFont) !important;
     color: var(--Navy-blue) !important;
 }
@@ -1118,7 +1170,7 @@ html:not(.designer).light .input-control.select-box.read-only .input-control-but
 .on-focus[name*="s_textarea"] textarea,
 html:not(.designer) .form.editingForm [name*="s_textarea"] textarea{
     min-height: 2rem !important;
-    top: -0.5rem;
+    top: 1rem;
     font-size: var(--fs-body);
 }
 
@@ -1200,7 +1252,8 @@ html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]{
     align-items: center;
     font-family: var(--regularFont);
     width: 100%;
-    height: unset;
+    height: auto;
+    min-height: 5rem;
     position: relative;
 }
 
@@ -1319,7 +1372,7 @@ html:not(.designer) .form .view .innerpanel > .grid{
     
 }
 html:not(.designer).light [name*="attachmentSection"] {
-    border: 1px solid rgb(255 255 255 / 12%) !important;
+    border: 1px solid rgb(0 0 0 / 12%) !important;
 }
 html:not(.designer).light [name*="s_button s_save_button"]::before {
   filter: none;
@@ -1345,7 +1398,10 @@ html:not(.designer).light .form,
     overflow: hidden;
     border: 1.6px solid #e5e4de;
     border: none;
-    /* background-color: white!important; */
+    background-color: white!important;
+}
+div#\37 4c87488-468d-44a3-b315-7c6a8d514fda{
+    background-color:transparent!important;
 }
 html:not(.designer) .form,
 .mobile body.theme-entry .runtime-form>.form {
@@ -1359,6 +1415,12 @@ html:not(.designer) .form,
 /* sub sidebar start  */
 [name*="s_sub_sidebar"] {
     display: none;
+    border-right: 1px solid rgb(255 255 255 / 10%);
+    border-radius: 0!Important;
+    height: 100%;
+}
+html:not(.designer).light body.theme-entry [name*="s_sub_sidebar"] {
+    border-right: 1px solid rgb(0 0 0 / 10%);
 }
 [name*="s_sub_sidebar"] {
     width: 100% !important;
@@ -1428,6 +1490,7 @@ html:not(.designer) .panel {
 
 html:not(.designer) {
     overflow: auto;
+    background-color: var(--Navy-blue);
 }
 
 html:not(.designer) [name*="view_move_right"] {
@@ -1596,13 +1659,6 @@ html:not(.designer) [name*="s_step"]::after {
 }
 
 html:not(.designer) .completedStep[name*="s_step"]::after {
-    content: "";
-    position: absolute;
-    z-index: 0;
-    left: 1.4rem;
-    top: 100%;
-    width: 1.5px;
-    height: 2.3rem;
     background-color: #6fc978 !important;
 }
 
@@ -1721,7 +1777,11 @@ html:not(.designer) .grid-column-headers {
     border: none !important;
     padding: 0;
 }
-
+html:not(.designer) .theme-entry [name*="attachmentSection"] .toolbar, 
+html:not(.designer) .theme-entry [name*="attachmentSection"] .toolbars.single .toolbar{
+    min-height:unset!important;
+    height: 3.3rem;
+}
 html:not(.designer).light [name*="attachmentSection"] .grid-column-headers ,
 html:not(.designer).light .grid-column-headers {
     background-color: rgb(249 242 237) !important;
@@ -1731,7 +1791,7 @@ html:not(.designer).light [name*="attachmentSection"] .grid-column-headers {
 }
 
 html:not(.designer) [name*="attachmentSection"] {
-    border: 1px solid rgb(0 0 0 / 10%) !important;
+    border: 1px solid rgb(255 255 255 / 10%) !important;
     border-radius: .8rem !important;
     padding: 1rem 1rem;
 }
@@ -1740,6 +1800,7 @@ html:not(.designer) [name*="attachmentSection"] col.sortable{
 }
 html:not(.designer) [name*="attachmentSection"] .grid-column-header-cell{
     width:100%!important;
+    padding: 0rem 1rem;
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode{
     padding:1rem 0!important;
@@ -2144,9 +2205,6 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
 .light .noData p{
     color:white!important;
 }
-html:not(.designer).light .grid-column-header-table td .grid-column-header-text {
-    color: #001e2d!important;
-}
 html:not(.designer).light .form.editingForm  [name*="s_textarea"],
 html:not(.designer).light .form.editingForm  [name*="s_dropdown"],
 html:not(.designer).light .form.editingForm  [name*="s_picker"],
@@ -2160,9 +2218,6 @@ html:not(.designer) .theme-entry .input-control.select-box.read-only input[type=
 html:not(.designer) .theme-entry .input-control.select-box.read-only a.input-control{
     color:rgba(57, 94, 117, 0.85)!important;
     position: relative!important;
-}
-html:not(.designer) .form  [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"]{
-    top: 0.5rem;
 }
 html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"],
 html:not(.designer) body.theme-entry span[name*="s_picker"]:has(.select-box.read-only) [name*="s_label"]{
@@ -2184,7 +2239,7 @@ html:not(.designer) body.theme-entry span[name*="s_picker"]:has(.select-box.read
     top: 0.6rem;
 }
 html:not(.designer).light .notification-item a{
-     border-bottom: 0.0625rem solid rgba(255, 255, 255, .12);
+     border-bottom: 0.0625rem solid #e6eaee;
 }
 .notification-list .notification-item:last-child a {
     border-bottom: unset !important;
@@ -2208,6 +2263,19 @@ html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-colum
     font-family:var(--regularFont)!important;
     padding:0.5rem 0.6rem!important;
 }
+ html:not(.designer) [name*="headerLogo"] {
+        width: 11rem;
+        height: auto !important;
+        filter:brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
+    }
+html:not(.designer) [name*="headerLogo"] img{
+    height:100%;
+    width:100%;
+    object-fit:contain;
+}
+     html:not(.designer).light  [name*="headerLogo"]{
+        filter:none;
+    }
 @media(max-width:767px) {
     span#e0eb6758-87f1-b262-e4cb-bdfa14d879b3 {
     flex-direction: column-reverse;
@@ -2293,7 +2361,6 @@ span#\34 78898ef-421e-99e3-c34c-b6dfb4dcb9d6{
         flex-direction: column;
     }
 }
-
 @media(min-width:992px) {
     
 a#d0300780-c69e-30af-366b-fb216c06c0a2_ee685e75-a8a7-e2b2-183a-e1f5a769bb1a,
@@ -2377,6 +2444,9 @@ html:not(.designer) header {
        flex-direction:row;
         justify-content:space-between;
     }
+     html:not(.designer) .theme-entry header [name*="s_header"] span{
+         width:fit-content!important;
+     }
     html:not(.designer) [name*="stepTitle"] {
     margin-top: 0;
 }
@@ -2415,13 +2485,9 @@ html:not(.designer) header {
     .RequestsDashboardControl-RequestsDashboardControl .container {
         gap: 0rem;
     }
-
-    html:not(.designer) body.theme-entry {
-        padding-top: 8rem;
-    }
-
     div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
-    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table {
+    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
+    div#\36 987f9dd-01c3-cef3-e2f7-6d1790c21b45_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table{
         margin: 8rem auto 10rem;
     }
 
@@ -2432,18 +2498,18 @@ html:not(.designer) header {
     }
     html:not(.designer) body.theme-entry {
         padding-top: 7.5rem;
+        padding-left: 19.5rem;
     }
     html:not(.designer) .theme-entry header,
     html:not(.designer) header {
-        left: 18rem;
-        width: calc(100% - 18rem);
+        left: 19.5rem;
+        width: calc(100% - 19.5rem);
         flex-direction: row;
         justify-content: space-between !important;
         height: 7rem !important;
         padding: 1rem 2rem;
     }
 }
-
 @media(min-width: 1600px) {
     html:root{
     --border-radius-05:.5vw;
@@ -2497,10 +2563,6 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     html:not(.designer) .on-focus[name*="s_calendar"] .input-control-m-c{
     margin-top: 0.6vw;
 }
-    html:not(.designer) .form [name*="s_textarea"]:has(textarea[readonly]) [name*="s_label"] {
-    top: 0.5vw;
-}
-
     .theme-entry .input-control.select-box .input-control-buttons a.date > span span, 
 .theme-entry .input-control.select-box .input-control-buttons a.date:active > span span, 
 .theme-entry .input-control.select-box.active .input-control-buttons a.date > span span, 
@@ -2543,7 +2605,8 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
 
     div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
     div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
-    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table{
+    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
+    div#\36 987f9dd-01c3-cef3-e2f7-6d1790c21b45_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table{
         margin: 8vw auto 10vw;
     }
     html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
@@ -2603,7 +2666,7 @@ width:8vw;
         margin-top: 1vw !important;
     }
     .theme-entry .drop-menu ul.drop-menu li a span{
-        font-size:.8vw;
+        /* font-size:.8vw; */
     }
     html:not(.designer) [name*="s_dropdown"] a.styling-font,
     html:not(.designer) [name*="s_picker"] a.styling-font{
@@ -2696,17 +2759,18 @@ width:8vw;
         border-radius: 1vw;
     }
 
-    [name*="headerLogo"] {
+     html:not(.designer) [name*="headerLogo"] {
         width: 11vw;
         height: auto !important;
         filter:brightness(0) saturate(100%) invert(99%) sepia(72%) saturate(2%) hue-rotate(35deg) brightness(107%) contrast(101%);
     }
-    .light [name*="headerLogo"]{
+     html:not(.designer).light [name*="headerLogo"]{
         filter:none;
     }
     div#\31 837a6f6-046c-cfe9-fa66-ddaa04112fc9_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
     div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
-    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table{
+    div#b7ef1f8a-77e3-d165-c71a-8c929e4c8be2_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table,
+    div#\36 987f9dd-01c3-cef3-e2f7-6d1790c21b45_9efe06c0-d4db-3aaa-7133-44ce71b3cd84_Table{
         margin: 6vw auto 5vw;
     }
 
@@ -2749,7 +2813,7 @@ width:8vw;
     .on-focus[name*="s_textarea"] textarea,
     html:not(.designer) .form.editingForm [name*="s_textarea"] textarea{
         min-height: 2vw !important;
-        top: 0vw;
+        /* top: 0vw; */
         border-radius: .5vw;
     }
     html:not(.designer) .inProgressStep::before,
@@ -2809,6 +2873,7 @@ width:8vw;
     }
     html:not(.designer) body.theme-entry {
         padding-top: 6vw;
+        padding-left: 16vw;
     }
 
     .runtime-content {
@@ -2824,4 +2889,4 @@ width:8vw;
     }
 }
 
-/* final backup 17 december 2025*/
+/* final backup 30 december 2025 */
