@@ -12,7 +12,7 @@ html.light:root {
     --Notification_Card_Border:1px solid rgb(0 0 0 / 10%);
     --Notification_Title_Color:#002134;
     --Read_Only_Fields_Background:#F9F0EB;
-    --Read_Only_Fields_Border:1px solid rgba(57, 94, 117, 0.6);
+    --Read_Only_Fields_Border: 2px solid rgba(57, 94, 117, 0.6);
     --White: #FFFFFF;
     --Isabelline: #F9F2ED;
     --Alabaster: #F3E7E6;
@@ -158,6 +158,13 @@ html:not(.designer) body.theme-entry [name*="checkboxContainer"] [name="Table3"]
     min-height: unset;
     height: 2rem;
 }
+html:not(.designer) body.theme-entry .grid-header-text{
+    font-family:var(--Alinma-bold)!important;
+}
+html:not(.designer).light body.theme-entry .grid-header-text{
+    color:var(--Navy-blue);
+    font-family:var(--Alinma-bold)!important;
+}
 .theme-entry .drop-menu ul.drop-menu li a span{
 color:white;
 }
@@ -185,6 +192,9 @@ html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"]{
     transform: translateY(-50%);
     color:white!important;
     font-size: var(--fs-body)!important;
+}
+html:not(.designer).light body.theme-entry .commentsAttachments [name*="s_textarea"].lastcellinrow{
+    border: var(--Fields_Border)!important;
 }
 html:not(.designer).light body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
 html:not(.designer).light body.theme-entry [name*="s_picker"] [name*="s_label"], 
@@ -571,6 +581,7 @@ html:not(.designer) .theme-entry .popup-header {
     position: relative !important;
     height: fit-content !important;
     left: 0;
+    right: 0;
 }
 
 html:not(.designer) .theme-entry .popup-body {
@@ -853,7 +864,7 @@ html:not(.designer) .searchDdl .input-control.select-box.dropdown-box,
     border:1px solid var(--Textbox-border-color) !important;
 }
 html:not(.designer).light body.theme-entry .id-picker-search .input-control.select-box input[type=text]{
-    color: white;
+    color: var(--Navy-blue);
     border: 1px solid var(--Textbox-border-color) !important;
     background-color: var(--Textbox-background-color) !important;
     font-size: 1rem !important;
@@ -917,6 +928,11 @@ html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
     border:1px solid rgb(0 0 0 / 20%)!important;
     color: var(--Navy-blue);
+}
+html:not(.designer) body.theme-entry table .grid-content-cell.edit-mode input[name="topics_temp ID Text Box s_textbox"],
+html:not(.designer).light body.theme-entry table .grid-content-cell.edit-mode input[name="topics_temp ID Text Box s_textbox"]{
+    border:none!important;
+    background-color:transparent!important;
 }
 html:not(.designer).light body.theme-entry .grid-content-cell.edit-mode [name*="s_textbox"]{
     padding: 1rem!important;
@@ -990,11 +1006,6 @@ html:not(.designer).light .drop-menu li:hover a,
 html:not(.designer).light .drop-menu li:hover a span{
     color: #05263A;
 }
-html:not(.designer) .drop-menu li a,
-html:not(.designer) .drop-menu li:hover a,
-html:not(.designer) .drop-menu li:hover a span{
-    /* color: #ffffff!important; */
-}
 html:not(.designer).light .drop-menu li a:hover{
    background-color: hsl(0deg 0% 96.08% / 18%);
 }
@@ -1038,6 +1049,15 @@ html:not(.designer) .input-control.select-box.dropdown-box {
     html:not(.designer) .editingForm [name*="s_picker"] a.styling-font{
         margin-top: 0vw;
     }
+html:not(.designer).light .theme-entry .form.editingForm .input-control a.input-control span,
+html:not(.designer).light .theme-entry .form.editingForm .input-control.watermark a.input-control span,
+html:not(.designer).light .theme-entry .editingForm [name*="s_dropdown"] a.styling-font span,
+html:not(.designer).light .theme-entry .editingForm [name*="s_calendar"] .input-control-m-c .input-control-wrapper input,
+html:not(.designer).light .theme-entry .editingForm [name*="s_textbox"]  input{
+    font-size: 1rem;
+    /* color: rgb(57 94 117 / 85%) !important; */
+    color:var(--Navy-blue)!important;
+}
 html:not(.designer) .theme-entry .form.editingForm .input-control a.input-control span,
 html:not(.designer) .theme-entry .form.editingForm .input-control.watermark a.input-control span,
 html:not(.designer) .theme-entry .editingForm [name*="s_dropdown"] a.styling-font span,
@@ -1045,7 +1065,7 @@ html:not(.designer) .theme-entry .editingForm [name*="s_calendar"] .input-contro
 html:not(.designer) .theme-entry .editingForm [name*="s_textbox"]  input{
     font-size: 1rem;
     /* color: rgb(57 94 117 / 85%) !important; */
-    color:var(--Navy-blue)!important;
+    color:white!important;
 }
 html:not(.designer).light .input-control a.input-control span,
 html:not(.designer).light .input-control.watermark a.input-control span,
@@ -1216,11 +1236,6 @@ html:not(.designer) [name*="s_picker"]:has(.input-control.select-box.read-only) 
     flex-direction: row-reverse;
 }
 /*  TEXTBOX READONLY START */
-html:not(.designer).light .form.editingForm  [name*="s_textarea"],
-html:not(.designer).light .form.editingForm  [name*="s_dropdown"]{
-    /* border: 1px solid #04324C !important; */
-    /* background-color: #05263A !important; */
-}
 /*  TEXTBOX READONLY END */
 html:not(.designer) [name*="s_dropdown"],
 html:not(.designer) [name*="s_picker"]{
@@ -1395,10 +1410,7 @@ html.mobile body {
     position: relative !important;
 }
 /* form */
-html:not(.designer) .form,
-.mobile .theme-entry .runtime-form>.form{
-    
-}
+
 html:not(.designer).light .form,
 .mobile.light .theme-entry .runtime-form>.form {
     position: relative;
@@ -1723,8 +1735,11 @@ html:not(.designer) .theme-entry .input-control.radio.style-aware circle.svg-rad
 html:not(.designer).light .input-control.radio.style-aware svg .svg-radio-btn-circle,  
 html:not(.designer).light .input-control.radio.style-aware circle.svg-radio-btn-checked{
     fill: var(--Isabelline) !important;
+    
 }
-
+html:not(.designer).light .input-control.radio.style-aware svg .svg-radio-btn-circle{
+    stroke: rgba(57, 94, 117, 0.6);
+}
 html:not(.designer).light .input-control.style-aware.radio.checked svg .svg-radio-btn-circle,  
 html:not(.designer).light .input-control.style-aware.radio.checked circle.svg-radio-btn-checked{
     fill: var(--Purple) !important;
@@ -1809,11 +1824,14 @@ html:not(.designer) [name*="attachmentSection"] col.sortable{
 }
 html:not(.designer) [name*="attachmentSection"] .grid-column-header-cell{
     width:100%!important;
+    /* padding: 0rem 1rem; */
+}
+html:not(.designer) [name*="attachmentSection"] td:nth-child(2) .grid-column-header-cell{
     padding: 0rem 1rem;
 }
 html:not(.designer) body.theme-entry .grid-content-cell.edit-mode{
     padding: .4rem 1rem .4rem 1rem!important;
-    border-right: 1px solid rgb(0 0 0 / 10%);
+    /* border-right: 1px solid rgb(0 0 0 / 10%); */
     margin: 1rem 0;
 }
 /* toolbar icons */
@@ -1937,11 +1955,13 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
     -webkit-line-clamp: 1;
     overflow: hidden;
     white-space: nowrap;
-    color: var(--Navy-blue);
+    color: white;
     font-family: var(--mediumFont);
     font-size: 1rem !important;
 }
-
+.light td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
+    color: var(--Navy-blue);
+}
 .theme-entry .file-wrapper.uploaded {
     border: none !important;
     padding: 0 1rem;
@@ -1990,6 +2010,7 @@ a.fileImage.static {
 
 .file-wrapper.showinfo.uploaded {
     border: none !important;
+    color: white!important;
 }
 
 html:not(.designer) .theme-entry [name*="view_move_left attachmentSection"] {
@@ -2119,7 +2140,7 @@ html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_butt
     color: white!important;
 }
 .theme-entry .grid .grid-column-header-cell-content{
-    padding:1rem 0;
+    padding:1rem;
 }
 div#\37 edaed9a-032c-4fce-a780-69a0ae1005ad> .row:first-child {
     display: none;
@@ -2206,25 +2227,17 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
     font-family:var(--regularFont)!important;
     font-size:.9rem!important;
 }
-    .noData h5 {
+    .noData h5,.noData p {
     font-size: 1.1vw;
     margin-bottom:.6vw;
     font-family:var(--mediumFont);
-    color:var(--Navy-blue);
+    color: white;
 }
 .light  .noData h5,
 .light .noData p{
-    color:white!important;
+    color: var(--Navy-blue);
 }
-html:not(.designer).light .form.editingForm  [name*="s_textarea"],
-html:not(.designer).light .form.editingForm  [name*="s_dropdown"],
-html:not(.designer).light .form.editingForm  [name*="s_picker"],
-html:not(.designer).light span[name*="s_textbox"]:has(input[readonly]),
-html:not(.designer).light span[name*="s_textbox"]:has(input[readonly]), 
-html:not(.designer).light [name*="s_textbox"].editor-cell.lastcellinrow:has(input[readonly]){
-    /* border: 1px solid #04324C !important; */
-    /* background-color: #05263A !important; */
-}
+
 html:not(.designer) .theme-entry .input-control.select-box.read-only input[type=text], 
 html:not(.designer) .theme-entry .input-control.select-box.read-only a.input-control{
     color:rgba(57, 94, 117, 0.85)!important;
@@ -2676,9 +2689,7 @@ width:8vw;
         margin-bottom: 2vw !important;
         margin-top: 1vw !important;
     }
-    .theme-entry .drop-menu ul.drop-menu li a span{
-        /* font-size:.8vw; */
-    }
+
     html:not(.designer) [name*="s_dropdown"] a.styling-font,
     html:not(.designer) [name*="s_picker"] a.styling-font{
     min-height: 3vw !important;
@@ -2899,5 +2910,4 @@ width:8vw;
         padding: 0.8vw 1.5vw;
     }
 }
-
 /* final backup 30 december 2025 */

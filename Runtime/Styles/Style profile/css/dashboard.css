@@ -58,13 +58,13 @@ html:not(.designer) .form .view .innerpanel > .panel{
     display:none;
 }
 .no-content .card-body{
-    background-image: url("/Runtime/Styles/Style%20Profile/images/circle.svg");
+    background-image: url("/Runtime/Styles/Style%20Profile/images/dark.svg");
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
 }
 .light .no-content .card-body{
-    background-image: url("/Runtime/Styles/Style%20Profile/images/dark.svg");
+    background-image: url(/Runtime/Styles/Style%20Profile/images/circle.svg);
 }
 .AnalyticsDashboardControl-AnalyticsDashboardControl .chart-center-text {
     position: absolute;
@@ -241,13 +241,16 @@ html:not(.designer) body.theme-entry.light .averageTime .dropdown-menu.show li a
     display: none;
 }
 .totalRequests.noData .card-body{
-    background-image: url("/Runtime/Styles/Style%20Profile/images/completedrequestslight.png");
+    background-image: url("/Runtime/Styles/Style%20Profile/images/completedrequestsdark.png");
     background-repeat: no-repeat;
     background-size: 90%;
     background-position: center;
 }
 .light .totalRequests.noData .card-body{
-    background-image: url("/Runtime/Styles/Style%20Profile/images/completedrequestsdark.png");
+    background-image: url("/Runtime/Styles/Style%20Profile/images/completedrequestslight.png");
+}
+html:not(.designer).light .form, .mobile.light .theme-entry .runtime-form>.form{
+    background-color:transparent!important;
 }
 @media (max-width: 768px) {
     html:not(.designer) .form, .mobile .theme-entry .runtime-form>.form {

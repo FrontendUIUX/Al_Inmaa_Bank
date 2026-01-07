@@ -22,9 +22,6 @@ html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
 html:not(.designer) .theme-entry [name*="s_textbox"] input{
     margin-top: 0.6rem!important;
 }
-html:not(.designer) body.theme-entry [name*="s_calendar"] input{
-    margin-top: 0.9rem!important;
-}
 html body.theme-entry .form .row:first-child{
     display:none;
 }
@@ -53,11 +50,18 @@ html:not(.designer) body.theme-entry .form.editingForm [name*="s_calendar"].edit
 html:not(.designer) body.theme-entry .form [name*="s_calendar"],
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"],
 html:not(.designer) body.theme-entry span[name*="s_dropdown"],
-html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"]{
+html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"],
+html:not(.designer) [name*="s_textarea"], html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]{
       background-color: var(--Read_Only_Fields_Background)!important;
       border: var(--Read_Only_Fields_Border)!important;
 }
-
+html:not(.designer).light .theme-entry .form.editingForm .input-control a.input-control span, 
+html:not(.designer).light .theme-entry .form.editingForm .input-control.watermark a.input-control span, 
+html:not(.designer).light .theme-entry .editingForm [name*="s_dropdown"] a.styling-font span, 
+html:not(.designer).light .theme-entry .editingForm [name*="s_calendar"] .input-control-m-c .input-control-wrapper input, 
+html:not(.designer).light .theme-entry .editingForm [name*="s_textbox"] input{
+    color: rgb(57 94 117 / 85%) !important;
+}
 /*  TEXTBOX READONLY END */
 @media(min-width:992px){
     html:not(.designer) .form {
@@ -81,9 +85,7 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     top: 0.3vw;
 
 }
-    html:not(.designer) body.theme-entry [name*="s_calendar"] input{
-    margin-top: 0.9vw!important;
-}
+
     html:not(.designer) .theme-entry [name*="s_textbox"] input {
     margin-top: 0.6vw!important;
 }

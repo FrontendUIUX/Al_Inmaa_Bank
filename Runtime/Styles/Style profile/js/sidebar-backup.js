@@ -21,117 +21,45 @@ document.addEventListener("DOMContentLoaded", () => {
           category: isArabic ? "الروابط الرئيسية" : "Main Links",
           links: [
             { 
+              icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg", 
+              name: isArabic ? "طلب جديد" : "New Request", 
+              url: isArabic ? "/RuntimeAR/Runtime/Form/NR__MarketingRequest__Form/" : "/Runtime/Runtime/Form/NR__MarketingRequest__Form/" 
+            },
+            { 
               icon: "/Runtime/Styles/Style%20profile/images/net/Dashboard.svg", 
               name: isArabic ? "لوحة التحكم" : "Dashboard", 
-              url: isArabic ? "/Runtime/RuntimeAR/Form/MainDashboard/" : "/Runtime/Runtime/Form/MainDashboard/" 
+              url: isArabic ? "/RuntimeAR/Runtime/Form/MainDashboard" : "/Runtime/Runtime/Form/MainDashboard" 
             },
             { 
               icon: "/Runtime/Styles/Style%20profile/images/net/My Requests.svg", 
               name: isArabic ? "طلباتي" : "My Requests", 
-              url: isArabic ? "/RuntimeAR/Runtime/Form/UserDashboard/" : "/Runtime/Runtime/Form/UserDashboard/" 
+              url: isArabic ? "/RuntimeAR/Form/UserDashboard/" : "/Runtime/Form/UserDashboard/" 
             },
             { 
               icon: "/Runtime/Styles/Style%20profile/images/net/report-and-analytics.svg", 
-              name: isArabic ? "التقارير والتحليلات" : "Reports & Analytics", 
-              url: isArabic ? "#" : "#" ,
-              children:[
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "لوحة معلومات التسويق" : "Marketing Dashboard", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/Marketing__Admin__Dashboard/" : "/Runtime/Runtime/Form/Marketing__Admin__Dashboard/" 
-                },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "لوحة معلومات الاتصالات" : "Communication Dashboard", 
-                  url: isArabic ? "#" : "#" 
-                },
-                 { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "لوحة معلومات تكنولوجيا المعلومات" : "Information Technology Dashboard", 
-                  url: isArabic ? "#" : "#" 
-                },
-              ]
+              name: isArabic ? "لوحة تحكم التسويق" : "Marketing Dashboard", 
+              url: isArabic ? "/RuntimeAR/Form/Marketing__Admin__Dashboard/?ServiceID=4" : "/Runtime/Form/Marketing__Admin__Dashboard/?ServiceID=4" 
             },
           ]
         },
         // Uncomment if you need departments section
-        {
-          category: isArabic ? "الإدارات" : "Departments",
-          links: [
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Retail Banking.svg", 
-              name: isArabic ? "الخدمات المصرفية للأفراد والخدمات المصرفية الرقمية" : "Retail & Digital Banking", 
-              url: "#",
-              children:[
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "طلب تسويقي" : "Marketing Request", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/NR__MarketingRequest__Form/" : "/Runtime/Runtime/Form/NR__MarketingRequest__Form/" 
-                },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "الموافقة على الحسابات عالية المخاطر" : "High Risk Account Approvals", 
-                  url: isArabic ? "#" : "#" 
-                },
-                 { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "عملية الاستثناء - شريحة العملاء" : "Exception Process Customer Segment", 
-                  url: isArabic ? "#" : "#" 
-                },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "ملاحظات زيارة الفرع" : "Branch Visit Notes", 
-                  url: isArabic ? "#" : "#" 
-                },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "أتمتة الإحالات" : "Referral Automation", 
-                  url: isArabic ? "#" : "#" 
-                },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "ختم T24" : "T24 Stamp", 
-                  url: isArabic ? "#" : "#" 
-                },
-              ]
-            },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg", 
-              name: isArabic ? "التسويق والشركات" : "Marketing & Corporate", 
-              url: "#",
-            },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Shariah.svg", 
-              name: isArabic ? "الشريعة الإسلامية" : "Shariah", 
-              url: "#",
-            },
-             { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/information-technology.svg", 
-              name: isArabic ? "تكنولوجيا المعلومات" : "Information Technology", 
-              url: "#",
-            },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Operations.svg", 
-              name: isArabic ? "العمليات" : "Operations", 
-              url: "#",
-            },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/facilities-management.svg", 
-              name: isArabic ? "إدارة المرافق" : "Facilities Management", 
-              url: "#",
-            },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/human-capital.png", 
-              name: isArabic ? "رأس المال البشري" : "Human Capital", 
-              url: "#",
-            },
-             { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/risk-management.svg", 
-              name: isArabic ? "إدارة المخاطر" :"Risk Management", 
-              url: "#",
-            },
-          ]
-        },
+        // {
+        //   category: isArabic ? "الإدارات" : "Departments",
+        //   links: [
+        //     { 
+        //       icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg", 
+        //       name: isArabic ? "عملية توصية الجوائز" : "Award Recommendation Process", 
+        //       url: "#",
+        //       children: [
+        //         { 
+        //           icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
+        //           name: isArabic ? "طلب جديد" : "New Request", 
+        //           url: isArabic ? "/RuntimeAR/Runtime/Form/AR__AwardRecommendationRequest__Form/" : "/Runtime/Runtime/Form/AR__AwardRecommendationRequest__Form/" 
+        //         }
+        //       ]
+        //     },
+        //   ]
+        // },
       ];
 
       // ===== Sidebar HTML skeleton =====
@@ -206,48 +134,6 @@ document.addEventListener("DOMContentLoaded", () => {
             <ul></ul>
           </div>
         </aside>
-        <div class="modal" id="userProfileModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-       <div class="userProfile d-none d-lg-flex align-items-center">
-              <div class="userProfilePhoto">
-                <img src="/Runtime/Styles/Style%20profile/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
-              </div>
-              <div class="userInformations d-flex flex-column ${isArabic ? 'text-right' : ''}">
-                <span class="username">${userName}</span>
-                <span class="userPosition">${department}</span>
-              </div>
-            </div>
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <a href="#">
-          <svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5164 10.5205C13.1175 10.5205 15.2261 8.412 15.2261 5.81103C15.2261 3.21006 13.1175 1.10156 10.5164 1.10156C7.91526 1.10156 5.80664 3.21006 5.80664 5.81103C5.80664 8.412 7.91526 10.5205 10.5164 10.5205Z" stroke="#002134" stroke-width="2.2"/>
-            <path d="M19.713 19.5203C19.713 22.0901 19.713 24.1734 10.4063 24.1734C1.09961 24.1734 1.09961 22.0901 1.09961 19.5203C1.09961 16.9504 5.26636 14.8672 10.4063 14.8672C15.5463 14.8672 19.713 16.9504 19.713 19.5203Z" stroke="#002134" stroke-width="2.2"/>
-          </svg>
-          <span>${isArabic ? 'عرض الملف الشخصي' : 'Show Profile'}</span>
-        </a>
-        <div class="langSwitchContainer">
-          <div class="leftSection">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0.900391 11.8984H22.9004M0.900391 11.8984C0.900391 17.9736 5.82526 22.8984 11.9004 22.8984M0.900391 11.8984C0.900391 5.82331 5.82526 0.898438 11.9004 0.898438M22.9004 11.8984C22.9004 17.9736 17.9756 22.8984 11.9004 22.8984M22.9004 11.8984C22.9004 5.82331 17.9756 0.898438 11.9004 0.898438M11.9004 22.8984C3.04614 13.2184 8.21113 4.19844 11.9004 0.898438M11.9004 22.8984C20.7547 13.2184 15.5897 4.19844 11.9004 0.898438" stroke="#002134" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>${isArabic ? 'اللغة' : 'Language'}</span>
-          </div>
-          <div class="language-switcher">
-          
-          </div>
-        </div>
-        
-      </div>
-    </div>
-  </div>
-</div>
       `);
 
       // Add RTL direction to body if Arabic
@@ -336,66 +222,58 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Add click event to items with submenus
-document.querySelectorAll(".isSubMenu").forEach(menu => {
-  menu.addEventListener("click", e => {
-    e.preventDefault();
-    e.stopPropagation();
-
-    // Remove "open" class from all submenus
-    document.querySelectorAll(".isSubMenu.open").forEach(m => {
-      m.classList.remove("open");
-    });
-
-    // Apply "open" to the clicked submenu
-    menu.classList.add("open");
-
-    const title = menu.querySelector("a").innerText.trim();
-    let found = null;
-
-    // Find the clicked link in the config
-    sidebarConfig.forEach(sec => {
-      sec.links.forEach(l => {
-        if (l.name === title) found = l;
+      document.querySelectorAll(".isSubMenu").forEach(menu => {
+        menu.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation();
+          
+          const title = menu.querySelector("a").innerText.trim();
+          let found = null;
+          
+          // Find the clicked link in the config
+          sidebarConfig.forEach(sec => {
+            sec.links.forEach(l => {
+              if (l.name === title) found = l;
+            });
+          });
+          
+          // If no children found, don't open subpanel
+          if (!found || !found.children || found.children.length === 0) {
+            subPanel.classList.remove("active");
+            updateOverlay();
+            return;
+          }
+          
+          // Update subpanel title
+          subPanelTitle.textContent = title;
+          
+          // Clear and rebuild subpanel list
+          subPanelList.innerHTML = "";
+          
+          found.children.forEach(child => {
+            const li = document.createElement("li");
+            
+            // Check if child link is active
+            const childPath = new URL(child.url, window.location.origin).pathname;
+            if (currentPath === childPath) {
+              li.classList.add("active");
+            }
+            
+            li.innerHTML = `
+              <div class="icon">
+                <img src="${child.icon}" alt="${child.name}">
+              </div>
+              <a href="${child.url}" class="${isArabic ? 'rtl-text' : ''}">${child.name}</a>
+            `;
+            
+            subPanelList.appendChild(li);
+          });
+          
+          // Show subpanel
+          subPanel.classList.add("active");
+          updateOverlay();
+        });
       });
-    });
-
-    // If no children found, do not open the subpanel
-    if (!found || !found.children || found.children.length === 0) {
-      subPanel.classList.remove("active");
-      updateOverlay();
-      return;
-    }
-
-    // Update subpanel title
-    subPanelTitle.textContent = title;
-
-    // Clear and rebuild subpanel list
-    subPanelList.innerHTML = "";
-
-    found.children.forEach(child => {
-      const li = document.createElement("li");
-
-      const childPath = new URL(child.url, window.location.origin).pathname;
-      if (currentPath === childPath) {
-        li.classList.add("active");
-      }
-
-      li.innerHTML = `
-        <div class="icon">
-          <img src="${child.icon}" alt="${child.name}">
-        </div>
-        <a href="${child.url}" class="${isArabic ? 'rtl-text' : ''}">${child.name}</a>
-      `;
-
-      subPanelList.appendChild(li);
-    });
-
-    // Display subpanel
-    subPanel.classList.add("active");
-    updateOverlay();
-  });
-});
-
 
       // Close subpanel when close button is clicked
       if (closeSubpanelBtn) {
@@ -560,37 +438,4 @@ $(document).ready(function () {
       $("#NotificationsLoadMoreBtn").hide();
     }
   }, 1000);
-  
 });
-$(document).on("click", ".userProfile", function () {
-  console.log("clicked");
-  $("#userProfileModal").toggleClass("show");
-});
-$(document).ready(function () {
-  // Slight delay to ensure Nintex finished rendering
-  setTimeout(function () {
-    var arabicButton  = $('a[name="Ar_Button"]');
-    var englishButton = $('a[name="Eng_Button"]');
-    var langContainer = $('.language-switcher');
-
-    if (langContainer.length === 0) {
-      console.warn('language-switcher not found in DOM.');
-      return;
-    }
-
-    if (arabicButton.length === 0) {
-      console.warn('Arabic button not found.');
-    } else {
-      langContainer.append(arabicButton);
-    }
-
-    if (englishButton.length === 0) {
-      console.warn('English button not found.');
-    } else {
-      langContainer.append(englishButton);
-    }
-
-    console.log('Language buttons appended to modal.');
-  }, 500);
-});
-

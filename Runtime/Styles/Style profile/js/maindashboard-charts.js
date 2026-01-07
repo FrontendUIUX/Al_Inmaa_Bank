@@ -136,12 +136,15 @@ document.addEventListener('DOMContentLoaded', () => {
         width: 100%;
         height: 12px;
         display: flex;
-        background-color: rgba(0,0,0,0.05);
+        background-color: rgba(0 0 0 / 50%);
         border-radius: 6px;
         overflow: hidden;
         margin-top: 8px;
       }
-
+    .light .progress-bar-container {
+      
+        background-color: rgba(0 0 0 / 10%);
+      }
       .progress-segment {
         height: 100%;
         transition: width 1.5s ease, background-color 0.3s ease;
@@ -505,7 +508,7 @@ function initPopularRequests() {
         // ------------------------
         // HELPER: Detect Dark Mode
         // ------------------------
-        const isDarkMode = () => document.documentElement.classList.contains('dark');
+        const isDarkMode = () => document.documentElement.classList.contains('light');
 
         // ------------------------
         // PARSE DATA FROM HTML

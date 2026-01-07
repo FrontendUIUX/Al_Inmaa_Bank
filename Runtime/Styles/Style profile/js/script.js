@@ -4,7 +4,8 @@ const urlParams = new URLSearchParams(window.location.search);
 // Check conditions properly with parentheses
 const hasValidParams = (urlParams.has('RequestID') && urlParams.has('MarketingID')) || 
                        (urlParams.has('RequestID') && urlParams.has('AwardID')) ||
-                       (urlParams.has('RequestID') && urlParams.has('AOMID'));
+                       (urlParams.has('RequestID') && urlParams.has('AOMID')) ||
+                       (urlParams.has('RequestID') && urlParams.has('StudyID'));
 
 if (hasValidParams) {
   // Wait for DOM to be fully loaded
@@ -243,6 +244,56 @@ document.addEventListener("DOMContentLoaded", initTableSortingMainDashboard);
 // TABLE SORTING FEATURE - MAIN DASHBOARD END 
 
 // Move Comments and attachments section in addition to the buttons outside the form
+// document.addEventListener("DOMContentLoaded", function () {
+//   // --- Get the comments div and form div ---
+//   const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
+//   const formDiv = document.querySelector(".form");
+
+//   if (divToMove && formDiv) {
+//     // Create a wrapper for comments + attachments
+//     const wrapper = document.createElement("div");
+//     wrapper.className = "commentsAttachments";
+
+//     // Insert wrapper after form
+//     formDiv.insertAdjacentElement("afterend", wrapper);
+
+//     // --- Add title before comments ---
+//     const viewTitle = document.createElement("div");
+//     viewTitle.setAttribute("name", "viewTitle");
+//     viewTitle.textContent = "Comments & Attachments";
+//     wrapper.appendChild(viewTitle);
+
+//     // Move the comments div inside the wrapper
+//     wrapper.appendChild(divToMove);
+
+//     // --- Wait for the attachment div ---
+//     const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
+//     const interval = setInterval(function () {
+//       const attachmentDiv = document.getElementById(attachmentId);
+//       if (attachmentDiv) {
+//         clearInterval(interval);
+
+//         // Move attachment inside the same wrapper
+//         wrapper.appendChild(attachmentDiv);
+
+//         // Disable toolbar buttons if href is empty or '#'
+//         const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
+//         toolbarButtons.forEach(btn => {
+//           if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
+//             btn.classList.add("disabled");
+//           }
+//         });
+
+//         // --- Append the extra section below wrapper ---
+//         const extraSectionId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73";
+//         const extraSection = document.getElementById(extraSectionId);
+//         if (extraSection) {
+//           wrapper.insertAdjacentElement("afterend", extraSection);
+//         }
+//       }
+//     }, 200); // Check every 200ms until attachment exists
+//   }
+// });
 document.addEventListener("DOMContentLoaded", function () {
   // --- Get the comments div and form div ---
   const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
@@ -259,7 +310,14 @@ document.addEventListener("DOMContentLoaded", function () {
     // --- Add title before comments ---
     const viewTitle = document.createElement("div");
     viewTitle.setAttribute("name", "viewTitle");
-    viewTitle.textContent = "Comments & Attachments";
+
+    // Translate if URL contains RuntimeAR
+    if (window.location.href.includes("RuntimeAR")) {
+      viewTitle.textContent = "التعليقات والمرفقات"; // Arabic translation
+    } else {
+      viewTitle.textContent = "Comments & Attachments";
+    }
+
     wrapper.appendChild(viewTitle);
 
     // Move the comments div inside the wrapper

@@ -40,7 +40,7 @@ function PerformActionFromServer(actionName, serialNumber, dropdown, labelFinalT
         method: 'GET',
         data: {
             action: "PerformTask",
-            taskAction: actionName, 
+            taskAction: labelFinalTxt, 
             serialNumber: serialNumber
         },
         dataType: 'text',
@@ -56,7 +56,7 @@ function PerformActionFromServer(actionName, serialNumber, dropdown, labelFinalT
                 // Only remove the row if response is true
                 //RemoveRequestRow(serialNumber);
                 //location.reload();
-                hideLoader(dropdown, labelFinalTxt, iconSrc, iconAlt);
+                hideLoader(dropdown, actionName, iconSrc, iconAlt);
                 GetAdminDashboardUpdatedTotals();
             } else {
                 console.log('Request not removed because response is false');
@@ -129,7 +129,7 @@ function AddClickEvents() {
 AddClickEvents();
 $("#DashboardLoader").hide();
 
-function GetUserRequests(page, user){
+function GetUserRequests(page, user, search, isArabic){
     $("#RequestsTableContainer table tbody").html("");
     $("#DashboardLoader").show();
     $.ajax({
@@ -138,6 +138,8 @@ function GetUserRequests(page, user){
         data: {
             page: page,
             user: user,
+            referenceNo: search,
+            isArabic: isArabic
         },
         dataType: 'json',
         success: function(response) { 
@@ -150,7 +152,7 @@ function GetUserRequests(page, user){
     });
 }
 
-function GetAdminDashboardRequests(page, user){
+function GetAdminDashboardRequests(page, user, search, isArabic){
     $("#AdminRequestsTableContainer table tbody").html("");
     $("#DashboardLoader").show();
     $.ajax({
@@ -160,6 +162,8 @@ function GetAdminDashboardRequests(page, user){
             action: "GetPagedResults",
             page: page,
             user: user, 
+            referenceNo: search, 
+            isArabic: isArabic
         },
         dataType: 'json',
         success: function(response) {
@@ -207,7 +211,7 @@ function GetAdminDashboardUpdatedTotals(){
   });
 }
 
-function GetAnalyticsDashboardRequests(page){
+function GetAnalyticsDashboardRequests(page, search, isArabic){
     var urlParams = new URLSearchParams(window.location.search);
     var serviceID = urlParams.get("ServiceID");
 
@@ -220,6 +224,9 @@ function GetAnalyticsDashboardRequests(page){
         data: {
             page: page,
             serviceID: serviceID, 
+            referenceNo: search, 
+            isArabic: isArabic
+
         },
         dataType: 'json',
         success: function(response) {
@@ -232,7 +239,7 @@ function GetAnalyticsDashboardRequests(page){
     });
 }
 
-function GetNotificationsPaged(page, user){
+function GetNotificationsPaged(page, user, isArabic){
     $("#DashboardLoader").show();
     $.ajax({
         url: 'UserNotificationsControl.handler', 
@@ -241,6 +248,7 @@ function GetNotificationsPaged(page, user){
             action: "GetNotificationsPaged",
             page: page,
             user: user, 
+            isArabic: isArabic
         },
         dataType: 'json',
         success: function(response) {
@@ -266,11 +274,13 @@ $(document).on('click', '#NotificationsLoadMoreBtn', function() {
     // Update the element so next click uses new page value
     $("#NotificationsLoadMoreBtn").attr("data-page", page);
     const user = $("#RequestsUsername").data("name") || "";
-    GetNotificationsPaged(page, user);
+
+    var isArabic = window.location.pathname.toLowerCase().includes('/runtimear/');
+    GetNotificationsPaged(page, user, isArabic);
     
 });
 
-function GetNotificationsPopup(user){
+function GetNotificationsPopup(user, isArabic){
     // $("#DashboardLoader").show();
     $.ajax({
         url: 'UserNotificationsControl.handler',
@@ -278,11 +288,24 @@ function GetNotificationsPopup(user){
         data: {
             action: "GetNotificationsPopup",
             user: user,
+            isArabic: isArabic
         },
         dataType: 'text',
         success: function(response) {
             //console.log(response);
             $("#NotificationsPopupContainer").html(response);
+
+            if(isArabic){                
+                // Find all <a> tags inside the section
+                $("#NotificationsPopupContainer").find('a').each(function() {
+                    var $link = $(this);
+                    var href = $link.attr('href');
+                    if (href) {
+                        // Replace only the first occurrence of 'Runtime' with 'RuntimeAR'
+                        $link.attr('href', href.replace('Runtime', 'RuntimeAR'));
+                    }
+                });
+            }
           }
     });
 }
@@ -298,9 +321,13 @@ document.addEventListener("DOMContentLoaded", function () {
         if ($container.length) {
             let text = document.getElementById("__runtimeWhoAmI").textContent.trim();
             let username = text.split(" :: ")[2];
-            GetNotificationsPopup(username);
+            var isArabic = window.location.pathname.toLowerCase().includes('/runtimear/');
+            GetNotificationsPopup(username, isArabic);
+
+            
+
             return true;
-        }
+            }
         return false;
     }
 
@@ -390,15 +417,25 @@ $(document).ready(function () {
     function reloadRequests(page) {
         const user = $("#RequestsUsername").data("name") || "";
 
+        var isArabic = window.location.pathname
+          .toLowerCase()
+          .includes('/runtimear/');
+
         //  Call the correct function based on which dashboard exists
         if ($("#RequestsDashboardControl").length) {
-            GetUserRequests(page, user);
+            //var search = $("#UserDashboardSearchInput").val();
+            var search = "";
+            GetUserRequests(page, user, search, isArabic);
         }
         if ($("#AdminRequestsDashboardControl").length) {
-            GetAdminDashboardRequests(page, user);
+            //var search = $("#AdminDashboardSearchInput").val();
+            var search = "";
+            GetAdminDashboardRequests(page, user, search, isArabic);
         }
         if ($("#AnalyticsDashboardControl").length) {
-            GetAnalyticsDashboardRequests(page);
+            //var search = $("#AnalyticsDashboardSearchInput").val();
+            var search = "";
+            GetAnalyticsDashboardRequests(page, search, isArabic);
         }
 
         //  Recall sorting after 2 seconds
@@ -435,5 +472,89 @@ $(document).ready(function () {
     //  Page Number Click
     $(document).on("click", ".pageNumber", function () {
         reloadRequests(parseInt($(this).text().trim()));
+    });
+
+    
+    // let userDashboardSearchTimeout;
+    // $(document).on("keyup", "#UserDashboardSearchInput", function (e) {
+    //   const value = $(this).val().trim();
+
+    //   // ENTER key → trigger immediately
+    //   if (e.key === "Enter") {
+    //     clearTimeout(userDashboardSearchTimeout);
+    //     reloadRequests(1)
+    //     return;
+    //   }
+
+    //   // Typing → wait 4 seconds
+    //   clearTimeout(userDashboardSearchTimeout);
+
+    //   userDashboardSearchTimeout = setTimeout(function () {
+    //     reloadRequests(1)
+    //   }, 3000);
+    // });
+
+    // let adminDashboardSearchTimeout;
+
+    // $(document).on("keyup", "#AdminDashboardSearchInput", function (e) {
+    //   const value = $(this).val().trim();
+
+    //   // ENTER key → trigger immediately
+    //   if (e.key === "Enter") {
+    //     clearTimeout(adminDashboardSearchTimeout);
+    //     reloadRequests(1)
+    //     return;
+    //   }
+
+    //   // Typing → wait 4 seconds
+    //   clearTimeout(adminDashboardSearchTimeout);
+
+    //   adminDashboardSearchTimeout = setTimeout(function () {
+    //     reloadRequests(1)
+    //   }, 3000);
+    // });
+
+    // let analyticsDashboardSearchTimeout;
+
+    // $(document).on("keyup", "#AnalyticsDashboardSearchInput", function (e) {
+    //   const value = $(this).val().trim();
+
+    //   // ENTER key → trigger immediately
+    //   if (e.key === "Enter") {
+    //     clearTimeout(analyticsDashboardSearchTimeout);
+    //     reloadRequests(1)
+    //     return;
+    //   }
+
+    //   // Typing → wait 4 seconds
+    //   clearTimeout(analyticsDashboardSearchTimeout);
+
+    //   analyticsDashboardSearchTimeout = setTimeout(function () {
+    //     reloadRequests(1)
+    //   }, 3000);
+    // });
+});
+
+
+$(document).ready(function() {
+    // Check if current URL contains 'RuntimeAR'
+    if (window.location.href.indexOf('RuntimeAR') === -1) return;
+
+    // List of section IDs
+    var sectionIds = ['AdminRequestsTableContainer', 'RequestsTableContainer', 'AnalyticsDashboardControl', 'NotificationsContainer']; // replace with your actual IDs
+
+    sectionIds.forEach(function(id) {
+        var $section = $('#' + id);
+        if ($section.length === 0) return;
+
+        // Find all <a> tags inside the section
+        $section.find('a').each(function() {
+            var $link = $(this);
+            var href = $link.attr('href');
+            if (href) {
+                // Replace only the first occurrence of 'Runtime' with 'RuntimeAR'
+                $link.attr('href', href.replace('Runtime', 'RuntimeAR'));
+            }
+        });
     });
 });
