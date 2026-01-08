@@ -33,7 +33,7 @@ html body.theme-entry .form .row:first-child{
 
 }
 .light .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
-    fill: white!important;
+    fill: var(--checkbox-readonly-checked-color)!important;
 }
 html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.read-only) [name*="s_label"]{
     top: 0.3rem;
@@ -63,6 +63,9 @@ html:not(.designer).light .theme-entry .editingForm [name*="s_textbox"] input{
     color: rgb(57 94 117 / 85%) !important;
 }
 /*  TEXTBOX READONLY END */
+html:not(.designer).light .input-control.radio.style-aware svg .svg-radio-btn-circle{
+    stroke: rgba(57, 94, 117, 0.6);
+}
 @media(min-width:992px){
     html:not(.designer) .form {
     width: calc(100% - 28rem);
@@ -87,7 +90,7 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
 }
 
     html:not(.designer) .theme-entry [name*="s_textbox"] input {
-    margin-top: 0.6vw!important;
+    margin-top: 0.3vw!important;
 }
 }
 /* final backup 17 december 2025*/

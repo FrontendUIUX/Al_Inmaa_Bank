@@ -557,4 +557,27 @@ $(document).ready(function() {
             }
         });
     });
+
+    //for attachment button
+    var $btn = $("#RequestStatusAttachmentBtn");
+
+    // Get the current onclick URL
+    var onclickAttr = $btn.attr("onclick"); 
+
+    if ( onclickAttr) {
+        // Extract the URL inside the quotes
+        var urlMatch = onclickAttr.match(/window\.location\.href=['"](.+)['"]/i);
+        if (urlMatch && urlMatch[1]) {
+            var url = urlMatch[1];
+
+            // Replace only the first /Runtime/ with /RuntimeAR/
+            url = url.replace(/\/Runtime\//i, "/RuntimeAR/");
+
+            // Set the updated onclick
+            $btn.attr("onclick", "window.location.href='" + url + "'");
+        }
+    
+    }
+
+
 });

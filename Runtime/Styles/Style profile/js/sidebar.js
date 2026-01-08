@@ -23,7 +23,7 @@ document.addEventListener("DOMContentLoaded", () => {
             { 
               icon: "/Runtime/Styles/Style%20profile/images/net/Dashboard.svg", 
               name: isArabic ? "لوحة التحكم" : "Dashboard", 
-              url: isArabic ? "/Runtime/RuntimeAR/Form/MainDashboard/" : "/Runtime/Runtime/Form/MainDashboard/" 
+              url: isArabic ? "/RuntimeAR/Runtime/Form/MainDashboard/" : "/Runtime/Runtime/Form/MainDashboard/" 
             },
             { 
               icon: "/Runtime/Styles/Style%20profile/images/net/My Requests.svg", 
@@ -104,6 +104,28 @@ document.addEventListener("DOMContentLoaded", () => {
               icon: "/Runtime/Styles/Style%20profile/images/net/Shariah.svg", 
               name: isArabic ? "الشريعة الإسلامية" : "Shariah", 
               url: "#",
+              children:[
+                { 
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
+                  name: isArabic ? "طلب تسويقي" : "Marketing Request", 
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/NR__MarketingRequest__Form/" : "/Runtime/Runtime/Form/NR__MarketingRequest__Form/" 
+                },
+                { 
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
+                  name: isArabic ? "طلب اعتماد محضر الاجتماع" : "Accreditation of Meeting Minutes Request", 
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/AccreditationOfMinutesR__Form1/" : "/Runtime/Runtime/Form/AccreditationOfMinutesR__Form1/" 
+                },
+                { 
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
+                  name: isArabic ? "طلب دراسة" : "Study Request", 
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/SR__StudyRequestSubmission__Form/" : "/Runtime/Runtime/Form/SR__StudyRequestSubmission__Form/" 
+                },
+                { 
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
+                  name: isArabic ? "طلب توصية بجائزة" : "Award Recommendation Request", 
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/AR__AwardRecommendationRequest__Form/" : "/Runtime/Runtime/Form/AR__AwardRecommendationRequest__Form/" 
+                },
+              ]
             },
              { 
               icon: "/Runtime/Styles/Style%20profile/images/net/information-technology.svg", 
@@ -143,9 +165,16 @@ document.addEventListener("DOMContentLoaded", () => {
                 <img src="/Runtime/Styles/Style%20profile/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
               </div>
               <div class="userInformations d-flex flex-column ${isArabic ? 'text-right' : ''}">
-                <span class="username">${userName}</span>
+                <div class="profileUpper">
+                  <span class="username">${userName}</span>
+                  <svg width="11" height="6" viewBox="0 0 11 6" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path opacity="0.5" d="M0.75 0.75L5.25 5.25L9.75 0.75" stroke="#002134" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+                  </svg>
+                </div>
                 <span class="userPosition">${department}</span>
               </div>
+              
+
             </div>
             <div class="userNotification">
               <button class="notifications" data-bs-toggle="modal" data-bs-target="#notificationModal">
@@ -221,11 +250,15 @@ document.addEventListener("DOMContentLoaded", () => {
                 <span class="userPosition">${department}</span>
               </div>
             </div>
+            <svg class="closeModalSettings" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M10 10L5.5 5.5M5.5 5.5L1 1M5.5 5.5L10 1M5.5 5.5L1 10" stroke="#002134" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+            </svg>
+
       </div>
 
       <!-- Modal body -->
       <div class="modal-body">
-        <a href="#">
+        <a href="#" class="disabled">
           <svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path d="M10.5164 10.5205C13.1175 10.5205 15.2261 8.412 15.2261 5.81103C15.2261 3.21006 13.1175 1.10156 10.5164 1.10156C7.91526 1.10156 5.80664 3.21006 5.80664 5.81103C5.80664 8.412 7.91526 10.5205 10.5164 10.5205Z" stroke="#002134" stroke-width="2.2"/>
             <path d="M19.713 19.5203C19.713 22.0901 19.713 24.1734 10.4063 24.1734C1.09961 24.1734 1.09961 22.0901 1.09961 19.5203C1.09961 16.9504 5.26636 14.8672 10.4063 14.8672C15.5463 14.8672 19.713 16.9504 19.713 19.5203Z" stroke="#002134" stroke-width="2.2"/>
@@ -594,3 +627,6 @@ $(document).ready(function () {
   }, 500);
 });
 
+$(document).on("click", ".closeModalSettings", function(){
+  $("#userProfileModal").removeClass("show");
+});
