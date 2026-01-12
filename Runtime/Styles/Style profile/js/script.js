@@ -32,112 +32,102 @@ document.addEventListener("DOMContentLoaded", function () {
       console.error("Error retrieving FQN:", e);
     }
   }, 1000);
+
+
 });
 
-// STEPPER MODULE START 
+// =====================
+// STEPPER MODULE START
+// =====================
 const Stepper = (() => {
 
+    const STATUS_CLASSES = ["pendingStep", "inProgressStep", "completedStep"];
+
+    const STATUS_MAP = {
+        0: "pendingStep",
+        1: "inProgressStep",
+        2: "completedStep"
+    };
+
+    function getStepNumber(step) {
+        const el = step.querySelector('[name*="stepNumber"]');
+        if (!el) return null;
+
+        const num = Number((el.textContent || "").replace(/\D/g, ""));
+        return num in STATUS_MAP ? num : null;
+    }
+
+    /**
+     * SINGLE SOURCE OF TRUTH
+     * Classes update ONLY when numbers change
+     */
     function updateStepStatus() {
         const steps = document.querySelectorAll('[name*="s_step"]');
-        if (steps.length === 0) return;
-
-        const statusMap = {
-            0: "pendingStep",
-            1: "inProgressStep",
-            2: "completedStep"
-        };
+        if (!steps.length) return;
 
         steps.forEach(step => {
-            const stepNumberEl = step.querySelector('[name*="stepNumber"]');
-            if (!stepNumberEl) return;
+            const stepNumber = getStepNumber(step);
+            if (stepNumber === null) return;
 
-            const raw = (stepNumberEl.textContent || "").trim();
-            const stepNumber = Number(raw.replace(/\D/g, '')) || 0;
+            const requiredClass = STATUS_MAP[stepNumber];
 
-            const currentClass = Array.from(step.classList)
-                .find(cls => Object.values(statusMap).includes(cls));
+            if (step.classList.contains(requiredClass)) return;
 
-            const newClass = statusMap[stepNumber];
-
-            if (newClass && currentClass !== newClass) {
-                step.classList.remove(...Object.values(statusMap));
-                step.classList.add(newClass);
-            }
+            step.classList.remove(...STATUS_CLASSES);
+            step.classList.add(requiredClass);
         });
     }
 
-    function moveToNextStep() {
-        const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
-        if (steps.length === 0) return;
+    /**
+     * Observe numeric changes (K2 / async safe)
+     */
+    function observeStepNumbers() {
+        const stepNumbers = document.querySelectorAll('[name*="stepNumber"]');
+        if (!stepNumbers.length) return;
 
-        const currentIndex = steps.findIndex(step => {
-            const el = step.querySelector('[name*="stepNumber"]');
-            return el && el.textContent.trim().replace(/\D/g, '') === '1';
+        const observer = new MutationObserver(() => {
+            updateStepStatus();
         });
 
-        if (currentIndex >= 0) {
-            const current = steps[currentIndex];
-            const next = steps[currentIndex + 1];
-
-            if (next) {
-                current.classList.remove("pendingStep", "inProgressStep", "completedStep");
-                current.classList.add("completedStep");
-
-                next.classList.remove("pendingStep", "inProgressStep", "completedStep");
-                next.classList.add("inProgressStep");
-            }
-        } else {
-            // No step is in progress → start from the first pending step
-            const firstPendingIndex = steps.findIndex(step => {
-                const el = step.querySelector('[name*="stepNumber"]');
-                return (el ? el.textContent.trim().replace(/\D/g, '') : '0') === '0';
+        stepNumbers.forEach(el => {
+            observer.observe(el, {
+                childList: true,
+                characterData: true,
+                subtree: true
             });
+        });
+    }
 
-            if (firstPendingIndex >= 0) {
-                const firstStep = steps[firstPendingIndex];
-                firstStep.classList.remove("pendingStep", "inProgressStep", "completedStep");
-                firstStep.classList.add("inProgressStep");
-            }
-        }
+    /**
+     * Buttons DO NOT force state
+     */
+    function moveToNextStep() {
+        updateStepStatus();
     }
 
     function moveToPreviousStep() {
-        const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
-        if (steps.length === 0) return;
-
-        const currentIndex = steps.findIndex(step => {
-            const el = step.querySelector('[name*="stepNumber"]');
-            return el && el.textContent.trim().replace(/\D/g, '') === '1';
-        });
-
-        if (currentIndex > 0) {
-            const current = steps[currentIndex];
-            const previous = steps[currentIndex - 1];
-
-            current.classList.remove("pendingStep", "inProgressStep", "completedStep");
-            current.classList.add("pendingStep");
-
-            previous.classList.remove("pendingStep", "inProgressStep", "completedStep");
-            previous.classList.add("inProgressStep");
-        }
+        updateStepStatus();
     }
 
     function debug() {
-        const steps = Array.from(document.querySelectorAll('[name*="s_step"]'));
+        const steps = document.querySelectorAll('[name*="s_step"]');
         steps.forEach((step, i) => {
-            const num = step.querySelector('[name*="stepNumber"]');
-            console.log(`Step ${i + 1}:`, {
-                number: num ? num.textContent : "N/A",
-                classes: Array.from(step.classList).filter(c => c.includes("Step"))
+            console.log(`Step ${i + 1}`, {
+                number: getStepNumber(step),
+                class: STATUS_CLASSES.find(c => step.classList.contains(c)) || "none"
             });
         });
     }
 
     function init() {
         const steps = document.querySelectorAll('[name*="s_step"]');
-        if (steps.length === 0) return; // Do NOT initialize if no steps
+        if (!steps.length) return;
 
+        // Initial sync (covers first load where number is already 2)
         updateStepStatus();
+
+        // Watch for future number changes
+        observeStepNumbers();
 
         const continueBtn = document.querySelector('[name*="Continue Button"]');
         const backBtn = document.querySelector('[name*="Back Button"]');
@@ -156,10 +146,9 @@ const Stepper = (() => {
             });
         }
 
-        console.log("Stepper initialized.");
+        console.log("Stepper initialized (number-driven + observer).");
     }
 
-    // Exposed public API
     return {
         init,
         update: updateStepStatus,
@@ -169,11 +158,16 @@ const Stepper = (() => {
     };
 
 })();
-// Boot the stepper ONLY if steps exist
+
+// Boot ONLY if steps exist
 document.addEventListener("DOMContentLoaded", () => {
     Stepper.init();
 });
+// ===================
 // STEPPER MODULE END
+// ===================
+
+
 
 // TABLE SORTING FEATURE - MAIN DASHBOARD START
 function initTableSortingMainDashboard() {
@@ -243,57 +237,7 @@ function initTableSortingMainDashboard() {
 document.addEventListener("DOMContentLoaded", initTableSortingMainDashboard);
 // TABLE SORTING FEATURE - MAIN DASHBOARD END 
 
-// Move Comments and attachments section in addition to the buttons outside the form
-// document.addEventListener("DOMContentLoaded", function () {
-//   // --- Get the comments div and form div ---
-//   const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
-//   const formDiv = document.querySelector(".form");
 
-//   if (divToMove && formDiv) {
-//     // Create a wrapper for comments + attachments
-//     const wrapper = document.createElement("div");
-//     wrapper.className = "commentsAttachments";
-
-//     // Insert wrapper after form
-//     formDiv.insertAdjacentElement("afterend", wrapper);
-
-//     // --- Add title before comments ---
-//     const viewTitle = document.createElement("div");
-//     viewTitle.setAttribute("name", "viewTitle");
-//     viewTitle.textContent = "Comments & Attachments";
-//     wrapper.appendChild(viewTitle);
-
-//     // Move the comments div inside the wrapper
-//     wrapper.appendChild(divToMove);
-
-//     // --- Wait for the attachment div ---
-//     const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
-//     const interval = setInterval(function () {
-//       const attachmentDiv = document.getElementById(attachmentId);
-//       if (attachmentDiv) {
-//         clearInterval(interval);
-
-//         // Move attachment inside the same wrapper
-//         wrapper.appendChild(attachmentDiv);
-
-//         // Disable toolbar buttons if href is empty or '#'
-//         const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
-//         toolbarButtons.forEach(btn => {
-//           if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
-//             btn.classList.add("disabled");
-//           }
-//         });
-
-//         // --- Append the extra section below wrapper ---
-//         const extraSectionId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73";
-//         const extraSection = document.getElementById(extraSectionId);
-//         if (extraSection) {
-//           wrapper.insertAdjacentElement("afterend", extraSection);
-//         }
-//       }
-//     }, 200); // Check every 200ms until attachment exists
-//   }
-// });
 document.addEventListener("DOMContentLoaded", function () {
   // --- Get the comments div and form div ---
   const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
@@ -351,6 +295,75 @@ document.addEventListener("DOMContentLoaded", function () {
     }, 200); // Check every 200ms until attachment exists
   }
 });
+/////////
+
+// document.addEventListener("DOMContentLoaded", function () {
+
+//   const formDiv = document.querySelector(".form");
+//   if (!formDiv) return;
+
+//   // --- Create wrapper ---
+//   const wrapper = document.createElement("div");
+//   wrapper.className = "commentsAttachments";
+
+//   // ✅ Insert wrapper immediately after form closing div
+//   formDiv.insertAdjacentElement("afterend", wrapper);
+
+//   // --- Title ---
+//   const viewTitle = document.createElement("div");
+//   viewTitle.setAttribute("name", "viewTitle");
+//   viewTitle.textContent = window.location.href.includes("RuntimeAR")
+//     ? "التعليقات والمرفقات"
+//     : "Comments & Attachments";
+
+//   wrapper.appendChild(viewTitle);
+
+//   // --- Move comments ---
+//   const commentsDiv = document.getElementById(
+//     "b4a757be-961b-4d29-9c04-cabd440df119_68bfd689-2e6f-4c74-add8-fd9c21713149_8da84183-5bd9-d85c-ef8f-782855b715c5_c162de45-db2e-4815-b6b1-72f39a1040df"
+//   );
+
+//   if (commentsDiv) {
+//     wrapper.appendChild(commentsDiv);
+//   }
+
+//   // --- Wait for attachments ---
+//   const attachmentId =
+//     "b4a757be-961b-4d29-9c04-cabd440df119_68bfd689-2e6f-4c74-add8-fd9c21713149_71e3904a-de56-867e-5ea2-95c6a4eddd37_a4b2bc99-2273-4410-9cbc-414c10ded010";
+
+//   const interval = setInterval(function () {
+//     const attachmentDiv = document.getElementById(attachmentId);
+//     if (!attachmentDiv) return;
+
+//     clearInterval(interval);
+
+//     // Move attachment inside wrapper
+//     wrapper.appendChild(attachmentDiv);
+
+//     // Disable empty toolbar buttons
+//     attachmentDiv.querySelectorAll(".toolbar-button").forEach(btn => {
+//       const href = btn.getAttribute("href");
+//       if (!href || href === "#") {
+//         btn.classList.add("disabled");
+//       }
+//     });
+
+//     // --- Extra section below wrapper ---
+//     const extraSection = document.getElementById(
+//       "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73"
+//     );
+
+//     if (extraSection) {
+//       wrapper.insertAdjacentElement("afterend", extraSection);
+//     }
+//   }, 200);
+// });
+
+
+
+
+
+
 
 // move the action buttons of the form outside the form
 document.addEventListener("DOMContentLoaded", function () {
@@ -390,25 +403,11 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 300);
 });
 //
-document.addEventListener("DOMContentLoaded", function () {
-  const interval = setInterval(() => {
-    const divToMove = document.querySelector('[name*="buttonsView"]');
-    const form = document.querySelector(".form");
-    const header = document.querySelector(".formHeader");
 
-    if (form && divToMove && header) {
-      // Move div below the form only
-      form.insertAdjacentElement("afterend", divToMove);
-      console.info("✅ Div moved below form; header already exists.");
-
-      clearInterval(interval);
-    }
-  }, 300);
-});
 
 //FILTER MY REQUESTS TABLE - MY REQUESTS DASHBOARD START
 function myFunction() {
-  const input = document.getElementById("searchInput");
+  const input = document.getElementById("UserDashboardSearchInput");
   const filter = input.value.toUpperCase();
 
   const table = document.getElementById("myTable"); // your table
@@ -477,7 +476,8 @@ function pendingRequestsTable(event) {
     event.preventDefault();
   }
 
-  const input = document.getElementById("marketingsearchInput");
+  //const input = document.getElementById("marketingsearchInput");
+  const input = document.getElementById("AdminDashboardSearchInput");
   const filter = input.value.toUpperCase();
 
   const tableWrapper = document.getElementById("AdminRequestsTableContainer");
@@ -593,7 +593,7 @@ document.addEventListener("DOMContentLoaded", function() {
 
 //FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD START
 function searcheport() {
-  const input = document.getElementById("searchInput");
+  const input = document.getElementById("AnalyticsDashboardSearchInput");
   const filter = input.value.toUpperCase();
 
   const tbody = document.getElementById("reportsTable");
@@ -1380,3 +1380,16 @@ $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textar
     }
 });
 
+document.addEventListener('click', function(e) {
+    if (e.target.closest('.Select-btn')) {
+        const button = e.target.closest('.Select-btn');
+        const dropdown = button.closest('.dropdown-custom');
+        const menu = dropdown.querySelector('.dropdown-menu-custom');
+        
+        if (menu) {
+            const rect = button.getBoundingClientRect();
+            menu.style.setProperty('--dropdown-top', (rect.bottom + window.scrollY) + 'px');
+            menu.style.setProperty('--dropdown-left', (rect.left + window.scrollX) + 'px');
+        }
+    }
+});

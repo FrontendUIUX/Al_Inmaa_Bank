@@ -46,14 +46,7 @@ html:not(.designer)[dir="rtl"] [name*="s_sub_sidebar"] {
     border-right: none;
 }
 
-html:not(.designer)[dir="rtl"] body.theme-entry aside.sidebar {
-    right: 0;
-    left: auto;
-    transform: translateX(100%);
-    border-left: var(--Sidebar_border);
-    border-right: none;
-    animation: 1s fadeLeft-rtl forwards;
-}
+
 
 html:not(.designer)[dir="rtl"] body ul.links li .icon {
     margin-left: 1rem;
@@ -91,7 +84,7 @@ html:not(.designer)[dir="rtl"] thead th:last-child {
     border-right: none;
 }
 
-html:not(.designer)[dir="rtl"] .theme-entry .message-box-content.warning:before {
+html:not(.designer)[dir="rtl"] .theme-entry .message-box-content:before {
     right: 0;
     left: auto;
 }
@@ -110,7 +103,10 @@ html:not(.designer)[dir="rtl"].light body.theme-entry [name*="s_sub_sidebar"] {
     border-left: 1px solid rgb(0 0 0 / 10%);
     border-right: none;
 }
-
+html[dir=rtl] .theme-entry .message-box-content > .panel.full{
+    margin:0!important;
+    padding-right:1rem;
+}
 html:not(.designer)[dir="rtl"] .completedStep::before,
 html:not(.designer)[dir="rtl"] .inProgressStep::before,
 html:not(.designer)[dir="rtl"] .pendingStep::before {
@@ -284,7 +280,25 @@ html:not(.designer)[dir="rtl"] .dropdown-custom .spinner-border{
     right:37%;
     left:auto;
 }
+html:not(.designer)[dir="rtl"] .theme-entry span.runtime-list-item{
+    text-align: right !important;
+}
+html:not(.designer)[dir="rtl"] .grid-column-header-table td .grid-column-header-text{
+    text-align:right!important;
+}
+html:not(.designer)[dir="rtl"] svg.openSidebar {
+    right: 1rem;
+    left:auto;
+}
 @media (min-width: 992px) {
+    html:not(.designer)[dir="rtl"] body.theme-entry aside.sidebar {
+    right: 0;
+    left: auto;
+    transform: translateX(100%);
+    border-left: var(--Sidebar_border);
+    border-right: none;
+    animation: 1s fadeLeft-rtl forwards;
+}
     html:not(.designer)[dir="rtl"] .request-card:nth-child(2n+1) {
         border-left: 1px solid rgb(255 255 255 / 12%);
         border-right: none;
@@ -346,6 +360,10 @@ html:not(.designer)[dir="rtl"] .dropdown-custom .spinner-border{
 }
 
 @media (min-width: 1600px) {
+    html:not(.designer)[dir="rtl"] .theme-entry a.SourceCode-Forms-Controls-Web-Button[name*="Review Details Button mr-1 s_button s_secondary_button"] {
+    padding: 0.6vw 2.4vw!important;
+    padding-left: 1vw !important;
+}
         html:not(.designer)[dir="rtl"] [name*="s_button s_save_button"] {
         padding: 0.6vw 2vw .6vw 0vw !important;
     }
@@ -424,7 +442,7 @@ html:not(.designer)[dir="rtl"] #userProfileModal .modal-body .langSwitchContaine
     }
 
     html:not(.designer)[dir="rtl"] [name*="view_move_right"] {
-        margin-right: 22vw !important;
+        margin-right: 18vw !important;
         margin-left: 0 !important;
     }
 

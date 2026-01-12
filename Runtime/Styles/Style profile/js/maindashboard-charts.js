@@ -367,10 +367,15 @@ function initializeBarChart(canvasId = 'myBarChart') {
     // ------------------------
     // FUNCTION TO GET CURRENT TICK COLOR BASED ON HTML CLASS
     // ------------------------
-    const getTickColor = () =>
+
+        const getTickColor = () =>
         document.documentElement.classList.contains('dark')
             ? 'rgba(0, 33, 52, 1)'
-            : '#ffffff';
+           : '#ffffff';
+
+          
+        
+
 
     // ------------------------
     // INITIAL CHART DATA
@@ -956,6 +961,8 @@ window.updateRatingCanvas = (selector, newVal) => {
 
 // MARKETING DASHBOARD - OVERVIEW CHART 
 
+// MARKETING DASHBOARD - OVERVIEW CHART 
+
 function initializeCircularChart(chartData) {
     // ================================
     // CIRCULAR CHART
@@ -963,7 +970,6 @@ function initializeCircularChart(chartData) {
 
     // Calculate total and percentages
     const totalValue = chartData.values.reduce((sum, val) => sum + val, 0);
-    const percentages = chartData.values.map(val => Math.round((val / totalValue) * 100));
 
     // Filter out zero values
     const filteredData = {
@@ -973,13 +979,17 @@ function initializeCircularChart(chartData) {
         endColors: chartData.endColors.filter((_, index) => chartData.values[index] > 0),
     };
 
-    // Calculate actual percentages for filtered data (THIS IS THE KEY FIX)
-    const filteredPercentages = filteredData.values.map(val => Math.round((val / totalValue) * 100));
+    // Calculate actual percentages for filtered data
+    const filteredPercentages = filteredData.values.map(val =>
+        totalValue === 0 ? 0 : Math.round((val / totalValue) * 100)
+    );
 
     // Determine if all values are zero
     const allZero = totalValue === 0;
 
-    // Create gradient for each section
+    // ================================
+    // Gradient Helper
+    // ================================
     function createGradient(ctx, startColor, endColor) {
         const gradient = ctx.createLinearGradient(0, 0, 250, 0);
         gradient.addColorStop(0, startColor);
@@ -987,26 +997,29 @@ function initializeCircularChart(chartData) {
         return gradient;
     }
 
-    // Calculate label positions based on ACTUAL percentages
+    // ================================
+    // Label Positioning
+    // ================================
     function calculateLabelPositions(percentages) {
         const positions = [];
-        let currentAngle = -90; // Start from top
+        let currentAngle = -90;
 
         percentages.forEach(percentage => {
-            const segmentAngle = (percentage / 100) * 360; // This now uses actual percentage
+            const segmentAngle = (percentage / 100) * 360;
             const middleAngle = currentAngle + (segmentAngle / 2);
             const angleInRadians = (middleAngle * Math.PI) / 180;
+
             const distanceFromCenter = 0.7;
-            const x = 50 + (distanceFromCenter * Math.cos(angleInRadians) * 50);
-            const y = 50 + (distanceFromCenter * Math.sin(angleInRadians) * 50);
-            positions.push({ top: y + '%', left: x + '%' });
+            const x = 50 + (Math.cos(angleInRadians) * distanceFromCenter * 50);
+            const y = 50 + (Math.sin(angleInRadians) * distanceFromCenter * 50);
+
+            positions.push({ top: `${y}%`, left: `${x}%` });
             currentAngle += segmentAngle;
         });
 
         return positions;
     }
 
-    // Position and show labels
     function positionLabels() {
         const positions = calculateLabelPositions(filteredPercentages);
 
@@ -1019,36 +1032,43 @@ function initializeCircularChart(chartData) {
         filteredData.labels.forEach((label, index) => {
             const originalIndex = chartData.labels.indexOf(label);
             const labelElement = document.querySelector(`.segment-label${originalIndex + 1}`);
+
             if (labelElement) {
                 labelElement.style.display = allZero ? 'none' : 'block';
                 labelElement.style.top = positions[index].top;
                 labelElement.style.left = positions[index].left;
 
-                // Update the label content with actual percentage
                 const valueSpan = labelElement.querySelector('.value');
-                const lightSpan = labelElement.querySelector('.light');
-                if (valueSpan && lightSpan) {
+                if (valueSpan) {
                     valueSpan.innerHTML = `${filteredData.values[index]} <span class="light">(${filteredPercentages[index]}%)</span>`;
                 }
             }
         });
     }
 
-    // Prepare data for Chart.js - THIS IS WHERE PROPORTIONAL SIZES ARE SET
+    // ================================
+    // Chart.js Data
+    // ================================
     const chartJsData = {
         labels: filteredData.labels,
         datasets: [{
-            data: filteredData.values, // Chart.js automatically calculates proportions from these values
+            data: filteredData.values,
             backgroundColor: function (context) {
                 const chart = context.chart;
                 const { ctx, chartArea } = chart;
                 if (!chartArea) return null;
+
                 const index = context.dataIndex;
+
                 if (allZero) {
-                    return '#D3D3D3'; // light grey if all zero
-                } else {
-                    return createGradient(ctx, filteredData.colors[index], filteredData.endColors[index]);
+                    return '#D3D3D3';
                 }
+
+                return createGradient(
+                    ctx,
+                    filteredData.colors[index],
+                    filteredData.endColors[index]
+                );
             },
             borderWidth: 2,
             borderColor: 'transparent',
@@ -1058,7 +1078,9 @@ function initializeCircularChart(chartData) {
         }]
     };
 
-    // Chart configuration
+    // ================================
+    // Chart Configuration
+    // ================================
     const config = {
         type: 'doughnut',
         data: chartJsData,
@@ -1073,15 +1095,19 @@ function initializeCircularChart(chartData) {
             },
             interaction: { mode: null, intersect: false },
             animation: { animateScale: true, animateRotate: true },
-            onHover: () => { }, // disable hover effects
-            events: [] // disable all events
+            onHover: () => {},
+            events: []
         }
     };
 
-    // Initialize chart
-    const ctx = document.getElementById('myCircularChart').getContext('2d');
+    // ================================
+    // Chart Initialization
+    // ================================
+    const canvas = document.getElementById('myCircularChart');
+    if (!canvas) return;
 
-    // Destroy existing chart if it exists
+    const ctx = canvas.getContext('2d');
+
     if (window.statusChart && typeof window.statusChart.destroy === 'function') {
         window.statusChart.destroy();
     }
@@ -1089,25 +1115,33 @@ function initializeCircularChart(chartData) {
     window.statusChart = new Chart(ctx, config);
     setTimeout(positionLabels, 100);
 
-    // Also update the center text with actual total
+    // ================================
+    // Center Text (EN / AR)
+    // ================================
     const centerNumber = document.querySelector('.chart-center-text .number');
     const centerLabel = document.querySelector('.chart-center-text .label');
+    const isArabic = window.location.pathname.includes('RuntimeAR');
+
     if (centerNumber) {
         centerNumber.textContent = totalValue;
     }
+
     if (centerLabel) {
-        centerLabel.textContent = 'Total Requests';
+        centerLabel.textContent = isArabic ? 'إجمالي الطلبات' : 'Total Requests';
     }
 
-    // Add click functionality to labels if needed
+    // ================================
+    // Label Click Handling
+    // ================================
     document.querySelectorAll('.chartLabel').forEach(label => {
         label.addEventListener('click', function () {
-            const value = this.querySelector('.value').textContent;
-            const labelText = this.querySelector('.label-text').textContent;
+            const value = this.querySelector('.value')?.textContent || '';
+            const labelText = this.querySelector('.label-text')?.textContent || '';
             alert(`You clicked on ${labelText}: ${value}`);
         });
     });
 }
+
 
 // Function to extract data from HTML automatically
 function getChartDataFromHTML() {

@@ -978,7 +978,6 @@ html:not(.designer).light [name="headerLogo"] img {
     margin-bottom: 0rem;
     margin-top: 1rem;
     position: relative;
-    align-content: center;
 }
 
 .paginationIcons.d-flex.align-items-center {
@@ -2717,6 +2716,15 @@ html:not(.designer).light .slider .icon {
         width: calc(100% - 28rem) !important;
         margin-top: 1rem;
     }
+/* Always show dropdown above for bottom 2 rows */
+.pendingRequestsTable tbody tr:last-child td[data-title="Actions"] .dropdown-menu-custom,
+.pendingRequestsTable tbody tr:nth-last-child(2) td[data-title="Actions"] .dropdown-menu-custom {
+    top: auto !important;
+    bottom: 100% !important;
+    /* transform: translateX(-50%) !important; */
+    margin-top: 0 !important;
+    margin-bottom: 5px !important;
+}
 @media (prefers-reduced-motion: reduce) {
     .RequestFeedbackControl-RequestFeedbackControl .screens {
         transition: none;
@@ -5637,4 +5645,4 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb {
 
     }
 }
-/* final backup 22 december 2025 08:54am*/
+/* final backup 12 Jan 2026*/

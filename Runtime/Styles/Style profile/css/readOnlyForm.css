@@ -66,6 +66,12 @@ html:not(.designer).light .theme-entry .editingForm [name*="s_textbox"] input{
 html:not(.designer).light .input-control.radio.style-aware svg .svg-radio-btn-circle{
     stroke: rgba(57, 94, 117, 0.6);
 }
+[name*="s_picker"] .picker {
+    top: 0;
+    height: calc(100% - 0.6rem);
+    align-content: center;
+    left: 0;
+}
 @media(min-width:992px){
     html:not(.designer) .form {
     width: calc(100% - 28rem);
@@ -93,4 +99,4 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     margin-top: 0.3vw!important;
 }
 }
-/* final backup 17 december 2025*/
+/* final backup 12 Jan 2026*/
