@@ -326,7 +326,9 @@ html:not(.designer).light .sidebar ul>li.active a {
 html body ul.links li .icon {
     margin-right: 1rem;
 }
-
+html body ul.links li a{
+    width:80%;
+}
 li.isSubMenu {
     position: relative;
 }
@@ -1378,7 +1380,7 @@ html:not(.designer).light .dropdown-menu-custom {
 }
 
 .table-container {
-    overflow-x: auto;
+    overflow: auto visible!important;
     scrollbar-width: none;
     -ms-overflow-style: none;
     transition: all .3s ease-in-out;
@@ -1584,7 +1586,8 @@ html:not(.designer).light .status.returned span {
     display: none;
     margin: 0;
     left: 37%;
-    transform: translateX(-50%) !important;
+    top: 50%;
+    transform: translate(-50%) !important;
 }
 
 .dropdown-loader .spinner-border {
@@ -3250,7 +3253,7 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .feedba
     padding: .3rem 1rem;
     font-size: 0.8rem;
     color:white;
-    width: 100%;
+    min-width: 100%;
 }
 .closeModalSettings{
     cursor:pointer;
@@ -3333,6 +3336,11 @@ html:not(.designer).light .option-icon[alt="Return"] {
 }
 .light .dropdown-item{
     background-color:white;
+    color:var(--Navy-blue);
+}
+.dropdown-item{
+    background-color:var(--Navy-blue);
+    color:white;
 }
 .dropdown-item {
     display: flex;
@@ -3418,11 +3426,14 @@ html:not(.designer).light .option-icon[alt="Return"] {
     color: var(--Navy-blue);
 }
 
-html:not(.designer).light .dropdown-item:hover {
+html:not(.designer) .dropdown-item:hover {
     background-color: hsl(0deg 0% 96.08% / 18%);
     color: white!important;
 }
-
+html:not(.designer).light .dropdown-item:hover {
+    background-color: rgb(0 33 52 / 30%);
+    color: var(--Navy-blue)!important;
+}
 .barChart {
     height: 17.8rem;
     display: flex;
@@ -3941,7 +3952,7 @@ span.box-number-reports {
 }
 
 .box-label-reports {
-    font-size: .9rem;
+    font-size: var(--fs-caption);
     font-family: var(--regularFont);
 }
 
@@ -4731,11 +4742,6 @@ span#\33 cadd518-d4e8-7b10-93f0-0e742c7279b9 {
         height: auto;
         margin-right: .8rem;
     }
-
-    .box-label-reports {
-        font-size: .8rem;
-    }
-
     span#\30 c6f7712-92f0-2904-3076-8853c6072a89,
     div#d0300780-c69e-30af-366b-fb216c06c0a2_18a1ca65-4c9d-7340-a6d9-d6da3cb0f632_Table {
         flex-direction: row;
@@ -4978,11 +4984,6 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
         width: auto;
         margin-right: 1rem;
     }
-
-    .box-label-reports {
-        font-size: .9rem;
-    }
-
     html:not(.designer) body .kpiCards .card {
         width: 48%;
     }
@@ -5127,11 +5128,6 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
     span.box-number-reports {
         font-size: 1.6vw;
     }
-
-    .box-label-reports {
-        font-size: .9vw;
-    }
-
     .userSatisfaction,
     .averageTime {
         border-radius: 1.2vw;

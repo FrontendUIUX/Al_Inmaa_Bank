@@ -57,7 +57,7 @@ html:not(.designer)[dir="rtl"] body.theme-entry aside.sidebar {
 
 html:not(.designer)[dir="rtl"] body ul.links li .icon {
     margin-left: 1rem;
-    margin-right: 0;
+    margin-right: 0!important;
 }
 
 html:not(.designer)[dir="rtl"] body .sidebar .userProfilePhoto {
@@ -242,7 +242,7 @@ html:not(.designer)[dir="rtl"] thead th:not(:last-child) span {
 
 html:not(.designer)[dir="rtl"] .request-name::before {
     right: 0;
-    auto: 0;
+    left: auto;
 }
 
 html:not(.designer)[dir="rtl"] .request-name {
@@ -273,6 +273,17 @@ html:not(.designer)[dir="rtl"] span.box-number-reports {
 html:not(.designer)[dir="rtl"] body.theme-entry a.toolbar-button{
         padding-left:0!important;
     }
+html:not(.designer)[dir="rtl"] .dropdown-item{
+    text-align: right!important;
+}
+html:not(.designer)[dir="rtl"] .averageTime .dropdown-menu.show{
+    left:0;
+    right:auto;
+}
+html:not(.designer)[dir="rtl"] .dropdown-custom .spinner-border{
+    right:37%;
+    left:auto;
+}
 @media (min-width: 992px) {
     html:not(.designer)[dir="rtl"] .request-card:nth-child(2n+1) {
         border-left: 1px solid rgb(255 255 255 / 12%);
@@ -335,6 +346,9 @@ html:not(.designer)[dir="rtl"] body.theme-entry a.toolbar-button{
 }
 
 @media (min-width: 1600px) {
+        html:not(.designer)[dir="rtl"] [name*="s_button s_save_button"] {
+        padding: 0.6vw 2vw .6vw 0vw !important;
+    }
     html:not(.designer)[dir="rtl"] .status-icon {
     right: 0vw;
     left: auto;

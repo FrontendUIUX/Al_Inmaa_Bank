@@ -158,6 +158,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 // MAIN DASHBOARD - OVERVIEW CHART 
 function createSemiCircleChart() {
+    console.log("circle chart")
     const chartCanvas = document.getElementById('semiCircleChart');
     if (!chartCanvas) {
         console.warn('semiCircleChart element not found');
@@ -173,24 +174,28 @@ function createSemiCircleChart() {
     const dataMap = Array.from(percentageItems).map(item => {
         const percentEl = item.querySelector('.percentage');
         const labelEl = item.querySelector('.label');
-        const percent = parseFloat(
+       /* const percent = parseFloat(
             percentEl?.dataset.count ||
             percentEl?.textContent.replace('%', '') ||
             0
+        );*/
+        const percent = parseFloat(
+            percentEl?.textContent.replace('%', '') || 0
         );
+
 
         const label = (labelEl?.textContent || "").toLowerCase();
 
         let baseColor = '#e0e0e0';
         let darkColor = '#cccccc';
 
-        if (label.includes('approved')) {
+        if (label.includes('approved') || label.includes('الطلبات المعتمدة')) {
             baseColor = '#b6b5fa';
             darkColor = '#8785d8';
-        } else if (label.includes('pending')) {
+        } else if (label.includes('pending') || label.includes('بانتظار إجراءاتي')) {
             baseColor = '#ffb5a0';
             darkColor = '#ff9581';
-        } else if (label.includes('rejected')) {
+        } else if (label.includes('rejected') || label.includes('الطلبات المرفوضة')) {
             baseColor = '#ff9b9b';
             darkColor = '#e56b6b';
         }
@@ -288,7 +293,8 @@ function createSemiCircleChart() {
 }
 // Initialize chart when DOM is loaded
 document.addEventListener("DOMContentLoaded", function () {
-    createSemiCircleChart();
+    setTimeout(createSemiCircleChart,100);
+    //createSemiCircleChart();
 });
 
 // MAIN DASHBOARD - BAR CHART 

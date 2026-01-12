@@ -143,6 +143,9 @@ html:root{
     src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaDisplay-Medium.ttf");
     font-display: swap;
 }
+.profileUpper{
+    cursor: pointer;
+}
 html:not(.designer) body.theme-entry [name*="checkboxContainer"]{
     display:flex!important;
     align-items: end;
@@ -1198,7 +1201,7 @@ html:not(.designer) .input-control.select-box.read-only .input-control-buttons a
 .on-focus[name*="s_textarea"] textarea,
 html:not(.designer) .form.editingForm [name*="s_textarea"] textarea{
     min-height: 2rem !important;
-    top: 1rem;
+    top: 0rem;
     font-size: var(--fs-body);
 }
 
@@ -1264,6 +1267,7 @@ html:not(.designer).light [name*="s_label"]{
 }
 html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     top:1rem;
+    margin: 0!important;
 }
 html:not(.designer) [name*="s_textarea"],
 html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]{
@@ -1411,7 +1415,8 @@ html.mobile body {
 /* form */
 
 html:not(.designer).light .form,
-.mobile.light .theme-entry .runtime-form>.form {
+.mobile.light .theme-entry .runtime-form>.form,
+html:not(.designer) [data-initial-theme="light"] .runtime-form>.form{
     position: relative;
     border-radius: 1rem;
     overflow: hidden;
@@ -1509,7 +1514,6 @@ html:not(.designer) .panel {
 
 html:not(.designer) {
     overflow: auto;
-    background-color: var(--Navy-blue);
 }
 
 html:not(.designer) [name*="view_move_right"] {
@@ -1704,6 +1708,7 @@ html:not(.designer) [name*="stepDescription"] {
     --regularFont);
     padding: 0 !important;
     display: none;
+    margin: 0!Important;
 }
 /* remove the vertical line from the last step */
 div#\36 fb1c2f9-761d-94a4-edc6-7090c460123a_f25fbbe5-959e-25be-71e6-246c4c9fc7ba_Table::after {
@@ -1948,6 +1953,7 @@ td.file-info-cell.file-ellipsis .file-info.file-ellipsis {
     display: -webkit-box !important;
     -webkit-box-orient: vertical;
     -webkit-line-clamp: 1;
+    line-clamp: 1;
     overflow: hidden;
     white-space: nowrap;
     color: white;
@@ -2228,8 +2234,11 @@ html:not(.designer) .theme-entry .popup.dialog.runtime-message .message-box-cont
     font-family:var(--mediumFont);
     color: white;
 }
-.light  .noData h5,
 .light .noData p{
+    color:inherit;
+}
+.light  .noData h5
+{
     color: var(--Navy-blue);
 }
 
@@ -2648,7 +2657,8 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     margin-bottom:.6vw;
 }
 .noData p{
-    font-size:1vw;
+    font-size: var(--fs-body);
+    /* color: inherit; */
 }
 .noData .noDataImg{
 width:8vw;
@@ -2740,8 +2750,8 @@ width:8vw;
     }
 
     html:not(.designer) [name*="s_button s_save_button"]::before {
-        height: 1.3vw;
-        width: 1.3vw;
+        height: 1.1vw;
+        width: 1.1vw;
     }
 
     .theme-entry .input-control.checkbox.style-aware svg {
