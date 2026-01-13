@@ -1827,6 +1827,7 @@ html:not(.designer) [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>
     display: flex;
     justify-content: flex-end;
     height: 5rem;
+    gap: 1rem;
 }
 
 html:not(.designer) .commentsAttachments [name*="attachmentSection"] .toolbar .toolbar-wrapper>table>tbody>tr>td:first-child {
