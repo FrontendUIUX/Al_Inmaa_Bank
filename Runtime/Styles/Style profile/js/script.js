@@ -403,7 +403,21 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 300);
 });
 //
+document.addEventListener("DOMContentLoaded", function () {
+  const interval = setInterval(() => {
+    const divToMove = document.querySelector('[name*="buttonsView"]');
+    const form = document.querySelector(".form");
+    const header = document.querySelector(".formHeader");
 
+    if (form && divToMove && header) {
+      // Move div below the form only
+      form.insertAdjacentElement("afterend", divToMove);
+      console.info("✅ Div moved below form; header already exists.");
+
+      clearInterval(interval);
+    }
+  }, 300);
+});
 
 //FILTER MY REQUESTS TABLE - MY REQUESTS DASHBOARD START
 function myFunction() {
