@@ -1578,7 +1578,10 @@ html:not(.designer) .closeSubPanel:hover {
 .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0 !important;
 }
-
+[name*="buttonsView"] .editor-cell{
+    display:flex;
+    justify-content:flex-end;
+}
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"],
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_dropdown"],
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_picker"],
