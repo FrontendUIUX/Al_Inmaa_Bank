@@ -2987,8 +2987,8 @@ width:8vw;
     }
 
     html:not(.designer) [name*="view_move_right"] {
-        margin-left: 22vw !important;
-        width: calc(100% - 22vw) !important;
+        margin-left: 18vw !important;
+        width: calc(100% - 18vw) !important;
         margin-bottom: 1vw;
         padding-top: 0vw;
     }
