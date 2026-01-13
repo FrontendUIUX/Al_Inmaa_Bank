@@ -2924,10 +2924,6 @@ width:8vw;
     .theme-entry .grid-header-wrapper .grid-header-text>span {
         font-size: 1.4vw;
     }
-    html:not(.designer) .theme-entry a.toolbar-button span.button-c span.button-text {
-        font-size: .95vw;
-        margin-left: 0.9vw;
-    }
     [name*="viewTitle"],
     .theme-entry .grid-header-wrapper .grid-header-text>span {
         font-size: 1vw;
