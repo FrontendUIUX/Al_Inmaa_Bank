@@ -1911,7 +1911,7 @@ html:not(.designer).light .toolbar-button.add::before,
 html:not(.designer).light .toolbar-button.edit::before,
 html:not(.designer).light .toolbar-button.delete::before,
 html:not(.designer).light .toolbar-button.save::before,
-html:not(.designer).light [name*="Review Details Button mr-1 s_button s_secondary_button"]::before{
+html:not(.designer).light [name*="Review Details Button"]::before{
     filter: none;
 }
 
@@ -2150,12 +2150,12 @@ html:not(.designer) .grid-column-header-table td {
     padding: 0 !important;
 }
 
-[name*="Review Details Button mr-1 s_button s_secondary_button"] {
+[name*="Review Details Button"] {
     position: relative;
     padding-left: .5rem !important;
 }
 
-html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_button"]::before {
+html:not(.designer) [name*="Review Details Button"]::before {
     content: "";
     position: absolute;
     top: 50%;
@@ -2441,7 +2441,7 @@ div#c8550e1c-75df-44c7-bbf9-664f0a3e3d2d .row:nth-child(3){
     a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588 {
     margin: .3rem 0 !important;
 }
-    html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_button"]::before{
+    html:not(.designer) [name*="Review Details Button"]::before{
         display:none;
     }
     html:not(.designer) .popup.dialog{
@@ -2748,7 +2748,7 @@ html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
 .theme-entry .popup-footer-c{
     gap:1rem;
 }
-     html:not(.designer) .theme-entry .SourceCode-Forms-Controls-Web-Button[name*="Review Details Button mr-1 s_button s_secondary_button"]{
+     html:not(.designer) .theme-entry .SourceCode-Forms-Controls-Web-Button[name*="Review Details Button"]{
         padding-right:1vw!important;
     }
 
@@ -2845,7 +2845,7 @@ width:8vw;
         gap: 0.7vw 0.7vw;
     }
 
-    html:not(.designer) [name*="Review Details Button mr-1 s_button s_secondary_button"]::before {
+    html:not(.designer) [name*="Review Details Button"]::before {
         height: 1.2vw;
         width: 1.2vw;
     }
@@ -2949,7 +2949,7 @@ width:8vw;
         font-size: .8vw;
         margin-top: 1vw;
     }
-    html:not(.designer) .theme-entry .SourceCode-Forms-Controls-Web-Button[name*="Review Details Button mr-1 s_button s_secondary_button"]{
+    html:not(.designer) .theme-entry .SourceCode-Forms-Controls-Web-Button[name*="Review Details Button"]{
         padding-right:1rem!important;
     }
     .on-focus[name*="s_textarea"] textarea,
