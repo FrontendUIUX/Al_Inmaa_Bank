@@ -51,7 +51,8 @@ html:not(.designer) body.theme-entry .form [name*="s_calendar"],
 html:not(.designer) body.theme-entry .form [name*="s_dropdown"],
 html:not(.designer) body.theme-entry span[name*="s_dropdown"],
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_dropdown"],
-html:not(.designer) [name*="s_textarea"], html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]{
+html:not(.designer) body.theme-entry [name*="s_textarea"], 
+html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]{
       background-color: var(--Read_Only_Fields_Background)!important;
       border: var(--Read_Only_Fields_Border)!important;
 }
@@ -99,4 +100,4 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     margin-top: 0.3vw!important;
 }
 }
-/* final backup 12 Jan 2026*/
+/* final backup 17 december 2025*/

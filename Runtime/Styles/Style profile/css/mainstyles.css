@@ -606,7 +606,6 @@ html:not(.designer) .theme-entry .popup-footer {
 }
 
 html:not(.designer) .popup.dialog {
-    height: fit-content !important;
     border-radius: 1rem !important;
     overflow: hidden;
     z-index: 5;
@@ -641,7 +640,20 @@ html:not(.designer) .theme-entry .message-box-content:before {
 html:not(.designer) .theme-entry .message-box-content.error:before {
     background-image: url("/Runtime/Styles/Style%20profile/Images/error.svg");
 }
-
+.theme-entry .popup-header-button-bar-wrapper{
+    display:flex;
+    align-items:center;
+    width: fit-content;
+    gap: 1rem;
+}
+html:not(.designer) .theme-entry .dialog .popup-header-buttons a{
+    margin:0;
+}
+.popup-header-button-bar{
+    width:fit-content;
+    display:flex;
+    overflow:visible;
+}
 /* POPUP BRANDING END */
 /* PADDINGS */
 /* PADDING 1rem - top, bottom, left, right */
@@ -2397,6 +2409,15 @@ html:not(.designer) .theme-entry a.toolbar-button.paging-first.disabled:focus .b
     background-image:url("/Runtime/Styles/Style%20Profile/images/pagination/double-chevron-right.svg");
     scale:-1 1;
 }
+.theme-entry .dialog.sub-view iframe.runtime-popup{
+    height:33vw!important;
+}
+html:not(.designer) .theme-entry .popup-header-buttons a.close{
+    background-image:url("/Runtime/Styles/Style%20profile/images/close.svg")!important;
+    background-position:center!important;
+    background-size:contain!important;
+    margin-right: 0;
+}
 @media(max-width:767px) {
     span#e0eb6758-87f1-b262-e4cb-bdfa14d879b3 {
     flex-direction: column-reverse;
@@ -3009,4 +3030,4 @@ width:8vw;
         padding: 0.8vw 1.5vw;
     }
 }
-/* final backup 12 january 2026 */
+/* final backup 9 january 2026 */

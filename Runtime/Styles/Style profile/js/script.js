@@ -403,21 +403,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }, 300);
 });
 //
-document.addEventListener("DOMContentLoaded", function () {
-  const interval = setInterval(() => {
-    const divToMove = document.querySelector('[name*="buttonsView"]');
-    const form = document.querySelector(".form");
-    const header = document.querySelector(".formHeader");
 
-    if (form && divToMove && header) {
-      // Move div below the form only
-      form.insertAdjacentElement("afterend", divToMove);
-      console.info("✅ Div moved below form; header already exists.");
-
-      clearInterval(interval);
-    }
-  }, 300);
-});
 
 //FILTER MY REQUESTS TABLE - MY REQUESTS DASHBOARD START
 function myFunction() {
@@ -991,48 +977,6 @@ window.addEventListener("load", function () {
     setTimeout(() => skeleton.remove(), 6000);
   }
 });
-
-
-
-// // Observe all selects
-// document.querySelectorAll("select").forEach(select => {
-//   observer.observe(select, {
-//     attributes: true,
-//     attributeFilter: ["class", "disabled"] // only watch relevant changes
-//   });
-// });
-// //add readonly class to textbox
-// function updateTextboxState(input) {
-//   const textboxWrapper = input.closest(".s_textbox");
-//   if (!textboxWrapper) return;
-
-//   if (input.hasAttribute("readonly") || input.classList.contains("readonly")) {
-//     textboxWrapper.classList.add("readonly");
-//   } else {
-//     textboxWrapper.classList.remove("readonly");
-//   }
-// }
-// // Initial sync on page load
-// document.querySelectorAll('.s_textbox input[type="text"]').forEach(updateTextboxState);
-
-// // Watch for attribute/class changes dynamically
-// const observer1 = new MutationObserver(mutations => {
-//   mutations.forEach(mutation => {
-//     if (mutation.target.tagName === "INPUT") {
-//       updateTextboxState(mutation.target);
-//     }
-//   });
-// });
-
-// // Observe all text inputs inside .s_textbox
-// document.querySelectorAll('.s_textbox input[type="text"]').forEach(input => {
-//   observer.observe(input, {
-//     attributes: true,
-//     attributeFilter: ["readonly", "class"], // only watch relevant attributes
-//   });
-// });
-
-
 /* FEEDBACK SECTION START */
 function submitRating(rating, el) {
   console.log("rating clicked");
@@ -1406,4 +1350,19 @@ document.addEventListener('click', function(e) {
             menu.style.setProperty('--dropdown-left', (rect.left + window.scrollX) + 'px');
         }
     }
+});
+document.addEventListener("DOMContentLoaded", function () {
+  const interval = setInterval(() => {
+    const divToMove = document.querySelector('[name*="buttonsView"]');
+    const form = document.querySelector(".form");
+    const header = document.querySelector(".formHeader");
+
+    if (form && divToMove && header) {
+      // Move div below the form only
+      form.insertAdjacentElement("afterend", divToMove);
+      console.info("✅ Div moved below form; header already exists.");
+
+      clearInterval(interval);
+    }
+  }, 300);
 });

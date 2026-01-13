@@ -26,12 +26,12 @@ html:not(.designer)[dir="rtl"] .subPanel ul li .icon img {
     scale: -1 1;
 }
 
-html:not(.designer)[dir="rtl"] [name*="Review Details Button mr-1 s_button s_secondary_button"]::before {
+html:not(.designer)[dir="rtl"] [name*="Review Details Button"]::before {
     right: .8rem;
     left: auto;
 }
 
-html:not(.designer)[dir="rtl"] .theme-entry a.SourceCode-Forms-Controls-Web-Button[name*="Review Details Button mr-1 s_button s_secondary_button"] {
+html:not(.designer)[dir="rtl"] .theme-entry a.SourceCode-Forms-Controls-Web-Button[name*="Review Details Button"] {
     padding: 0.6rem 2.4rem !important;
     padding-left: 1rem ! Important;
 }
@@ -360,7 +360,7 @@ html:not(.designer)[dir="rtl"] svg.openSidebar {
 }
 
 @media (min-width: 1600px) {
-    html:not(.designer)[dir="rtl"] .theme-entry a.SourceCode-Forms-Controls-Web-Button[name*="Review Details Button mr-1 s_button s_secondary_button"] {
+    html:not(.designer)[dir="rtl"] .theme-entry a.SourceCode-Forms-Controls-Web-Button[name*="Review Details"] {
     padding: 0.6vw 2.4vw!important;
     padding-left: 1vw !important;
 }
@@ -442,7 +442,7 @@ html:not(.designer)[dir="rtl"] #userProfileModal .modal-body .langSwitchContaine
     }
 
     html:not(.designer)[dir="rtl"] [name*="view_move_right"] {
-        margin-right: 18vw !important;
+        margin-right: 19vw !important;
         margin-left: 0 !important;
     }
 

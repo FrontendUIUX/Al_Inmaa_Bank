@@ -147,6 +147,9 @@ function GetUserRequests(page, user, search, isArabic){
             $("#TablePager").replaceWith(response.pager);
             $("#DashboardLoader").hide();
 
+            if(isArabic){
+                LocalizeLinks();
+            }
             // $("#RequestsTableContainer").html(response);
           }
     });
@@ -171,6 +174,10 @@ function GetAdminDashboardRequests(page, user, search, isArabic){
             $("#AdminRequestsTableContainer table tbody").html(response.body);
             $("#TablePager").replaceWith(response.pager);
             $("#DashboardLoader").hide();
+
+            if(isArabic){
+                LocalizeLinks();
+            }
 
           }
     });
@@ -235,6 +242,10 @@ function GetAnalyticsDashboardRequests(page, search, isArabic){
             $("#TablePager").replaceWith(response.pager);
             $("#DashboardLoader").hide();
 
+            if(isArabic){
+                LocalizeLinks();
+            }
+
           }
     });
 }
@@ -258,6 +269,10 @@ function GetNotificationsPaged(page, user, isArabic){
 
             if(!response.hasMore){
               $("#NotificationsLoadMoreBtn").hide();
+            }
+
+            if(isArabic){
+                LocalizeLinks();
             }
 
           }
@@ -443,6 +458,7 @@ $(document).ready(function () {
             console.log("Reinitializing table sorting after pagination...");
             initTableSorting();
         }, 2000);
+
     }
 
     //  First Page
@@ -536,10 +552,7 @@ $(document).ready(function () {
 });
 
 
-$(document).ready(function() {
-    // Check if current URL contains 'RuntimeAR'
-    if (window.location.href.indexOf('RuntimeAR') === -1) return;
-
+function LocalizeLinks(){
     // List of section IDs
     var sectionIds = ['AdminRequestsTableContainer', 'RequestsTableContainer', 'AnalyticsDashboardControl', 'NotificationsContainer']; // replace with your actual IDs
 
@@ -553,10 +566,20 @@ $(document).ready(function() {
             var href = $link.attr('href');
             if (href) {
                 // Replace only the first occurrence of 'Runtime' with 'RuntimeAR'
-                $link.attr('href', href.replace('Runtime', 'RuntimeAR'));
+                $link.attr('href', function(_, href) {
+                    // Only replace 'Runtime' if it exists as 'Runtime' (not RuntimeAR)
+                    return href.includes('RuntimeAR') ? href : href.replace('Runtime', 'RuntimeAR');
+                });
             }
         });
     });
+}
+
+$(document).ready(function() {
+    // Check if current URL contains 'RuntimeAR'
+    if (window.location.href.indexOf('RuntimeAR') === -1) return;
+
+   LocalizeLinks();
 
     //for attachment button
     var $btn = $("#RequestStatusAttachmentBtn");
