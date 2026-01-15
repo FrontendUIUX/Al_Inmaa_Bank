@@ -367,15 +367,14 @@ function initializeBarChart(canvasId = 'myBarChart') {
     // ------------------------
     // FUNCTION TO GET CURRENT TICK COLOR BASED ON HTML CLASS
     // ------------------------
-
-        const getTickColor = () =>
-        document.documentElement.classList.contains('dark')
-            ? 'rgba(0, 33, 52, 1)'
-           : '#ffffff';
-
-          
-        
-
+    const getTickColor = () => {
+        // If html has the class 'light' - navy blue, otherwise white
+        if (document.documentElement.classList.contains('light')) {
+            return '#002134'; // Navy blue for light mode
+        } else {
+            return '#ffffff'; // White for dark mode (or when 'light' class is not present)
+        }
+    };
 
     // ------------------------
     // INITIAL CHART DATA
@@ -481,6 +480,7 @@ function initializeBarChart(canvasId = 'myBarChart') {
         }
     };
 }
+
 document.addEventListener('DOMContentLoaded', () => {
     initializeBarChart(); // Uses default 'myBarChart' ID
 });
