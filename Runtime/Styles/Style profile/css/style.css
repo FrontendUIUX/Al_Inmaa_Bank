@@ -3438,7 +3438,7 @@ html:not(.designer).light .option-icon[alt="Return"] {
 
 html:not(.designer) .dropdown-item:hover {
     background-color: hsl(0deg 0% 96.08% / 18%);
-    color: white!important;
+    color: var(--Navy-blue)!important;
 }
 html:not(.designer).light .dropdown-item:hover {
     background-color: rgb(0 33 52 / 30%)!important;
@@ -5646,4 +5646,4 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb {
 
     }
 }
-/* final backup 15 jan 2026*/
+/* final backup 22 december 2025 08:54am*/
