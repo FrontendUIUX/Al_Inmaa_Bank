@@ -1,3 +1,63 @@
+/* DARK MODE COLORS */
+html:root{
+    --Body_Text_Alignment:left;
+    --Fields_Height:3.5rem;
+    --Fields_Min_Height:3.5rem;
+    --Fields_Border_Radius:0.5rem;
+    --Fields_Padding:0 1rem;
+     --Alinma-plain: "AlinmaTheSans-Plain";
+    --Alinma-bold: "AlinmaTheSans-Bold";
+    /* new font */
+    --regularFont:"regularFont";
+    --plainFont:"plainFont";
+    --mediumFont:"mediumFont";
+    --main-text-size: 14px;
+    --border-radius-05:.5rem;
+    --fs-h1: clamp(1.9rem, 1.6vw + 0.9rem, 2.3rem);
+    --fs-h2: clamp(1.65rem, 1.3vw + 0.85rem, 2rem);
+    --fs-h3: clamp(1.4rem, 1.1vw + 0.75rem, 1.7rem);
+    --fs-h4: clamp(1.2rem, 0.95vw + 0.7rem, 1.5rem);
+    --fs-h5: clamp(1.05rem, 0.85vw + 0.6rem, 1.35rem);
+    --fs-h6: clamp(0.95rem, 0.75vw + 0.55rem, 1.2rem);
+    --fs-h7: clamp(0.85rem, 0.7vw + 0.45rem, 1rem);
+    --fs-body: clamp(0.95rem, 0.45vw + 0.85rem, 1.05rem);
+    --fs-button: clamp(0.85rem, 0.35vw + 0.85rem, 0.95rem);
+    --fs-caption: clamp(0.85rem, 0.3vw + 0.8rem, 0.9rem);
+    --Navy-blue: #002134;
+    --Secondary-navy-blue: #001E2D;
+    --Fields_Border: 2px solid #04324C;
+    --Fields_Background:#05263A;
+    --Body_Background_Color:#F9F2ED;
+    --Body_Background_Color:#002134;
+    --Navy-blue-low-opacity: rgb(0 33 52 / 70%);
+    --Table_Header_Color:#FFFFFF;
+    --Light-black: rgb(0 0 0 / 70%);
+    --View_Title_Color:#FFFFFF;
+    --Read_Only_Label_Color:rgba(255,255,255,.7);
+    --Page_Title_Color:#FFFFFF;
+    --Table_Body_Color:#FFFFFF;
+    --Status_Title_Color:#FFFFFF;
+    --Notification_Title_Color:#FFFFFF;
+    --Notification_Card_Background:#043049;
+    --Read_Only_Fields_Background:rgb(5, 38, 58);
+    --Read_Only_Fields_Border:1px solid rgb(4, 50, 76);
+    --Notification_Card_Border:1px solid rgb(255 255 255 / 10%);
+    --Header_Description_Color:rgb(255 255 255 / 70%);
+    --Sidebar_border:1.5px solid rgb(255 255 255 / 10%);
+    --Table_Row_Border:1px solid rgba(255, 255, 255, .1);
+    --Sidebar_Background_Color:#002134;
+     --Pending_Status_BG:rgb(229 42 54 / 30%);
+    --Pending_Status_Color:rgb(229 42 54);
+    --pb-1: #9795e0;
+    --pb-2: #ff9581;
+    --pb-3: #ffffff;
+    --pb-4: #e8dbd0;
+    --Purple: #9795E0;
+    --Orange: #FF9581;
+    --transition: all .3s ease-in-out;
+    --field_label_top: 0.2rem;
+    --sidebar_width_body_padding:19.5rem;
+}
 html.light:root {
     --Body_Background_Color:#F9F2ED;
     --Table_Header_Color:#002134;
@@ -38,86 +98,11 @@ html.light:root {
     --Alinma-plain: "AlinmaTheSans-Plain";
     --Alinma-bold: "AlinmaTheSans-Bold";
     /* new font */
-    --regularFont:"regularFont";
-    --plainFont:"plainFont";
-    --mediumFont:"mediumFont";
-    --main-text-size: 14px;
-    --border-radius-05:.5rem;
-    --fs-h1: clamp(1.9rem, 1.6vw + 0.9rem, 2.3rem);
-    --fs-h2: clamp(1.65rem, 1.3vw + 0.85rem, 2rem);
-    --fs-h3: clamp(1.4rem, 1.1vw + 0.75rem, 1.7rem);
-    --fs-h4: clamp(1.2rem, 0.95vw + 0.7rem, 1.5rem);
-    --fs-h5: clamp(1.05rem, 0.85vw + 0.6rem, 1.35rem);
-    --fs-h6: clamp(0.95rem, 0.75vw + 0.55rem, 1.2rem);
-    --fs-h7: clamp(0.85rem, 0.7vw + 0.45rem, 1rem);
-    --fs-body: clamp(0.95rem, 0.45vw + 0.85rem, 1.05rem);
-    --fs-button: clamp(0.85rem, 0.35vw + 0.85rem, 0.95rem);
-    --fs-caption: clamp(0.85rem, 0.3vw + 0.8rem, 0.9rem);
     --pb-1: #9795e0;
     --pb-2: #ff9581;
     --pb-3: #002134;
     --pb-4: #e8dbd0;
-    --transition: all .3s ease-in-out;
-    --field_label_top: 0.2rem;
-}
-/* DARK MODE COLORS */
-html:root{
-    --Body_Text_Alignment:left;
-    --Fields_Height:3.5rem;
-    --Fields_Min_Height:3.5rem;
-    --Fields_Border_Radius:0.5rem;
-    --Fields_Padding:0 1rem;
-     --Alinma-plain: "AlinmaTheSans-Plain";
-    --Alinma-bold: "AlinmaTheSans-Bold";
-    /* new font */
-    --regularFont:"regularFont";
-    --plainFont:"plainFont";
-    --mediumFont:"mediumFont";
-    --main-text-size: 14px;
-    --border-radius-05:.5rem;
-    --fs-h1: clamp(1.9rem, 1.6vw + 0.9rem, 2.3rem);
-    --fs-h2: clamp(1.65rem, 1.3vw + 0.85rem, 2rem);
-    --fs-h3: clamp(1.4rem, 1.1vw + 0.75rem, 1.7rem);
-    --fs-h4: clamp(1.2rem, 0.95vw + 0.7rem, 1.5rem);
-    --fs-h5: clamp(1.05rem, 0.85vw + 0.6rem, 1.35rem);
-    --fs-h6: clamp(0.95rem, 0.75vw + 0.55rem, 1.2rem);
-    --fs-h7: clamp(0.85rem, 0.7vw + 0.45rem, 1rem);
-    --fs-body: clamp(0.95rem, 0.45vw + 0.85rem, 1.05rem);
-    --fs-button: clamp(0.85rem, 0.35vw + 0.85rem, 0.95rem);
-    --fs-caption: clamp(0.85rem, 0.3vw + 0.8rem, 0.9rem);
-    --transition: all .3s ease-in-out;
-    --field_label_top: 0.2rem;
-    --Navy-blue: #002134;
-    --Secondary-navy-blue: #001E2D;
-    --Fields_Border: 2px solid #04324C;
-    --Fields_Background:#05263A;
-    --Body_Background_Color:#F9F2ED;
-    --Body_Background_Color:#002134;
-    --Navy-blue-low-opacity: rgb(0 33 52 / 70%);
-    --Table_Header_Color:#FFFFFF;
-    --Light-black: rgb(0 0 0 / 70%);
-    --View_Title_Color:#FFFFFF;
-    --Read_Only_Label_Color:rgba(255,255,255,.7);
-    --Page_Title_Color:#FFFFFF;
-    --Table_Body_Color:#FFFFFF;
-    --Status_Title_Color:#FFFFFF;
-    --Notification_Title_Color:#FFFFFF;
-    --Notification_Card_Background:#043049;
-    --Read_Only_Fields_Background:rgb(5, 38, 58);
-    --Read_Only_Fields_Border:1px solid rgb(4, 50, 76);
-    --Notification_Card_Border:1px solid rgb(255 255 255 / 10%);
-    --Header_Description_Color:rgb(255 255 255 / 70%);
-    --Sidebar_border:1.5px solid rgb(255 255 255 / 10%);
-    --Table_Row_Border:1px solid rgba(255, 255, 255, .1);
-    --Sidebar_Background_Color:#002134;
-     --Pending_Status_BG:rgb(229 42 54 / 30%);
-    --Pending_Status_Color:rgb(229 42 54);
-    --pb-1: #9795e0;
-    --pb-2: #ff9581;
-    --pb-3: #ffffff;
-    --pb-4: #e8dbd0;
-    --Purple: #9795E0;
-    --Orange: #FF9581;
+    
 }
 @font-face {
     font-family: "AlinmaTheSans-Plain";
@@ -2760,6 +2745,7 @@ html:not(.designer) header {
     --Fields_Border_Radius:0.5vw;
     --Fields_Padding:0 1vw;
     --field_label_top: 0.2vw;
+    --sidebar_width_body_padding:19.5vw;
 }
 html:not(.designer) body.theme-entry [name*="toolbarButtonsGap"]{
     gap:.5vw;
@@ -3111,7 +3097,7 @@ width:8vw;
     }
     html:not(.designer) body.theme-entry {
         padding-top: 6vw;
-        padding-left: 16vw;
+        padding-left: 19.5vw;
     }
 
     .runtime-content {
@@ -3120,8 +3106,8 @@ width:8vw;
 
     html:not(.designer) .theme-entry header,
     html:not(.designer) header {
-        left: 16vw;
-        width: calc(100% - 16vw);
+        left: var(--sidebar_width_body_padding);
+        width: calc(100% - 19.5vw);
         height: 6vw !important;
         padding: 0.8vw 1.5vw;
     }

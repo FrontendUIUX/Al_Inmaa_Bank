@@ -68,6 +68,7 @@ html:not(.designer) body.theme-entry [name*="topics_temp"] {
     transform:none;
     width: fit-content;
     min-width: 19.5rem;
+    height:fit-content;
 }
 .light #userProfileModal .username{
     color: var(--Navy-blue)!important;
@@ -490,7 +491,7 @@ html body header a.logo img {
 }
 
 html:not(.designer) body aside.sidebar {
-    width: 19.5rem;
+    width: var(--sidebar_width_body_padding);
     height: 100vh;
     position: fixed;
     top: 0;
@@ -3089,8 +3090,6 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .reques
     font-size: 1rem;
     font-family: var(--regularFont);
 }
-
-
 .RequestFeedbackControl-RequestFeedbackControl .feedback-wrapper {
     align-items: center;
     justify-content: center;
@@ -3104,20 +3103,15 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .reques
     height: 100%;
     width: 38%;
 }
-
-
 html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .feedback-wrapper {
     background-color: #042E47;
 
 }
-
-
 .feedback-left {
     height: 100%;
     width: 100%;
 
 }
-
 .RequestFeedbackControl-RequestFeedbackControl .image-wrapper {
     position: relative;
     display: inline-block;
@@ -5524,7 +5518,6 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb {
         min-height: calc(100vh - 13vw);
     }
     html:not(.designer) body aside.sidebar {
-        width: 16vw;
         padding: 2vw 1vw;
     }
 

@@ -625,3 +625,20 @@ $(document).ready(function () {
 $(document).on("click", ".closeModalSettings", function(){
   $("#userProfileModal").removeClass("show");
 });
+
+// Add the outside click handler here
+$(document).on('click', function(event) {
+  var modal = $("#userProfileModal");
+  if (modal.hasClass('show') && 
+      !$(event.target).closest('#userProfileModal .modal-content').length && 
+      !$(event.target).closest('.userProfile').length) {
+    modal.removeClass('show');
+  }
+});
+
+// Optional Escape key handler
+$(document).on('keyup', function(event) {
+  if (event.key === 'Escape' && $("#userProfileModal").hasClass('show')) {
+    $("#userProfileModal").removeClass('show');
+  }
+});
