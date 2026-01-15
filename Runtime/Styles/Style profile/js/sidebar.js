@@ -38,7 +38,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 { 
                   icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
                   name: isArabic ? "لوحة معلومات التسويق" : "Marketing Dashboard", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/Marketing__Admin__Dashboard/" : "/Runtime/Runtime/Form/Marketing__Admin__Dashboard/" 
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/Marketing__Admin__Dashboard/" : "/Runtime/Runtime/Form/Marketing__Admin__Dashboard/?ServiceID=4" 
                 },
                 { 
                   icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
@@ -105,11 +105,6 @@ document.addEventListener("DOMContentLoaded", () => {
               name: isArabic ? "الشريعة الإسلامية" : "Shariah", 
               url: "#",
               children:[
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "طلب تسويقي" : "Marketing Request", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/NR__MarketingRequest__Form/" : "/Runtime/Runtime/Form/NR__MarketingRequest__Form/" 
-                },
                 { 
                   icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
                   name: isArabic ? "طلب اعتماد محضر الاجتماع" : "Accreditation of Meeting Minutes Request", 

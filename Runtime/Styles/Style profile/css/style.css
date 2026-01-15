@@ -1,9 +1,6 @@
 body {
     display: none;
 }
-div#\30 96be5b7-6d7c-4600-b68b-5cb91a9d0323_43a0cf06-c0ec-fe93-3bbc-c014fc40a1f5_6458ca05-14ac-77d6-cdbf-46283a061121_9d0d7b6b-1889-4dd4-9ce1-c4b3a10e35ba td span {
-    text-align: left!important;
-}
 @keyframes fadeLeft {
     0% {
         opacity: 0;
@@ -262,7 +259,11 @@ html:not(.designer).light  .sideBarLinksGroup li:not(.isSubMenu):has(a.disabled)
     pointer-events: none !important;
     opacity: .4;
 }
-
+html:not(.designer) .sideBarLinksGroup li:not(.isSubMenu):has(a.disabled) {
+    color: #ffffff !important;
+    pointer-events: none !important;
+    opacity: .4;
+}
 li.noSubChildren::after {
     display: none
 }
@@ -2538,12 +2539,6 @@ html:not(.designer) .theme-entry .commentsAttachments [name*="attachmentSection"
     right: 0;
     top: 2rem;
 }
-
-html:not(.designer).light .card.totalRequests .dropdown-menu {
-    background-color: #002134;
-}
-
-
 html:not(.designer).light .card.totalRequests .dropdown-menu .dropdown-item {
     color: var(--Navy-blue);
 }
@@ -2589,7 +2584,7 @@ html:not(.designer).light .card.totalRequests .dropdown-menu .dropdown-item {
     border: 1px solid rgb(0, 0, 0, 0.15);
 }
 
-.theme-entry a.SourceCode-Forms-Controls-Web-Button[name*="Review Details Button mr-1 s_button s_secondary_button"] {
+.theme-entry a.SourceCode-Forms-Controls-Web-Button[name*="Review Details Button"] {
     padding-right: 1rem !Important;
 }
 
@@ -3259,7 +3254,7 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .feedba
     background-color: #05263A;
     border-radius: 8px;
     padding: .3rem 1rem;
-    font-size: 0.8rem;
+    font-size: var(--fs-button);
     color:white;
     min-width: 100%;
 }
@@ -3284,24 +3279,30 @@ html:not(.designer).light .RequestFeedbackControl-RequestFeedbackControl .feedba
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
     z-index: 20;
     padding: 0;
+    /* padding: 1rem 1rem; */
+    gap: .5rem;
 }
 
 .dropdown-item-custom {
     display: flex;
     align-items: center;
     gap: 3px;
-    padding: .3rem 0.5rem;
+    padding: 1rem 1rem!important;
     cursor: pointer;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    width: 95%;
+    width: 100%;
     margin: 0;
     font-size: 0.875rem;
 }
-html:not(.designer).light .dropdown-item-custom {
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+.dropdown-item-custom:first-child,
+.dropdown-item-custom:last-child{
+    /* padding:0!important; */
 }
 html:not(.designer).light .dropdown-item-custom {
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+html:not(.designer).light .dropdown-item-custom {
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .dropdown-item-custom:last-child {
@@ -3318,8 +3319,9 @@ html:not(.designer).light .dropdown-item-custom:hover {
 }
 
 .option-icon {
-    width: 0.6rem;
-    height: 0.6rem;
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-left:.5rem;
 }
 html:not(.designer) .dropdown-item-custom:hover .option-icon[alt="Return"] {
     filter: none;
@@ -3439,7 +3441,7 @@ html:not(.designer) .dropdown-item:hover {
     color: white!important;
 }
 html:not(.designer).light .dropdown-item:hover {
-    background-color: rgb(0 33 52 / 30%);
+    background-color: rgb(0 33 52 / 30%)!important;
     color: var(--Navy-blue)!important;
 }
 .barChart {
@@ -5121,8 +5123,8 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
     }
 
     .custom-dropdown {
-        padding: .4vw 1vw;
-        font-size: 0.7vw;
+        padding: 0.6vw 1vw;
+        font-size: var(--fs-button);
         border-radius: .5vw;
         gap: .5vw;
     }
@@ -5293,8 +5295,7 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
     .Select-btn {
         gap: .3vw;
         border-radius: .5vw;
-        padding: 0.3vw 0.6vw;
-        font-size: 0.8vw;
+        padding: 0.6vw 0.6vw;
     }
 
     .barChart {
@@ -5463,7 +5464,7 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
     }
 
     html:not(.designer) body.theme-entry .table tbody td {
-        padding: 1.1vw 1vw !important;
+        padding: 0.7vw 1vw !important;
     }
     .request-number {
         gap: .5vw;
@@ -5645,4 +5646,4 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb {
 
     }
 }
-/* final backup 22 december 2025 08:54am*/
+/* final backup 15 jan 2026*/

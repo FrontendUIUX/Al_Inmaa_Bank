@@ -1,3 +1,6 @@
+html:not(.designer)[dir="rtl"]:root{
+    --Body_Text_Alignment:right;
+}
 @keyframes fadeLeft-rtl {
     0% {
         opacity: 0;
@@ -21,7 +24,12 @@
         transform: translateX(0);
     }
 }
-
+html:not(.designer)[dir="rtl"].light .totalRequests.noData .card-body{
+    background-image:url("/Runtime/Styles/Style%20Profile/images/popularRequestsArabic.png");
+}
+html:not(.designer)[dir="rtl"] .totalRequests.noData .card-body{
+    background-image:url("/Runtime/Styles/Style%20Profile/images/popularRequestsArabicDark.png");
+}
 html:not(.designer)[dir="rtl"] .subPanel ul li .icon img {
     scale: -1 1;
 }
@@ -146,7 +154,7 @@ html:not(.designer)[dir="rtl"] .status-name {
 
 html:not(.designer)[dir="rtl"] .theme-entry a.toolbar-button span,
 html:not(.designer)[dir="rtl"] .theme-entry a.toolbar-button.toolbar-button-inline span {
-    margin-right: 0.4rem;
+    margin-right: 0.3rem;
 }
 
 html:not(.designer)[dir="rtl"] .status-item {
@@ -201,6 +209,7 @@ html:not(.designer)[dir="rtl"] .overviewCard .card-body .sentences {
 html:not(.designer)[dir="rtl"] table td .request-number::before {
     left: auto;
     right: 0;
+    scale: -1 1;
 }
 html:not(.designer)[dir="rtl"] #userProfileModal .modal-body a, 
 html:not(.designer)[dir="rtl"] #userProfileModal .modal-body .langSwitchContainer .leftSection {
@@ -289,6 +298,26 @@ html:not(.designer)[dir="rtl"] .grid-column-header-table td .grid-column-header-
 html:not(.designer)[dir="rtl"] svg.openSidebar {
     right: 1rem;
     left:auto;
+}
+html:not(.designer)[dir="rtl"] .grid-column-header-table td .grid-column-header-text {
+    border-left:1px solid rgb(0 0 0 / 10%);
+    border-right:none;
+}
+html:not(.designer)[dir="rtl"] .theme-entry.runtime-form .grid .grid-content-cell-wrapper{
+    text-align:right;
+}
+html:not(.designer)[dir="rtl"] .option-icon {
+    width: 0.8rem;
+    height: 0.8rem;
+    margin-left:.5rem;
+}
+html:not(.designer)[dir="rtl"] .label{
+    padding-right:5px;
+    padding-left:0;
+}
+html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only input[type=text], 
+html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only a.input-control{
+    text-align:right!important;
 }
 @media (min-width: 992px) {
     html:not(.designer)[dir="rtl"] body.theme-entry aside.sidebar {

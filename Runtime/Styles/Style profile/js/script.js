@@ -1,3 +1,60 @@
+// document.addEventListener("DOMContentLoaded", function () {
+//   // --- Get the comments div and form div ---
+//   const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
+//   const formDiv = document.querySelector(".form");
+
+//   if (divToMove && formDiv) {
+//     // Create a wrapper for comments + attachments
+//     const wrapper = document.createElement("div");
+//     wrapper.className = "commentsAttachments";
+
+//     // Insert wrapper after form
+//     formDiv.insertAdjacentElement("afterend", wrapper);
+
+//     // --- Add title before comments ---
+//     const viewTitle = document.createElement("div");
+//     viewTitle.setAttribute("name", "viewTitle");
+
+//     // Translate if URL contains RuntimeAR
+//     if (window.location.href.includes("RuntimeAR")) {
+//       viewTitle.textContent = "التعليقات والمرفقات"; // Arabic translation
+//     } else {
+//       viewTitle.textContent = "Comments & Attachments";
+//     }
+
+//     wrapper.appendChild(viewTitle);
+
+//     // Move the comments div inside the wrapper
+//     wrapper.appendChild(divToMove);
+
+//     // --- Wait for the attachment div ---
+//     const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
+//     const interval = setInterval(function () {
+//       const attachmentDiv = document.getElementById(attachmentId);
+//       if (attachmentDiv) {
+//         clearInterval(interval);
+
+//         // Move attachment inside the same wrapper
+//         wrapper.appendChild(attachmentDiv);
+
+//         // Disable toolbar buttons if href is empty or '#'
+//         const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
+//         toolbarButtons.forEach(btn => {
+//           if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
+//             btn.classList.add("disabled");
+//           }
+//         });
+
+//         // --- Append the extra section below wrapper ---
+//         const extraSectionId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73";
+//         const extraSection = document.getElementById(extraSectionId);
+//         if (extraSection) {
+//           wrapper.insertAdjacentElement("afterend", extraSection);
+//         }
+//       }
+//     }, 200); // Check every 200ms until attachment exists
+//   }
+// });
 // Get the current URL
 const urlParams = new URLSearchParams(window.location.search);
 
@@ -238,133 +295,8 @@ document.addEventListener("DOMContentLoaded", initTableSortingMainDashboard);
 // TABLE SORTING FEATURE - MAIN DASHBOARD END 
 
 
-document.addEventListener("DOMContentLoaded", function () {
-  // --- Get the comments div and form div ---
-  const divToMove = document.getElementById("c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_46a2cd23-8b71-ffa0-ab2c-75ec40fb18c1_b32ef5dd-d098-4f15-a2e0-c5ffa5036c7f");
-  const formDiv = document.querySelector(".form");
 
-  if (divToMove && formDiv) {
-    // Create a wrapper for comments + attachments
-    const wrapper = document.createElement("div");
-    wrapper.className = "commentsAttachments";
-
-    // Insert wrapper after form
-    formDiv.insertAdjacentElement("afterend", wrapper);
-
-    // --- Add title before comments ---
-    const viewTitle = document.createElement("div");
-    viewTitle.setAttribute("name", "viewTitle");
-
-    // Translate if URL contains RuntimeAR
-    if (window.location.href.includes("RuntimeAR")) {
-      viewTitle.textContent = "التعليقات والمرفقات"; // Arabic translation
-    } else {
-      viewTitle.textContent = "Comments & Attachments";
-    }
-
-    wrapper.appendChild(viewTitle);
-
-    // Move the comments div inside the wrapper
-    wrapper.appendChild(divToMove);
-
-    // --- Wait for the attachment div ---
-    const attachmentId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_670a4cd6-be18-3c1a-1dfe-7205b9468cac_48ccda29-94f2-448b-bdee-389afebb2c9b";
-    const interval = setInterval(function () {
-      const attachmentDiv = document.getElementById(attachmentId);
-      if (attachmentDiv) {
-        clearInterval(interval);
-
-        // Move attachment inside the same wrapper
-        wrapper.appendChild(attachmentDiv);
-
-        // Disable toolbar buttons if href is empty or '#'
-        const toolbarButtons = attachmentDiv.querySelectorAll(".toolbar-button");
-        toolbarButtons.forEach(btn => {
-          if (!btn.getAttribute("href") || btn.getAttribute("href") === "#") {
-            btn.classList.add("disabled");
-          }
-        });
-
-        // --- Append the extra section below wrapper ---
-        const extraSectionId = "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73";
-        const extraSection = document.getElementById(extraSectionId);
-        if (extraSection) {
-          wrapper.insertAdjacentElement("afterend", extraSection);
-        }
-      }
-    }, 200); // Check every 200ms until attachment exists
-  }
-});
 /////////
-
-// document.addEventListener("DOMContentLoaded", function () {
-
-//   const formDiv = document.querySelector(".form");
-//   if (!formDiv) return;
-
-//   // --- Create wrapper ---
-//   const wrapper = document.createElement("div");
-//   wrapper.className = "commentsAttachments";
-
-//   // ✅ Insert wrapper immediately after form closing div
-//   formDiv.insertAdjacentElement("afterend", wrapper);
-
-//   // --- Title ---
-//   const viewTitle = document.createElement("div");
-//   viewTitle.setAttribute("name", "viewTitle");
-//   viewTitle.textContent = window.location.href.includes("RuntimeAR")
-//     ? "التعليقات والمرفقات"
-//     : "Comments & Attachments";
-
-//   wrapper.appendChild(viewTitle);
-
-//   // --- Move comments ---
-//   const commentsDiv = document.getElementById(
-//     "b4a757be-961b-4d29-9c04-cabd440df119_68bfd689-2e6f-4c74-add8-fd9c21713149_8da84183-5bd9-d85c-ef8f-782855b715c5_c162de45-db2e-4815-b6b1-72f39a1040df"
-//   );
-
-//   if (commentsDiv) {
-//     wrapper.appendChild(commentsDiv);
-//   }
-
-//   // --- Wait for attachments ---
-//   const attachmentId =
-//     "b4a757be-961b-4d29-9c04-cabd440df119_68bfd689-2e6f-4c74-add8-fd9c21713149_71e3904a-de56-867e-5ea2-95c6a4eddd37_a4b2bc99-2273-4410-9cbc-414c10ded010";
-
-//   const interval = setInterval(function () {
-//     const attachmentDiv = document.getElementById(attachmentId);
-//     if (!attachmentDiv) return;
-
-//     clearInterval(interval);
-
-//     // Move attachment inside wrapper
-//     wrapper.appendChild(attachmentDiv);
-
-//     // Disable empty toolbar buttons
-//     attachmentDiv.querySelectorAll(".toolbar-button").forEach(btn => {
-//       const href = btn.getAttribute("href");
-//       if (!href || href === "#") {
-//         btn.classList.add("disabled");
-//       }
-//     });
-
-//     // --- Extra section below wrapper ---
-//     const extraSection = document.getElementById(
-//       "c8550e1c-75df-44c7-bbf9-664f0a3e3d2d_021c5380-e0aa-493c-a4e5-f995d800dd1e_1b8a735a-b187-4130-8d85-3b5a33bcaa6e_2659b94a-4d8e-460e-91ea-d306fdafbf73"
-//     );
-
-//     if (extraSection) {
-//       wrapper.insertAdjacentElement("afterend", extraSection);
-//     }
-//   }, 200);
-// });
-
-
-
-
-
-
-
 // move the action buttons of the form outside the form
 document.addEventListener("DOMContentLoaded", function () {
   const divId = "a1785b7c-5537-44bf-a510-6f3e6760d6b1_9cf1ee05-5e62-9845-8d82-6c780b7d3e16_d0300780-c69e-30af-366b-fb216c06c0a2_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba";
@@ -1366,3 +1298,59 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 300);
 });
+
+//code by walid Rifai to fix language variation switch
+
+(function () {
+setTimeout(function(){
+    
+  const anchor = document.querySelector('a[name="Ar_Button"]');
+    if (!anchor) return;
+
+    const btn = document.createElement("button");
+    btn.type = "button";
+
+    // Get current URL parts
+    const url = new URL(window.location.href);
+    const path = url.pathname;
+
+    const isArabic = path.startsWith("/RuntimeAR");
+    const savedLang = localStorage.getItem("siteLang") || (isArabic ? "AR" : "EN");
+
+    // Button text (shows what you switch TO)
+    btn.textContent = savedLang === "AR" ? "EN" : "AR";
+
+    // Replace <a> with button
+    anchor.parentNode.replaceChild(btn, anchor);
+
+    // Auto redirect if stored language differs from current URL
+    if (savedLang === "AR" && !isArabic) {
+        redirectTo("AR");
+        return;
+    }
+    if (savedLang === "EN" && isArabic) {
+        redirectTo("EN");
+        return;
+    }
+
+    btn.addEventListener("click", function () {
+        redirectTo(isArabic ? "EN" : "AR");
+    });
+
+    function redirectTo(lang) {
+        localStorage.setItem("siteLang", lang);
+
+        let newPath;
+        if (lang === "AR") {
+            newPath = path.replace(/^\/Runtime/, "/RuntimeAR");
+        } else {
+            newPath = path.replace(/^\/RuntimeAR/, "/Runtime");
+        }
+
+        window.location.href =
+            url.origin + newPath + url.search + url.hash;
+    }
+    },2000);
+
+})();
+

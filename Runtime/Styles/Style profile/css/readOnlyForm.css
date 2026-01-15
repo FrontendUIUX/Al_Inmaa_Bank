@@ -14,7 +14,12 @@ html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"],
 html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"], 
 html:not(.designer) body.theme-entry [name*="s_calendar"] [name*="s_label"], 
 html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"], 
-html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"]{
+html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"],
+html:not(.designer) body.theme-entry.runtime-view [name*="s_dropdown"] [name*="s_label"], 
+html:not(.designer) body.theme-entry.runtime-view [name*="s_picker"] [name*="s_label"], 
+html:not(.designer) body.theme-entry.runtime-view [name*="s_calendar"] [name*="s_label"], 
+html:not(.designer) body.theme-entry.runtime-view [name*="s_textbox"] [name*="s_label"], 
+html:not(.designer) body.theme-entry.runtime-view [name*="s_textarea"] [name*="s_label"]{
     top: var(--field_label_top)!important;
     transform: none;
     font-size: var(--fs-caption)!important;
@@ -40,7 +45,14 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     transform:none;
 }
 /*  TEXTBOX READONLY START */
-
+html:not(.designer) body.theme-entry.runtime-view [name*="s_textbox"],
+html:not(.designer) body.theme-entry.runtime-view [name*="s_dropdown"],
+html:not(.designer) body.theme-entry.runtime-view [name*="s_picker"],
+html:not(.designer) body.theme-entry.runtime-view [name*="s_calendar"],
+html:not(.designer) body.theme-entry.runtime-view .editor-cell.lastcellinrow[name*="s_textbox"],
+html:not(.designer) body.theme-entry.runtime-view .editor-cell.lastcellinrow[name*="s_dropdown"],
+html:not(.designer) body.theme-entry.runtime-view .editor-cell.lastcellinrow[name*="s_picker"],
+html:not(.designer) body.theme-entry.runtime-view .editor-cell.lastcellinrow[name*="s_calendar"],
 html:not(.designer) body.theme-entry .form span[name*="s_textbox"],
 html:not(.designer) body.theme-entry .form [name*="s_textbox"].editor-cell.lastcellinrow,
 html:not(.designer) body.theme-entry .form  [name*="s_textarea"],
@@ -87,6 +99,9 @@ html:not(.designer).light .input-control.radio.style-aware svg .svg-radio-btn-ci
 }
 }
 @media(min-width:1600px){
+    html:not(.designer) body.theme-entry [name*="s_textbox"] input{
+        margin-top:.3vw!important;
+    }
     html:not(.designer) .form {
     width: calc(100% - 28vw);
     padding: 0vw 2vw 1vw!important;
@@ -95,9 +110,5 @@ html:not(.designer) body.theme-entry span[name*="s_dropdown"]:has(.select-box.re
     top: 0.3vw;
 
 }
-
-    html:not(.designer) .theme-entry [name*="s_textbox"] input {
-    margin-top: 0.3vw!important;
 }
-}
-/* final backup 17 december 2025*/
+/* final backup 15 jan 2026*/
