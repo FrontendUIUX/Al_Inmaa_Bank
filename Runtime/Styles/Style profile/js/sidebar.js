@@ -1,12 +1,10 @@
-// ================================
-// SIDEBAR + LIGHT/DARK MODE SCRIPT
-// ================================
+
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(function () {
     try {
       // Check if we're in Arabic mode
       const isArabic = window.location.pathname.includes("RuntimeAR");
-      
+
       // ===== Get user info from K2 SourceCode object =====
       const fqn = SourceCode?.Forms?.Settings?.User?.FQN || "";
       const userName = fqn.split("\\").pop() || "User";
@@ -20,35 +18,35 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           category: isArabic ? "الروابط الرئيسية" : "Main Links",
           links: [
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Dashboard.svg", 
-              name: isArabic ? "لوحة التحكم" : "Dashboard", 
-              url: isArabic ? "/RuntimeAR/Runtime/Form/MainDashboard/" : "/Runtime/Runtime/Form/MainDashboard/" 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/Dashboard.svg",
+              name: isArabic ? "لوحة التحكم" : "Dashboard",
+              url: isArabic ? "/RuntimeAR/Runtime/Form/MainDashboard/" : "/Runtime/Runtime/Form/MainDashboard/"
             },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/My Requests.svg", 
-              name: isArabic ? "طلباتي" : "My Requests", 
-              url: isArabic ? "/RuntimeAR/Runtime/Form/UserDashboard/" : "/Runtime/Runtime/Form/UserDashboard/" 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/My Requests.svg",
+              name: isArabic ? "طلباتي" : "My Requests",
+              url: isArabic ? "/RuntimeAR/Runtime/Form/UserDashboard/" : "/Runtime/Runtime/Form/UserDashboard/"
             },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/report-and-analytics.svg", 
-              name: isArabic ? "التقارير والتحليلات" : "Reports & Analytics", 
-              url: isArabic ? "#" : "#" ,
-              children:[
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "لوحة معلومات التسويق" : "Marketing Dashboard", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/Marketing__Admin__Dashboard/" : "/Runtime/Runtime/Form/Marketing__Admin__Dashboard/?ServiceID=4" 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/report-and-analytics.svg",
+              name: isArabic ? "التقارير والتحليلات" : "Reports & Analytics",
+              url: isArabic ? "#" : "#",
+              children: [
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "لوحة معلومات التسويق" : "Marketing Dashboard",
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/Marketing__Admin__Dashboard/" : "/Runtime/Runtime/Form/Marketing__Admin__Dashboard/?ServiceID=4"
                 },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "لوحة معلومات الاتصالات" : "Communication Dashboard", 
-                  url: isArabic ? "#" : "#" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "لوحة معلومات الاتصالات" : "Communication Dashboard",
+                  url: isArabic ? "#" : "#"
                 },
-                 { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "لوحة معلومات تكنولوجيا المعلومات" : "Information Technology Dashboard", 
-                  url: isArabic ? "#" : "#" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "لوحة معلومات تكنولوجيا المعلومات" : "Information Technology Dashboard",
+                  url: isArabic ? "#" : "#"
                 },
               ]
             },
@@ -58,93 +56,93 @@ document.addEventListener("DOMContentLoaded", () => {
         {
           category: isArabic ? "الإدارات" : "Departments",
           links: [
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Retail Banking.svg", 
-              name: isArabic ? "الخدمات المصرفية للأفراد والخدمات المصرفية الرقمية" : "Retail & Digital Banking", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/Retail Banking.svg",
+              name: isArabic ? "الخدمات المصرفية للأفراد والخدمات المصرفية الرقمية" : "Retail & Digital Banking",
               url: "#",
-              children:[
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "طلب تسويقي" : "Marketing Request", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/NR__MarketingRequest__Form/" : "/Runtime/Runtime/Form/NR__MarketingRequest__Form/" 
+              children: [
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "طلب تسويقي" : "Marketing Request",
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/NR__MarketingRequest__Form/" : "/Runtime/Runtime/Form/NR__MarketingRequest__Form/"
                 },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "الموافقة على الحسابات عالية المخاطر" : "High Risk Account Approvals", 
-                  url: isArabic ? "#" : "#" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "الموافقة على الحسابات عالية المخاطر" : "High Risk Account Approvals",
+                  url: isArabic ? "#" : "#"
                 },
-                 { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "عملية الاستثناء - شريحة العملاء" : "Exception Process Customer Segment", 
-                  url: isArabic ? "#" : "#" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "عملية الاستثناء - شريحة العملاء" : "Exception Process Customer Segment",
+                  url: isArabic ? "#" : "#"
                 },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "ملاحظات زيارة الفرع" : "Branch Visit Notes", 
-                  url: isArabic ? "#" : "#" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "ملاحظات زيارة الفرع" : "Branch Visit Notes",
+                  url: isArabic ? "#" : "#"
                 },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "أتمتة الإحالات" : "Referral Automation", 
-                  url: isArabic ? "#" : "#" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "أتمتة الإحالات" : "Referral Automation",
+                  url: isArabic ? "#" : "#"
                 },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "ختم T24" : "T24 Stamp", 
-                  url: isArabic ? "#" : "#" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "ختم T24" : "T24 Stamp",
+                  url: isArabic ? "#" : "#"
                 },
               ]
             },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg", 
-              name: isArabic ? "التسويق والشركات" : "Marketing & Corporate", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/Human Capital Excellence.svg",
+              name: isArabic ? "التسويق والشركات" : "Marketing & Corporate",
               url: "#",
             },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Shariah.svg", 
-              name: isArabic ? "الشريعة الإسلامية" : "Shariah", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/Shariah.svg",
+              name: isArabic ? "الشريعة الإسلامية" : "Shariah",
               url: "#",
-              children:[
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "طلب اعتماد محضر الاجتماع" : "Accreditation of Meeting Minutes Request", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/AccreditationOfMinutesR__Form1/" : "/Runtime/Runtime/Form/AccreditationOfMinutesR__Form1/" 
+              children: [
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "طلب اعتماد محضر الاجتماع" : "Accreditation of Meeting Minutes Request",
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/AccreditationOfMinutesR__Form1/" : "/Runtime/Runtime/Form/AccreditationOfMinutesR__Form1/"
                 },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "طلب دراسة" : "Study Request", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/SR__StudyRequestSubmission__Form/" : "/Runtime/Runtime/Form/SR__StudyRequestSubmission__Form/" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "طلب دراسة" : "Study Request",
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/SR__StudyRequestSubmission__Form/" : "/Runtime/Runtime/Form/SR__StudyRequestSubmission__Form/"
                 },
-                { 
-                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png", 
-                  name: isArabic ? "طلب توصية بجائزة" : "Award Recommendation Request", 
-                  url: isArabic ? "/RuntimeAR/Runtime/Form/AR__AwardRecommendationRequest__Form/" : "/Runtime/Runtime/Form/AR__AwardRecommendationRequest__Form/" 
+                {
+                  icon: "/Runtime/Styles/Style%20profile/images/expandedicon.png",
+                  name: isArabic ? "طلب توصية بجائزة" : "Award Recommendation Request",
+                  url: isArabic ? "/RuntimeAR/Runtime/Form/AR__AwardRecommendationRequest__Form/" : "/Runtime/Runtime/Form/AR__AwardRecommendationRequest__Form/"
                 },
               ]
             },
-             { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/information-technology.svg", 
-              name: isArabic ? "تكنولوجيا المعلومات" : "Information Technology", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/information-technology.svg",
+              name: isArabic ? "تكنولوجيا المعلومات" : "Information Technology",
               url: "#",
             },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/Operations.svg", 
-              name: isArabic ? "العمليات" : "Operations", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/Operations.svg",
+              name: isArabic ? "العمليات" : "Operations",
               url: "#",
             },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/facilities-management.svg", 
-              name: isArabic ? "إدارة المرافق" : "Facilities Management", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/facilities-management.svg",
+              name: isArabic ? "إدارة المرافق" : "Facilities Management",
               url: "#",
             },
-            { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/human-capital.png", 
-              name: isArabic ? "رأس المال البشري" : "Human Capital", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/human-capital.png",
+              name: isArabic ? "رأس المال البشري" : "Human Capital",
               url: "#",
             },
-             { 
-              icon: "/Runtime/Styles/Style%20profile/images/net/risk-management.svg", 
-              name: isArabic ? "إدارة المخاطر" :"Risk Management", 
+            {
+              icon: "/Runtime/Styles/Style%20profile/images/net/risk-management.svg",
+              name: isArabic ? "إدارة المخاطر" : "Risk Management",
               url: "#",
             },
           ]
@@ -286,8 +284,8 @@ document.addEventListener("DOMContentLoaded", () => {
       // show notification popup
       const notificationButton = document.querySelector(".notifications");
       const notificationPopup = document.querySelector(".icon-popup");
-      if(notificationButton && notificationPopup){
-        notificationButton.addEventListener("click", function(){
+      if (notificationButton && notificationPopup) {
+        notificationButton.addEventListener("click", function () {
           notificationPopup.classList.toggle("visible");
         })
       }
@@ -364,65 +362,65 @@ document.addEventListener("DOMContentLoaded", () => {
       }
 
       // Add click event to items with submenus
-document.querySelectorAll(".isSubMenu").forEach(menu => {
-  menu.addEventListener("click", e => {
-    e.preventDefault();
-    e.stopPropagation();
+      document.querySelectorAll(".isSubMenu").forEach(menu => {
+        menu.addEventListener("click", e => {
+          e.preventDefault();
+          e.stopPropagation();
 
-    // Remove "open" class from all submenus
-    document.querySelectorAll(".isSubMenu.open").forEach(m => {
-      m.classList.remove("open");
-    });
+          // Remove "open" class from all submenus
+          document.querySelectorAll(".isSubMenu.open").forEach(m => {
+            m.classList.remove("open");
+          });
 
-    // Apply "open" to the clicked submenu
-    menu.classList.add("open");
+          // Apply "open" to the clicked submenu
+          menu.classList.add("open");
 
-    const title = menu.querySelector("a").innerText.trim();
-    let found = null;
+          const title = menu.querySelector("a").innerText.trim();
+          let found = null;
 
-    // Find the clicked link in the config
-    sidebarConfig.forEach(sec => {
-      sec.links.forEach(l => {
-        if (l.name === title) found = l;
-      });
-    });
+          // Find the clicked link in the config
+          sidebarConfig.forEach(sec => {
+            sec.links.forEach(l => {
+              if (l.name === title) found = l;
+            });
+          });
 
-    // If no children found, do not open the subpanel
-    if (!found || !found.children || found.children.length === 0) {
-      subPanel.classList.remove("active");
-      updateOverlay();
-      return;
-    }
+          // If no children found, do not open the subpanel
+          if (!found || !found.children || found.children.length === 0) {
+            subPanel.classList.remove("active");
+            updateOverlay();
+            return;
+          }
 
-    // Update subpanel title
-    subPanelTitle.textContent = title;
+          // Update subpanel title
+          subPanelTitle.textContent = title;
 
-    // Clear and rebuild subpanel list
-    subPanelList.innerHTML = "";
+          // Clear and rebuild subpanel list
+          subPanelList.innerHTML = "";
 
-    found.children.forEach(child => {
-      const li = document.createElement("li");
+          found.children.forEach(child => {
+            const li = document.createElement("li");
 
-      const childPath = new URL(child.url, window.location.origin).pathname;
-      if (currentPath === childPath) {
-        li.classList.add("active");
-      }
+            const childPath = new URL(child.url, window.location.origin).pathname;
+            if (currentPath === childPath) {
+              li.classList.add("active");
+            }
 
-      li.innerHTML = `
+            li.innerHTML = `
         <div class="icon">
           <img src="${child.icon}" alt="${child.name}">
         </div>
         <a href="${child.url}" class="${isArabic ? 'rtl-text' : ''}">${child.name}</a>
       `;
 
-      subPanelList.appendChild(li);
-    });
+            subPanelList.appendChild(li);
+          });
 
-    // Display subpanel
-    subPanel.classList.add("active");
-    updateOverlay();
-  });
-});
+          // Display subpanel
+          subPanel.classList.add("active");
+          updateOverlay();
+        });
+      });
 
 
       // Close subpanel when close button is clicked
@@ -446,114 +444,155 @@ document.querySelectorAll(".isSubMenu").forEach(menu => {
           updateOverlay();
         }
       });
+      try {
+        // ================================
+        // LIGHT / DARK MODE TOGGLE
+        // ================================
+        const THEME_KEY = "theme";
+        const toggle = document.getElementById("modeToggle");
+        const icon = document.querySelector(".sun-img");
+        const label = document.querySelector(".toggle-label");
 
-      // ================================
-      // LIGHT/DARK MODE TOGGLE
-      // ================================
-      const THEME_KEY = "theme";
-      const toggle = document.getElementById("modeToggle");
-      const icon = document.querySelector(".sun-img");
-      const label = document.querySelector(".toggle-label");
+        // Detect Arabic if used in your project
+        const isArabic = document.documentElement.lang === "ar";
 
-      const applyTheme = (theme) => {
-        document.documentElement.classList.toggle("light", theme === "light");
-        toggle.checked = theme === "light";
-        if (icon) icon.src = theme === "light"
-          ? "/Runtime/Styles/Style%20profile/images/net/Sun.svg"
-          : "/Runtime/Styles/Style%20profile/images/net/Moon.svg";
-        if (label) label.textContent = theme === "light" 
-          ? (isArabic ? "الوضع الفاتح" : "Light Mode")
-          : (isArabic ? "الوضع الداكن" : "Dark Mode");
-      };
+        const applyTheme = (theme) => {
+          // Remove both first
+          document.documentElement.classList.remove("light", "dark");
+          document.documentElement.classList.add(theme);
 
-      // Determine initial theme
-      const saved = localStorage.getItem(THEME_KEY);
-      const prefersDark = window.matchMedia("(prefers-color-scheme: light)").matches;
-      const initial = saved === "light" || saved === "dark" ? saved : (prefersDark ? "light" : "dark");
-      applyTheme(initial);
+          // Sync toggle state
+          if (toggle) {
+            toggle.checked = theme === "light";
+          }
 
-      // Listen for toggle changes
-      toggle.addEventListener("change", () => {
-        const next = toggle.checked ? "light" : "dark";
-        localStorage.setItem(THEME_KEY, next);
-        applyTheme(next);
-      });
+          // Sync icon
+          if (icon) {
+            icon.src =
+              theme === "light"
+                ? "/Runtime/Styles/Style%20profile/images/net/Sun.svg"
+                : "/Runtime/Styles/Style%20profile/images/net/Moon.svg";
+          }
+
+          // Sync label
+          if (label) {
+            label.textContent =
+              theme === "light"
+                ? (isArabic ? "الوضع الفاتح" : "Light Mode")
+                : (isArabic ? "الوضع الداكن" : "Dark Mode");
+          }
+
+          // Persist choice
+          localStorage.setItem(THEME_KEY, theme);
+        };
+
+        // ================================
+        // INITIALIZE UI STATE ONLY
+        // (Theme already applied in <head>)
+        // ================================
+        const savedTheme = localStorage.getItem(THEME_KEY);
+        if (savedTheme === "light" || savedTheme === "dark") {
+          applyTheme(savedTheme);
+        }
+
+        // ================================
+        // TOGGLE EVENT
+        // ================================
+        if (toggle) {
+          toggle.addEventListener("change", () => {
+            applyTheme(toggle.checked ? "light" : "dark");
+          });
+        }
+
+        // ================================
+        // SYNC ACROSS TABS
+        // ================================
+        window.addEventListener("storage", (e) => {
+          if (e.key === THEME_KEY && e.newValue) {
+            applyTheme(e.newValue);
+          }
+        });
+
+        // Enable transitions after load (optional)
+        document.documentElement.classList.add("theme-ready");
+
+      } catch (e) {
+        console.error("Theme initialization error:", e);
+      }
 
     } catch (e) {
       console.error("Error rendering sidebar:", e);
     }
+
+    // ===== Notification processing =====
+    // Check if Arabic mode for notification text
+    const isArabic = window.location.pathname.includes("RuntimeAR");
+
+    function extractNotificationId(item) {
+      const title = item.querySelector(".notification-title")?.innerText || "";
+      const match = title.match(/\(([^)]+)\)/); // extract text inside parentheses
+      const id = match ? match[1] : null;
+      return id;
+    }
+
+    function updateNotificationCounter() {
+      const notifItems = document.querySelectorAll('.notification-item');
+      let seen = JSON.parse(localStorage.getItem("seenNotifications") || "[]");
+      const currentIds = [...notifItems]
+        .map(item => extractNotificationId(item))
+        .filter(id => id !== null);
+      const unread = currentIds.filter(id => !seen.includes(id));
+
+      const counter = document.querySelector(".popup-count");
+      if (counter) {
+        counter.textContent = unread.length;
+      }
+    }
+
+    function markNotificationsAsRead() {
+      const notifItems = document.querySelectorAll('.notification-item');
+      const ids = [...notifItems]
+        .map(item => extractNotificationId(item))
+        .filter(id => id !== null);
+
+      localStorage.setItem("seenNotifications", JSON.stringify(ids));
+      updateNotificationCounter();
+    }
+
+    // Initial counter update
+    updateNotificationCounter();
+
+    // When popup header clicked, mark as read
+    const popupHeader = document.querySelector('.icon-popup-header');
+    if (popupHeader) {
+      popupHeader.addEventListener('click', () => {
+        markNotificationsAsRead();
+      });
+    }
+
+    // Watch for new notifications dynamically
+    const notifContainer = document.querySelector("#NotificationsPopupContainer ul.notification-list");
+    if (notifContainer) {
+      const observer = new MutationObserver(() => {
+        updateNotificationCounter();
+      });
+      observer.observe(notifContainer, { childList: true, subtree: true });
+    }
   }, 500);
 });
 
-// notification process
-document.addEventListener("DOMContentLoaded", () => {
-  // Check if Arabic mode for notification text
-  const isArabic = window.location.pathname.includes("RuntimeAR");
-
-  function extractNotificationId(item) {
-    const title = item.querySelector(".notification-title")?.innerText || "";
-    const match = title.match(/\(([^)]+)\)/); // extract text inside parentheses
-    const id = match ? match[1] : null;
-    return id;
-  }
-
-  function updateNotificationCounter() {
-    const notifItems = document.querySelectorAll('.notification-item');
-    let seen = JSON.parse(localStorage.getItem("seenNotifications") || "[]");
-    const currentIds = [...notifItems]
-      .map(item => extractNotificationId(item))
-      .filter(id => id !== null);
-    const unread = currentIds.filter(id => !seen.includes(id));
-    
-    const counter = document.querySelector(".popup-count");
-    if (counter) {
-      counter.textContent = unread.length;
-    }
-  }
-
-  function markNotificationsAsRead() {
-    const notifItems = document.querySelectorAll('.notification-item');
-    const ids = [...notifItems]
-      .map(item => extractNotificationId(item))
-      .filter(id => id !== null);
-    
-    localStorage.setItem("seenNotifications", JSON.stringify(ids));
-    updateNotificationCounter();
-  }
-
-  // Initial counter update
-  updateNotificationCounter();
-
-  // When popup header clicked, mark as read
-  const popupHeader = document.querySelector('.icon-popup-header');
-  if (popupHeader) {
-    popupHeader.addEventListener('click', () => {
-      markNotificationsAsRead();
-    });
-  }
-
-  // Watch for new notifications dynamically
-  const notifContainer = document.querySelector("#NotificationsPopupContainer ul.notification-list");
-  if (notifContainer) {
-    const observer = new MutationObserver(() => {
-      updateNotificationCounter();
-    });
-    observer.observe(notifContainer, { childList: true, subtree: true });
-  }
-});
-
 // check if panel is empty
-$(document).ready(function(){
-  setTimeout(function(){
+$(document).ready(function () {
+  setTimeout(function () {
     const isArabic = window.location.pathname.includes("RuntimeAR");
     var textt = $("#NotificationsPopupContainer").text();
 
-    if(textt.toLowerCase()==("No data").toLowerCase()){
+    if (textt.toLowerCase() == ("No data").toLowerCase()) {
       $("#NotificationsPopupContainer").text("");
       $(".noNotifications").addClass("show");
       $(".icon-popup-close").remove();
       $(".popup-count").hide();
-      
+
       // Update no notifications text if Arabic
       if (isArabic) {
         const noNotifDiv = $(".noNotifications.show");
@@ -588,16 +627,18 @@ $(document).ready(function () {
       $("#NotificationsLoadMoreBtn").hide();
     }
   }, 1000);
-  
+
 });
+
 $(document).on("click", ".userProfile", function () {
   console.log("clicked");
   $("#userProfileModal").toggleClass("show");
 });
+
 $(document).ready(function () {
   // Slight delay to ensure Nintex finished rendering
   setTimeout(function () {
-    var arabicButton  = $('a[name="Ar_Button"]');
+    var arabicButton = $('a[name="Ar_Button"]');
     var englishButton = $('a[name="Eng_Button"]');
     var langContainer = $('.language-switcher');
 
@@ -622,23 +663,24 @@ $(document).ready(function () {
   }, 500);
 });
 
-$(document).on("click", ".closeModalSettings", function(){
+$(document).on("click", ".closeModalSettings", function () {
   $("#userProfileModal").removeClass("show");
 });
 
 // Add the outside click handler here
-$(document).on('click', function(event) {
+$(document).on('click', function (event) {
   var modal = $("#userProfileModal");
-  if (modal.hasClass('show') && 
-      !$(event.target).closest('#userProfileModal .modal-content').length && 
-      !$(event.target).closest('.userProfile').length) {
+  if (modal.hasClass('show') &&
+    !$(event.target).closest('#userProfileModal .modal-content').length &&
+    !$(event.target).closest('.userProfile').length) {
     modal.removeClass('show');
   }
 });
 
 // Optional Escape key handler
-$(document).on('keyup', function(event) {
+$(document).on('keyup', function (event) {
   if (event.key === 'Escape' && $("#userProfileModal").hasClass('show')) {
     $("#userProfileModal").removeClass('show');
   }
 });
+/* final backup 15 january 2026 12:25pm*/

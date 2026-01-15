@@ -319,6 +319,10 @@ html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only 
 html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only a.input-control{
     text-align:right!important;
 }
+html:not(.designer)[dir="rtl"] .card.totalRequests .dropdown-menu{
+        left:0;
+        right:auto!important;
+    }
 @media (min-width: 992px) {
     html:not(.designer)[dir="rtl"] body.theme-entry aside.sidebar {
     right: 0;
@@ -344,7 +348,7 @@ html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only 
 
     }
 
-    html:not(.designer).light .request-card:nth-child(2n+1) {
+    html:not(.designer)[dir="rtl"].light .request-card:nth-child(2n+1) {
         border-left: 1px solid rgb(0 0 0 / 10%);
         border-right: none;
     }
@@ -362,7 +366,7 @@ html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only 
     }
 
     html:not(.designer)[dir="rtl"] body {
-        padding-right: 19.5rem;
+        padding-right: var(--sidebar_width_body_padding);
         padding-left: 0 !important
     }
 
@@ -383,7 +387,7 @@ html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only 
 
     html:not(.designer)[dir="rtl"] .theme-entry header,
     html:not(.designer)[dir="rtl"] header {
-        right: 19.5rem;
+        right: var(--sidebar_width_body_padding);
         left: auto;
     }
 }
@@ -447,19 +451,8 @@ html:not(.designer)[dir="rtl"] #userProfileModal .modal-body .langSwitchContaine
     }
 
     html:not(.designer)[dir="rtl"] .subPanel {
-        right: 15.9vw;
+        right: var(--sidebar_width_body_padding);
     }
-
-    html:not(.designer)[dir="rtl"] .theme-entry header,
-    html:not(.designer)[dir="rtl"] header {
-        right: 16vw;
-        left: auto;
-    }
-
-    html:not(.designer)[dir="rtl"] body {
-        padding-right: 16vw;
-    }
-
     html:not(.designer)[dir="rtl"] .sideBarLinksGroup .icon {
         margin-right: 0;
         margin-left: 0.8vw !important;
@@ -498,4 +491,4 @@ html:not(.designer)[dir="rtl"] #userProfileModal .modal-body .langSwitchContaine
     }
 }
 
-/* final backup 8 jan 2026*/
+/* final backup 15 jan 2026*/

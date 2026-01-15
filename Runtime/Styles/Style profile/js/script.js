@@ -342,9 +342,21 @@ function myFunction() {
   const input = document.getElementById("UserDashboardSearchInput");
   const filter = input.value.toUpperCase();
 
-  const table = document.getElementById("myTable"); // your table
-  const tbody = document.getElementById("requestsTable"); // tbody
+  const table = document.getElementById("myTable");
+  const tbody = document.getElementById("requestsTable");
   const tr = tbody.getElementsByTagName("tr");
+
+  // Detect Arabic runtime
+  const isArabic = window.location.href.indexOf("RuntimeAR") !== -1;
+
+  // Translated texts
+  const placeholderTitle = isArabic
+    ? "لا توجد بيانات للعرض حالياً"
+    : "Nothing to Display Yet";
+
+  const placeholderDescription = isArabic
+    ? "سيظهر هذا القسم تلقائياً عند توفر البيانات"
+    : "This section will show data once it becomes available";
 
   // Placeholder wrapper outside the table
   let placeholderWrapper = document.querySelector(".noDataPlaceholderWrapper");
@@ -355,19 +367,21 @@ function myFunction() {
     placeholderWrapper.style.width = "100%";
     placeholderWrapper.style.textAlign = "center";
     placeholderWrapper.style.padding = "40px 0";
+
     placeholderWrapper.innerHTML = `
       <div class="noData d-flex align-items-center justify-content-center flex-column">
         <div class="noDataImg">
           <img src="/Runtime/Styles/Style%20profile/images/placeholdericon.png" alt="no data available">
         </div>
-        <h5>Nothing to Display Yet</h5>
-        <p>This section will show data once it becomes available</p>
+        <h5>${placeholderTitle}</h5>
+        <p>${placeholderDescription}</p>
       </div>
     `;
+
     table.parentNode.insertBefore(placeholderWrapper, table);
   }
 
-  // Select the pagination div
+  // Pagination
   const tablePager = document.getElementById("TablePager");
 
   let hasVisibleRows = false;
@@ -388,7 +402,7 @@ function myFunction() {
     if (rowMatch) hasVisibleRows = true;
   }
 
-  // Show/hide table, placeholder, and pagination based on search results
+  // Toggle table, placeholder, and pagination
   if (!hasVisibleRows) {
     table.style.display = "none";
     placeholderWrapper.style.display = "block";
@@ -396,25 +410,34 @@ function myFunction() {
   } else {
     table.style.display = "";
     placeholderWrapper.style.display = "none";
-    if (tablePager) tablePager.setAttribute("style", "display: flex !important;"); // force it
+    if (tablePager) tablePager.setAttribute("style", "display: flex !important;");
   }
 }
+
 //FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD END
 
 //FILTER PENDING MY REQUESTS TABLE - MAIN DASHBOARD START 
 function pendingRequestsTable(event) {
-  // Prevent default behavior if event is provided (for Enter key)
   if (event && event.preventDefault) {
     event.preventDefault();
   }
 
-  //const input = document.getElementById("marketingsearchInput");
   const input = document.getElementById("AdminDashboardSearchInput");
   const filter = input.value.toUpperCase();
 
   const tableWrapper = document.getElementById("AdminRequestsTableContainer");
   const tbody = document.getElementById("pendingRequestsTable");
   const tr = tbody.getElementsByTagName("tr");
+
+  // Language detection
+  const isArabic = window.location.href.indexOf("RuntimeAR") !== -1;
+
+  const placeholderText = {
+    title: isArabic ? "لا يوجد بيانات للعرض حالياً" : "Nothing to Display Yet",
+    description: isArabic
+      ? "سيظهر هذا القسم تلقائياً عند توفر البيانات"
+      : "This section will show data once it becomes available"
+  };
 
   // Create placeholder if it doesn't exist
   let placeholderWrapper = document.querySelector(".noDataPlaceholderWrapperPending");
@@ -426,16 +449,14 @@ function pendingRequestsTable(event) {
         <div class="noDataImg">
           <img src="/Runtime/Styles/Style%20profile/images/placeholdericon.png" alt="no data available">
         </div>
-        <h5>Nothing to Display Yet</h5>
-        <p>This section will show data once it becomes available</p>
+        <h5>${placeholderText.title}</h5>
+        <p>${placeholderText.description}</p>
       </div>
     `;
     tableWrapper.parentNode.insertBefore(placeholderWrapper, tableWrapper);
   }
 
-  // Pagination
   const tablePager = document.getElementById("TablePager");
-
   let hasVisibleRows = false;
 
   for (let i = 0; i < tr.length; i++) {
@@ -446,13 +467,11 @@ function pendingRequestsTable(event) {
       const cell = td[j];
       const txtValue = cell.textContent || cell.innerText;
 
-      // Reset previous highlights
       cell.innerHTML = txtValue;
 
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         rowMatch = true;
 
-        // Highlight matched text
         if (filter !== "") {
           const regex = new RegExp(`(${filter})`, "gi");
           cell.innerHTML = txtValue.replace(regex, `<span class="highlight">$1</span>`);
@@ -464,7 +483,6 @@ function pendingRequestsTable(event) {
     if (rowMatch) hasVisibleRows = true;
   }
 
-  // Show/hide table, placeholder, and pager
   if (!hasVisibleRows) {
     tableWrapper.style.display = "none";
     placeholderWrapper.style.display = "block";
@@ -475,6 +493,7 @@ function pendingRequestsTable(event) {
     if (tablePager) tablePager.style.setProperty("display", "flex", "important");
   }
 }
+
 // Override the onkeyup handler from HTML
 document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.getElementById("marketingsearchInput");
@@ -1270,6 +1289,7 @@ $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textar
     }
 });
 
+// THIS FUNCTION IS TO FIX THE DROPDOWN VISIBILITY ISSUE IN THE TABLE START - ADDED BY SILVANA
 document.addEventListener('click', function(e) {
     if (e.target.closest('.Select-btn')) {
         const button = e.target.closest('.Select-btn');
@@ -1278,11 +1298,31 @@ document.addEventListener('click', function(e) {
         
         if (menu) {
             const rect = button.getBoundingClientRect();
-            menu.style.setProperty('--dropdown-top', (rect.bottom + window.scrollY) + 'px');
+            const menuHeight = menu.offsetHeight;
+            const windowHeight = window.innerHeight;
+            
+            // Check if there's enough space below the button
+            // We need space for at least 4 items or the full menu
+            const itemHeight = 40; // Approximate height of each dropdown item in pixels
+            const minSpaceNeeded = Math.min(menuHeight, itemHeight * 4);
+            
+            const spaceBelow = windowHeight - rect.bottom;
+            
+            if (spaceBelow < minSpaceNeeded) {
+                // Not enough space below, position above
+                menu.style.setProperty('--dropdown-top', (rect.top + window.scrollY - menuHeight) + 'px');
+            } else {
+                // Enough space below, position normally
+                menu.style.setProperty('--dropdown-top', (rect.bottom + window.scrollY) + 'px');
+            }
+            
             menu.style.setProperty('--dropdown-left', (rect.left + window.scrollX) + 'px');
         }
     }
 });
+// THIS FUNCTION IS TO FIX THE DROPDOWN VISIBILITY ISSUE IN THE TABLE END - ADDED BY SILVANA
+
+//THIS FUNCTION IS TO MOVE THE BUTTONS OUTSIDE THE FORM START - ADDED BY SILVANA 
 document.addEventListener("DOMContentLoaded", function () {
   const interval = setInterval(() => {
     const divToMove = document.querySelector('[name*="buttonsView"]');
@@ -1298,59 +1338,168 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }, 300);
 });
+//THIS FUNCTION IS TO MOVE THE BUTTONS OUTSIDE THE FORM END - ADDED BY SILVANA
 
-//code by walid Rifai to fix language variation switch
+// THIS FUNCTION IS TO FIX THE LANGUAGE VARIATION SWITCH START - ADDED BY WALID
+// (function () {
 
-(function () {
-setTimeout(function(){
-    
-  const anchor = document.querySelector('a[name="Ar_Button"]');
-    if (!anchor) return;
+//     function applyLanguageButton() {
 
-    const btn = document.createElement("button");
-    btn.type = "button";
+//         // Find any existing language anchor
+//         const anchor = document.querySelector(
+//             'a[name="Ar_Button"], a[name="English_Button"], a[name="Eng_Button"]'
+//         );
 
-    // Get current URL parts
-    const url = new URL(window.location.href);
-    const path = url.pathname;
+//         if (!anchor) return;
 
-    const isArabic = path.startsWith("/RuntimeAR");
-    const savedLang = localStorage.getItem("siteLang") || (isArabic ? "AR" : "EN");
+//         // Prevent duplicate buttons
+//         if (anchor.previousSibling && anchor.previousSibling.classList?.contains("lang-toggle-btn")) {
+//             return;
+//         }
 
-    // Button text (shows what you switch TO)
-    btn.textContent = savedLang === "AR" ? "EN" : "AR";
+//         const btn = document.createElement("button");
+//         btn.type = "button";
+//         btn.className = "lang-toggle-btn";
 
-    // Replace <a> with button
-    anchor.parentNode.replaceChild(btn, anchor);
+//         const path = window.location.pathname;
+//         const isArabic = path.startsWith("/RuntimeAR");
 
-    // Auto redirect if stored language differs from current URL
-    if (savedLang === "AR" && !isArabic) {
-        redirectTo("AR");
-        return;
+//         // Button always shows TARGET language
+//         btn.textContent = isArabic ? "EN" : "AR";
+
+//         // Replace anchor with button
+//         anchor.parentNode.insertBefore(btn, anchor);
+//         anchor.remove();
+
+//         btn.addEventListener("click", function () {
+
+//             let newPath;
+//             if (isArabic) {
+//                 newPath = path.replace(/^\/RuntimeAR/, "/Runtime");
+//             } else {
+//                 newPath = path.replace(/^\/Runtime/, "/RuntimeAR");
+//             }
+
+//             localStorage.setItem("siteLang", isArabic ? "EN" : "AR");
+
+//             window.location.href =
+//                 window.location.origin +
+//                 newPath +
+//                 window.location.search +
+//                 window.location.hash;
+//         });
+//     }
+
+//     // Run once DOM is ready
+//    // document.addEventListener("DOMContentLoaded", applyLanguageButton);
+
+//     // Run again in case portal re-renders toolbar
+//    // setTimeout(applyLanguageButton, 2000);
+
+// })();
+// (function () {
+
+//     function applyLanguageButton() {
+
+//         // Remove any previously injected buttons
+//         document.querySelectorAll(".lang-toggle-btn").forEach(b => b.remove());
+
+//         // Find the current language anchor
+//         const anchor = document.querySelector(
+//             'a[name="Ar_Button"], a[name="English_Button"], a[name="Eng_Button"]'
+//         );
+
+//         if (!anchor || !anchor.parentNode) return;
+
+//         const btn = document.createElement("button");
+//         btn.type = "button";
+//         btn.className = "lang-toggle-btn";
+
+//         const path = window.location.pathname;
+//         const isArabic = path.startsWith("/RuntimeAR");
+
+//         // Show target language only
+//         btn.textContent = isArabic ? "EN" : "AR";
+
+//         // 🔑 Replace anchor IN PLACE
+//         anchor.parentNode.replaceChild(btn, anchor);
+
+//         btn.addEventListener("click", function () {
+
+//             let newPath;
+//             if (isArabic) {
+//                 newPath = path.replace(/^\/RuntimeAR/, "/Runtime");
+//             } else {
+//                 newPath = path.replace(/^\/Runtime/, "/RuntimeAR");
+//             }
+
+//             localStorage.setItem("siteLang", isArabic ? "EN" : "AR");
+
+//             window.location.href =
+//                 window.location.origin +
+//                 newPath +
+//                 window.location.search +
+//                 window.location.hash;
+//         });
+//     }
+
+//     // Initial load
+//     document.addEventListener("DOMContentLoaded", applyLanguageButton);
+
+//     // Safety rerun for portal re-render
+//     setTimeout(applyLanguageButton, 2000);
+
+// })();
+// THIS FUNCTION IS TO FIX THE LANGUAGE VARIATION SWITCH END - ADDED BY WALID
+
+
+//THIS IS A CODE BY WALID TO ADD A LOADER ON LOAD
+$(document).ready(function(){
+  setTimeout(function(){
+  $('.language-switcher').remove();
+  },3000)
+})
+
+  // 1️⃣ Create loader and content wrapper
+  const loader = document.createElement('div');
+  loader.id = 'pageLoader';
+  loader.textContent = 'Loading…';
+  document.body.prepend(loader);
+
+  const content = document.createElement('div');
+  content.id = 'pageContent';
+  
+  // Move all existing body content into content wrapper
+  while (document.body.children.length > 1) { // skip loader itself
+    content.appendChild(document.body.children[1]);
+  }
+  document.body.appendChild(content);
+
+  // 2️⃣ Inject CSS styles
+  const style = document.createElement('style');
+  style.textContent = `
+    #pageLoader {
+      position: fixed;
+      inset: 0;
+      background-color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      z-index: 9999;
     }
-    if (savedLang === "EN" && isArabic) {
-        redirectTo("EN");
-        return;
+    #pageContent {
+      visibility: hidden;
     }
+  `;
+  document.head.appendChild(style);
 
-    btn.addEventListener("click", function () {
-        redirectTo(isArabic ? "EN" : "AR");
-    });
+  // 3️⃣ Show loader for 2 seconds, then reveal content
+  document.addEventListener('DOMContentLoaded', () => {
+    setTimeout(() => {
+      loader.style.display = 'none';
+      content.style.visibility = 'visible';
+    }, 2000);
+  });
 
-    function redirectTo(lang) {
-        localStorage.setItem("siteLang", lang);
-
-        let newPath;
-        if (lang === "AR") {
-            newPath = path.replace(/^\/Runtime/, "/RuntimeAR");
-        } else {
-            newPath = path.replace(/^\/RuntimeAR/, "/Runtime");
-        }
-
-        window.location.href =
-            url.origin + newPath + url.search + url.hash;
-    }
-    },2000);
-
-})();
 

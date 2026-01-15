@@ -1,5 +1,6 @@
 /* DARK MODE COLORS */
 html:root{
+    /* BODY TEXT ALIGNMENT */
     --Body_Text_Alignment:left;
     --Fields_Height:3.5rem;
     --Fields_Min_Height:3.5rem;
@@ -13,6 +14,7 @@ html:root{
     --mediumFont:"mediumFont";
     --main-text-size: 14px;
     --border-radius-05:.5rem;
+    /* FONT SIZES */
     --fs-h1: clamp(1.9rem, 1.6vw + 0.9rem, 2.3rem);
     --fs-h2: clamp(1.65rem, 1.3vw + 0.85rem, 2rem);
     --fs-h3: clamp(1.4rem, 1.1vw + 0.75rem, 1.7rem);
@@ -42,10 +44,7 @@ html:root{
     --Read_Only_Fields_Background:rgb(5, 38, 58);
     --Read_Only_Fields_Border:1px solid rgb(4, 50, 76);
     --Notification_Card_Border:1px solid rgb(255 255 255 / 10%);
-    --Header_Description_Color:rgb(255 255 255 / 70%);
-    --Sidebar_border:1.5px solid rgb(255 255 255 / 10%);
     --Table_Row_Border:1px solid rgba(255, 255, 255, .1);
-    --Sidebar_Background_Color:#002134;
      --Pending_Status_BG:rgb(229 42 54 / 30%);
     --Pending_Status_Color:rgb(229 42 54);
     --pb-1: #9795e0;
@@ -56,7 +55,14 @@ html:root{
     --Orange: #FF9581;
     --transition: all .3s ease-in-out;
     --field_label_top: 0.2rem;
+    /* SIDEBAR */
     --sidebar_width_body_padding:19.5rem;
+    --Sidebar_Background_Color:#002134;
+    --Sidebar_border:1.5px solid rgb(255 255 255 / 10%);
+    /* HEADER */
+    --Header_Padding:0rem;
+    --Header_Description_Color:rgb(255 255 255 / 70%);
+    --Header_Background_Color:rgb(0 33 52 / 80%);
 }
 html.light:root {
     --Body_Background_Color:#F9F2ED;
@@ -87,7 +93,6 @@ html.light:root {
     --Secondary-navy-blue: #001E2D;
     --Notification_Card_Background:#FFFFFF;
     --Navy-blue-low-opacity: rgb(0 33 52 / 70%);
-    --Header_Description_Color:rgb(0 0 0 / 70%);
     --Purple: #9795E0;
     --Orange: #FF9581;
     --Table-header: rgb(244 231 219 / 60%);
@@ -102,7 +107,9 @@ html.light:root {
     --pb-2: #ff9581;
     --pb-3: #002134;
     --pb-4: #e8dbd0;
-    
+    /* HEADER */
+    --Header_Background_Color:hsl(25deg 50% 95% / 30%);
+     --Header_Description_Color:rgb(0 0 0 / 70%);
 }
 @font-face {
     font-family: "AlinmaTheSans-Plain";
@@ -129,8 +136,11 @@ html.light:root {
     src: url("/Runtime/Styles/Style%20profile/fonts/AlinmaDisplay-Medium.ttf");
     font-display: swap;
 }
+html:not(.theme-ready) body{
+    display:none;
+}
 /* read only labels */
-html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
+/* html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
 html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"], 
 html:not(.designer) body.theme-entry [name*="s_calendar"] [name*="s_label"], 
 html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"], 
@@ -143,7 +153,7 @@ html:not(.designer) body.theme-entry.runtime-view [name*="s_textarea"] [name*="s
     top: var(--field_label_top)!important;
     transform: none;
     font-size: var(--fs-caption)!important;
-}
+} */
 /* read only labels */
 .profileUpper{
     cursor: pointer;
@@ -1272,7 +1282,6 @@ html:not(.designer) .input-control.select-box.read-only .input-control-buttons a
 .on-focus[name*="s_textarea"] textarea,
 html:not(.designer) .form.editingForm [name*="s_textarea"] textarea{
     min-height: 2rem !important;
-    top: 0rem;
     font-size: var(--fs-body);
 }
 
@@ -1538,23 +1547,20 @@ html:not(.designer) header {
     top: 0;
     left: 0;
     width: 100%;
-    margin-top: 0 !important;
+    margin: 0 0 1rem !important;
     backdrop-filter: blur(15px);
     z-index: 1;
     padding: 0rem 0;
     height: 11.8rem;
     display: flex;
+    z-index: 2;
+    background-color: var(--Header_Background_Color);
     opacity: 0;
     transform: translateY(-50%);
     animation: 1s fadeDown forwards;
-    margin-bottom: 1rem;
-    z-index: 2;
-}
-html:not(.designer) header{
-    background-color: rgb(0 33 52 / 80%);
 }
 html:not(.designer).light header{
-     background-color: hsl(25deg 50% 95% / 30%);
+     /* background-color: hsl(25deg 50% 95% / 30%); */
 }
 html:not(.designer) .theme-entry header>span {
     width: 100%;
@@ -2578,7 +2584,10 @@ span#\34 78898ef-421e-99e3-c34c-b6dfb4dcb9d6{
     }
 }
 @media(min-width:992px) {
-    
+:root{
+    /* HEADER PADDING */
+    --Header_Padding:1rem 2rem;
+}
 a#d0300780-c69e-30af-366b-fb216c06c0a2_ee685e75-a8a7-e2b2-183a-e1f5a769bb1a,
 a#d0300780-c69e-30af-366b-fb216c06c0a2_ffed2a91-5336-8335-0c6a-53c85a505588 {
     position: relative;
@@ -2645,10 +2654,6 @@ html:not(.designer) .pendingStep::before {
 }
 
 /* header */
-html:not(.designer) .theme-entry header,
-html:not(.designer) header {
-    position: fixed;
-}
     .runtime-content {
     margin: 0 2rem !important;
 }
@@ -2718,12 +2723,13 @@ html:not(.designer) header {
     }
     html:not(.designer) .theme-entry header,
     html:not(.designer) header {
-        left: 19.5rem;
-        width: calc(100% - 19.5rem);
+        left: var(--sidebar_width_body_padding);
+        width: calc(100% - var(--sidebar_width_body_padding));
         flex-direction: row;
         justify-content: space-between !important;
         height: 7rem !important;
-        padding: 1rem 2rem;
+        padding: var(--Header_Padding);
+        position: fixed;
     }
 }
 @media(min-width:1200px){
@@ -2746,6 +2752,8 @@ html:not(.designer) header {
     --Fields_Padding:0 1vw;
     --field_label_top: 0.2vw;
     --sidebar_width_body_padding:19.5vw;
+    /* HEADER PADDING */
+    --Header_Padding:0.8vw 1.5vw;
 }
 html:not(.designer) body.theme-entry [name*="toolbarButtonsGap"]{
     gap:.5vw;
@@ -2785,10 +2793,6 @@ html:not(.designer) .form.editingForm input.SourceCode-Forms-Controls-Web-TextBo
 html:not(.designer) .on-focus[name*="s_textarea"] [name*="s_label"],
 html:not(.designer) .form.editingForm [name*="s_textarea"] [name*="s_label"]{
     font-size: var(--fs-caption);
-}
-html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
-    top:1vw;
-    top: 0.5vw;
 }
     html:not(.designer) .on-focus[name*="s_calendar"] .input-control-m-c{
     margin-top: 0.6vw;
@@ -3055,15 +3059,6 @@ width:8vw;
         left: 1.5vw;
         height: 2.5vw;
     }
-
-    html:not(.designer) .theme-entry header,
-    html:not(.designer) header {
-        left: 16vw;
-        width: calc(100% - 16vw);
-        height: 6vw !important;
-        padding: 1vw 1.5vw;
-
-    }
     [name*="s_sub_sidebar"] {
         width: 16vw !important;
     }
@@ -3106,10 +3101,7 @@ width:8vw;
 
     html:not(.designer) .theme-entry header,
     html:not(.designer) header {
-        left: var(--sidebar_width_body_padding);
-        width: calc(100% - 19.5vw);
         height: 6vw !important;
-        padding: 0.8vw 1.5vw;
     }
 }
 /* final backup 15 january 2026 */

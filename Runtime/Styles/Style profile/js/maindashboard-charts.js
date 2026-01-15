@@ -308,6 +308,32 @@ function initializeBarChart(canvasId = 'myBarChart') {
         console.warn(`Canvas with ID "${canvasId}" not found`);
         return null;
     }
+    
+    // Check if URL contains RuntimeAR
+    const isRTL = window.location.href.includes('RuntimeAR');
+    
+    // Arabic translations
+    const translations = {
+        months: {
+            'Jan': 'يناير',
+            'Feb': 'فبراير',
+            'Mar': 'مارس',
+            'Apr': 'أبريل',
+            'May': 'مايو',
+            'Jun': 'يونيو',
+            'Jul': 'يوليو',
+            'Aug': 'أغسطس',
+            'Sep': 'سبتمبر',
+            'Oct': 'أكتوبر',
+            'Nov': 'نوفمبر',
+            'Dec': 'ديسمبر'
+        },
+        dropdown: {
+            'Last 6 Months': 'آخر 6 أشهر',
+            'Last 12 Months': 'آخر 12 شهراً'
+        }
+    };
+
     const ctx = canvas.getContext('2d');
     const parseData = (attr) => {
         const raw = canvas.getAttribute(attr);
@@ -319,7 +345,12 @@ function initializeBarChart(canvasId = 'myBarChart') {
         items.forEach(pair => {
             const [label, value] = pair.split(':').map(x => x.trim());
             if (label && !isNaN(value)) {
-                labels.push(label);
+                // Translate month labels if RTL
+                let finalLabel = label;
+                if (isRTL && translations.months[label]) {
+                    finalLabel = translations.months[label];
+                }
+                labels.push(finalLabel);
                 values.push(Number(value));
             }
         });
@@ -347,7 +378,7 @@ function initializeBarChart(canvasId = 'myBarChart') {
     const ensureData = (data) => {
         if (data.labels.length === 0) {
             return {
-                labels: [''],
+                labels: [isRTL ? 'لا توجد بيانات' : 'No data'],
                 values: [0]
             };
         }
@@ -391,28 +422,61 @@ function initializeBarChart(canvasId = 'myBarChart') {
     };
 
     // ------------------------
+    // CHART OPTIONS - RTL ADJUSTMENTS
+    // ------------------------
+    const chartOptions = {
+        responsive: true,
+        maintainAspectRatio: false,
+        plugins: { legend: { display: false } },
+        scales: {
+            y: {
+                beginAtZero: true,
+                ticks: { 
+                    stepSize: 10, 
+                    color: getTickColor(), 
+                    font: { 
+                        size: 14,
+                        family: isRTL ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : undefined
+                    } 
+                },
+                grid: { borderDash: [5, 5], color: '#cccccc32' },
+                // RTL: Position y-axis on the right side
+                position: isRTL ? 'right' : 'left',
+            },
+            x: {
+                grid: { display: false },
+                ticks: { 
+                    color: getTickColor(), 
+                    font: { 
+                        size: 12,
+                        family: isRTL ? "'Segoe UI', Tahoma, Geneva, Verdana, sans-serif" : undefined
+                    },
+                    // RTL: Mirror the labels if needed
+                    callback: function(value, index, values) {
+                        return this.getLabelForValue(value);
+                    }
+                },
+                // RTL: Reverse the x-axis
+                reverse: isRTL
+            }
+        },
+        animation: { duration: 800, easing: 'easeInOutQuart' },
+        // RTL: Set text direction
+        rtl: isRTL,
+        // RTL: Adjust tooltip position
+        tooltips: {
+            rtl: isRTL,
+            textDirection: isRTL ? 'rtl' : 'ltr'
+        }
+    };
+
+    // ------------------------
     // INITIALIZE CHART
     // ------------------------
     const myBarChart = new Chart(ctx, {
         type: 'bar',
         data: chartData,
-        options: {
-            responsive: true,
-            maintainAspectRatio: false,
-            plugins: { legend: { display: false } },
-            scales: {
-                y: {
-                    beginAtZero: true,
-                    ticks: { stepSize: 10, color: getTickColor(), font: { size: 14 } },
-                    grid: { borderDash: [5, 5], color: '#cccccc32' },
-                },
-                x: {
-                    grid: { display: false },
-                    ticks: { color: getTickColor(), font: { size: 12 } },
-                }
-            },
-            animation: { duration: 800, easing: 'easeInOutQuart' }
-        }
+        options: chartOptions
     });
 
     // ------------------------
@@ -434,6 +498,24 @@ function initializeBarChart(canvasId = 'myBarChart') {
     // CUSTOM DROPDOWN LOGIC + CHART UPDATE
     // ================================
     if (dropdownBtn && dropdownMenu && !dropdownBtn.classList.contains('disabled')) {
+        // Translate dropdown items if RTL
+        if (isRTL && dropdownMenu) {
+            const dropdownItems = dropdownMenu.querySelectorAll('.dropdown-item[data-filter]');
+            dropdownItems.forEach(item => {
+                const originalText = item.textContent.trim();
+                if (translations.dropdown[originalText]) {
+                    item.textContent = translations.dropdown[originalText];
+                }
+            });
+            
+            // Update dropdown button initial text
+            const currentText = dropdownBtn.textContent.trim();
+            if (translations.dropdown[currentText]) {
+                const chevronHTML = dropdownBtn.querySelector('.chevron-img')?.outerHTML || '';
+                dropdownBtn.innerHTML = `${translations.dropdown[currentText]} ${chevronHTML}`;
+            }
+        }
+
         dropdownBtn.addEventListener('click', (e) => {
             e.stopPropagation();
             dropdownMenu.classList.toggle('show');
@@ -448,8 +530,19 @@ function initializeBarChart(canvasId = 'myBarChart') {
 
                 const filter = item.dataset.filter;
                 const selectedData = ensureData(filter === 'year' ? yearData : monthData);
+                
+                // Get text (either translated or original)
+                let displayText = item.textContent;
+                if (isRTL && translations.dropdown[item.dataset.originalText]) {
+                    displayText = translations.dropdown[item.dataset.originalText];
+                }
+                
+                // Store original text for future reference
+                if (!item.dataset.originalText) {
+                    item.dataset.originalText = item.textContent;
+                }
 
-                dropdownBtn.innerHTML = `${item.textContent} <img src="/Runtime/Styles/Style%20profile/images/net/Chevron Down.svg" alt="chevrondown" class="chevron-img">`;
+                dropdownBtn.innerHTML = `${displayText} <img src="/Runtime/Styles/Style%20profile/images/net/Chevron Down.svg" alt="chevrondown" class="chevron-img">`;
                 dropdownMenu.classList.remove('show');
 
                 const originalData = [...selectedData.values];
@@ -467,9 +560,16 @@ function initializeBarChart(canvasId = 'myBarChart') {
         });
     }
 
+    // Add RTL class to the canvas container if needed
+    if (isRTL && canvas.parentElement) {
+        canvas.parentElement.classList.add('rtl-chart');
+        canvas.style.direction = 'rtl';
+    }
+
     // Return the chart instance for external control if needed
     return {
         chart: myBarChart,
+        isRTL: isRTL,
         destroy: () => {
             observer.disconnect();
             myBarChart.destroy();
@@ -1187,3 +1287,4 @@ document.addEventListener('DOMContentLoaded', () => {
         initializeCircularChart(chartData);
     }
 });
+//final version 15 jan 2026

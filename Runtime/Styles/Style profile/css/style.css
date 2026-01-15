@@ -239,7 +239,7 @@ html body ul.links>li {
     border-radius: .5rem;
 }
 
-.sidebar ul>li.active {
+html body ul.links>li.active {
     background-color: #f3e7e7;
     border-radius: 0.5rem;
     color: var(--Navy-blue);
@@ -310,7 +310,12 @@ html:not(.designer).light .sidebar ul>li:hover img, html:not(.designer).light .s
 html:not(.designer) .userInformations .username {
     color: #ffffff;
 }
-
+html:not(.designer) .userInformations .profileUpper svg path{
+    stroke:white;
+}
+html:not(.designer).light .userInformations .profileUpper svg path{
+    stroke:var(--Navy-blue);
+}
 html:not(.designer).light .userInformations .userPosition {
     color: rgb(0 33 52 / 70%);
 }
@@ -1118,7 +1123,11 @@ html:not(.designer).light .search-box::before {
     background-color: rgb(217 217 217 / 5%);
     padding-top: .5rem;
     padding-bottom: .5rem;
-    color: white;
+    color: white!important;
+    font-size: var(--fs-body);
+}
+html:not(.designer).light .search-box input{
+    color:inherit;
 }
 html:not(.designer) .search-box input {
     border: 1px solid rgb(221 221 221 / 10%)!important;
@@ -5020,7 +5029,7 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
 
     .subPanel {
         width: 22vw;
-        left: 16vw;
+        left: var(--sidebar_width_body_padding);
         padding: 3vw 2vw;
         border-top-right-radius: 1.5vw;
     }
@@ -5103,7 +5112,6 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
     }
 
     .card.totalRequests .dropdown-menu {
-        right: 0;
         top: 2vw;
     }
 
@@ -5383,7 +5391,6 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
         border-radius: 0.6vw;
         padding-top: .5vw;
         padding-bottom: .5vw;
-        font-size: .7vw;
     }
 
     .request-name {
