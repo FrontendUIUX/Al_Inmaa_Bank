@@ -539,66 +539,6 @@ $(document).ready(function () {
     $(document).on("click", ".pageNumber", function () {
         reloadRequests(parseInt($(this).text().trim()));
     });
-
-    
-    // let userDashboardSearchTimeout;
-    // $(document).on("keyup", "#UserDashboardSearchInput", function (e) {
-    //   const value = $(this).val().trim();
-
-    //   // ENTER key → trigger immediately
-    //   if (e.key === "Enter") {
-    //     clearTimeout(userDashboardSearchTimeout);
-    //     reloadRequests(1)
-    //     return;
-    //   }
-
-    //   // Typing → wait 4 seconds
-    //   clearTimeout(userDashboardSearchTimeout);
-
-    //   userDashboardSearchTimeout = setTimeout(function () {
-    //     reloadRequests(1)
-    //   }, 3000);
-    // });
-
-    // let adminDashboardSearchTimeout;
-
-    // $(document).on("keyup", "#AdminDashboardSearchInput", function (e) {
-    //   const value = $(this).val().trim();
-
-    //   // ENTER key → trigger immediately
-    //   if (e.key === "Enter") {
-    //     clearTimeout(adminDashboardSearchTimeout);
-    //     reloadRequests(1)
-    //     return;
-    //   }
-
-    //   // Typing → wait 4 seconds
-    //   clearTimeout(adminDashboardSearchTimeout);
-
-    //   adminDashboardSearchTimeout = setTimeout(function () {
-    //     reloadRequests(1)
-    //   }, 3000);
-    // });
-
-    // let analyticsDashboardSearchTimeout;
-
-    // $(document).on("keyup", "#AnalyticsDashboardSearchInput", function (e) {
-    //   const value = $(this).val().trim();
-
-    //   // ENTER key → trigger immediately
-    //   if (e.key === "Enter") {
-    //     clearTimeout(analyticsDashboardSearchTimeout);
-    //     reloadRequests(1)
-    //     return;
-    //   }
-
-    //   // Typing → wait 4 seconds
-    //   clearTimeout(analyticsDashboardSearchTimeout);
-
-    //   analyticsDashboardSearchTimeout = setTimeout(function () {
-    //     reloadRequests(1)
-    //   }, 3000);
-    // });
 });
 
 

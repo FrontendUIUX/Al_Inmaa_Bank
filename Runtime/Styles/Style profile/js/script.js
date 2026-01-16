@@ -1298,50 +1298,13 @@ function hideLoader(dropdown, label, iconSrc, iconAlt) {
 }
 
 /* =====================================================
- * DROPDOWN POSITIONING (TABLE FIX)
+ * DASHBOARD TABLE DROPDOWN CONTROLLER (FIXED)
  * ===================================================== */
-
-// function positionDropdown(dropdown) {
-//     const btn = dropdown.querySelector('.Select-btn');
-//     const menu = dropdown.querySelector('.dropdown-menu-custom');
-//     if (!btn || !menu) return;
-
-//     const rect = btn.getBoundingClientRect();
-//     const menuHeight = menu.offsetHeight;
-//     const windowHeight = window.innerHeight;
-
-//     const ITEM_HEIGHT = 40;
-//     const MIN_VISIBLE_ITEMS = 4;
-//     const minSpaceNeeded = Math.min(menuHeight, ITEM_HEIGHT * MIN_VISIBLE_ITEMS);
-
-//     const spaceBelow = windowHeight - rect.bottom;
-
-//     const topPosition =
-//         spaceBelow < minSpaceNeeded
-//             ? rect.top + window.scrollY - menuHeight
-//             : rect.bottom + window.scrollY;
-
-//     menu.style.setProperty('--dropdown-top', `${topPosition}px`);
-//     menu.style.setProperty('--dropdown-left', `${rect.left + window.scrollX}px`);
-// }
-/**
- * =====================================================
- * DASHBOARD TABLE DROPDOWN CONTROLLER
- * =====================================================
- * Features:
- * - Single dropdown open at a time
- * - Outside click close
- * - Auto flip dropdown when exceeding table container
- * - Overflow-safe positioning
- */
 
 /* =====================================================
  * UTILITIES
  * ===================================================== */
 
-/**
- * Close all dropdowns and reset flip state
- */
 function closeAllDropdowns(except = null) {
     document.querySelectorAll('.dropdown-custom.active').forEach(dropdown => {
         if (dropdown !== except) {
@@ -1362,52 +1325,63 @@ function adjustDropdownPosition(dropdown) {
 
     if (!container || !menu) return;
 
-    /* Reset state to measure correctly */
+    /* Force layout so menu has dimensions */
+    menu.style.visibility = 'hidden';
+    menu.style.display = 'block';
+
+    // Force reflow
+    menu.offsetHeight;
+
     menu.classList.remove('dropdown-flip');
 
     const containerRect = container.getBoundingClientRect();
     const menuRect = menu.getBoundingClientRect();
 
-    /* If dropdown exceeds container bottom, flip it */
     if (menuRect.bottom > containerRect.bottom) {
         menu.classList.add('dropdown-flip');
     }
+
+    menu.style.visibility = '';
+    menu.style.display = '';
 }
 
 /* =====================================================
- * DROPDOWN TOGGLE HANDLING
+ * DROPDOWN TOGGLE
  * ===================================================== */
 
 document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
-    button.addEventListener('click', (e) => {
+    button.addEventListener('click', e => {
         e.preventDefault();
         e.stopPropagation();
 
         const dropdown = button.closest('.dropdown-custom');
         const isActive = dropdown.classList.contains('active');
 
-        /* Close others first */
         closeAllDropdowns(dropdown);
 
         if (!isActive) {
             dropdown.classList.add('active');
-            adjustDropdownPosition(dropdown);
+
+            // Run positioning AFTER paint
+            requestAnimationFrame(() => {
+                adjustDropdownPosition(dropdown);
+            });
         }
     });
 });
 
 /* =====================================================
- * OUTSIDE CLICK HANDLING
+ * OUTSIDE CLICK
  * ===================================================== */
 
-document.addEventListener('click', (e) => {
+document.addEventListener('click', e => {
     if (!e.target.closest('.dropdown-custom')) {
         closeAllDropdowns();
     }
 });
 
 /* =====================================================
- * SCROLL REPOSITIONING (IMPORTANT)
+ * SCROLL + RESIZE SAFETY
  * ===================================================== */
 
 const tableContainer = document.getElementById('AdminRequestsTableContainer');
@@ -1420,58 +1394,12 @@ if (tableContainer) {
     });
 }
 
-/* =====================================================
- * OPTIONAL: WINDOW RESIZE SAFETY
- * ===================================================== */
-
 window.addEventListener('resize', () => {
     document
         .querySelectorAll('.dropdown-custom.active')
         .forEach(adjustDropdownPosition);
 });
 
-/* =====================================================
- * INITIALIZATION
- * ===================================================== */
-
-document.querySelectorAll('.dropdown-custom').forEach(dropdown => {
-    const btn = dropdown.querySelector('.Select-btn');
-    const items = dropdown.querySelectorAll('.dropdown-item-custom');
-
-    /* Toggle dropdown */
-    btn.addEventListener('click', e => {
-        e.stopPropagation();
-        dropdown.classList.contains('open')
-            ? closeDropdown(dropdown)
-            : openDropdown(dropdown);
-    });
-
-    /* Item selection */
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            const label = item.dataset.label;
-            const icon = item.querySelector('.option-icon');
-
-            const releaseSize = showLoader(dropdown);
-
-            // Simulated async action
-            setTimeout(() => {
-                hideLoader(dropdown, label, icon.src, icon.alt);
-                releaseSize();
-            }, 1500);
-        });
-    });
-});
-
-/* =====================================================
- * GLOBAL CLICK HANDLER
- * ===================================================== */
-
-document.addEventListener('click', e => {
-    if (!e.target.closest('.dropdown-custom')) {
-        closeAllDropdowns();
-    }
-});
 
 
 //THIS FUNCTION IS TO MOVE THE BUTTONS OUTSIDE THE FORM START - ADDED BY SILVANA 
@@ -1492,8 +1420,17 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //THIS FUNCTION IS TO MOVE THE BUTTONS OUTSIDE THE FORM END - ADDED BY SILVANA
 
-$("#MainDashboardPopup .cancel-btn").click(function(){
-  $("#MainDashboardPopup").removeClass("open");
-})
+document.addEventListener("click", function (e) {
+  if (
+    e.target.closest(".cancel-btn") ||
+    e.target.closest(".closePopup")
+  ) {
+    e.preventDefault();
+    const popup = document.getElementById("MainDashboardPopup");
+    if (popup) {
+      popup.classList.remove("open");
+    }
+  }
+});
 
 /* final backup 16 january 2026 11:33am*/
