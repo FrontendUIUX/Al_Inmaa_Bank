@@ -139,21 +139,25 @@ html.light:root {
 html:not(.theme-ready) body{
     display:none;
 }
+html.designer body,
+html.management body{
+    display:block;
+}
 /* read only labels */
 /* html:not(.designer) body.theme-entry [name*="s_dropdown"] [name*="s_label"], 
-html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"], 
-html:not(.designer) body.theme-entry [name*="s_calendar"] [name*="s_label"], 
-html:not(.designer) body.theme-entry [name*="s_textbox"] [name*="s_label"], 
-html:not(.designer) body.theme-entry [name*="s_textarea"] [name*="s_label"],
-html:not(.designer) body.theme-entry.runtime-view [name*="s_dropdown"] [name*="s_label"], 
-html:not(.designer) body.theme-entry.runtime-view [name*="s_picker"] [name*="s_label"], 
-html:not(.designer) body.theme-entry.runtime-view [name*="s_calendar"] [name*="s_label"], 
+html:not(.designer) body.theme-entry [name*="s_picker"] [name*="s_label"], */
+html:not(.designer) body.theme-entry [name*="s_calendar"]:has(.read-only) [name*="s_label"],
+html:not(.designer) body.theme-entry [name*="s_textbox"]:has(.read-only) [name*="s_label"], 
+html:not(.designer) body.theme-entry [name*="s_textarea"]:has(.read-only) [name*="s_label"],
+/* html:not(.designer) body.theme-entry.runtime-view [name*="s_dropdown"] [name*="s_label"], 
+html:not(.designer) body.theme-entry.runtime-view [name*="s_picker"] [name*="s_label"],*/
+html:not(.designer) body.theme-entry.runtime-view [name*="s_calendar"]:has(.read-only) [name*="s_label"],
 html:not(.designer) body.theme-entry.runtime-view [name*="s_textbox"] [name*="s_label"], 
 html:not(.designer) body.theme-entry.runtime-view [name*="s_textarea"] [name*="s_label"]{
     top: var(--field_label_top)!important;
     transform: none;
     font-size: var(--fs-caption)!important;
-} */
+} 
 /* read only labels */
 .profileUpper{
     cursor: pointer;
@@ -1620,10 +1624,6 @@ html:not(.designer) .closeSubPanel:hover {
 .theme-entry .root-table.editor-grid>.editor-cell.lastrow {
     padding: 0 !important;
 }
-[name*="buttonsView"] .editor-cell{
-    display:flex;
-    justify-content:flex-end;
-}
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_textbox"],
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_dropdown"],
 html:not(.designer) body.theme-entry .root-table.Grid-Layout>.editor-cell.lastrow[name*="s_picker"],
@@ -1790,7 +1790,7 @@ html:not(.designer).light [name*="stepDescription"]  {
     margin: 0!important;
 }
 html:not(.designer) [name*="stepDescription"] {
-    font-size: VAR(--fs-caption);
+    font-size: var(--fs-caption);
     color: rgba(255,255,255,.7) !important;
     font-family: var(
     --regularFont);
@@ -2464,7 +2464,7 @@ html:not(.designer) .theme-entry a.toolbar-button.paging-first.disabled:focus .b
     scale:-1 1;
 }
 .theme-entry .dialog.sub-view iframe.runtime-popup{
-    height: 13vw!important;
+    height: 14vw!important;
 }
 html:not(.designer) .theme-entry .popup-header-buttons a.close{
     background-image:url("/Runtime/Styles/Style%20profile/images/close.svg")!important;
@@ -2481,9 +2481,12 @@ html:not(.designer) body.theme-entry [name*="s_textbox"]:has(input[readonly]),
 html:not(.designer) body.theme-entry .form .editor-cell.lastcellinrow[name*="s_textbox"]:has(input[readonly]),
 html:not(.designer) body.theme-entry .form [name*="s_textarea"]:has(textarea[readonly]),
 html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]:has(textarea[readonly]),
-html:not(.designer) body.theme-entry [name*="s_textarea"]:has(readonly){
+html:not(.designer) body.theme-entry [name*="s_textarea"]:has([readonly]),
+html:not(.designer) body.theme-entry [name*="s_calendar"]:has([readonly]),
+html:not(.designer) body.theme-entry.runtime-view [name*="s_calendar"]:has([readonly]),
+html:not(.designer) body.theme-entry.runtime-view .editor-cell.lastcellinrow[name*="s_calendar"]:has([readonly]){
     background-color:var(--Read_Only_Fields_Background)!important;
-    border:var(--Read_Only_Fields_Border)
+    border: var(--Read_Only_Fields_Border)!important;
 }
 html:not(.designer) body.theme-entry [name*="viewCentered"] {
     max-width:80%;
@@ -2584,7 +2587,7 @@ span#\34 78898ef-421e-99e3-c34c-b6dfb4dcb9d6{
     }
 }
 @media(min-width:992px) {
-:root{
+html:not(.designer):root{
     /* HEADER PADDING */
     --Header_Padding:1rem 2rem;
 }
@@ -2754,6 +2757,16 @@ html:not(.designer) .pendingStep::before {
     --sidebar_width_body_padding:19.5vw;
     /* HEADER PADDING */
     --Header_Padding:0.8vw 1.5vw;
+     --fs-h1: 1.9vw;
+    --fs-h2: 1.65vw;
+    --fs-h3: 1.4vw;
+    --fs-h4: 1.2vw;
+    --fs-h5: 1.05vw;
+    --fs-h6: 0.95vw;
+    --fs-h7: 0.85vw;
+    --fs-body:0.92vw;
+    --fs-button: 0.85vw;
+    --fs-caption: 0.73vw;
 }
 html:not(.designer) body.theme-entry [name*="toolbarButtonsGap"]{
     gap:.5vw;
@@ -3059,13 +3072,9 @@ width:8vw;
         left: 1.5vw;
         height: 2.5vw;
     }
-    [name*="s_sub_sidebar"] {
-        width: 16vw !important;
-    }
-
     html:not(.designer) [name*="view_move_right"] {
-        margin-left: 18vw !important;
-        width: calc(100% - 18vw) !important;
+        margin-left: 21vw !important;
+        width: calc(100% - 21vw) !important;
         margin-bottom: 1vw;
         padding-top: 0vw;
     }
@@ -3104,4 +3113,4 @@ width:8vw;
         height: 6vw !important;
     }
 }
-/* final backup 15 january 2026 12:25pm*/
+/* final backup 15 january 2026 03:41pm*/

@@ -65,6 +65,31 @@ function PerformActionFromServer(actionName, serialNumber, dropdown, labelFinalT
     });
 }
 
+// $(document).on('click', '#pendingRequestsTable .dropdown-menu-custom .dropdown-item-custom', function() {
+//     $("#DashboardLoader").hide();
+
+//     var $row = $(this).closest('tr');
+//     var serialNumber = $row.find('td').first().data('serialnumber');
+//     var actionText = $(this).text().trim();
+
+//     var dropdown = $(this).closest('.dropdown-custom')[0];
+
+//     var labelFinalTxt = $(this).data("label");
+//     console.log(labelFinalTxt);
+
+//     var $img = $(this).find('img.option-icon');
+//     var iconSrc = $img.attr('src');
+//     var iconAlt = $img.attr('alt');
+
+//     console.log('src:', iconSrc, 'alt:', iconAlt);
+//     console.log(dropdown)
+
+//     var taskResponse = PerformActionFromServer(actionText, serialNumber, dropdown, labelFinalTxt, iconSrc, iconAlt);
+
+//     console.log('Serial Number:', serialNumber, '| Action:', actionText);
+//     // console.log('task:', taskResponse);
+// });
+
 $(document).on('click', '#pendingRequestsTable .dropdown-menu-custom .dropdown-item-custom', function() {
     $("#DashboardLoader").hide();
 
@@ -75,18 +100,43 @@ $(document).on('click', '#pendingRequestsTable .dropdown-menu-custom .dropdown-i
     var dropdown = $(this).closest('.dropdown-custom')[0];
 
     var labelFinalTxt = $(this).data("label");
-    console.log(labelFinalTxt);
+    // console.log(labelFinalTxt);
 
     var $img = $(this).find('img.option-icon');
     var iconSrc = $img.attr('src');
     var iconAlt = $img.attr('alt');
 
-    console.log('src:', iconSrc, 'alt:', iconAlt);
-    console.log(dropdown)
+    // console.log('src:', iconSrc, 'alt:', iconAlt);
+    // console.log(dropdown)
 
-    var taskResponse = PerformActionFromServer(actionText, serialNumber, dropdown, labelFinalTxt, iconSrc, iconAlt);
+    //var taskResponse = PerformActionFromServer(actionText, serialNumber, dropdown, labelFinalTxt, iconSrc, iconAlt);
 
-    console.log('Serial Number:', serialNumber, '| Action:', actionText);
+
+    if ($(this).hasClass('required-action')) {
+      console.log('This action is required');
+      $('#MainDashboardPopup').addClass('open');
+
+      var url = $(this)
+        .closest('tr')          // go to the row
+        .find('td:first a')     // first td → a tag
+        .attr('href');          // get href
+
+      console.log(url);
+
+      $(document).ready(function() {
+        $("#MainDashboardReviewBtn").click(function() {
+            // Replace 'yourURLhere' with the URL you want to go to
+            window.location.href = url;
+        });
+      });
+
+    }
+    else{
+      console.log('This action is NOT required');
+      PerformActionFromServer(actionText, serialNumber, dropdown, labelFinalTxt, iconSrc, iconAlt);
+    }
+
+    // console.log('Serial Number:', serialNumber, '| Action:', actionText);
     // console.log('task:', taskResponse);
 });
 

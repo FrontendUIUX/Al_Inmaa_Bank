@@ -1,4 +1,3 @@
-
 document.addEventListener("DOMContentLoaded", () => {
   setTimeout(function () {
     try {
@@ -229,57 +228,97 @@ document.addEventListener("DOMContentLoaded", () => {
           </div>
         </aside>
         <div class="modal" id="userProfileModal">
-  <div class="modal-dialog">
-    <div class="modal-content">
-
-      <!-- Modal Header -->
-      <div class="modal-header">
-       <div class="userProfile d-none d-lg-flex align-items-center">
-              <div class="userProfilePhoto">
-                <img src="/Runtime/Styles/Style%20profile/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
+          <div class="modal-dialog">
+            <div class="modal-content">
+              <!-- Modal Header -->
+              <div class="modal-header">
+                <div class="userProfile d-none d-lg-flex align-items-center">
+                  <div class="userProfilePhoto">
+                    <img src="/Runtime/Styles/Style%20profile/images/net/Userthumb.png" alt="${userName}" class="profilePhoto" />
+                  </div>
+                  <div class="userInformations d-flex flex-column ${isArabic ? 'text-right' : ''}">
+                    <span class="username">${userName}</span>
+                    <span class="userPosition">${department}</span>
+                  </div>
+                </div>
+                <svg class="closeModalSettings" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M10 10L5.5 5.5M5.5 5.5L1 1M5.5 5.5L10 1M5.5 5.5L1 10" stroke="#002134" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
               </div>
-              <div class="userInformations d-flex flex-column ${isArabic ? 'text-right' : ''}">
-                <span class="username">${userName}</span>
-                <span class="userPosition">${department}</span>
+
+              <!-- Modal body -->
+              <div class="modal-body">
+                <a href="#" class="disabled">
+                  <svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M10.5164 10.5205C13.1175 10.5205 15.2261 8.412 15.2261 5.81103C15.2261 3.21006 13.1175 1.10156 10.5164 1.10156C7.91526 1.10156 5.80664 3.21006 5.80664 5.81103C5.80664 8.412 7.91526 10.5205 10.5164 10.5205Z" stroke="#002134" stroke-width="2.2"/>
+                    <path d="M19.713 19.5203C19.713 22.0901 19.713 24.1734 10.4063 24.1734C1.09961 24.1734 1.09961 22.0901 1.09961 19.5203C1.09961 16.9504 5.26636 14.8672 10.4063 14.8672C15.5463 14.8672 19.713 16.9504 19.713 19.5203Z" stroke="#002134" stroke-width="2.2"/>
+                  </svg>
+                  <span>${isArabic ? 'عرض الملف الشخصي' : 'Show Profile'}</span>
+                </a>
+                <a href="#" class="langSwitchContainer switchLang">
+                  <div class="leftSection">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                      <path d="M0.900391 11.8984H22.9004M0.900391 11.8984C0.900391 17.9736 5.82526 22.8984 11.9004 22.8984M0.900391 11.8984C0.900391 5.82331 5.82526 0.898438 11.9004 0.898438M22.9004 11.8984C22.9004 17.9736 17.9756 22.8984 11.9004 22.8984M22.9004 11.8984C22.9004 5.82331 17.9756 0.898438 11.9004 0.898438M11.9004 22.8984C3.04614 13.2184 8.21113 4.19844 11.9004 0.898438M11.9004 22.8984C20.7547 13.2184 15.5897 4.19844 11.9004 0.898438" stroke="#002134" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                    <span>${isArabic ? 'اللغة' : 'Language'}</span>
+                  </div>
+                  <span class="switchLangTxt">${isArabic ? 'EN' : 'AR'}</span>
+                </a>
               </div>
             </div>
-            <svg class="closeModalSettings" width="11" height="11" viewBox="0 0 11 11" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M10 10L5.5 5.5M5.5 5.5L1 1M5.5 5.5L10 1M5.5 5.5L1 10" stroke="#002134" stroke-opacity="0.4" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-
-      </div>
-
-      <!-- Modal body -->
-      <div class="modal-body">
-        <a href="#" class="disabled">
-          <svg width="21" height="26" viewBox="0 0 21 26" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M10.5164 10.5205C13.1175 10.5205 15.2261 8.412 15.2261 5.81103C15.2261 3.21006 13.1175 1.10156 10.5164 1.10156C7.91526 1.10156 5.80664 3.21006 5.80664 5.81103C5.80664 8.412 7.91526 10.5205 10.5164 10.5205Z" stroke="#002134" stroke-width="2.2"/>
-            <path d="M19.713 19.5203C19.713 22.0901 19.713 24.1734 10.4063 24.1734C1.09961 24.1734 1.09961 22.0901 1.09961 19.5203C1.09961 16.9504 5.26636 14.8672 10.4063 14.8672C15.5463 14.8672 19.713 16.9504 19.713 19.5203Z" stroke="#002134" stroke-width="2.2"/>
-          </svg>
-          <span>${isArabic ? 'عرض الملف الشخصي' : 'Show Profile'}</span>
-        </a>
-        <div class="langSwitchContainer">
-          <div class="leftSection">
-            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M0.900391 11.8984H22.9004M0.900391 11.8984C0.900391 17.9736 5.82526 22.8984 11.9004 22.8984M0.900391 11.8984C0.900391 5.82331 5.82526 0.898438 11.9004 0.898438M22.9004 11.8984C22.9004 17.9736 17.9756 22.8984 11.9004 22.8984M22.9004 11.8984C22.9004 5.82331 17.9756 0.898438 11.9004 0.898438M11.9004 22.8984C3.04614 13.2184 8.21113 4.19844 11.9004 0.898438M11.9004 22.8984C20.7547 13.2184 15.5897 4.19844 11.9004 0.898438" stroke="#002134" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
-            </svg>
-            <span>${isArabic ? 'اللغة' : 'Language'}</span>
-          </div>
-          <div class="language-switcher">
-          
           </div>
         </div>
-        
-      </div>
-    </div>
-  </div>
-</div>
       `);
 
       // Add RTL direction to body if Arabic
       if (isArabic) {
         document.body.style.direction = 'rtl';
       }
+
+      // ===== Language Switcher Function =====
+      function initializeLanguageSwitcher() {
+        const isArabic = window.location.pathname.includes("RuntimeAR");
+        const switchLangContainer = document.querySelector(".langSwitchContainer");
+        const switchLangTxt = document.querySelector(".switchLangTxt");
+        
+        if (switchLangTxt) {
+          // Update button text based on current language
+          switchLangTxt.textContent = isArabic ? "EN" : "AR";
+        }
+        
+        // Add event listener to the container instead of the span
+        if (switchLangContainer) {
+          // Remove any existing event listeners to prevent duplicates
+          const newContainer = switchLangContainer.cloneNode(true);
+          switchLangContainer.parentNode.replaceChild(newContainer, switchLangContainer);
+          
+          // Add new event listener to the container
+          newContainer.addEventListener("click", function(e) {
+            // Prevent default only if clicking on the container itself or the span
+            if (e.target === this || e.target.classList.contains('switchLangTxt')) {
+              e.preventDefault();
+              
+              // Get current URL components
+              const currentUrl = window.location.href;
+              let newUrl;
+              
+              if (isArabic) {
+                // Switch from Arabic to English
+                newUrl = currentUrl.replace("/RuntimeAR/", "/Runtime/");
+              } else {
+                // Switch from English to Arabic
+                newUrl = currentUrl.replace("/Runtime/", "/RuntimeAR/");
+              }
+              
+              // Redirect to the new URL
+              window.location.href = newUrl;
+            }
+          });
+        }
+      }
+
+      // Initialize language switcher
+      initializeLanguageSwitcher();
 
       // show notification popup
       const notificationButton = document.querySelector(".notifications");
@@ -407,11 +446,11 @@ document.addEventListener("DOMContentLoaded", () => {
             }
 
             li.innerHTML = `
-        <div class="icon">
-          <img src="${child.icon}" alt="${child.name}">
-        </div>
-        <a href="${child.url}" class="${isArabic ? 'rtl-text' : ''}">${child.name}</a>
-      `;
+              <div class="icon">
+                <img src="${child.icon}" alt="${child.name}">
+              </div>
+              <a href="${child.url}" class="${isArabic ? 'rtl-text' : ''}">${child.name}</a>
+            `;
 
             subPanelList.appendChild(li);
           });
@@ -421,7 +460,6 @@ document.addEventListener("DOMContentLoaded", () => {
           updateOverlay();
         });
       });
-
 
       // Close subpanel when close button is clicked
       if (closeSubpanelBtn) {
@@ -444,6 +482,7 @@ document.addEventListener("DOMContentLoaded", () => {
           updateOverlay();
         }
       });
+      
       try {
         // ================================
         // LIGHT / DARK MODE TOGGLE
@@ -454,7 +493,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const label = document.querySelector(".toggle-label");
 
         // Detect Arabic if used in your project
-        const isArabic = document.documentElement.lang === "ar";
+        const isArabic = document.documentElement.dir === "rtl";
 
         const applyTheme = (theme) => {
           // Remove both first
@@ -635,33 +674,33 @@ $(document).on("click", ".userProfile", function () {
   $("#userProfileModal").toggleClass("show");
 });
 
-$(document).ready(function () {
-  // Slight delay to ensure Nintex finished rendering
-  setTimeout(function () {
-    var arabicButton = $('a[name="Ar_Button"]');
-    var englishButton = $('a[name="Eng_Button"]');
-    var langContainer = $('.language-switcher');
+// $(document).ready(function () {
+//   // Slight delay to ensure Nintex finished rendering
+//   setTimeout(function () {
+//     var arabicButton = $('a[name="Ar_Button"]');
+//     var englishButton = $('a[name="Eng_Button"]');
+//     var langContainer = $('.language-switcher');
 
-    if (langContainer.length === 0) {
-      console.warn('language-switcher not found in DOM.');
-      return;
-    }
+//     if (langContainer.length === 0) {
+//       console.warn('language-switcher not found in DOM.');
+//       return;
+//     }
 
-    if (arabicButton.length === 0) {
-      console.warn('Arabic button not found.');
-    } else {
-      langContainer.append(arabicButton);
-    }
+//     if (arabicButton.length === 0) {
+//       console.warn('Arabic button not found.');
+//     } else {
+//       langContainer.append(arabicButton);
+//     }
 
-    if (englishButton.length === 0) {
-      console.warn('English button not found.');
-    } else {
-      langContainer.append(englishButton);
-    }
+//     if (englishButton.length === 0) {
+//       console.warn('English button not found.');
+//     } else {
+//       langContainer.append(englishButton);
+//     }
 
-    console.log('Language buttons appended to modal.');
-  }, 500);
-});
+//     console.log('Language buttons appended to modal.');
+//   }, 500);
+// });
 
 $(document).on("click", ".closeModalSettings", function () {
   $("#userProfileModal").removeClass("show");
@@ -683,4 +722,4 @@ $(document).on('keyup', function (event) {
     $("#userProfileModal").removeClass('show');
   }
 });
-/* final backup 15 january 2026 12:25pm*/
+/* final backup 16 january 2026 11:33am*/

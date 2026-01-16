@@ -342,21 +342,9 @@ function myFunction() {
   const input = document.getElementById("UserDashboardSearchInput");
   const filter = input.value.toUpperCase();
 
-  const table = document.getElementById("myTable");
-  const tbody = document.getElementById("requestsTable");
+  const table = document.getElementById("myTable"); // your table
+  const tbody = document.getElementById("requestsTable"); // tbody
   const tr = tbody.getElementsByTagName("tr");
-
-  // Detect Arabic runtime
-  const isArabic = window.location.href.indexOf("RuntimeAR") !== -1;
-
-  // Translated texts
-  const placeholderTitle = isArabic
-    ? "لا توجد بيانات للعرض حالياً"
-    : "Nothing to Display Yet";
-
-  const placeholderDescription = isArabic
-    ? "سيظهر هذا القسم تلقائياً عند توفر البيانات"
-    : "This section will show data once it becomes available";
 
   // Placeholder wrapper outside the table
   let placeholderWrapper = document.querySelector(".noDataPlaceholderWrapper");
@@ -367,21 +355,19 @@ function myFunction() {
     placeholderWrapper.style.width = "100%";
     placeholderWrapper.style.textAlign = "center";
     placeholderWrapper.style.padding = "40px 0";
-
     placeholderWrapper.innerHTML = `
       <div class="noData d-flex align-items-center justify-content-center flex-column">
         <div class="noDataImg">
           <img src="/Runtime/Styles/Style%20profile/images/placeholdericon.png" alt="no data available">
         </div>
-        <h5>${placeholderTitle}</h5>
-        <p>${placeholderDescription}</p>
+        <h5>Nothing to Display Yet</h5>
+        <p>This section will show data once it becomes available</p>
       </div>
     `;
-
     table.parentNode.insertBefore(placeholderWrapper, table);
   }
 
-  // Pagination
+  // Select the pagination div
   const tablePager = document.getElementById("TablePager");
 
   let hasVisibleRows = false;
@@ -402,7 +388,7 @@ function myFunction() {
     if (rowMatch) hasVisibleRows = true;
   }
 
-  // Toggle table, placeholder, and pagination
+  // Show/hide table, placeholder, and pagination based on search results
   if (!hasVisibleRows) {
     table.style.display = "none";
     placeholderWrapper.style.display = "block";
@@ -410,17 +396,27 @@ function myFunction() {
   } else {
     table.style.display = "";
     placeholderWrapper.style.display = "none";
-    if (tablePager) tablePager.setAttribute("style", "display: flex !important;");
+    if (tablePager) tablePager.setAttribute("style", "display: flex !important;"); // force it
   }
 }
-
 //FILTER PENDING MY REQUESTS TABLE - MARKETING DASHBOARD END
 
 //FILTER PENDING MY REQUESTS TABLE - MAIN DASHBOARD START 
+//FILTER PENDING MY REQUESTS TABLE - MAIN DASHBOARD START 
 function pendingRequestsTable(event) {
+  // Prevent default behavior if event is provided (for Enter key)
   if (event && event.preventDefault) {
     event.preventDefault();
   }
+
+  // Check if URL contains RuntimeAR for Arabic translation
+  const isArabic = window.location.href.includes('RuntimeAR');
+  
+  // Arabic translations
+  const translations = {
+    title: isArabic ? 'لا توجد بيانات حالياً' : 'Nothing to Display Yet',
+    description: isArabic ? 'سيظهر هذا القسم تلقائياً عند توفر البيانات' : 'This section will show data once it becomes available'
+  };
 
   const input = document.getElementById("AdminDashboardSearchInput");
   const filter = input.value.toUpperCase();
@@ -428,16 +424,6 @@ function pendingRequestsTable(event) {
   const tableWrapper = document.getElementById("AdminRequestsTableContainer");
   const tbody = document.getElementById("pendingRequestsTable");
   const tr = tbody.getElementsByTagName("tr");
-
-  // Language detection
-  const isArabic = window.location.href.indexOf("RuntimeAR") !== -1;
-
-  const placeholderText = {
-    title: isArabic ? "لا يوجد بيانات للعرض حالياً" : "Nothing to Display Yet",
-    description: isArabic
-      ? "سيظهر هذا القسم تلقائياً عند توفر البيانات"
-      : "This section will show data once it becomes available"
-  };
 
   // Create placeholder if it doesn't exist
   let placeholderWrapper = document.querySelector(".noDataPlaceholderWrapperPending");
@@ -449,14 +435,16 @@ function pendingRequestsTable(event) {
         <div class="noDataImg">
           <img src="/Runtime/Styles/Style%20profile/images/placeholdericon.png" alt="no data available">
         </div>
-        <h5>${placeholderText.title}</h5>
-        <p>${placeholderText.description}</p>
+        <h5>${translations.title}</h5>
+        <p>${translations.description}</p>
       </div>
     `;
     tableWrapper.parentNode.insertBefore(placeholderWrapper, tableWrapper);
   }
 
+  // Pagination
   const tablePager = document.getElementById("TablePager");
+
   let hasVisibleRows = false;
 
   for (let i = 0; i < tr.length; i++) {
@@ -465,16 +453,66 @@ function pendingRequestsTable(event) {
 
     for (let j = 0; j < td.length; j++) {
       const cell = td[j];
+      
+      // Skip the actions column (last column) to preserve dropdown HTML
+      if (j === td.length - 1) {
+        // For actions column, just check if it should be visible based on other columns
+        continue;
+      }
+      
+      // Get text content without HTML for searching
       const txtValue = cell.textContent || cell.innerText;
-
-      cell.innerHTML = txtValue;
 
       if (txtValue.toUpperCase().indexOf(filter) > -1) {
         rowMatch = true;
 
+        // Highlight matched text but preserve the original HTML structure
         if (filter !== "") {
-          const regex = new RegExp(`(${filter})`, "gi");
-          cell.innerHTML = txtValue.replace(regex, `<span class="highlight">$1</span>`);
+          // Create a temporary div to work with the HTML
+          const tempDiv = document.createElement('div');
+          tempDiv.innerHTML = cell.innerHTML;
+          
+          // Get all text nodes within the cell
+          const walker = document.createTreeWalker(
+            tempDiv,
+            NodeFilter.SHOW_TEXT,
+            null,
+            false
+          );
+          
+          const nodes = [];
+          let node;
+          while (node = walker.nextNode()) {
+            nodes.push(node);
+          }
+          
+          // Highlight text in text nodes
+          nodes.forEach(textNode => {
+            const text = textNode.nodeValue;
+            const regex = new RegExp(`(${filter})`, "gi");
+            const highlighted = text.replace(regex, `<span class="highlight">$1</span>`);
+            
+            if (highlighted !== text) {
+              const span = document.createElement('span');
+              span.innerHTML = highlighted;
+              textNode.parentNode.replaceChild(span, textNode);
+            }
+          });
+          
+          cell.innerHTML = tempDiv.innerHTML;
+        } else {
+          // When filter is empty, restore original HTML by removing highlights
+          // Store original HTML in data attribute if not already stored
+          if (!cell.dataset.originalHtml) {
+            cell.dataset.originalHtml = cell.innerHTML;
+          }
+          // Restore from original HTML
+          cell.innerHTML = cell.dataset.originalHtml;
+        }
+      } else if (filter === "") {
+        // When filter is empty, restore original HTML
+        if (cell.dataset.originalHtml) {
+          cell.innerHTML = cell.dataset.originalHtml;
         }
       }
     }
@@ -483,6 +521,7 @@ function pendingRequestsTable(event) {
     if (rowMatch) hasVisibleRows = true;
   }
 
+  // Show/hide table, placeholder, and pager
   if (!hasVisibleRows) {
     tableWrapper.style.display = "none";
     placeholderWrapper.style.display = "block";
@@ -493,7 +532,6 @@ function pendingRequestsTable(event) {
     if (tablePager) tablePager.style.setProperty("display", "flex", "important");
   }
 }
-
 // Override the onkeyup handler from HTML
 document.addEventListener('DOMContentLoaded', function() {
   const searchInput = document.getElementById("marketingsearchInput");
@@ -887,21 +925,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.addEventListener("resize", moveDivForMobile);
   }
 });
-document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const parent = button.parentElement;
-    const isActive = parent.classList.contains('active');
 
-    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
-
-    if (!isActive) parent.classList.add('active');
-  });
-});
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.dropdown-custom')) {
-    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
-  }
-});
 // process 2 move buttons outside the form
 document.addEventListener("DOMContentLoaded", function () {
   const divId = "7edaed9a-032c-4fce-a780-69a0ae1005ad_f2b548b2-fbcf-9c4a-74eb-fb39a0963d43_f50c64b5-3824-30c9-f024-a655c48cf5c5_aaa4b5ee-9511-44ba-ac7e-91b5ad0b7cba";
@@ -1038,21 +1062,6 @@ function submitRating(rating, el) {
     };
   }, 1000); 
 }
-document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
-  button.addEventListener('click', (e) => {
-    const parent = button.parentElement;
-    const isActive = parent.classList.contains('active');
-
-    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
-
-    if (!isActive) parent.classList.add('active');
-  });
-});
-document.addEventListener('click', (e) => {
-  if (!e.target.closest('.dropdown-custom')) {
-    document.querySelectorAll('.dropdown-custom.active').forEach(d => d.classList.remove('active'));
-  }
-});
 document.addEventListener("DOMContentLoaded", function () {
     (function() {
         const card = document.querySelector('.card.marketingoverview');
@@ -1146,120 +1155,7 @@ document.addEventListener("DOMContentLoaded", () => {
 console.log("Screen Resolution: " + window.screen.width + " x " + window.screen.height);
 console.log("Available Resolution: " + window.screen.availWidth + " x " + window.screen.availHeight);
 console.log("Browser Window Size: " + window.innerWidth + " x " + window.innerHeight);
-// Lock button size
-function lockButtonSize(btn) {
-    const originalWidth = btn.offsetWidth;
-    const originalHeight = btn.offsetHeight;
-    btn.style.width = `${originalWidth}px`;
-    btn.style.height = `${originalHeight}px`;
-    btn.style.minWidth = `${originalWidth}px`;
-    return () => {
-        btn.style.width = '';
-        btn.style.height = '';
-        btn.style.minWidth = '';
-    };
-}
-// Open dropdown
-function openDropdown(dropdown) {
-    if (!dropdown) return;
-    const btn = dropdown.querySelector('.Select-btn');
-    document.querySelectorAll('.dropdown-custom').forEach(d => {
-        if (d !== dropdown) {
-            closeDropdown(d);
-        }
-    });
-    dropdown.classList.add('open', 'active');
-    btn.classList.add('active');
-}
-// Close dropdown
-function closeDropdown(dropdown) {
-    if (!dropdown) return;
-    const btn = dropdown.querySelector('.Select-btn');
-    dropdown.classList.remove('open', 'active');
-    btn.classList.remove('active');
-}
-// Show loader and hide dropdown content
-function showLoader(dropdown) {
-    if (!dropdown) return;
-    const btn = dropdown.querySelector('.Select-btn');
-    const btnText = dropdown.querySelector('.select-btn-text');
-    const btnIcon = dropdown.querySelector('.small-logo-chevron');
-    const spinner = dropdown.querySelector('.spinner-border');
 
-    const releaseSize = lockButtonSize(btn);
-
-    // Hide dropdown and show loader
-    closeDropdown(dropdown);
-    btn.classList.add('dropdown-loader');
-    btn.classList.remove('choosen');
-    spinner.style.display = 'inline-block';
-    btnText.style.visibility = 'hidden';
-    btnIcon.style.visibility = 'hidden';
-
-    return releaseSize; // Return release function to call later
-}
-// Hide loader and show final text/icon
-function hideLoader(dropdown, label, iconSrc, iconAlt) {
-    if (!dropdown) return;
-    const btn = dropdown.querySelector('.Select-btn');
-    const btnText = dropdown.querySelector('.select-btn-text');
-    const btnIcon = dropdown.querySelector('.small-logo-chevron');
-    const spinner = dropdown.querySelector('.spinner-border');
-
-    btnText.textContent = label;
-    btnIcon.src = iconSrc;
-    btnIcon.alt = iconAlt;
-
-    btn.classList.remove('dropdown-loader');
-    btn.classList.add('choosen');
-    spinner.style.display = 'none';
-    btnText.style.visibility = 'visible';
-    btnIcon.style.visibility = 'visible';
-
-    // Release button size after short delay
-    setTimeout(() => {
-        btn.style.width = '';
-        btn.style.height = '';
-        btn.style.minWidth = '';
-    }, 50);
-}
-// --- Initialize dropdown functionality ---
-document.querySelectorAll('.dropdown-custom').forEach(dropdown => {
-    const btn = dropdown.querySelector('.Select-btn');
-    const items = dropdown.querySelectorAll('.dropdown-item-custom');
-
-    // Toggle dropdown on button click
-    btn.addEventListener('click', e => {
-        e.stopPropagation();
-        if (dropdown.classList.contains('open')) {
-            closeDropdown(dropdown);
-        } else {
-            openDropdown(dropdown);
-        }
-    });
-
-    // When an item is selected
-    items.forEach(item => {
-        item.addEventListener('click', () => {
-            const label = item.dataset.label;
-            const iconEl = item.querySelector('.option-icon');
-            const iconSrc = iconEl.src;
-            const iconAlt = iconEl.alt;
-
-            const releaseSize = showLoader(dropdown);
-
-            // Simulate AJAX / action
-            setTimeout(() => {
-                hideLoader(dropdown, label, iconSrc, iconAlt);
-                releaseSize(); // Release button size lock
-            }, 1500);
-        });
-    });
-});
-// Close dropdowns if clicking outside
-document.addEventListener('click', () => {
-    document.querySelectorAll('.dropdown-custom').forEach(dropdown => closeDropdown(dropdown));
-});
 // FOCUS STATE FOR FIELDS
 $(document).on('focus', '[name*=s_textbox] input, [name*=s_textbox] > input', function() {
     if (!$(this).is('[readonly]')) {
@@ -1288,39 +1184,295 @@ $(document).on('blur', '[name*=s_textarea] textarea, [name*=s_textarea] > textar
         $parent.removeClass('on-focus');
     }
 });
+/**
+ * =====================================================
+ * CUSTOM DROPDOWN CONTROLLER – DASHBOARD
+ * =====================================================
+ * Handles:
+ * - Open / close behavior
+ * - Loader state
+ * - Item selection
+ * - Auto positioning (top / bottom)
+ * - Outside click handling
+ */
 
-// THIS FUNCTION IS TO FIX THE DROPDOWN VISIBILITY ISSUE IN THE TABLE START - ADDED BY SILVANA
-document.addEventListener('click', function(e) {
-    if (e.target.closest('.Select-btn')) {
-        const button = e.target.closest('.Select-btn');
-        const dropdown = button.closest('.dropdown-custom');
-        const menu = dropdown.querySelector('.dropdown-menu-custom');
-        
-        if (menu) {
-            const rect = button.getBoundingClientRect();
-            const menuHeight = menu.offsetHeight;
-            const windowHeight = window.innerHeight;
-            
-            // Check if there's enough space below the button
-            // We need space for at least 4 items or the full menu
-            const itemHeight = 40; // Approximate height of each dropdown item in pixels
-            const minSpaceNeeded = Math.min(menuHeight, itemHeight * 4);
-            
-            const spaceBelow = windowHeight - rect.bottom;
-            
-            if (spaceBelow < minSpaceNeeded) {
-                // Not enough space below, position above
-                menu.style.setProperty('--dropdown-top', (rect.top + window.scrollY - menuHeight) + 'px');
-            } else {
-                // Enough space below, position normally
-                menu.style.setProperty('--dropdown-top', (rect.bottom + window.scrollY) + 'px');
-            }
-            
-            menu.style.setProperty('--dropdown-left', (rect.left + window.scrollX) + 'px');
+/* =====================================================
+ * UTILITIES
+ * ===================================================== */
+
+/**
+ * Locks button dimensions to prevent layout shift
+ */
+function lockButtonSize(btn) {
+    const { offsetWidth, offsetHeight } = btn;
+    btn.style.width = `${offsetWidth}px`;
+    btn.style.height = `${offsetHeight}px`;
+    btn.style.minWidth = `${offsetWidth}px`;
+
+    return () => {
+        btn.style.width = '';
+        btn.style.height = '';
+        btn.style.minWidth = '';
+    };
+}
+
+/**
+ * Close all dropdowns except the provided one
+ */
+function closeAllDropdowns(except = null) {
+    document.querySelectorAll('.dropdown-custom').forEach(dropdown => {
+        if (dropdown !== except) {
+            closeDropdown(dropdown);
         }
+    });
+}
+
+/* =====================================================
+ * DROPDOWN STATE MANAGEMENT
+ * ===================================================== */
+
+function openDropdown(dropdown) {
+    if (!dropdown) return;
+
+    closeAllDropdowns(dropdown);
+
+    dropdown.classList.add('open', 'active');
+    dropdown.querySelector('.Select-btn')?.classList.add('active');
+
+    // positionDropdown(dropdown);
+}
+
+function closeDropdown(dropdown) {
+    if (!dropdown) return;
+
+    dropdown.classList.remove('open', 'active');
+    dropdown.querySelector('.Select-btn')?.classList.remove('active');
+}
+
+/* =====================================================
+ * LOADER HANDLING
+ * ===================================================== */
+
+function showLoader(dropdown) {
+    const btn = dropdown.querySelector('.Select-btn');
+    const text = dropdown.querySelector('.select-btn-text');
+    const icon = dropdown.querySelector('.small-logo-chevron');
+    const spinner = dropdown.querySelector('.spinner-border');
+
+    const releaseSize = lockButtonSize(btn);
+
+    closeDropdown(dropdown);
+
+    btn.classList.add('dropdown-loader');
+    btn.classList.remove('choosen');
+
+    spinner.style.display = 'inline-block';
+    text.style.visibility = 'hidden';
+    icon.style.visibility = 'hidden';
+
+    return releaseSize;
+}
+
+function hideLoader(dropdown, label, iconSrc, iconAlt) {
+    const btn = dropdown.querySelector('.Select-btn');
+    const text = dropdown.querySelector('.select-btn-text');
+    const icon = dropdown.querySelector('.small-logo-chevron');
+    const spinner = dropdown.querySelector('.spinner-border');
+
+    text.textContent = label;
+    icon.src = iconSrc;
+    icon.alt = iconAlt;
+
+    btn.classList.remove('dropdown-loader');
+    btn.classList.add('choosen');
+
+    spinner.style.display = 'none';
+    text.style.visibility = 'visible';
+    icon.style.visibility = 'visible';
+
+    setTimeout(() => {
+        btn.style.width = '';
+        btn.style.height = '';
+        btn.style.minWidth = '';
+    }, 50);
+}
+
+/* =====================================================
+ * DROPDOWN POSITIONING (TABLE FIX)
+ * ===================================================== */
+
+// function positionDropdown(dropdown) {
+//     const btn = dropdown.querySelector('.Select-btn');
+//     const menu = dropdown.querySelector('.dropdown-menu-custom');
+//     if (!btn || !menu) return;
+
+//     const rect = btn.getBoundingClientRect();
+//     const menuHeight = menu.offsetHeight;
+//     const windowHeight = window.innerHeight;
+
+//     const ITEM_HEIGHT = 40;
+//     const MIN_VISIBLE_ITEMS = 4;
+//     const minSpaceNeeded = Math.min(menuHeight, ITEM_HEIGHT * MIN_VISIBLE_ITEMS);
+
+//     const spaceBelow = windowHeight - rect.bottom;
+
+//     const topPosition =
+//         spaceBelow < minSpaceNeeded
+//             ? rect.top + window.scrollY - menuHeight
+//             : rect.bottom + window.scrollY;
+
+//     menu.style.setProperty('--dropdown-top', `${topPosition}px`);
+//     menu.style.setProperty('--dropdown-left', `${rect.left + window.scrollX}px`);
+// }
+/**
+ * =====================================================
+ * DASHBOARD TABLE DROPDOWN CONTROLLER
+ * =====================================================
+ * Features:
+ * - Single dropdown open at a time
+ * - Outside click close
+ * - Auto flip dropdown when exceeding table container
+ * - Overflow-safe positioning
+ */
+
+/* =====================================================
+ * UTILITIES
+ * ===================================================== */
+
+/**
+ * Close all dropdowns and reset flip state
+ */
+function closeAllDropdowns(except = null) {
+    document.querySelectorAll('.dropdown-custom.active').forEach(dropdown => {
+        if (dropdown !== except) {
+            dropdown.classList.remove('active');
+            dropdown
+                .querySelector('.dropdown-menu-custom')
+                ?.classList.remove('dropdown-flip');
+        }
+    });
+}
+
+/**
+ * Adjust dropdown position relative to table container
+ */
+function adjustDropdownPosition(dropdown) {
+    const container = document.getElementById('AdminRequestsTableContainer');
+    const menu = dropdown.querySelector('.dropdown-menu-custom');
+
+    if (!container || !menu) return;
+
+    /* Reset state to measure correctly */
+    menu.classList.remove('dropdown-flip');
+
+    const containerRect = container.getBoundingClientRect();
+    const menuRect = menu.getBoundingClientRect();
+
+    /* If dropdown exceeds container bottom, flip it */
+    if (menuRect.bottom > containerRect.bottom) {
+        menu.classList.add('dropdown-flip');
+    }
+}
+
+/* =====================================================
+ * DROPDOWN TOGGLE HANDLING
+ * ===================================================== */
+
+document.querySelectorAll('.dropdown-custom .Select-btn').forEach(button => {
+    button.addEventListener('click', (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        const dropdown = button.closest('.dropdown-custom');
+        const isActive = dropdown.classList.contains('active');
+
+        /* Close others first */
+        closeAllDropdowns(dropdown);
+
+        if (!isActive) {
+            dropdown.classList.add('active');
+            adjustDropdownPosition(dropdown);
+        }
+    });
+});
+
+/* =====================================================
+ * OUTSIDE CLICK HANDLING
+ * ===================================================== */
+
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.dropdown-custom')) {
+        closeAllDropdowns();
     }
 });
-// THIS FUNCTION IS TO FIX THE DROPDOWN VISIBILITY ISSUE IN THE TABLE END - ADDED BY SILVANA
+
+/* =====================================================
+ * SCROLL REPOSITIONING (IMPORTANT)
+ * ===================================================== */
+
+const tableContainer = document.getElementById('AdminRequestsTableContainer');
+
+if (tableContainer) {
+    tableContainer.addEventListener('scroll', () => {
+        document
+            .querySelectorAll('.dropdown-custom.active')
+            .forEach(adjustDropdownPosition);
+    });
+}
+
+/* =====================================================
+ * OPTIONAL: WINDOW RESIZE SAFETY
+ * ===================================================== */
+
+window.addEventListener('resize', () => {
+    document
+        .querySelectorAll('.dropdown-custom.active')
+        .forEach(adjustDropdownPosition);
+});
+
+/* =====================================================
+ * INITIALIZATION
+ * ===================================================== */
+
+document.querySelectorAll('.dropdown-custom').forEach(dropdown => {
+    const btn = dropdown.querySelector('.Select-btn');
+    const items = dropdown.querySelectorAll('.dropdown-item-custom');
+
+    /* Toggle dropdown */
+    btn.addEventListener('click', e => {
+        e.stopPropagation();
+        dropdown.classList.contains('open')
+            ? closeDropdown(dropdown)
+            : openDropdown(dropdown);
+    });
+
+    /* Item selection */
+    items.forEach(item => {
+        item.addEventListener('click', () => {
+            const label = item.dataset.label;
+            const icon = item.querySelector('.option-icon');
+
+            const releaseSize = showLoader(dropdown);
+
+            // Simulated async action
+            setTimeout(() => {
+                hideLoader(dropdown, label, icon.src, icon.alt);
+                releaseSize();
+            }, 1500);
+        });
+    });
+});
+
+/* =====================================================
+ * GLOBAL CLICK HANDLER
+ * ===================================================== */
+
+document.addEventListener('click', e => {
+    if (!e.target.closest('.dropdown-custom')) {
+        closeAllDropdowns();
+    }
+});
+
 
 //THIS FUNCTION IS TO MOVE THE BUTTONS OUTSIDE THE FORM START - ADDED BY SILVANA 
 document.addEventListener("DOMContentLoaded", function () {
@@ -1340,167 +1492,8 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //THIS FUNCTION IS TO MOVE THE BUTTONS OUTSIDE THE FORM END - ADDED BY SILVANA
 
-// THIS FUNCTION IS TO FIX THE LANGUAGE VARIATION SWITCH START - ADDED BY WALID
-// (function () {
-
-//     function applyLanguageButton() {
-
-//         // Find any existing language anchor
-//         const anchor = document.querySelector(
-//             'a[name="Ar_Button"], a[name="English_Button"], a[name="Eng_Button"]'
-//         );
-
-//         if (!anchor) return;
-
-//         // Prevent duplicate buttons
-//         if (anchor.previousSibling && anchor.previousSibling.classList?.contains("lang-toggle-btn")) {
-//             return;
-//         }
-
-//         const btn = document.createElement("button");
-//         btn.type = "button";
-//         btn.className = "lang-toggle-btn";
-
-//         const path = window.location.pathname;
-//         const isArabic = path.startsWith("/RuntimeAR");
-
-//         // Button always shows TARGET language
-//         btn.textContent = isArabic ? "EN" : "AR";
-
-//         // Replace anchor with button
-//         anchor.parentNode.insertBefore(btn, anchor);
-//         anchor.remove();
-
-//         btn.addEventListener("click", function () {
-
-//             let newPath;
-//             if (isArabic) {
-//                 newPath = path.replace(/^\/RuntimeAR/, "/Runtime");
-//             } else {
-//                 newPath = path.replace(/^\/Runtime/, "/RuntimeAR");
-//             }
-
-//             localStorage.setItem("siteLang", isArabic ? "EN" : "AR");
-
-//             window.location.href =
-//                 window.location.origin +
-//                 newPath +
-//                 window.location.search +
-//                 window.location.hash;
-//         });
-//     }
-
-//     // Run once DOM is ready
-//    // document.addEventListener("DOMContentLoaded", applyLanguageButton);
-
-//     // Run again in case portal re-renders toolbar
-//    // setTimeout(applyLanguageButton, 2000);
-
-// })();
-// (function () {
-
-//     function applyLanguageButton() {
-
-//         // Remove any previously injected buttons
-//         document.querySelectorAll(".lang-toggle-btn").forEach(b => b.remove());
-
-//         // Find the current language anchor
-//         const anchor = document.querySelector(
-//             'a[name="Ar_Button"], a[name="English_Button"], a[name="Eng_Button"]'
-//         );
-
-//         if (!anchor || !anchor.parentNode) return;
-
-//         const btn = document.createElement("button");
-//         btn.type = "button";
-//         btn.className = "lang-toggle-btn";
-
-//         const path = window.location.pathname;
-//         const isArabic = path.startsWith("/RuntimeAR");
-
-//         // Show target language only
-//         btn.textContent = isArabic ? "EN" : "AR";
-
-//         // 🔑 Replace anchor IN PLACE
-//         anchor.parentNode.replaceChild(btn, anchor);
-
-//         btn.addEventListener("click", function () {
-
-//             let newPath;
-//             if (isArabic) {
-//                 newPath = path.replace(/^\/RuntimeAR/, "/Runtime");
-//             } else {
-//                 newPath = path.replace(/^\/Runtime/, "/RuntimeAR");
-//             }
-
-//             localStorage.setItem("siteLang", isArabic ? "EN" : "AR");
-
-//             window.location.href =
-//                 window.location.origin +
-//                 newPath +
-//                 window.location.search +
-//                 window.location.hash;
-//         });
-//     }
-
-//     // Initial load
-//     document.addEventListener("DOMContentLoaded", applyLanguageButton);
-
-//     // Safety rerun for portal re-render
-//     setTimeout(applyLanguageButton, 2000);
-
-// })();
-// THIS FUNCTION IS TO FIX THE LANGUAGE VARIATION SWITCH END - ADDED BY WALID
-
-
-//THIS IS A CODE BY WALID TO ADD A LOADER ON LOAD
-$(document).ready(function(){
-  setTimeout(function(){
-  $('.language-switcher').remove();
-  },3000)
+$("#MainDashboardPopup .cancel-btn").click(function(){
+  $("#MainDashboardPopup").removeClass("open");
 })
 
-  // 1️⃣ Create loader and content wrapper
-  const loader = document.createElement('div');
-  loader.id = 'pageLoader';
-  loader.textContent = 'Loading…';
-  document.body.prepend(loader);
-
-  const content = document.createElement('div');
-  content.id = 'pageContent';
-  
-  // Move all existing body content into content wrapper
-  while (document.body.children.length > 1) { // skip loader itself
-    content.appendChild(document.body.children[1]);
-  }
-  document.body.appendChild(content);
-
-  // 2️⃣ Inject CSS styles
-  const style = document.createElement('style');
-  style.textContent = `
-    #pageLoader {
-      position: fixed;
-      inset: 0;
-      background-color: white;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 1.5rem;
-      z-index: 9999;
-    }
-    #pageContent {
-      visibility: hidden;
-    }
-  `;
-  document.head.appendChild(style);
-
-  // 3️⃣ Show loader for 2 seconds, then reveal content
-  document.addEventListener('DOMContentLoaded', () => {
-    setTimeout(() => {
-      loader.style.display = 'none';
-      content.style.visibility = 'visible';
-    }, 2000);
-  });
-
-
-/* final backup 15 january 2026 12:25pm*/
+/* final backup 16 january 2026 11:33am*/

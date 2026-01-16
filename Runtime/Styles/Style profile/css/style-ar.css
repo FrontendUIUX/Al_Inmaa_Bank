@@ -316,13 +316,25 @@ html:not(.designer)[dir="rtl"] .label{
     padding-left:0;
 }
 html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only input[type=text], 
-html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only a.input-control{
+html:not(.designer)[dir="rtl"] .theme-entry .input-control.select-box.read-only a.input-control,
+html:not(.designer) .theme-entry[style*="direction: rtl;"] .input-control.select-box.read-only input[type=text], 
+html:not(.designer) .theme-entry[style*="direction: rtl;"] .input-control.select-box.read-only a.input-control{
     text-align:right!important;
 }
 html:not(.designer)[dir="rtl"] .card.totalRequests .dropdown-menu{
         left:0;
         right:auto!important;
     }
+    html:not(.designer)[dir="rtl"] body .kpiCards .card .card-body .kpiIcon, html:not(.designer)[dir="rtl"] body .marketingKPIs .card .card-body .kpiIcon {
+        left: 1rem;
+        right: auto;
+    }
+html:not(.designer)[dir="rtl"] div#TablePager {
+    width: calc(100% - 4rem);
+}
+html:not(.designer)[dir="rtl"] #MainDashboardPopup.popup .popup-content h2{
+    text-align: right;
+}
 @media (min-width: 992px) {
     html:not(.designer)[dir="rtl"] body.theme-entry aside.sidebar {
     right: 0;
@@ -464,7 +476,7 @@ html:not(.designer)[dir="rtl"] #userProfileModal .modal-body .langSwitchContaine
     }
 
     html:not(.designer)[dir="rtl"] [name*="view_move_right"] {
-        margin-right: 19vw !important;
+        margin-right: 21vw !important;
         margin-left: 0 !important;
     }
 
@@ -491,4 +503,4 @@ html:not(.designer)[dir="rtl"] #userProfileModal .modal-body .langSwitchContaine
     }
 }
 
-/* final backup 15 january 2026 12:25pm*/
+/* final backup 15 january 2026 03:41pm*/
