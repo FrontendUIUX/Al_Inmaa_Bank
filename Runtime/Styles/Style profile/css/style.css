@@ -971,6 +971,9 @@ html:not(.designer).light .request-card:nth-child(3) .request-name::before {
 .subPanel .closeSubpanel svg path{
     stroke:var(--Navy-blue);
 }
+.light .subPanel .closeSubpanel svg path{
+    stroke:#ffffff;
+}
 .light .subPanel .closeSubpanel {
     background-color: var(--Navy-blue);
 }
@@ -1267,13 +1270,6 @@ thead,
 tbody {
     border: none !important;
 }
-
-.table tbody {
-    /* overflow-x: auto; */
-    /* scroll-behavior: smooth; */
-    /* -webkit-user-drag: auto; */
-}
-
 table td .request-number::before {
     content: "";
     position: absolute;
@@ -4433,9 +4429,12 @@ html:not(.designer).light .notification-base-icon {
     font-family: var(--mediumFont);
 }
 .noNotifications .d-flex p{
-    color: var(--Navy-blue);
+    color: #ffffff;
     font-family: var(--regularFont);
     font-size:var(--fs-body);
+}
+.light .noNotifications .d-flex p{
+    color: var(--Navy-blue);
 }
 .light .noNotifications .d-flex h5,
 .light .noNotifications .d-flex p{

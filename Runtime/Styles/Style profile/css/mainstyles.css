@@ -182,9 +182,10 @@ html:not(.designer) body.theme-entry [name*="checkboxContainer"] [name="Table3"]
 }
 html:not(.designer) body.theme-entry .grid-header-text{
     font-family:var(--Alinma-bold)!important;
+    color: white!important;
 }
 html:not(.designer).light body.theme-entry .grid-header-text{
-    color:var(--Navy-blue);
+    color:var(--Navy-blue)!important;
     font-family:var(--Alinma-bold)!important;
 }
 .theme-entry .drop-menu ul.drop-menu li a span{
@@ -529,7 +530,7 @@ input:-webkit-autofill:active,
 /* While selecting / value chosen */
 input:-webkit-autofill:focus-visible,
 input:-webkit-autofill:focus-within{
-  -webkit-box-shadow: 0 0 0 1000px var(--Fields_Background) inset !important;
+  -webkit-box-shadow: 0 0 0 1000px transparent inset !important;
   box-shadow: 0 0 0 1000px var(--Fields_Background) inset !important;
   -webkit-text-fill-color: var(--Navy-blue)!important;
   caret-color: var(--Fields_Background) !important;
@@ -1080,6 +1081,10 @@ html:not(.designer) [name*="s_picker"] a.styling-font .styling-font{
     /* color: var(--Read_Only_Label_Color)!important; */
     color:white!important;
 }
+html:not(.designer).light body.theme-entry [name*="s_textarea"]:has(.read-only) textarea,
+html:not(.designer).light body.theme-entry [name*="s_textbox"] input.readonly{
+    color:#395E75D9!important;
+}
 html:not(.designer).light [name*="s_textarea"] textarea,
 html:not(.designer).light [name*="s_textbox"] input,
 html:not(.designer).light .theme-entry .picker-input .editable-area .entity > span{
@@ -1362,7 +1367,7 @@ html:not(.designer) [name*="s_label"] {
     margin-bottom: 1rem;
 }
 html:not(.designer).light [name*="s_label"]{
-    color: var(--Light-black);
+    color: var(--Light-black)!important;
 }
 html:not(.designer) [name*="s_textarea"] [name*="s_label"]{
     top:1rem;
@@ -1576,9 +1581,6 @@ html:not(.designer) header {
     transform: translateY(-50%);
     animation: 1s fadeDown forwards;
 }
-html:not(.designer).light header{
-     /* background-color: hsl(25deg 50% 95% / 30%); */
-}
 html:not(.designer) .theme-entry header>span {
     width: 100%;
 }
@@ -1715,7 +1717,8 @@ div#\31 db5f6c7-4b2d-4116-871c-a6f775676b7e_df575d8e-89ea-32e3-d70c-6c3bef8f364e
 div#\38 a0fcee9-63fa-480f-8333-2765f91c6fc2_48b07caa-52a9-47ba-b841-f1c45094290e_Table,
 div#a1a8cba9-43b5-4111-bddb-bf5d8c1ce173_48b07caa-52a9-47ba-b841-f1c45094290e_Table,
 
-html:not(.designer) [name*="tableGap"] {
+html:not(.designer) [name*="tableGap"],
+html:not(.designer) [name*="tableGap"] > [name*="Table"]{
     gap: 0.7rem 0.7rem;
 }
 
@@ -2254,9 +2257,6 @@ html:not(.designer) [name*="Review Details Button"]::before {
     text-transform:capitalize!important;
     color: white!important;
 }
-.theme-entry .grid .grid-column-header-cell-wrapper>.grid-column-header-cell-content{
-    /* padding:1rem; */
-}
 div#\37 edaed9a-032c-4fce-a780-69a0ae1005ad> .row:first-child {
     display: none;
 }
@@ -2401,8 +2401,8 @@ html:not(.designer) body.theme-entry  [name*="s_textarea"]:has(.invalid),
 html:not(.designer) body.theme-entry  [name*="s_textarea"]:has(.invalid) [name*="s_label"]{
     color:var(--pill-error-text-color)!important;
 }
-html:not(.designer) body.theme-entry [name*="s_textarea"],
-html:not(.designer) [name*="s_textarea"], html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]:has(.invalid){
+
+html:not(.designer) body.theme-entry .editor-cell.lastrow[name*="s_textarea"]:has(.invalid){
         background-color: var(--input-error-background-color) !important;
     border-color: var(--input-error-border-color) !important;
 }
@@ -2411,6 +2411,7 @@ html:not(.designer) [name*="s_textarea"], html:not(.designer) body.theme-entry .
 }
 html:not(.designer) [name*="attachmentSection"] .grid-column-headers .grid-column-header-text {
         font-size:var(--fs-body)!important;
+        font-size: var(--fs-caption)!important;
         color: white!important;
     }
 .theme-entry .grid-content-cell a.fileImage.static{
@@ -3175,4 +3176,4 @@ width:8vw;
         height: 6vw !important;
     }
 }
-/* final backup 16 january 2026 03:41pm*/
+/* final backup 19 january 2026 03:41pm*/

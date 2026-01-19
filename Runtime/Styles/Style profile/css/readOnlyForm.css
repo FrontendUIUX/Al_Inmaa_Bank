@@ -34,7 +34,7 @@ html body.theme-entry .form .row:first-child{
     top: 0rem;
 }
 .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
-    fill: var(--Navy-blue-low-opacity) !important;
+    fill: rgb(255 255 255 / 80%) !important;
 
 }
 .light .theme-entry .input-control.checkbox.style-aware.checked .svg-checkbox-checked {
