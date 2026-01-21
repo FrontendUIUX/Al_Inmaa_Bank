@@ -1310,7 +1310,7 @@ table td .editRow a::before {
 html:not(.designer) body.theme-entry .table thead th:last-child,
 html:not(.designer) body.theme-entry .table tbody td:last-child {
       position: sticky;
-      left: 0;
+      right: 0;
       z-index: 2;
       background-color: #04304a;
       height: auto;
@@ -1341,7 +1341,7 @@ td[data-title="Actions"] .dropdown-custom {
     position: absolute !important;
     z-index: 1001 !important;
     top: 100% !important;
-    left: 0 !important;
+    right: 0 !important;
     transform: none !important;
     min-width: max-content !important;
     background: #05263A;
@@ -4521,6 +4521,15 @@ html:not(.designer) body.theme-entry .notification-form-content .notificationCar
 .request-status-badge.returned-state {
     background: #df6c4f;
 }
+.reject,.rejected{
+    background-color: rgb(187 44 48 / 40%);
+    color: #E34E52;
+}
+.light .reject span,
+.light .rejected span{
+    background-color: rgb(187 44 48 / 15%);
+    color: #BB2C30;
+}
 .badge-icon {
     width: 0.75rem;
     height: 0.75rem;
@@ -5085,7 +5094,9 @@ border-right: 1px solid rgb(255 255 255 / 12%);
         width: 100%;
     }
 
-    div#a1785b7c-5537-44bf-a510-6f3e6760d6b1, div#\30 96be5b7-6d7c-4600-b68b-5cb91a9d0323{
+    div#a1785b7c-5537-44bf-a510-6f3e6760d6b1, 
+    div#\30 96be5b7-6d7c-4600-b68b-5cb91a9d0323,
+    div#fb0bad8f-6091-4e34-a098-d772d03b3ca4{
         margin: 0 !important;
         width: 100%;
         min-height: calc(100vh - 17rem);
@@ -5677,7 +5688,9 @@ div#c41342a3-36c8-4f43-bc4b-1806d5d422cb{
         font-size: 1.2vw;
     }
 
-    div#a1785b7c-5537-44bf-a510-6f3e6760d6b1, div#\37 edaed9a-032c-4fce-a780-69a0ae1005ad {
+    div#a1785b7c-5537-44bf-a510-6f3e6760d6b1, 
+    div#\37 edaed9a-032c-4fce-a780-69a0ae1005ad,
+    div#fb0bad8f-6091-4e34-a098-d772d03b3ca4 {
         min-height: calc(100vh - 17vw);
     }
 div#c41342a3-36c8-4f43-bc4b-1806d5d422cb {
